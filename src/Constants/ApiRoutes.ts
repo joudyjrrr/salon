@@ -1,0 +1,95 @@
+const controller = {
+  Banner: "Banner",
+  Booking: "Booking",
+  Cards: "Cards",
+  Category: "Category",
+  City: "City",
+  Country: "Country",
+  Coupon: "Coupon",
+  CpManagement: "CpManagement",
+  Customer: "Customer",
+  Employee: "Employee",
+  Feedback: "Feedback",
+  Fqa: "Fqa",
+  Notification: "Notification",
+  Permission: "Permission",
+  Salon: "Salon",
+  SearchWord: "SearchWord",
+  Service: "Service",
+  Version: "Version",
+};
+const Banner = {
+  GET_ALL_BANNER_CP: `${controller.Banner}/BannerGetAllCp`,
+  GET_BANNER_BY_ID_CP: `${controller.Banner}/BannerGetByIdCp`,
+  SET_BANNER_CP: `${controller.Banner}/BannerSetCp`,
+  DELETE_BANNER_CP: `${controller.Banner}/BannerDeleteCp`,
+};
+
+const Category = {
+  GET_ALL_CATEGORY_CP: `${controller.Category}/CategoryGetAllCp`,
+  GET_CATEGORY_BY_ID_CP: `${controller.Category}/CategoryGetByIdCp`,
+  SET_CATEGORY_CP: `${controller.Category}/CategorySetCp`,
+  DELETE_CATEGORY_CP: `${controller.Category}/CategoryDeleteCp`,
+};
+
+const City = {
+  SET_CITY_CP: `${controller.City}/CitySetCp`,
+  DELETE_CITY_CP: `${controller.City}/CityDeleteCp`,
+};
+const Country = {
+  SET_COUNTRY_CP: `${controller.Country}/CountrySetCp`,
+  DELETE_COUNTRY_CP: `${controller.Country}/CountryDeleteCp`,
+};
+
+const Coupon = {
+  GET_COUPONS_CP: `${controller.Coupon}/GetCouponsCp`,
+  GET_COUPON_CP: `${controller.Coupon}/GetCouponCp`,
+  SET_COUPON_CP: `${controller.Coupon}/SetCouponCp`,
+  DELETE_COUPON_CP: `${controller.Coupon}/DeleteCouponCp`,
+  GET_CUSTOMER_COUPONS: `${controller.Coupon}/GetCustomerCuopons`,
+};
+
+const CpManagement = {
+  LOGIN_CP: `${controller.CpManagement}/LogInCp`,
+  SET_USER_CP: `${controller.CpManagement}/SetUserCp`,
+  GET_USERS_CP: `${controller.CpManagement}/GetUsersCp`,
+  GET_USER_BY_ID_CP: `${controller.CpManagement}/GetUserCpById`,
+  DELETE_USER_CP: `${controller.CpManagement}/DeleteCpUser`,
+  GET_ROLES_CP: `${controller.CpManagement}/GetRolesCp`,
+};
+
+const Notifications = {
+  GET_ALL_NOTIFICATION_CP: `${controller.Notification}/NotificationGetAllCp`,
+  SET_NOTIFICATION_CP: `${controller.Notification}/NotificationSetCp`,
+  DELETE_NOTIFICATION_CP: `${controller.Notification}/NotificationDeleteCp`,
+};
+const Permission = {
+  GET_ALL_CP_Permission: `${controller.Permission}/GetRolesContentsA`,
+  GET_BY_ID_CP_Permission: `${controller.Permission}/GetContentsByRoleId`,
+  Create_Permission: `${controller.Permission}/SetPermission`,
+};
+const Salon = {
+  GET_ALL_SALON_CP: `${controller.Salon}/SalonGetAllCp`,
+  GET_SALON_DETAILS_CP: `${controller.Salon}/GetSalonDetailsCp`,
+};
+const Version = {
+  SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
+  DELETE_VERSION_CP: `${controller.Salon}/VersionDeleteCp`,
+};
+const Service = {
+  SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
+};
+
+const API_Routes = {
+  Banner,
+  Category,
+  City,
+  Country,
+  Coupon,
+  CpManagement,
+  Notifications,
+  Permission,
+  Salon,
+  Version,
+  Service,
+};
