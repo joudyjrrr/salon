@@ -1,15 +1,12 @@
 import React from "react";
-import Box from "@mui/material/Box";
 import { ThemeProvider, createTheme  , } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { themAction } from "./libs/redux/themSlice";
 import { RootState } from "./libs/redux";
-
-import { PaletteMode } from "@mui/material";
-import { light } from "@mui/material/styles/createPalette";
 import CssBaseline from '@mui/material/CssBaseline';
 import getDesignTokens from "./libs/getDesignTokens";
+import { useTranslation } from "react-i18next"
 const App = () => {
   const dispatch = useDispatch();
   const mode = useSelector((state: RootState) => state.them);
@@ -20,16 +17,15 @@ const App = () => {
     () => createTheme(getDesignTokens(mode.mode)),
     [mode]
   );
-  console.log(theme.palette.mode)
+  const { t } = useTranslation();
   return (
     <>
       <ThemeProvider theme={theme}>
       <CssBaseline />
         <Button onClick={toggleColorMode} color="primary" variant="outlined">
-          {" "}
-          hi
+         {t("hi.hi")}
         </Button>
-        hiiiiiiiiiiiiiiiiiiiii
+     
       </ThemeProvider>
     </>
   );
