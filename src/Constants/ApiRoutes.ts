@@ -40,8 +40,10 @@ const City = {
   DELETE_CITY_CP: `${controller.City}/CityDeleteCp`,
 };
 const Country = {
+  GET_ALL_CP_Country: `/${controller.Country}/CountryGetAllCp`,
+  GET_Country_BY_ID: `/${controller.Country}/CountryGetById`,
   SET_COUNTRY_CP: `${controller.Country}/CountrySetCp`,
-  DELETE_COUNTRY_CP: `${controller.Country}/CountryDeleteCp`,
+  DELETe_CP_Country: `/${controller.Country}/CountryDeleteCp`,
 };
 
 const Coupon = {
