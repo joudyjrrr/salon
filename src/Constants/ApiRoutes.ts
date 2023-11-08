@@ -84,6 +84,9 @@ const Version = {
 const Service = {
   SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
 };
+const Feedback = {
+  GET_FEEDBACK_CP : `${controller.Feedback}/Feedback`
+}
 
 const API_Routes = {
   Banner,
@@ -97,4 +100,5 @@ const API_Routes = {
   Salon,
   Version,
   Service,
+  Feedback
 };
