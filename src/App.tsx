@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import React from "react";
+import { ThemeProvider, createTheme  , } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { themAction } from "./libs/redux/themSlice";
+import { RootState } from "./libs/redux";
+import CssBaseline from '@mui/material/CssBaseline';
+import getDesignTokens from "./libs/getDesignTokens";
+import { useTranslation } from "react-i18next"
+const App = () => {
+  const dispatch = useDispatch();
+  const mode = useSelector((state: RootState) => state.them);
+  const toggleColorMode = () => {
+    dispatch(themAction.setMode(mode.mode === 'dark' ? 'light' : "dark"));
+  };
+  const theme = React.useMemo(
+    () => createTheme(getDesignTokens(mode.mode)),
+    [mode]
+  );
+  const { t } = useTranslation();
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <ThemeProvider theme={theme}>
+      <CssBaseline />
+        <Button onClick={toggleColorMode} color="primary" variant="outlined">
+         {t("hi.hi")}
+        </Button>
+     
+      </ThemeProvider>
     </>
-  )
-}
+  );
+};
 
-export default App
+export default App;
