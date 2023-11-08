@@ -33,6 +33,9 @@ const Category = {
 };
 
 const City = {
+  GET_ALL_CP_City: `/${controller.City}/CityGetAll`,
+  CITY_GET_BY_COUNTRY: `${controller.City}/CityGetByCountry`,
+  GET_CITY_BY_ID: `/${controller.City}/CityGetById`,
   SET_CITY_CP: `${controller.City}/CitySetCp`,
   DELETE_CITY_CP: `${controller.City}/CityDeleteCp`,
 };

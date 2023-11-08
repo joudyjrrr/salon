@@ -21,3 +21,7 @@ export interface IPayload {
   PageNumber?: number;
   Query?: string;
 }
+export interface ICity {
+  key: string;
+  value: string;
+}
