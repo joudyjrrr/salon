@@ -69,9 +69,9 @@ const Notifications = {
   DELETE_NOTIFICATION_CP: `${controller.Notification}/NotificationDeleteCp`,
 };
 const Permission = {
-  GET_ALL_CP_Permission: `${controller.Permission}/GetRolesContentsA`,
-  GET_BY_ID_CP_Permission: `${controller.Permission}/GetContentsByRoleId`,
-  Create_Permission: `${controller.Permission}/SetPermission`,
+  GET_ROLES_CONTENTS: `${controller.Permission}/GetRolesContentsA`,
+  GET_CONTENTS_BY_ROLE_ID: `${controller.Permission}/GetContentsByRoleId`,
+  SET_PERMISSION: `${controller.Permission}/SetPermission`,
 };
 const Salon = {
   GET_ALL_SALON_CP: `${controller.Salon}/SalonGetAllCp`,
