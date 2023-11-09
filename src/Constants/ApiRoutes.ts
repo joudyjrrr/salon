@@ -40,8 +40,10 @@ const City = {
   DELETE_CITY_CP: `${controller.City}/CityDeleteCp`,
 };
 const Country = {
+  GET_ALL_CP_Country: `/${controller.Country}/CountryGetAllCp`,
+  GET_Country_BY_ID: `/${controller.Country}/CountryGetById`,
   SET_COUNTRY_CP: `${controller.Country}/CountrySetCp`,
-  DELETE_COUNTRY_CP: `${controller.Country}/CountryDeleteCp`,
+  DELETe_CP_Country: `/${controller.Country}/CountryDeleteCp`,
 };
 
 const Coupon = {
@@ -67,9 +69,9 @@ const Notifications = {
   DELETE_NOTIFICATION_CP: `${controller.Notification}/NotificationDeleteCp`,
 };
 const Permission = {
-  GET_ALL_CP_Permission: `${controller.Permission}/GetRolesContentsA`,
-  GET_BY_ID_CP_Permission: `${controller.Permission}/GetContentsByRoleId`,
-  Create_Permission: `${controller.Permission}/SetPermission`,
+  GET_ROLES_CONTENTS: `${controller.Permission}/GetRolesContentsA`,
+  GET_CONTENTS_BY_ROLE_ID: `${controller.Permission}/GetContentsByRoleId`,
+  SET_PERMISSION: `${controller.Permission}/SetPermission`,
 };
 const Salon = {
   GET_ALL_SALON_CP: `${controller.Salon}/SalonGetAllCp`,
@@ -82,8 +84,11 @@ const Version = {
 const Service = {
   SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
 };
+const Feedback = {
+  GET_FEEDBACK_CP : `${controller.Feedback}/Feedback`
+}
 
-const API_Routes = {
+export const API_Routes = {
   Banner,
   Category,
   City,
@@ -95,4 +100,5 @@ const API_Routes = {
   Salon,
   Version,
   Service,
+  Feedback
 };

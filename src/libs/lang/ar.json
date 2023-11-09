@@ -1,5 +1,45 @@
 {
-    "hi":{
-        "hi":"هاي"
-    }
+  "form": {
+    "userName": "اسم المستخدم",
+    "password": "كلمة السر",
+    "submit": "تأكيد",
+    "required": "هذا الحقل مطلوب",
+    "search": "ابحث...",
+    "arName": "الاسم العربي ",
+    "enName": "الاسم الانكليزي",
+    "arDescription": "الوصف العربي",
+    "enDescription": "الوصف الانكليزي",
+    "upLoadImg": "حمّل صورة",
+    "crop": "قص الصورة",
+    "name": "الاسم",
+    "fromDate": "من",
+    "toDate": "إلى",
+    "link": "الرابط",
+    "currency": "العملة",
+    "latitude": "خط العرض",
+    "longitude": "خط الطول",
+    "arValue": "القيمة بالعربي",
+    "enValue": "القيمة بالانكليزي",
+    "price": "السعر",
+    "offerPrice": "السعر بعد الحسم",
+    "visitorsCount": "عدد الزوار",
+    "ChooseMaterial": "اختر مادة",
+    "variantValueIds": "قيم المتغيرات",
+    "ChooseRole": "اختر دور ",
+    "values": "القيم",
+    "uploadImgForCover": "حمل صورة من أجل الغلاف",
+    "uploadImgForLogo": "حمل صورة من أجل الشعار",
+    "selectLocation": "اختر موقع",
+    "addLocation": "اضف الموقع",
+    "numofValues": "عدد القيم",
+    "value": "القيم",
+    "firstName": "الاسم الاول",
+    "lastName": "الاسم الاخير",
+    "phoneNumber": "رقم الهاتف",
+    "DeliveryPeriod": "فترة التوصيل",
+    "ChooseVariantsValues": "اختر قيم المتغيرات",
+    "ChooseVariants": "اختر المتغيرات",
+    "description": "الوصف",
+    "login": "تسجيل الدخول"
+  }
 }

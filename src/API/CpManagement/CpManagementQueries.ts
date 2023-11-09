@@ -1,9 +1,8 @@
 import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
-import { GetUsersType } from "./type";
 import { CpManagementApi } from "./CpManagementApi";
 import { IPayload } from "../../interface/generic";
 
-const LogInQuery = async () => {
+const LogInQuery = () => {
   const queryResult = useMutation({
     mutationKey: ["login"],
     mutationFn: CpManagementApi.Login,
@@ -11,7 +10,7 @@ const LogInQuery = async () => {
   return queryResult;
 };
 
-const SetUserQuery = async () => {
+const SetUserQuery = () => {
   const queryResult = useMutation({
     mutationKey: ["set-user"],
     mutationFn: CpManagementApi.SetUser,
@@ -51,7 +50,7 @@ const GetUserByIdQuery = async (userId: string) => {
   });
   return queryResult;
 };
-const DeleteUser = async () => {
+const DeleteUser = () => {
   const queryResult = useMutation({
     mutationKey: ["delete-user"],
     mutationFn: CpManagementApi.DeleteUser,
@@ -62,7 +61,7 @@ const GetRoles = async () => {
   const queryResult = useQuery({
     queryKey: ["get-roles"],
     queryFn: async () => {
-      const data = await CpManagementApi.GetRoles();
+      const data = await CpManagementApi.GetAllRoles();
       return data;
     },
   });

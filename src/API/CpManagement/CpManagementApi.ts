@@ -49,7 +49,7 @@ const DeleteUser = async (UserId: string) => {
   );
   return data;
 };
-const GetRoles = async () => {
+const GetAllRoles = async () => {
   const { data } = await DeliveryApiInstances.get<GetRoles>(
     API_Routes.CpManagement.GET_ROLES_CP
   );
@@ -61,5 +61,5 @@ export const CpManagementApi = {
   GetUsers,
   GetUserById,
   DeleteUser,
-  GetRoles,
+  GetAllRoles,
 };
