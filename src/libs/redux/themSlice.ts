@@ -4,7 +4,7 @@ import {PaletteMode} from "@mui/material"
 //     mode : PaletteMode
 // }
 const InitialValues  = {
-  mode: 'dark' as PaletteMode,
+  mode: 'light' as PaletteMode,
 };
 
 const themSlice = createSlice({

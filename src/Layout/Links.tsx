@@ -30,7 +30,53 @@ const Links = () => {
       icon: <MdCategory />,
       
     },
-
+    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },
+    {
+      title: t("links.category"),
+      href: "/category",
+      icon: <MdCategory />,
+      
+    },
   ]
   return {
     dashBoardNavLinks
