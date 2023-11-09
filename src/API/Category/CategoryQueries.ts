@@ -34,14 +34,14 @@ const GetCategoryByIdQuery = async (id: string) => {
   });
   return queryResult;
 };
-const SetCategoryQuery = async () => {
+const SetCategoryQuery = () => {
   const queryResult = useMutation({
     mutationKey: ["set-category"],
     mutationFn: CategoryApi.setCategory,
   });
   return queryResult;
 };
-const DeleteBannerQuery = async () => {
+const DeleteBannerQuery = () => {
   const queryResult = useMutation({
     mutationKey: ["delete-banner"],
     mutationFn: CategoryApi.RemoveCategory,

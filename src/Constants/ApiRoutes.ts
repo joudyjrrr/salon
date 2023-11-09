@@ -88,7 +88,7 @@ const Feedback = {
   GET_FEEDBACK_CP : `${controller.Feedback}/Feedback`
 }
 
-const API_Routes = {
+export const API_Routes = {
   Banner,
   Category,
   City,

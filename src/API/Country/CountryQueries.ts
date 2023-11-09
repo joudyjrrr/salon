@@ -55,7 +55,7 @@ const GetCountryByIdQuery = (id: string) => {
   });
   return queryResult;
 };
-const SetCountry = async () => {
+const SetCountry = () => {
   const queryResult = useMutation({
     mutationKey: ["post-city"],
     mutationFn: CountryApi.postCountry,
@@ -63,7 +63,7 @@ const SetCountry = async () => {
   return queryResult;
 };
 
-const DeleteCountry = async () => {
+const DeleteCountry = () => {
   const queryResult = useMutation({
     mutationKey: ["delete-city"],
     mutationFn: CountryApi.RemoveCountry,

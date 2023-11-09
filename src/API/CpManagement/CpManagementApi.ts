@@ -1,3 +1,4 @@
+import { API_Routes } from "../../Constants/ApiRoutes";
 import { IPagination, IPayload } from "../../interface/generic";
 import DeliveryApiInstances from "../axios";
 import { GetLogInType, GetRoles, GetUsersType, SetLogInType, SetUserType } from "./type";
@@ -49,7 +50,7 @@ const DeleteUser = async (UserId: string) => {
   );
   return data;
 };
-const GetRoles = async () => {
+const GetAllRoles = async () => {
   const { data } = await DeliveryApiInstances.get<GetRoles>(
     API_Routes.CpManagement.GET_ROLES_CP
   );
@@ -61,5 +62,5 @@ export const CpManagementApi = {
   GetUsers,
   GetUserById,
   DeleteUser,
-  GetRoles,
+  GetAllRoles,
 };

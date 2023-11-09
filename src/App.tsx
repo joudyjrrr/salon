@@ -22,9 +22,9 @@ const App = () => {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Button onClick={toggleColorMode} color="primary" variant="outlined">
+        {/* <Button onClick={toggleColorMode} color="primary" variant="outlined">
           {t("hi.hi")}
-        </Button>
+        </Button> */}
         {lang == "ar" ? (
           <RTL>
             <Routes />

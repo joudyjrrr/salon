@@ -1,3 +1,4 @@
+import { API_Routes } from "../../Constants/ApiRoutes";
 import { IPagination, IPayload } from "../../interface/generic";
 import DeliveryApiInstances from "../axios";
 import {

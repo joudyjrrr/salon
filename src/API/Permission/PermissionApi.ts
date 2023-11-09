@@ -1,3 +1,4 @@
+import { API_Routes } from "../../Constants/ApiRoutes";
 import DeliveryApiInstances from "../axios";
 import { IPermissionGet } from "./type";
 

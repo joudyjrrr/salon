@@ -75,7 +75,7 @@ const GetCityByIdQuery = (id: string) => {
   return queryResult;
 };
 
-const SetCity = async () => {
+const SetCity = () => {
   const queryResult = useMutation({
     mutationKey: ["post-city"],
     mutationFn: CityApi.SetCity,
@@ -83,7 +83,7 @@ const SetCity = async () => {
   return queryResult;
 };
 
-const DeleteCity = async () => {
+const DeleteCity = () => {
   const queryResult = useMutation({
     mutationKey: ["delete-city"],
     mutationFn: CityApi.DeleteCity,

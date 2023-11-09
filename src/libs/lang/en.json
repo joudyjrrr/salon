@@ -1,5 +1,45 @@
 {
-    "hi":{
-        "hi":"hi"
-    }
+  "form": {
+    "userName": "User Name",
+    "password": "Password",
+    "submit": "Submit",
+    "required": "Field is required",
+    "search": "Search...",
+    "arName": "Arabic Name",
+    "enName": "English Name",
+    "arDescription": "Arabic Description",
+    "enDescription": "English Description",
+    "upLoadImg": "Upload Img",
+    "crop": "Crop Img",
+    "name": "Name",
+    "fromDate": "fromDate",
+    "toDate": "toDate",
+    "link": "link",
+    "currency": "Currency",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "arValue": "Arabic Value",
+    "enValue": "English Value",
+    "price": "Price",
+    "offerPrice": "OfferPrice",
+    "visitorsCount": "VisitorsCount",
+    "variantValueIds": "VariantValue",
+    "ChooseMaterial": "Choose Material",
+    "ChooseRole": "Choose Roles",
+    "values": "Values",
+    "uploadImgForCover": "Upload Img for Cover",
+    "uploadImgForLogo": "Upload Img for Logo",
+    "selectLocation": "Select Location",
+    "addLocation": "Add Location",
+    "numofValues": "Number Of Values",
+    "value": "Values",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "phoneNumber": "Phone Number",
+    "DeliveryPeriod": "Delivery Period",
+    "ChooseVariantsValues": "Choose Variants Values",
+    "ChooseVariants": "Choose Variants",
+    "description": "Description",
+    "login": "login"
+  }
 }
