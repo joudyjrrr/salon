@@ -1,10 +1,10 @@
 import { Suspense, lazy } from "react";
-import { Route, Routes as ReactRoutes, Navigate } from "react-router-dom";
+import { Route, Routes as ReactRoutes } from "react-router-dom";
 import Fallback from "./Components/Fallback";
 
 const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
-
+const CpMangment =lazy(() => import("./pages/CpMangment/CpMangment"));
 const Routes = () => {
   return (
     <>
@@ -15,13 +15,12 @@ const Routes = () => {
             index
             element={
               <Suspense fallback={<></>}>
-                <h1>cpMangmens</h1>
+                <CpMangment />
               </Suspense>
             }
           />
           <Route
             path="/category"
-            index
             element={
               <Suspense fallback={<></>}>
                 <h1>category</h1>

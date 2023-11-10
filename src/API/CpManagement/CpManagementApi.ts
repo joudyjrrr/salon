@@ -19,7 +19,7 @@ const SetUser = async (params: SetUserType) => {
 };
 const GetUsers = async (payload: IPayload) => {
   const { data } = await DeliveryApiInstances.get<IPagination<GetUsersType>>(
-    API_Routes.Category.GET_ALL_CATEGORY_CP,
+    API_Routes.CpManagement.GET_USERS_CP,
     {
       params: {
         ...payload,

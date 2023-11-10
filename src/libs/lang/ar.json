@@ -1,4 +1,22 @@
 {
+  "links": {
+    "cpMangment": "إدارة المستخدمين",
+    "category": "أصناف",
+    "brand": "الماركات",
+    "Shipping": "شركات الشحن",
+    "country": "الدول",
+    "city": "المدن",
+    "store": "المتجر",
+    "variant": "الخصائص",
+    "Product": "المنتجات",
+    "Order": "الطلبيات",
+    "Permission": "الصلاحيات",
+    "banner": "الإعلانات",
+    "coupon": "القسائم",
+    "notification": "الإشعارات",
+    "FeedBack": "الاقتراحات",
+    "offer": "العروض"
+  },
   "form": {
     "userName": "اسم المستخدم",
     "password": "كلمة السر",
@@ -41,5 +59,18 @@
     "ChooseVariants": "اختر المتغيرات",
     "description": "الوصف",
     "login": "تسجيل الدخول"
+  },
+  "table": {
+    "name": "اسم المستخدم",
+    "handel": "التحكم",
+    "currency": "العملة",
+    "role": "الدور",
+    "desc": "الوصف"
+  },
+  "cpMangment": {
+    "title": "إدارة المستخدمين",
+    "action": "تم إضافة المستخدم بنجاح",
+    "add": "إضافة مستخدم",
+    "delete": "تم حذف المستخدم بنجاح"
   }
 }

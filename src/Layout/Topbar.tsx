@@ -62,10 +62,9 @@ const Topbar = () => {
       width="100%"
       justifyContent="end"
       p={2}
-      sx={{ background: "#6870fa" }}
+      sx={{ background: "#6870fa  " }}
     >
       {/* SEARCH BAR */}
-
       {/* ICONS */}
       <Box display="flex">
         <IconButton onClick={toggleColorMode}>

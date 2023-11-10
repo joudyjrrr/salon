@@ -18,7 +18,7 @@ const SetUserQuery = () => {
   return queryResult;
 };
 
-const GetUsersQuery = async (params: IPayload) => {
+const GetUsersQuery =  (params: IPayload) => {
   const queryResult = useInfiniteQuery({
     queryKey: ["get-infinite-users", params.PageNumber, params.Query],
     queryFn: async () => {

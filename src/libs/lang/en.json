@@ -1,4 +1,21 @@
 {
+  "links": {
+    "cpMangment": "CpMangment",
+    "category": "Category",
+    "brand": "Brands",
+    "banner": "Banner",
+    "Shipping": "ShippingCompany",
+    "country": "Country",
+    "city": "City",
+    "store": "Store",
+    "variant": "Variant",
+    "coupon": "coupon",
+    "notification": "notification",
+    "Order": "Orders",
+    "Permission": "Permission",
+    "FeedBack": "FeedBack",
+    "offer": "Offer"
+  },
   "form": {
     "userName": "User Name",
     "password": "Password",
@@ -41,5 +58,18 @@
     "ChooseVariants": "Choose Variants",
     "description": "Description",
     "login": "login"
+  },
+  "table": {
+    "name": "Name",
+    "handel": "Handle",
+    "currency": "Currency",
+    "role": "Role",
+    "desc": "Description"
+  },
+  "cpMangment": {
+    "title": "Manege User Acount",
+    "action": "Users has been saved successfully",
+    "add": "Add User",
+    "delete": "User has been Deleted"
   }
 }
