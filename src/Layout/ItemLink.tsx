@@ -1,6 +1,7 @@
 import { MenuItem } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
-import { Typography, useTheme } from "@mui/material";
+import { Typography } from "@mui/material";
+import { useTheme } from '@mui/material/styles';  
 import { tokens } from "../libs/them";
 import { FC, ReactNode } from "react";
 type IProps = {
