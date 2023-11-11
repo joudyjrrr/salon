@@ -1,14 +1,15 @@
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import Loading from "../../Components/Loading";
 import Pagination from "../../Components/Pagination";
-import useCategoryHook from "./hooks/useCategoryHook"
-import { useState } from 'react';
+import useCategoryHook from "./hooks/useCategoryHook";
+import { useState } from "react";
 import { API_BASE_URL } from "../../API/domain";
 import DeleteCategory from "./DeleteCategory";
 import SearchField from "../../Components/SearchField";
 import Title from "../../Components/Title";
 
 const Category = () => {
+
 
     const [PageNumber, setPageNumber] = useState(0)
     const [Search, setSearch] = useState<string>()
@@ -21,6 +22,7 @@ const Category = () => {
         t
     } = useCategoryHook(PageNumber, Search)
 
+    console.log(allCategories);
 
 
 
@@ -89,7 +91,7 @@ const Category = () => {
 
             }
         </>
-    )
-}
+    );
+};
 
-export default Category
+export default Category;

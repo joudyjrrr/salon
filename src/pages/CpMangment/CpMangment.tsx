@@ -10,7 +10,10 @@ import Pagination from "../../Components/Pagination";
 import Loading from "../../Components/Loading";
 import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
-import useMediaQuery from "@mui/material/useMediaQuery"
+import useMediaQuery from "@mui/material/useMediaQuery";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
+import AddUser from "./AddUser";
 const CpMangment = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -27,10 +30,10 @@ const CpMangment = () => {
     isLoading,
   } = CpManagementQueries.GetUsersQuery({
     PageNumber: page,
-    Query:query
+    Query: query,
   });
-  const matches = useMediaQuery('(max-width:700px)');
-  console.log(matches)
+  const matches = useMediaQuery("(max-width:700px)");
+  console.log(matches);
   return (
     <>
       <Box
@@ -40,7 +43,8 @@ const CpMangment = () => {
           textAlign: "center",
         }}
       >
-       <Stack direction={`${matches ? 'column' : 'row'}`} spacing={10} >
+        <AddUser />
+        <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
           <Title />
           <SearchField onSearch={(value) => setQuery(value)} value={query} />
         </Stack>
@@ -55,8 +59,12 @@ const CpMangment = () => {
                 <TableBody>
                   {CpManagementData?.data.map((d) => (
                     <TableRow key={d.id}>
-                      <TableCell align="center">{d.username}</TableCell>
-                      <TableCell align="center">{d.role}</TableCell>
+                      <TableCell align="center" sx={{ fontSize: "17px" }}>
+                        {d.username}
+                      </TableCell>
+                      <TableCell align="center" sx={{ fontSize: "17px" }}>
+                        {d.role}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
