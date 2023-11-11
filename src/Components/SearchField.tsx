@@ -7,7 +7,7 @@ type ISearchProps = {
   className?: string;
   value?: string;
   onSearch: (query: string) => void;
-  sx?:SxProps
+sx?:SxProps
 };
 
 const SearchField: React.FC<ISearchProps> = ({
@@ -25,7 +25,7 @@ const SearchField: React.FC<ISearchProps> = ({
   return (
     <>
       <TextField
-      sx={sx}
+   sx={sx}
         variant="outlined"
         type="text"
         label={t("form.search")}

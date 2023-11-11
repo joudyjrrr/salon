@@ -63,7 +63,9 @@ const Category = () => {
                                 )
                             })}
 
-                            < Pagination
+                            
+                        </Grid>
+                        < Pagination
                                 // clickPrev={() => setPageNumber((prev) => prev - 1)}
                                 // disablePrev={PageNumber < 1}
                                 // clickNext={() => setPageNumber((prev) => prev + 1)}
@@ -74,7 +76,6 @@ const Category = () => {
                                 totalPages={allCategories?.totalPages!}
                                 isPreviousData={false}
                             />
-                        </Grid>
                     </>
 
 

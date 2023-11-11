@@ -9,7 +9,7 @@ import lang from "./libs/lang/lang.ts";
 import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+// import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 const queryClient = new QueryClient()
 
@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <App />
           </I18nextProvider>
         </Provider>
-        <ReactQueryDevtools initialIsOpen={false} />
+        {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       </QueryClientProvider>
     </BrowserRouter>
   </React.StrictMode>
