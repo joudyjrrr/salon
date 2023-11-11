@@ -15,8 +15,10 @@ const SideBarrr = () => {
   return (
     <Box
       sx={{
+        height:"100vh",
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
+        
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -33,7 +35,7 @@ const SideBarrr = () => {
       }}
     >
       <ProSidebar collapsed={isCollapsed}
-        style={{ height: "100%" }}
+      style={{height:"100%"}}
       >
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
@@ -62,9 +64,8 @@ const SideBarrr = () => {
             )}
           </MenuItem>
           <Box paddingLeft={isCollapsed ? undefined : "10%"} display="flex" flexDirection="column" gap="10">
-            {dashBoardNavLinks.map((link, idx) => (
+            {dashBoardNavLinks.map((link) => (
               <ItemLink
-                key={idx}
                 to={link.href}
                 icon={link.icon}
                 title={link.title}

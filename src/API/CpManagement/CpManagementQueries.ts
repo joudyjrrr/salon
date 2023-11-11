@@ -1,4 +1,9 @@
-import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
+import {
+  keepPreviousData,
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+} from "@tanstack/react-query";
 import { CpManagementApi } from "./CpManagementApi";
 import { IPayload } from "../../interface/generic";
 
@@ -20,18 +25,16 @@ const SetUserQuery = () => {
 
 const GetUsersQuery = (params: IPayload) => {
   const queryResult = useQuery({
-    queryKey: ["get-infinite-users", params.PageNumber, params.Query],
+    queryKey: ["get-users", params.PageNumber, params.Query],
     queryFn: async () => {
       const data = await CpManagementApi.GetUsers({
-        EnablePagination: params.EnablePagination,
+        EnablePagination: true,
         PageNumber: params.PageNumber,
         Query: params.Query,
       });
-      return {
-        data,
-        pageParam: 0,
-      };
+      return data
     },
+    placeholderData: keepPreviousData,
   });
   return queryResult;
 };
