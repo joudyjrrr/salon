@@ -3,13 +3,15 @@ import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
+import { useTranslation } from "react-i18next";
 import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import { Stack, TextField } from "@mui/material";
+import useCpMngment from "./hook/useCpMngment";
+import FormTextField from "../../Components/Form/FormTextField";
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
@@ -20,8 +22,10 @@ const Transition = React.forwardRef(function Transition(
 });
 
 export default function AddUser() {
+  const {control} = useCpMngment()
+  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
-
+ 
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -32,13 +36,8 @@ export default function AddUser() {
 
   return (
     <React.Fragment>
-      <Stack
-        onClick={handleClickOpen}
-        flexDirection="row"
-        justifyContent="end"
-        marginInline="50px"
-      >
-        <Fab color="primary" aria-label="add">
+      <Stack flexDirection="row" justifyContent="end" marginInline="50px">
+        <Fab color="primary" aria-label="add" onClick={handleClickOpen}>
           <AddIcon className="text-white-100" />
         </Fab>
       </Stack>
@@ -53,20 +52,15 @@ export default function AddUser() {
         <DialogTitle>{"Use Google's location service?"}</DialogTitle>
         <DialogContent>
           <Stack flexDirection="column" spacing={5} padding="15px">
-            <TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
+            <FormTextField 
+            control={control}
+            name="username"
+            label={t("form.userName")}
             />
-            <TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
-            />
-            <TextField
-              id="outlined-basic"
-              label="Outlined"
-              variant="outlined"
+          <FormTextField 
+            control={control}
+            name="password"
+            label={t("form.password")}
             />
           </Stack>
         </DialogContent>
