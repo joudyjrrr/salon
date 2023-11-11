@@ -43,7 +43,7 @@ const Category = () => {
                             clickPrev={() => setPageNumber((prev) => prev - 1)}
                             disablePrev={PageNumber < 1}
                             clickNext={() => setPageNumber((prev) => prev + 1)}
-                            disableNext={allCategories?.pageNumber === allCategories?.totalPages}
+                            disableNext={(allCategories?.pageNumber) === allCategories?.totalPages}
 
                         />
                     </>
