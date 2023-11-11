@@ -37,9 +37,11 @@
 // }
 
 // export default Pagination
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Grid } from "@mui/material";
 import { RiArrowLeftDoubleLine, RiArrowRightDoubleFill } from "react-icons/ri";
 import { FC } from "react";
+import { Button } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 type IProps = {
     page: number;
     isFetching: boolean;
@@ -53,24 +55,33 @@ const Pagination: FC<IProps> = ({
     isFetching,
     totalPages,
 }) => {
+
+    const { t } = useTranslation();
+
     return (
         <>
-            <Box display="flex">
-                <IconButton
-                    color="primary"
-                    disabled={page === 0}
-                    onClick={() => onPageChange(page - 1)}
-                >
-                    <RiArrowLeftDoubleLine />
-                </IconButton>
-                <IconButton
-                    disabled={isFetching || page === totalPages - 1}
-                    color="primary"
-                    onClick={() => onPageChange(page + 1)}
-                >
-                    <RiArrowRightDoubleFill />
-                </IconButton>
-            </Box>
+            <Grid container justifyContent={'end'}>
+                <Box display="flex">
+                    <Button
+                        color="primary"
+                        disabled={page === 0}
+                        onClick={() => onPageChange(page - 1)}
+                        variant="outlined"
+                    >
+                        <RiArrowLeftDoubleLine />
+                        {t('btns.prev')}
+                    </Button>
+                    <Button
+                        disabled={isFetching || page >= totalPages - 1}
+                        color="primary"
+                        onClick={() => onPageChange(page + 1)}
+                        variant="outlined"
+                    >
+                        {t('btns.next')}
+                        <RiArrowRightDoubleFill />
+                    </Button>
+                </Box>
+            </Grid>
         </>
     );
 };

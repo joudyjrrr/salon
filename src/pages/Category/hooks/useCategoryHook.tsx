@@ -2,14 +2,16 @@ import { CategoryQuery } from "../../../API/Category/CategoryQueries"
 import { useTranslation } from 'react-i18next';
 
 
-const useCategoryHook = (pageNumber?: number) => {
+const useCategoryHook = (pageNumber?: number, Query?: string) => {
 
     const { t } = useTranslation();
+    console.log(Query);
+
     const {
         data: allCategories,
         isLoading: allCategoriesIsLoading,
 
-    } = CategoryQuery.GetAllCategoryQuery({ PageNumber: pageNumber })
+    } = CategoryQuery.GetAllCategoryQuery({ PageNumber: pageNumber, Query: Query })
 
     const {
         isPending: isDeletingCategory,

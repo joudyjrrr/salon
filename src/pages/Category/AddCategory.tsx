@@ -1,8 +1,11 @@
 
 const AddCategory = () => {
+
+    
+
     return (
         <>
-            
+
         </>
     )
 }

@@ -1,14 +1,17 @@
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import Loading from "../../Components/Loading";
 import Pagination from "../../Components/Pagination";
 import useCategoryHook from "./hooks/useCategoryHook"
 import { useState } from 'react';
 import { API_BASE_URL } from "../../API/domain";
 import DeleteCategory from "./DeleteCategory";
+import SearchField from "../../Components/SearchField";
+import Title from "../../Components/Title";
 
 const Category = () => {
 
     const [PageNumber, setPageNumber] = useState(0)
+    const [Search, setSearch] = useState<string>()
 
 
 
@@ -16,13 +19,19 @@ const Category = () => {
         allCategories,
         allCategoriesIsLoading,
         t
-    } = useCategoryHook(PageNumber)
+    } = useCategoryHook(PageNumber, Search)
 
-    console.log(allCategories);
+
 
 
     return (
         <>
+            <Grid container sx={{ mt: 2 }} >
+                <Grid item sx={{ mx: 5 }}>
+                    <Title />
+                </Grid>
+                <SearchField value={Search} onSearch={setSearch} />
+            </Grid >
             {
                 allCategoriesIsLoading ?
                     <Loading />
