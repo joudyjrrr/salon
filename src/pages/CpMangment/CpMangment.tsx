@@ -1,14 +1,13 @@
 import { useTranslation } from "react-i18next";
-import { Box, IconButton } from "@mui/material";
+import { Box } from "@mui/material";
 import TableHeader from "../../Components/TableHeader";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { CpManagementQueries } from "../../API/CpManagement/CpManagementQueries";
 import { useState } from "react";
-import { RiArrowLeftDoubleLine, RiArrowRightDoubleFill } from "react-icons/ri";
 import Pagination from "../../Components/Pagination";
-import Loading from "../../libs/loading";
+import Loading from "../../Components/Loading";
 const CpMangment = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
