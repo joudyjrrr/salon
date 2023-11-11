@@ -14,7 +14,7 @@ const Pagination: FC<{
 
     return (
         <>
-            <Grid container justifyContent={'end'} sx={{ mt: '20px' }}>
+            <Grid container spacing={4} justifyContent={'end'} sx={{ mt: '20px' }}>
                 <Button
                     sx={{ mx: '10px' }}
                     variant='outlined'

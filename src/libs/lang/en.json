@@ -75,5 +75,13 @@
   "btns": {
     "next": "Next",
     "prev": "Previous"
+  },
+  "Category": {
+    "type": "type"
+  },
+  "delete": {
+    "title": "Do You want to delete it?",
+    "yes": "Yes",
+    "cancel": "Cancel"
   }
 }
