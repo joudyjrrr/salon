@@ -64,10 +64,15 @@ const Category = () => {
                             })}
 
                             < Pagination
-                                clickPrev={() => setPageNumber((prev) => prev - 1)}
-                                disablePrev={PageNumber < 1}
-                                clickNext={() => setPageNumber((prev) => prev + 1)}
-                                disableNext={(Number(allCategories?.pageNumber) + 1) === allCategories?.totalPages}
+                                // clickPrev={() => setPageNumber((prev) => prev - 1)}
+                                // disablePrev={PageNumber < 1}
+                                // clickNext={() => setPageNumber((prev) => prev + 1)}
+                                // disableNext={(Number(allCategories?.pageNumber) + 1) === allCategories?.totalPages}
+                                page={PageNumber}
+                                onPageChange={setPageNumber}
+                                isFetching={allCategoriesIsLoading}
+                                totalPages={allCategories?.totalPages!}
+                                isPreviousData={false}
                             />
                         </Grid>
                     </>
