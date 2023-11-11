@@ -1,7 +1,7 @@
 import {
   keepPreviousData,
-  useInfiniteQuery,
   useMutation,
+  useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
 import { NotificationApi } from "./NotificationApi";
@@ -33,7 +33,7 @@ const DeleteNotificationCp = () => {
 };
 
 const GetNotificationCp = (params: IPayload) => {
-  const queryResult = useInfiniteQuery({
+  const queryResult = useQuery({
     queryKey: ["get-notification-all", params.Query, params.PageNumber],
     queryFn: async () => {
       const data = await NotificationApi.GetNotificationCp({
@@ -47,11 +47,6 @@ const GetNotificationCp = (params: IPayload) => {
       };
     },
     placeholderData: keepPreviousData,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
   });
   return queryResult;
 };

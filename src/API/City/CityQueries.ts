@@ -9,7 +9,7 @@ import { CityApi } from "./CityApi";
 import { getCityByCountryType, setCityType } from "./type";
 
 const GetAllCitiesQuery = (payload: IPayload) => {
-  const queryResult = useInfiniteQuery({
+  const queryResult = useQuery({
     queryKey: ["get-city", payload.PageNumber, payload.Query],
     queryFn: async () => {
       const data = await CityApi.GetAllCity({
@@ -22,12 +22,6 @@ const GetAllCitiesQuery = (payload: IPayload) => {
         pageParam: 0,
       };
     },
-    placeholderData: keepPreviousData,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
   });
   return queryResult;
 };
@@ -41,7 +35,7 @@ const GetCityAutoCompleteQuery = () => {
       return data;
     },
     select: (data) =>
-      data.data.map((data) => ({
+      data.map((data) => ({
         id: data.id,
         name: data.name,
       })),

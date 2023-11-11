@@ -1,14 +1,12 @@
 import { IPayload } from "../../interface/generic";
 
 export interface GetAllSalonType {
-  data: {
-    id: string;
-    name: string;
-    description: string;
-    rate: number;
-    logo: string;
-    salonType: 0;
-  };
+  id: string;
+  name: string;
+  description: string;
+  rate: number;
+  logo: string;
+  salonType: 0;
 }
 export interface GetSalonDetailsParamsType extends IPayload {
   salonId: string;

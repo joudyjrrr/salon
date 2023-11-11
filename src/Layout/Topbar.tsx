@@ -76,8 +76,8 @@ const Topbar = () => {
         </IconButton>
 
         <Select value={lang!} onChange={handleChangeLanguage} size="small">
-          {languages.map(({ code, name }) => (
-            <MenuItem value={code}>{name}</MenuItem>
+          {languages.map(({ code, name }, idx) => (
+            <MenuItem key={idx} value={code}>{name}</MenuItem>
           ))}
         </Select>
       </Box>

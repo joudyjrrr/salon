@@ -1,11 +1,9 @@
 import { ICity, IPayload } from "../../interface/generic";
 
 export interface getCityAllType {
-  data: {
-    id: string;
-    name: string;
-    countryId: string;
-  }[];
+  id: string;
+  name: string;
+  countryId: string;
 }
 export interface setCityType {
   id: string;

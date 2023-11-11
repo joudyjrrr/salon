@@ -71,5 +71,9 @@
     "action": "Users has been saved successfully",
     "add": "Add User",
     "delete": "User has been Deleted"
+  },
+  "btns": {
+    "next": "Next",
+    "prev": "Previous"
   }
 }

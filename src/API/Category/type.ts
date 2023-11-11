@@ -1,14 +1,12 @@
 export interface GetAllCategoryType {
-  data: {
-    id: string;
-    name: {
-      key: string;
-      value: string;
-    }[];
-    imageUrl: string;
-    parentCategoryId: string;
-    type: number;
+  id: string;
+  name: {
+    key: string;
+    value: string;
   }[];
+  imageUrl: string;
+  parentCategoryId: string;
+  type: number;
 }
 export interface GetCategoryByIdType {
   id: string;

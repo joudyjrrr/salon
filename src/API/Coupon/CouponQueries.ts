@@ -9,7 +9,7 @@ import { IPayload } from "../../interface/generic";
 import { SetCustomerCouponsType } from "./type";
 
 const GetALLCouponsQuery = (params: IPayload) => {
-  const queryResult = useInfiniteQuery({
+  const queryResult = useQuery({
     queryKey: ["get-infinite-coupon-cp", params.PageNumber, params.Query],
 
     queryFn: async () => {
@@ -23,11 +23,6 @@ const GetALLCouponsQuery = (params: IPayload) => {
         pageParam: 0,
       };
     },
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
   });
   return queryResult;
 };
@@ -68,7 +63,7 @@ const DeleteCouponQuery = () => {
 };
 
 const GetCustomerCouponsQuery = (params: SetCustomerCouponsType) => {
-  const queryResult = useInfiniteQuery({
+  const queryResult = useQuery({
     queryKey: ["get-customer-coupons"],
     queryFn: async () => {
       const data = await CouponApi.GetCustomerCoupons({
@@ -82,11 +77,6 @@ const GetCustomerCouponsQuery = (params: SetCustomerCouponsType) => {
         pageParam: 0,
       };
     },
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
   });
   return queryResult;
 };

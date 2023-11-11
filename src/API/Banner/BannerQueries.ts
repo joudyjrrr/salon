@@ -3,7 +3,7 @@ import { IPayload } from "../../interface/generic";
 import { BannerAPI } from "./BannerApi";
 
 const GetAllBannerQuery = async (params: IPayload) => {
-  const queryResult = useInfiniteQuery({
+  const queryResult = useQuery({
     queryKey: ["get-all-banner", params.Query, params.PageNumber],
     queryFn: async () => {
       const data = await BannerAPI.GetAllBanner({
@@ -11,16 +11,8 @@ const GetAllBannerQuery = async (params: IPayload) => {
         PageNumber: params.PageNumber,
         Query: params.Query,
       });
-      return {
-        data,
-        pageParam: 0,
-      };
+      return data;
     },
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
-    initialPageParam: 0,
   });
   return queryResult;
 };
