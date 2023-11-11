@@ -8,7 +8,7 @@ import { IPayload } from "../../interface/generic";
 import { CountryApi } from "./CountryApi";
 
 const GetAllCountryQuery = (params: IPayload) => {
-  const queryResult = useInfiniteQuery({
+  const queryResult = useQuery({
     queryKey: ["get-all-country", params.PageNumber, params.Query],
     queryFn: async () => {
       const data = await CountryApi.getCpCountry({
@@ -22,11 +22,6 @@ const GetAllCountryQuery = (params: IPayload) => {
       };
     },
     placeholderData: keepPreviousData,
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
   });
   return queryResult;
 };
@@ -41,8 +36,8 @@ const GetCountryAutoCompleteQuery = () => {
     },
     select: (data) =>
       data.data.map((data) => ({
-        id: data.data.id,
-        name: data.data.name,
+        id: data.id,
+        name: data.name,
       })),
   });
   return queryResult;

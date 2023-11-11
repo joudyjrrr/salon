@@ -14,11 +14,9 @@ export interface SetUserType {
   roleId: string;
 }
 export interface GetUsersType {
-  data: {
-    id: string;
-    username: string;
-    role: string;
-  }[];
+  id: string;
+  username: string;
+  role: string;
 }
 export interface GetRoles {
   id: string;

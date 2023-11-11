@@ -18,8 +18,8 @@ const SetUserQuery = () => {
   return queryResult;
 };
 
-const GetUsersQuery =  (params: IPayload) => {
-  const queryResult = useInfiniteQuery({
+const GetUsersQuery = (params: IPayload) => {
+  const queryResult = useQuery({
     queryKey: ["get-infinite-users", params.PageNumber, params.Query],
     queryFn: async () => {
       const data = await CpManagementApi.GetUsers({
@@ -32,11 +32,6 @@ const GetUsersQuery =  (params: IPayload) => {
         pageParam: 0,
       };
     },
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
   });
   return queryResult;
 };

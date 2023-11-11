@@ -4,7 +4,7 @@ import { SalonApi } from "./SalonApi";
 import { GetSalonDetailsParamsType } from "./type";
 
 const GetSalonAllQuery = async (params: IPayload) => {
-  const queryResult = useInfiniteQuery({
+  const queryResult = useQuery({
     queryKey: ["get-all-salon"],
     queryFn: async () => {
       const data = await SalonApi.GetSalonAll({
@@ -17,11 +17,6 @@ const GetSalonAllQuery = async (params: IPayload) => {
         pageParam: 0,
       };
     },
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
   });
   return queryResult;
 };

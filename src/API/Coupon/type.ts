@@ -42,13 +42,11 @@ export interface SetCustomerCouponsType extends IPayload {
   isUsed: boolean;
 }
 export interface GetCustomerCouponsType {
-  data: {
-    id: string;
-    name: string;
-    code: string;
-    percentage: number;
-    value: number;
-    image: string;
-    toDate: Date;
-  };
+  id: string;
+  name: string;
+  code: string;
+  percentage: number;
+  value: number;
+  image: string;
+  toDate: Date;
 }

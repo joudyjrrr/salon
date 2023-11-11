@@ -2,6 +2,8 @@ import { Button, Grid, Paper, TextField, Typography } from "@mui/material"
 import useLogin from "./hooks/useLogin"
 import { SubmitHandler } from 'react-hook-form'
 import { LoginType } from "./hooks/type"
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import KeyIcon from '@mui/icons-material/Key';
 
 const Login = () => {
 
@@ -14,6 +16,10 @@ const Login = () => {
     navigate,
     t
   } = useLogin()
+
+  // if(localStorage.getItem('token')){
+  //   navigate('/')
+  // }
 
   const submitHandler: SubmitHandler<LoginType> = (data) => {
     mutate(data, {
@@ -31,53 +37,66 @@ const Login = () => {
   return (
     <>
       <Grid sx={{ width: '100vw', height: '100vh' }}>
-        <Grid container justifyContent={'center'} alignContent={'center'} sx={{ background: 'linear-gradient(to right ,DarkSeaGreen 0 50%, #fff  50% 100%)', width: '100%', height: '100%' }}>
-          <Paper sx={{ width: '80%', height: '80%', filter: 'blur(0px)' }}>
+        <Grid container flexDirection={'column'} justifyContent={'center'} alignContent={'space-between'} sx={{ background: '#dde5f4', width: '100%', height: '100%' }}>
 
-            <Grid container sx={{ width: '100%', height: '100%' }}>
-              <Grid item xs={4} sx={{ height: '100%', background: '#fff ' }} />
-              <Grid justifyContent={'center'} flexDirection={'column'} alignContent={'center'} item xs={8} container sx={{ height: '100%', background: 'DarkSeaGreen' }}>
 
-                <Typography sx={{ mb: '20px' }} variant="h5" gutterBottom color={'white'}>
-                  {t('form.login')}
-                </Typography>
-                <form onSubmit={handleSubmit(submitHandler)}>
-                  <Grid container  justifyContent={'center'} flexDirection={'column'} alignContent={'center'}>
+          <Grid container justifyContent={'center'} alignContent={'center'}>
+            <Typography variant="h1">
+              Salon
+            </Typography>
+          </Grid>
 
-                    <TextField
-                      label={t('form.userName')}
-                      placeholder={t('form.userName')}
-                      variant="outlined"
-                      sx={{ mt: '10px' }}
-                      {...register('username', {
-                        required: t('form.required'),
-                      })}
-                      error={!!errors.username}
-                      helperText={errors.username?.message}
-                    />
+          <Grid container alignContent={'center'} justifyContent={'center'}>
+            <Typography sx={{ mb: '20px', mt: '40px' }} variant="h5"  >
+              {t('form.login')}
+            </Typography>
+          </Grid>
 
-                    <TextField
-                      label={t('form.password')}
-                      placeholder={t('form.password')}
-                      variant="outlined"
-                      sx={{ mt: '10px' }}
-                      type="password"
-                      {...register('password', {
-                        required: t('form.required')
-                      })}
-                      error={!!errors.password}
-                      helperText={errors.password?.message}
-                    />
-                    <Button disabled={isPending} sx={{ mt: '10px', backgroundColor: 'white' }} variant="contained" type="submit">
-                      {t('form.submit')}
-                    </Button>
-                  </Grid>
-                </form>
-              </Grid>
+          <form onSubmit={handleSubmit(submitHandler)}>
+
+            <Grid container flexDirection={'column'} justifyContent={'space-around'} alignContent={'center'}>
+
+              <TextField
+                prefix="dsa"
+                label={t('form.userName')}
+                placeholder={t('form.userName')}
+                variant="outlined"
+                sx={{ mt: '10px' }}
+                {...register('username', {
+                  required: t('form.required'),
+                })}
+                error={!!errors.username}
+                helperText={errors.username?.message}
+                InputProps={{
+                  startAdornment: <AccountCircleIcon sx={{ mx: '10px' }} />
+                }}
+              />
+
+              <TextField
+                label={t('form.password')}
+                placeholder={t('form.password')}
+                variant="outlined"
+                sx={{ mt: '10px' }}
+                type="password"
+                {...register('password', {
+                  required: t('form.required')
+                })}
+                error={!!errors.password}
+                helperText={errors.password?.message}
+                InputProps={{
+                  startAdornment: <KeyIcon sx={{ mx: '10px' }} />
+                }}
+              />
+              <Button disabled={isPending} sx={{ mt: '10px' }} variant="outlined" type="submit">
+                {t('form.submit')}
+              </Button>
             </Grid>
-          </Paper>
+
+          </form>
+
+
         </Grid>
-      </Grid>
+      </Grid >
     </>
   )
 }

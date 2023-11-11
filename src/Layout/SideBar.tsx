@@ -33,7 +33,7 @@ const SideBarrr = () => {
       }}
     >
       <ProSidebar collapsed={isCollapsed}
-      style={{height:"100%"}}
+        style={{ height: "100%" }}
       >
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
@@ -62,8 +62,9 @@ const SideBarrr = () => {
             )}
           </MenuItem>
           <Box paddingLeft={isCollapsed ? undefined : "10%"} display="flex" flexDirection="column" gap="10">
-            {dashBoardNavLinks.map((link) => (
+            {dashBoardNavLinks.map((link, idx) => (
               <ItemLink
+                key={idx}
                 to={link.href}
                 icon={link.icon}
                 title={link.title}

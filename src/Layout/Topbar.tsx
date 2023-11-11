@@ -1,5 +1,5 @@
 import { Box, IconButton, MenuItem, useTheme } from "@mui/material";
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import { tokens } from "../libs/them"
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -76,8 +76,8 @@ const Topbar = () => {
         </IconButton>
 
         <Select value={lang!} onChange={handleChangeLanguage} size="small">
-          {languages.map(({ code, name }) => (
-            <MenuItem value={code}>{name}</MenuItem>
+          {languages.map(({ code, name }, idx) => (
+            <MenuItem key={idx} value={code}>{name}</MenuItem>
           ))}
         </Select>
       </Box>

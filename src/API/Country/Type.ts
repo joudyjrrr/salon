@@ -1,10 +1,8 @@
 export interface GetAllCountryType {
-  data: {
-    id: string;
-    name: string;
-    currency: string;
-    countryCode: string;
-  };
+  id: string;
+  name: string;
+  currency: string;
+  countryCode: string;
 }
 export interface SetCountryType {
   id: string;

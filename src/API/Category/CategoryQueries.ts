@@ -1,9 +1,9 @@
-import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { IPayload } from "../../interface/generic";
 import { CategoryApi } from "./CategoryApi";
 
 const GetAllCategoryQuery = (payload: IPayload) => {
-  const queryResult = useInfiniteQuery({
+  const queryResult = useQuery({
     queryKey: ["get-all-category", payload.PageNumber, payload.Query],
     queryFn: async () => {
       const data = await CategoryApi.GetAllCategory({
@@ -11,17 +11,10 @@ const GetAllCategoryQuery = (payload: IPayload) => {
         PageNumber: payload.PageNumber,
         Query: payload.Query,
       });
-      return {
-        data,
-        pageParam: 0,
-      };
+      return data;
     },
-    initialPageParam: 0,
-    getNextPageParam: (lastPage) =>
-      lastPage.data.pageNumber < lastPage.data.totalPages
-        ? lastPage.pageParam + 1
-        : null,
   });
+
   return queryResult;
 };
 const GetCategoryByIdQuery = async (id: string) => {

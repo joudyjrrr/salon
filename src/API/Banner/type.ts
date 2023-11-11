@@ -1,5 +1,5 @@
 export interface GetAllBannerCpType {
-  data: {
+  
     id: string;
     fromDate: string;
     toDate: string;
@@ -7,7 +7,7 @@ export interface GetAllBannerCpType {
     serviceId: string;
     salonId: string;
     imageURl: string;
-  }[];
+  
 }
 export interface GetBannerByIdType {
   id: string;
