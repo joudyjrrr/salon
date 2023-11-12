@@ -45,7 +45,7 @@ const CpMangment = () => {
       >
         <AddUser />
         <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
-          <Title />
+          <Title text="Users" />
           <SearchField onSearch={(value) => setQuery(value)} value={query} />
         </Stack>
         {isLoading ? (

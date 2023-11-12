@@ -10,7 +10,7 @@
     "store": "Store",
     "variant": "Variant",
     "coupon": "coupon",
-    "notification": "notification",
+    "notification": "Notifications",
     "Order": "Orders",
     "Permission": "Permission",
     "FeedBack": "FeedBack",
@@ -77,11 +77,22 @@
     "prev": "Previous"
   },
   "Category": {
-    "type": "type"
+    "type": "type",
+    "title": "Category",
+    "delete": "Category has been deleted",
+    "wrong": "something went wrong"
   },
   "delete": {
     "title": "Do You want to delete it?",
     "yes": "Yes",
     "cancel": "Cancel"
+  },
+  "Notification": {
+    "title": "Notification",
+    "createdAt": "created At",
+    "arTitle": "Arabic Title",
+    "enTitle": "English Title",
+    "arBody": "Arabic Body",
+    "enBody": "English Body"
   }
 }

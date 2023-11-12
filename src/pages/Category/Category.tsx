@@ -7,14 +7,12 @@ import { API_BASE_URL } from "../../API/domain";
 import DeleteCategory from "./DeleteCategory";
 import SearchField from "../../Components/SearchField";
 import Title from "../../Components/Title";
+import logo from '../../assets/1.jpg'
+import AddCategory from "./AddCategory";
 
 const Category = () => {
-
-
     const [PageNumber, setPageNumber] = useState(0)
-    const [Search, setSearch] = useState<string>()
-
-
+    const [Search, setSearch] = useState<string>('')
 
     const {
         allCategories,
@@ -22,17 +20,19 @@ const Category = () => {
         t
     } = useCategoryHook(PageNumber, Search)
 
-    console.log(allCategories);
-
-
 
     return (
         <>
-            <Grid container sx={{ mt: 2 }} >
-                <Grid item sx={{ mx: 5 }}>
-                    <Title />
+            <Grid container justifyContent={'space-between'} sx={{ mt: 2 }} >
+                <Grid container item xs={9}>
+                    <Grid item sx={{ mx: 5 }}>
+                        <Title text={t('Category.title')} />
+                    </Grid>
+                    <SearchField value={Search} onSearch={setSearch} />
                 </Grid>
-                <SearchField value={Search} onSearch={setSearch} />
+                <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
+                    <AddCategory />
+                </Grid>
             </Grid >
             {
                 allCategoriesIsLoading ?
@@ -50,14 +50,15 @@ const Category = () => {
                                                 component={'img'}
                                                 alt="Category image"
                                                 height={150}
-                                                image={`${API_BASE_URL}${category.imageUrl}`}
+                                                // image={`${API_BASE_URL}${category.imageUrl}`}
+                                                image={logo}
                                             />
                                             <CardContent>
                                                 <Grid container flexDirection={'column'}>
                                                     {category.name.map((name, idx) => {
                                                         return (
                                                             <Typography key={idx} variant="caption">
-                                                                {name.key === 'ar' ? t("form.arName") : t("form.enName")} {name.value}
+                                                                {name.key === 'ar' ? t("form.arName") : t("form.enName")} : {name.value}
                                                             </Typography>
                                                         )
                                                     })}
@@ -83,7 +84,7 @@ const Category = () => {
                                 onPageChange={setPageNumber}
                                 isFetching={allCategoriesIsLoading}
                                 totalPages={allCategories?.totalPages!}
-                                isPreviousData={false}
+                                
                             />
                         </Grid>
                     </>

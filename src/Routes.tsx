@@ -6,6 +6,8 @@ import Category from "./pages/Category/Category";
 const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
 const CpMangment = lazy(() => import("./pages/CpMangment/CpMangment"));
+const Notification = lazy(() => import("./pages/Notification/Notification"))
+
 const Routes = () => {
   return (
     <>
@@ -35,6 +37,14 @@ const Routes = () => {
             element={
               <Suspense fallback={<></>}>
                 <Category />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <Suspense fallback={<></>}>
+                <Notification />
               </Suspense>
             }
           />

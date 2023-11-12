@@ -37,7 +37,7 @@
 // }
 
 // export default Pagination
-import { Box, IconButton, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { RiArrowLeftDoubleLine, RiArrowRightDoubleFill } from "react-icons/ri";
 import { FC } from "react";
 import { Button } from '@mui/material';
@@ -46,7 +46,7 @@ type IProps = {
     page: number;
     isFetching: boolean;
     totalPages: number;
-    isPreviousData: boolean;
+    // isPreviousData: boolean;
     onPageChange: (arg: number) => void;
 };
 const Pagination: FC<IProps> = ({
@@ -60,13 +60,14 @@ const Pagination: FC<IProps> = ({
 
     return (
         <>
-            <Grid container justifyContent={'end'}>
+            <Grid container justifyContent={'end'} sx={{ my: 2 }}>
                 <Box display="flex">
                     <Button
                         color="primary"
                         disabled={page === 0}
                         onClick={() => onPageChange(page - 1)}
                         variant="outlined"
+                        sx={{ mx: 2 }}
                     >
                         <RiArrowLeftDoubleLine />
                         {t('btns.prev')}
@@ -76,6 +77,7 @@ const Pagination: FC<IProps> = ({
                         color="primary"
                         onClick={() => onPageChange(page + 1)}
                         variant="outlined"
+                        sx={{ mx: 2 }}
                     >
                         {t('btns.next')}
                         <RiArrowRightDoubleFill />

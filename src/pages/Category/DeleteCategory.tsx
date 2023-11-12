@@ -2,6 +2,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { Button, Dialog, DialogActions, DialogTitle } from '@mui/material';
 import { FC, useState } from 'react';
 import useCategoryHook from './hooks/useCategoryHook';
+import { showError, showSuccess } from '../../libs/toast/Tostify';
 
 const DeleteCategory: FC<{ id: string }> = ({ id }) => {
 
@@ -15,15 +16,13 @@ const DeleteCategory: FC<{ id: string }> = ({ id }) => {
     const deleteHandler = () => {
         mutate(id, {
             onSuccess: () => {
+                showSuccess(t('Category.delete'));
                 setOpen(false);
-                // showSuccess(t('Coupon.delete'));
             },
             onError: () => {
-                // showError(t('Coupon.wrong'));
+                showError(t('Category.wrong'));
             }
         });
-        setOpen(false);
-
     }
 
     return (
