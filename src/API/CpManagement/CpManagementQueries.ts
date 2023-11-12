@@ -54,7 +54,7 @@ const DeleteUser = () => {
   });
   return queryResult;
 };
-const GetRoles = async () => {
+const GetRoles =  () => {
   const queryResult = useQuery({
     queryKey: ["get-roles"],
     queryFn: async () => {

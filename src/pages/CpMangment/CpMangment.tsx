@@ -36,23 +36,24 @@ const CpMangment = () => {
   console.log(matches);
   return (
     <>
-      <Box
-        sx={{
-          marginInline: "40px",
-          marginTop: "30px",
-          textAlign: "center",
-        }}
-      >
-        <AddUser />
-        <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
-          <Title />
-          <SearchField onSearch={(value) => setQuery(value)} value={query} />
-        </Stack>
-        {isLoading ? (
-          <Box marginTop="150px">
-            <Loading />
-          </Box>
-        ) : (
+      {isLoading ? (
+        <Box marginTop="10px" height="100vh">
+          <Loading />
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            marginInline: "40px",
+            marginTop: "30px",
+            textAlign: "center",
+            height: "initial",
+          }}
+        >
+          <AddUser />
+          <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
+            <Title />
+            <SearchField onSearch={(value) => setQuery(value)} value={query} />
+          </Stack>
           <>
             <Stack marginTop="40px">
               <TableHeader TableHeaderArray={TableHeaderArray}>
@@ -78,8 +79,8 @@ const CpMangment = () => {
               />
             </Stack>
           </>
-        )}
-      </Box>
+        </Box>
+      )}
     </>
   );
 };

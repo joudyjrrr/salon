@@ -51,7 +51,7 @@ const DeleteUser = async (UserId: string) => {
   return data;
 };
 const GetAllRoles = async () => {
-  const { data } = await DeliveryApiInstances.get<GetRoles>(
+  const { data } = await DeliveryApiInstances.get<GetRoles[]>(
     API_Routes.CpManagement.GET_ROLES_CP
   );
   return data;

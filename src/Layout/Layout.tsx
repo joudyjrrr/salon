@@ -12,6 +12,7 @@ const Layout: FC<Children> = () => {
         style={{
           display: "flex",
           width: "100%",
+         
         }}
       >
         <SideBarrr />
