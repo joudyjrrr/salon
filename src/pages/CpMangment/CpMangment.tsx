@@ -71,7 +71,6 @@ const CpMangment = () => {
                 </TableBody>
               </TableHeader>
               <Pagination
-                isPreviousData={isPlaceholderData}
                 page={page}
                 isFetching={isFetching}
                 onPageChange={setPage}

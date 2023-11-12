@@ -41,10 +41,7 @@ const GetNotificationCp = (params: IPayload) => {
         EnablePagination: params.EnablePagination ?? true,
         Query: params.Query,
       });
-      return {
-        data,
-        pageParam: 0,
-      };
+      return data;
     },
     placeholderData: keepPreviousData,
   });

@@ -1,6 +1,7 @@
 import { Typography } from "@mui/material";
+import { FC } from 'react'
+const Title: FC<{ text: string }> = (props) => {
 
-const Title = () => {
   return (
     <>
       <Typography
@@ -8,11 +9,11 @@ const Title = () => {
         sx={{
           width: "fit-content",
           borderBottom: "2px solid #6870fa",
-          marginTop:"10px",
-          height:"40px"
+          marginTop: "10px",
+          height: "40px"
         }}
       >
-        Usere
+        {props.text}
       </Typography>
     </>
   );
