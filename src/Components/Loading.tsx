@@ -5,17 +5,16 @@ import { RingLoader }
     from "react-spinners";
 
 const Loading: FC<{
-    className?: string,
+    color?: string,
     size?: number
-}> = ({ className, size }) => {
+}> = ({ color, size }) => {
 
     return (
         <>
             <Grid container sx={{ height: '100%' }} justifyContent={'center'} alignContent={'center'}>
                 <RingLoader
-                    className={className ?? ''}
-                    size={size ?? 80}
-                    color="blue"
+                    size={size ?? 100}
+                    color={color ?? "#6870fa"}
                 />
             </Grid>
         </>

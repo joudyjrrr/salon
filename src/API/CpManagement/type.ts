@@ -7,11 +7,19 @@ export interface GetLogInType {
   token: string;
   refreshToken: string;
 }
+export interface GetRoles {
+  id: string;
+  name: string;
+}
 export interface SetUserType {
-  userId: string;
+  userId?: string;
   username: string;
   password: string;
-  roleId: string;
+  roleId?: string;
+  roles?: {
+    id:string;
+    name : string
+  };
 }
 export interface GetUsersType {
   id: string;
@@ -20,7 +28,8 @@ export interface GetUsersType {
 }
 export interface GetRoles {
   id: string;
-  name: string;
+  username: string;
+  role: string;
 }
 [];
 export interface GetCustomersNamesCpType {

@@ -36,8 +36,8 @@ const GetUsers = async (payload: IPayload) => {
   return data;
 };
 const GetUserById = async (userId: string) => {
-  const { data } = await DeliveryApiInstances.get<IPagination<GetUsersType>>(
-    API_Routes.Category.GET_ALL_CATEGORY_CP,
+  const { data } = await DeliveryApiInstances.get<GetUsersType>(
+    API_Routes.CpManagement.GET_USER_BY_ID_CP,
     {
       params: {
         userId,
@@ -58,7 +58,7 @@ const DeleteUser = async (UserId: string) => {
   return data;
 };
 const GetAllRoles = async () => {
-  const { data } = await DeliveryApiInstances.get<GetRoles>(
+  const { data } = await DeliveryApiInstances.get<GetRoles[]>(
     API_Routes.CpManagement.GET_ROLES_CP
   );
   return data;

@@ -33,13 +33,14 @@ const GetUsersQuery = (params: IPayload) => {
   });
   return queryResult;
 };
-const GetUserByIdQuery = async (userId: string) => {
+const GetUserByIdQuery =  (userId: string) => {
   const queryResult = useQuery({
     queryKey: ["get-user-by-id", userId],
     queryFn: async () => {
       const data = await CpManagementApi.GetUserById(userId);
       return data;
     },
+    enabled:!!userId
   });
   return queryResult;
 };
@@ -50,7 +51,7 @@ const DeleteUser = () => {
   });
   return queryResult;
 };
-const GetRoles = async () => {
+const GetRoles =  () => {
   const queryResult = useQuery({
     queryKey: ["get-roles"],
     queryFn: async () => {

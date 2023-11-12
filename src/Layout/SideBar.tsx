@@ -16,16 +16,20 @@ const SideBarrr = () => {
   return (
     <Box
       sx={{
-        height:"initial",
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
-        
+  
+        },
+        "& .pro-menu": {
+          height:"100vh"
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
         },
         "& .pro-inner-item": {
           padding: "5px 35px 5px 20px !important",
+          display:"flex",
+          gap:"5px"
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
@@ -45,6 +49,8 @@ const SideBarrr = () => {
             style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
+              display:"flex",
+              flexDirection:"column"
             }}
           >
             {!isCollapsed && (
@@ -54,9 +60,6 @@ const SideBarrr = () => {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography variant="h3" color={colors.grey[300]}>
-                  ADMINIS
-                </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
                 </IconButton>
@@ -71,6 +74,7 @@ const SideBarrr = () => {
                 title={link.title}
                 selected={selected}
                 setSelected={setSelected}
+                isCollapsed={isCollapsed}
               />
             ))}
           </Box>
