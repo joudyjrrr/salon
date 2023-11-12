@@ -40,7 +40,7 @@ const City = {
   DELETE_CITY_CP: `${controller.City}/CityDeleteCp`,
 };
 const Country = {
-  GET_ALL_CP_Country: `/${controller.Country}/CountryGetAllCp`,
+  GET_ALL_CP_Country: `/${controller.Country}/CountryGetAll`,
   GET_Country_BY_ID: `/${controller.Country}/CountryGetById`,
   SET_COUNTRY_CP: `${controller.Country}/CountrySetCp`,
   DELETe_CP_Country: `/${controller.Country}/CountryDeleteCp`,
@@ -61,6 +61,7 @@ const CpManagement = {
   GET_USER_BY_ID_CP: `${controller.CpManagement}/GetUserCpById`,
   DELETE_USER_CP: `${controller.CpManagement}/DeleteCpUser`,
   GET_ROLES_CP: `${controller.CpManagement}/GetRolesCp`,
+  GET_CUSTOMERS_NAMES_CP: `${controller.CpManagement}/GetCustomersNamesCp`,
 };
 
 const Notifications = {
@@ -85,8 +86,8 @@ const Service = {
   SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
 };
 const Feedback = {
-  GET_FEEDBACK_CP : `${controller.Feedback}/Feedback`
-}
+  GET_FEEDBACK_CP: `${controller.Feedback}/Feedback`,
+};
 
 export const API_Routes = {
   Banner,
@@ -100,5 +101,5 @@ export const API_Routes = {
   Salon,
   Version,
   Service,
-  Feedback
+  Feedback,
 };

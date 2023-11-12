@@ -14,13 +14,17 @@ export interface SetUserType {
   roleId: string;
 }
 export interface GetUsersType {
-    id: string;
-    username: string;
-    role: string;
-  
+  id: string;
+  username: string;
+  role: string;
 }
 export interface GetRoles {
   id: string;
   name: string;
 }
 [];
+export interface GetCustomersNamesCpType {
+  userId: string;
+  userName: string;
+  phoneNumber: number;
+}

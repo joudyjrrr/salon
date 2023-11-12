@@ -31,7 +31,7 @@ const DeleteModal: FC<{
                     {t('delete.title')}
                 </DialogTitle>
                 <DialogActions>
-                    <Button color='info' onClick={() => setOpen(false)}>
+                    <Button color='info' onClick={() => setOpen(false)} disabled={isLoading}>
                         {t('delete.cancel')}
                     </Button>
                     <Button variant='outlined' color='error' onClick={deleteHandler} disabled={isLoading}>

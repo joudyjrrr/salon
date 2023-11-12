@@ -2,10 +2,11 @@ import { Box, Card, Grid, Paper, Typography, CardActions } from '@mui/material'
 import React, { useState } from 'react'
 import Title from '../../Components/Title'
 import SearchField from '../../Components/SearchField'
-import useNotificationsHook from './hooks/useNotificationsHook'
+import useNotificationsHook from './hooks/useNotificationsHook.tsx'
 import Pagination from '../../Components/Pagination'
 import Loading from '../../Components/Loading'
 import DeleteNotification from './DeleteNotification'
+import AddNotification from './AddNotification'
 
 const Notification = () => {
     const [Search, setSearch] = useState<string>('');
@@ -27,7 +28,7 @@ const Notification = () => {
                     <SearchField value={Search} onSearch={setSearch} />
                 </Grid>
                 <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
-
+                    <AddNotification />
                 </Grid>
             </Grid >
             {

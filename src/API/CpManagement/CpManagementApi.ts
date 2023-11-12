@@ -1,7 +1,14 @@
 import { API_Routes } from "../../Constants/ApiRoutes";
 import { IPagination, IPayload } from "../../interface/generic";
 import DeliveryApiInstances from "../axios";
-import { GetLogInType, GetRoles, GetUsersType, SetLogInType, SetUserType } from "./type";
+import {
+  GetCustomersNamesCpType,
+  GetLogInType,
+  GetRoles,
+  GetUsersType,
+  SetLogInType,
+  SetUserType,
+} from "./type";
 
 const Login = async (payload: SetLogInType) => {
   const { data } = await DeliveryApiInstances.post<GetLogInType>(
@@ -56,6 +63,23 @@ const GetAllRoles = async () => {
   );
   return data;
 };
+
+const GetCustomerName = async (
+  UserName: string | null,
+  PhoneNumber?: number | null
+) => {
+  const { data } = await DeliveryApiInstances.get<GetCustomersNamesCpType[]>(
+    API_Routes.CpManagement.GET_CUSTOMERS_NAMES_CP,
+    {
+      params: {
+        UserName: UserName,
+        PhoneNumber: PhoneNumber,
+      },
+    }
+  );
+  return data;
+};
+
 export const CpManagementApi = {
   Login,
   SetUser,
@@ -63,4 +87,5 @@ export const CpManagementApi = {
   GetUserById,
   DeleteUser,
   GetAllRoles,
+  GetCustomerName,
 };

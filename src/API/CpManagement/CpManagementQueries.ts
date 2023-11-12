@@ -1,8 +1,4 @@
-import {
-  keepPreviousData,
-  useMutation,
-  useQuery,
-} from "@tanstack/react-query";
+import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
 import { CpManagementApi } from "./CpManagementApi";
 import { IPayload } from "../../interface/generic";
 
@@ -31,7 +27,7 @@ const GetUsersQuery = (params: IPayload) => {
         PageNumber: params.PageNumber,
         Query: params.Query,
       });
-      return data
+      return data;
     },
     placeholderData: keepPreviousData,
   });
@@ -64,6 +60,24 @@ const GetRoles = async () => {
   });
   return queryResult;
 };
+
+const useCpCustomersNames = (
+  PhoneNumber?: number | null,
+  UserName?: string
+) => {
+  const queryResult = useQuery({
+    queryKey: ["get-customers-names-cp", UserName, PhoneNumber],
+    queryFn: async () => {
+      const data = await CpManagementApi.GetCustomerName(
+        UserName ?? null,
+        PhoneNumber
+      );
+      return data;
+    },
+  });
+  return queryResult;
+};
+
 export const CpManagementQueries = {
   LogInQuery,
   SetUserQuery,
@@ -71,4 +85,5 @@ export const CpManagementQueries = {
   GetUsersQuery,
   DeleteUser,
   GetRoles,
+  useCpCustomersNames,
 };

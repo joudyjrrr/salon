@@ -16,10 +16,7 @@ const GetAllCountryQuery = (params: IPayload) => {
         PageNumber: params.PageNumber,
         Query: params.Query,
       });
-      return {
-        data,
-        pageParam: 0,
-      };
+      return data
     },
     placeholderData: keepPreviousData,
   });
