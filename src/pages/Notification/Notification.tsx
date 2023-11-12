@@ -1,10 +1,11 @@
-import { Box, Card, Grid, Paper, Typography } from '@mui/material'
+import { Box, Card, Grid, Paper, Typography, CardActions } from '@mui/material'
 import React, { useState } from 'react'
 import Title from '../../Components/Title'
 import SearchField from '../../Components/SearchField'
 import useNotificationsHook from './hooks/useNotificationsHook'
 import Pagination from '../../Components/Pagination'
 import Loading from '../../Components/Loading'
+import DeleteNotification from './DeleteNotification'
 
 const Notification = () => {
     const [Search, setSearch] = useState<string>('');
@@ -53,7 +54,7 @@ const Notification = () => {
                                                 {
                                                     notification.body.map((notification, idx) => {
                                                         return (
-                                                            <Typography key={idx} variant='button'>
+                                                            <Typography key={idx} variant='body2'>
                                                                 {notification.key === 'ar' ? t('Notification.arBody') : t('Notification.enBody')} :
                                                                 {notification.value}
                                                             </Typography>
@@ -64,6 +65,9 @@ const Notification = () => {
                                                 <Box sx={{ typography: 'caption' }}>
                                                     {t('Notification.createdAt')} : {notification.createdAt}
                                                 </Box>
+                                                <CardActions>
+                                                    <DeleteNotification id={notification.id} />
+                                                </CardActions>
                                             </Card>
                                         </Grid>
                                     )

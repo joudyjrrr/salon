@@ -16,12 +16,19 @@ const useNotificationsHook = (pageNumber?: number, Query?: string) => {
 
     const { data: Notifications,
         isFetching
-    } = NotificationQueries.GetNotificationCp({ PageNumber: pageNumber, Query: query })
+    } = NotificationQueries.GetNotificationCp({ PageNumber: pageNumber, Query: query });
+
+    const {
+        mutate : deleteNotification,
+        isPending : isDeleting
+    } = NotificationQueries.DeleteNotificationCp();
 
     return {
         Notifications,
         isFetching,
-        t
+        t,
+        deleteNotification,
+        isDeleting
     }
 }
 
