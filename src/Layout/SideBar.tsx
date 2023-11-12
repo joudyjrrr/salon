@@ -16,7 +16,7 @@ const SideBarrr = () => {
   return (
     <Box
       sx={{
-        height:"100vh",
+        height:"initial",
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
         
@@ -36,7 +36,6 @@ const SideBarrr = () => {
       }}
     >
       <ProSidebar collapsed={isCollapsed}
-      style={{height:"100%"}}
       >
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}

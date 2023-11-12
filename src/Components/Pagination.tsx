@@ -1,6 +1,3 @@
-// import { FC } from 'react'
-// import { Button, Grid, } from "@mui/material"
-// import { useTranslation } from 'react-i18next'
 
 // const Pagination: FC<{
 //     clickPrev: () => void,
@@ -37,7 +34,8 @@
 // }
 
 // export default Pagination
-import { Box, Grid } from "@mui/material";
+
+import { Box, IconButton, Grid } from "@mui/material";
 import { RiArrowLeftDoubleLine, RiArrowRightDoubleFill } from "react-icons/ri";
 import { FC } from "react";
 import { Button } from '@mui/material';
@@ -60,8 +58,8 @@ const Pagination: FC<IProps> = ({
 
     return (
         <>
-            <Grid container justifyContent={'end'} sx={{ my: 2 }}>
-                <Box display="flex">
+            <Grid container justifyContent={'end'}  marginY="30px">
+                <Box display="flex" gap="10px">
                     <Button
                         color="primary"
                         disabled={page === 0}
