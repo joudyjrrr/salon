@@ -14,10 +14,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import AddUser from "./AddUser";
+import DeleteUser from "./DeleteUser";
 const CpMangment = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
+  const [id, setId] = useState<string>("");
   const TableHeaderArray = [
     t("table.name"),
     t("table.role"),
@@ -26,7 +28,7 @@ const CpMangment = () => {
   const {
     data: CpManagementData,
     isFetching,
-    isPlaceholderData,
+    refetch,
     isLoading,
   } = CpManagementQueries.GetUsersQuery({
     PageNumber: page,
@@ -43,7 +45,7 @@ const CpMangment = () => {
       ) : (
         <Box
           sx={{
-            marginInline: "40px",
+            paddingInline: "40px",
             marginTop: "30px",
             textAlign: "center",
             height: "initial",
@@ -51,7 +53,7 @@ const CpMangment = () => {
         >
           <AddUser />
           <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
-            <Title />
+            <Title text="Users" />
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
           <>
@@ -65,6 +67,16 @@ const CpMangment = () => {
                       </TableCell>
                       <TableCell align="center" sx={{ fontSize: "17px" }}>
                         {d.role}
+                      </TableCell>
+                      <TableCell
+                    align="center"
+                    sx={{display:"flex" , justifyContent:"center"}}
+                      >
+                        <DeleteUser refetch={refetch} id={d.id} />
+                        <AddUser
+                            id={d.id}
+                            setId={() => setId(d.id ?? "")}
+                          />
                       </TableCell>
                     </TableRow>
                   ))}

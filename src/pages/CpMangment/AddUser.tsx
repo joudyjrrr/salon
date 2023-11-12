@@ -14,6 +14,10 @@ import FormTextField from "../../Components/Form/FormTextField";
 import GenericObjectAutoComplete from "../../Components/Form/GenericObjectAutoComplete";
 import FormPasswordInput from "../../Components/Form/FormPasswordInput";
 import SubmitButton from "../../Components/Form/SubmitButton";
+import EditIcon from "@mui/icons-material/Edit";
+import IconButton from "@mui/material/IconButton";
+import { Controller } from "react-hook-form";
+import Loading from "../../Components/Loading";
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
@@ -23,7 +27,10 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AddUser() {
+const AddUser: React.FC<{
+  id?: string;
+  setId?: (id: string) => void;
+}> = ({ id, setId }) => {
   const {
     control,
     handleSubmit,
@@ -34,18 +41,33 @@ export default function AddUser() {
     open,
     setOpen,
     isPending,
-    isSuccess,
-  } = useCpMngment();
+    isLoading,
+    userDetails,
+  } = useCpMngment(id!);
   const { t } = useTranslation();
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  console.log(userDetails);
   return (
     <React.Fragment>
-      <Stack flexDirection="row" justifyContent="end" marginInline="50px">
-        <Fab color="primary" aria-label="add" onClick={handleClickOpen}>
-          <AddIcon className="text-white-100" />
-        </Fab>
+      <Stack
+        flexDirection="row"
+        justifyContent="end"
+        marginInline={`${id ? "0" : "50px"}`}
+      >
+        {id ? (
+          <IconButton>
+            <EditIcon
+              onClick={() => {
+                setOpen(true);
+                setId?.(id);
+              }}
+              color="primary"
+            />
+          </IconButton>
+        ) : (
+          <Fab color="primary" aria-label="add" onClick={() => setOpen(true)}>
+            <AddIcon className="text-white-100" />
+          </Fab>
+        )}
       </Stack>
       <Dialog
         open={open}
@@ -56,25 +78,38 @@ export default function AddUser() {
         aria-describedby="alert-dialog-slide-description"
         sx={{ textAlign: "center" }}
       >
-        <DialogTitle>Add User</DialogTitle>
+        <DialogTitle>
+          {id ? t("cpMangment.edit") : t("cpMangment.add")}
+        </DialogTitle>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <DialogContent>
-            <Stack flexDirection="column" spacing={5} padding="15px">
-              <FormTextField
-                control={control}
-                name="username"
-                label={t("form.userName")}
-                req
-              />
-              <FormPasswordInput register={register} req />
-              <GenericObjectAutoComplete
-                option={roleOption!}
-                {...register("roles")}
-                label="Select Roles"
-                onChange={(newValue) => setValue("roles", newValue!)}
-              />
-            </Stack>
-          </DialogContent>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <DialogContent>
+              <Stack flexDirection="column" spacing={5} padding="15px">
+                <FormTextField
+                  control={control}
+                  name="username"
+                  label={t("form.userName")}
+                  req
+                  shrink
+                />
+                <FormPasswordInput register={register} req />
+                <Controller
+                  name="roles"
+                  control={control}
+                  render={({ field, fieldState }) => (
+                    <GenericObjectAutoComplete
+                      value={field.value}
+                      onChange={field.onChange}
+                      option={roleOption!}
+                      label={t("form.ChooseRole")}
+                    />
+                  )}
+                />
+              </Stack>
+            </DialogContent>
+          )}
           <DialogActions>
             <SubmitButton isSubmitting={isPending} />
           </DialogActions>
@@ -82,4 +117,5 @@ export default function AddUser() {
       </Dialog>
     </React.Fragment>
   );
-}
+};
+export default AddUser;

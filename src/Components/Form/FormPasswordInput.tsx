@@ -38,7 +38,7 @@ const FormPasswordInput = ({
   };
   return (
     <FormControl sx={{ m: 1 }} variant="outlined">
-      <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+      <InputLabel htmlFor="outlined-adornment-password">{t("form.password")}</InputLabel>
       <OutlinedInput
         {...register("password")}
         id="outlined-adornment-password"
@@ -55,7 +55,7 @@ const FormPasswordInput = ({
             </IconButton>
           </InputAdornment>
         }
-        label="Password"
+        label={t("form.password")}
       />
     </FormControl>
   );

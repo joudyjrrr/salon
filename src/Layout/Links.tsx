@@ -1,16 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { MdCategory, MdFeedback, MdViewCarousel } from "react-icons/md";
-import { MdManageAccounts } from "react-icons/md";
-import { FaShippingFast } from "react-icons/fa";
-import { MdPublic } from "react-icons/md";
-import { FaCity } from "react-icons/fa"
-import { BiSolidCoupon, BiSolidOffer, BiStoreAlt } from "react-icons/bi"
-import { IoMdColorWand } from "react-icons/io"
+import { MdCategory } from "react-icons/md";
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { SiBrandfolder } from "react-icons/si"
-import { BsFillCartCheckFill } from "react-icons/bs"
-import { MdSecurity } from "react-icons/md"
-
+import CategoryIcon from '@mui/icons-material/Category';
+import GroupIcon from '@mui/icons-material/Group';
 const Links = () => {
   const { t } = useTranslation();
 
@@ -21,13 +13,13 @@ const Links = () => {
     {
       title: t("links.cpMangment"),
       href: "/cp-management",
-      icon: <MdManageAccounts />,
+      icon: <GroupIcon />,
 
     },
     {
       title: t("links.category"),
       href: "/category",
-      icon: <MdCategory />,
+      icon: <CategoryIcon />,
 
     },
     {
@@ -35,48 +27,7 @@ const Links = () => {
       href: "/notifications",
       icon: <NotificationsIcon />,
 
-    }, {
-      title: t("links.category"),
-      href: "/category",
-      icon: <MdCategory />,
-
-    }, {
-      title: t("links.category"),
-      href: "/category",
-      icon: <MdCategory />,
-
-    }, {
-      title: t("links.category"),
-      href: "/category",
-      icon: <MdCategory />,
-
-    }, {
-      title: t("links.category"),
-      href: "/category",
-      icon: <MdCategory />,
-
-    }, {
-      title: t("links.category"),
-      href: "/category",
-      icon: <MdCategory />,
-
-    }, {
-      title: t("links.category"),
-      href: "/category",
-      icon: <MdCategory />,
-
-    }, {
-      title: t("links.category"),
-      href: "/category",
-      icon: <MdCategory />,
-
-    },
-    {
-      title: t("links.category"),
-      href: "/category",
-      icon: <MdCategory />,
-
-    },
+    }
   ]
   return {
     dashBoardNavLinks

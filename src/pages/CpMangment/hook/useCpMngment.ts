@@ -1,11 +1,13 @@
-import { SubmitHandler, useForm } from "react-hook-form";
+
+import {useEffect} from "react"
+import {  useForm } from "react-hook-form";
 import { SetUserType } from "../../../API/CpManagement/type";
 import { CpManagementQueries } from "../../../API/CpManagement/CpManagementQueries";
 import React from "react";
 import { useQueryClient } from "@tanstack/react-query";
-import { showError, showSuccess } from "../../../libs/reactToastify";
+import { showError, showSuccess } from "../../../libs/toast/Tostify";
 import { useTranslation } from "react-i18next";
-const useCpMngment = () => {
+const useCpMngment = (id: string) => {
   const {
     control,
     handleSubmit,
@@ -15,14 +17,25 @@ const useCpMngment = () => {
     formState: { isSubmitting },
     reset,
   } = useForm<SetUserType>();
+  const {data : userDetails , isLoading} = CpManagementQueries.GetUserByIdQuery(id)
+//   console.log(userDetails)
   const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const { isPending, mutate, isSuccess } = CpManagementQueries.SetUserQuery();
   const { data: roleOption } = CpManagementQueries.GetRoles();
   const queryClient = useQueryClient();
+  useEffect(() => {
+    if (typeof userDetails !== undefined) {
+      setValue("username", userDetails?.username!);
+      setValue("roles", roleOption?.find((r) => r.name === userDetails?.role));
+      setValue("userId", userDetails?.id);
+    }
+  }, [userDetails , roleOption]);
   const onSubmit = () => {
+    const Id = 
     mutate(
       {
+        userId : watch("userId") ?? undefined,
         username: watch("username"),
         password: watch("password"),
         roleId: watch("roles.id"),
@@ -54,6 +67,8 @@ const useCpMngment = () => {
     roleOption,
     register,
     isSuccess,
+    userDetails,
+    isLoading
   };
 };
 export default useCpMngment;

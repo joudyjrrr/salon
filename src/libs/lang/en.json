@@ -70,6 +70,7 @@
     "title": "Manege User Acount",
     "action": "Users has been saved successfully",
     "add": "Add User",
+    "edit":"Edit User",
     "delete": "User has been Deleted"
   },
   "btns": {

@@ -10,11 +10,13 @@ type IProps = {
   selected: string;
   to: string;
   setSelected: (arg: string) => void
+  isCollapsed : boolean;
 
 }
-const ItemLink: FC<IProps> = ({ title, to, icon, selected, setSelected }) => {
+const ItemLink: FC<IProps> = ({ title, to, icon, selected, setSelected  , isCollapsed}) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  console.log(isCollapsed)
   return (
     <>
       <MenuItem
@@ -27,7 +29,7 @@ const ItemLink: FC<IProps> = ({ title, to, icon, selected, setSelected }) => {
         onClick={() => setSelected(title)}
         icon={icon}
       >
-        <Typography fontSize="17px">{title}</Typography>
+      {isCollapsed ? '': <Typography fontSize="17px">{title}</Typography> }
         <Link to={to} />
       </MenuItem>
     </>
