@@ -3,14 +3,17 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { AddCategoryType } from "./type";
 
 
 const useCategoryHook = (pageNumber?: number, Query?: string) => {
 
     const { t } = useTranslation();
     const [query, setquery] = useState<string>('')
-    const { register, control, formState: { errors } } = useForm();
+    const { register, control, formState: { errors } } = useForm<AddCategoryType>();
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const time = setTimeout(() => {
@@ -38,7 +41,9 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         isDeletingCategory,
         deleteCategory,
         control,
-        errors
+        errors,
+        navigate,
+        register
     }
 }
 

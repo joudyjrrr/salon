@@ -17,6 +17,7 @@ const controller = {
   SearchWord: "SearchWord",
   Service: "Service",
   Version: "Version",
+  file: "File",
 };
 const Banner = {
   GET_ALL_BANNER_CP: `${controller.Banner}/BannerGetAllCp`,
@@ -88,6 +89,10 @@ const Service = {
 const Feedback = {
   GET_FEEDBACK_CP: `${controller.Feedback}/Feedback`,
 };
+const File = {
+  GET_FILE_CP: `${controller.file}/SaveFile`,
+  DELETE_FILE_CP: `${controller.file}/DeleteFile`,
+};
 
 export const API_Routes = {
   Banner,
@@ -102,4 +107,5 @@ export const API_Routes = {
   Version,
   Service,
   Feedback,
+  File,
 };

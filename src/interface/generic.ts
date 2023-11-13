@@ -25,3 +25,18 @@ export interface ICity {
   key: string;
   value: string;
 }
+export type handleCropImgType = (imgFile: File) => void;
+
+export interface IGenericFormInputsDesc {
+  arDescription: string;
+  enDescription: string;
+}
+export type IGenericActionParam = {
+  value: string;
+  key: string;
+}[];
+export interface IGenericFormInputs {
+  id?: string;
+  enName: string;
+  arName?: string;
+}

@@ -35,23 +35,21 @@ const Routes = () => {
           />
           <Route
             path="/category"
-            
             element={
               <Suspense fallback={<></>}>
                 <Category />
               </Suspense>
             }
-          >
-            <Route
-              path="addCategory"
-              element={
-                <Suspense fallback={<></>}>
-                  <AddCategory />
-                </Suspense>
-              }
-            />
+          />
 
-          </Route>
+          <Route
+            path="/addCategory"
+            element={
+              <Suspense fallback={<></>}>
+                <AddCategory />
+              </Suspense>
+            }
+          />
           <Route
             path="/notifications"
             element={
