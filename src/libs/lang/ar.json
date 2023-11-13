@@ -60,7 +60,11 @@
     "ChooseVariants": "اختر المتغيرات",
     "description": "الوصف",
     "login": "تسجيل الدخول",
-    "rate":"التقييم"
+    "rate":"التقييم",
+    "tempPhoneNumber":"رقم الهاتف البديل",
+    "facebookUrl":"رابط الفيسبوك",
+    "instagramUrl":"رابط الانستغرام",
+    "chooseSalonType":"اختر نوع الصالون"
   },
   "table": {
     "name": "اسم المستخدم",

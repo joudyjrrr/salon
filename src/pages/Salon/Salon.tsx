@@ -102,7 +102,7 @@ const Salon = () => {
                           {
                             SalonTypeArray.find(
                               (type) => type.id === d.salonType
-                            )?.Gender
+                            )?.name
                           }
                         </Typography>
                       </Stack>

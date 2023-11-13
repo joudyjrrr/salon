@@ -59,7 +59,11 @@
     "ChooseVariants": "Choose Variants",
     "description": "Description",
     "login": "login",
-    "rate":"Rate"
+    "rate":"Rate",
+    "tempPhoneNumber":"tempPhoneNumber",
+    "facebookUrl":"FacebookUrl",
+    "instagramUrl":"InstagramUrl",
+    "chooseSalonType":"Choose SalonType"
   },
   "table": {
     "name": "Name",
