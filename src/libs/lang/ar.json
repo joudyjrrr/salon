@@ -15,7 +15,8 @@
     "coupon": "القسائم",
     "notification": "الإشعارات",
     "FeedBack": "الاقتراحات",
-    "offer": "العروض"
+    "offer": "العروض",
+    "salon":"صالون التجميل"
   },
   "form": {
     "userName": "اسم المستخدم",
@@ -25,6 +26,7 @@
     "search": "ابحث...",
     "arName": "الاسم العربي ",
     "enName": "الاسم الانكليزي",
+    "ubloadImgForCover":"ارفع صورة من اجل الغلاف",
     "arDescription": "الوصف العربي",
     "enDescription": "الوصف الانكليزي",
     "upLoadImg": "حمّل صورة",
@@ -58,7 +60,12 @@
     "ChooseVariantsValues": "اختر قيم المتغيرات",
     "ChooseVariants": "اختر المتغيرات",
     "description": "الوصف",
-    "login": "تسجيل الدخول"
+    "login": "تسجيل الدخول",
+    "rate":"التقييم",
+    "tempPhoneNumber":"رقم الهاتف البديل",
+    "facebookUrl":"رابط الفيسبوك",
+    "instagramUrl":"رابط الانستغرام",
+    "chooseSalonType":"اختر نوع الصالون"
   },
   "table": {
     "name": "اسم المستخدم",
@@ -113,5 +120,13 @@
     "deleted": "تم حذف الإشعار بنجاح",
     "added": "تم إضافة الإشعار بنجاح",
     "wrong": "لقد حدث خطأ ما"
+  },
+  "salon":{
+    "title":"الصالونات",
+    "add":"إضافة صالون",
+    "edit":"تعديل الصالون",
+    "action": "تم حفظ الصالون بنجاح",
+    "delete": "تم حذف الصالون بنجاح",
+    "salonType":"نوع الصالون"
   }
 }

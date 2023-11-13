@@ -14,7 +14,8 @@
     "Order": "Orders",
     "Permission": "Permission",
     "FeedBack": "FeedBack",
-    "offer": "Offer"
+    "offer": "Offer",
+    "salon":"Salon"
   },
   "form": {
     "userName": "User Name",
@@ -27,6 +28,7 @@
     "arDescription": "Arabic Description",
     "enDescription": "English Description",
     "upLoadImg": "Upload Img",
+    "ubloadImgForCover":"Ubload Img for Cover",
     "crop": "Crop Img",
     "name": "Name",
     "fromDate": "fromDate",
@@ -57,7 +59,12 @@
     "ChooseVariantsValues": "Choose Variants Values",
     "ChooseVariants": "Choose Variants",
     "description": "Description",
-    "login": "login"
+    "login": "login",
+    "rate":"Rate",
+    "tempPhoneNumber":"tempPhoneNumber",
+    "facebookUrl":"FacebookUrl",
+    "instagramUrl":"InstagramUrl",
+    "chooseSalonType":"Choose SalonType"
   },
   "table": {
     "name": "Name",
@@ -112,5 +119,13 @@
     "deleted": "Notification Deleted successfully",
     "added": "added",
     "wrong": "something went wrong"
+  },
+  "salon":{
+    "title":"Salon",
+    "add":"Add Salon",
+    "edit":"Edit Salon",
+    "action": "Salon has been saved successfully",
+    "delete": "Salon has been Deleted",
+    "salonType":"Salon Type"
   }
 }

@@ -25,7 +25,10 @@ const UploadGenericImg = ({
 
   return (
     <>
-      <div className={`w-[60%] relative h-fit ${className} `}>
+      <div style={{
+        width:"100%",
+        height:"100%"
+      }}>
         <input
           ref={inputRef}
           accept="image/*"
@@ -39,9 +42,7 @@ const UploadGenericImg = ({
           <Button
             disabled={disable}
             sx={{
-              "input + button": {
-                height: "100%",
-              },
+              height: "100%",
               color: "#fff",
               ...sx
             }}

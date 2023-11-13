@@ -182,10 +182,11 @@ export default function App({
       <Stack direction={"row"} spacing={2}>
         <Button
           disabled={disableCropButton}
-          variant="outlined"
+          color="primary"
+          variant="contained"
           onClick={cropImageHandler}
         >
-          {disableCropButton ? <Loading size={25} /> : t(`form.crop`)}
+          {disableCropButton ? <Loading size={20} color="#fff"/> : t(`form.crop`)}
         </Button>
       </Stack>
     </Stack>
