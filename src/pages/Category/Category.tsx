@@ -8,7 +8,7 @@ import DeleteCategory from "./DeleteCategory";
 import SearchField from "../../Components/SearchField";
 import Title from "../../Components/Title";
 import logo from '../../assets/1.jpg'
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const Category = () => {
     const [PageNumber, setPageNumber] = useState(0)
@@ -31,7 +31,7 @@ const Category = () => {
                     <SearchField value={Search} onSearch={setSearch} />
                 </Grid>
                 <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
-                    <Link to='addCategory'>
+                    <Link to='/addCategory'>
                         <Button variant="contained">
                             {t('Category.add')}
                         </Button>
@@ -91,6 +91,7 @@ const Category = () => {
 
                             />
                         </Grid>
+                        <Outlet />
                     </>
 
 

@@ -12,7 +12,7 @@ import ReactCrop, {
 import { canvasPreview } from "../../helper/imgHelper";
 import { useDebounceEffect } from "../../helper/imgHelper";
 import "react-image-crop/dist/ReactCrop.css";
-import Loading from "../../libs/Loading";
+import Loading from "../Loading";
 
 // This is to demonstate how to make and center a % aspect crop
 // which is a bit trickier so we use some helper functions.
@@ -184,7 +184,7 @@ export default function App({
           className={`bg-blue-100 text-white-100  p-3 rounded-md cursor-pointer`}
           onClick={cropImageHandler}
         >
-          {disableCropButton ? <Loading loadingSize={20} color="#fff"/> : t(`form.crop`)}
+          {disableCropButton ? <Loading color="#fff"/> : t(`form.crop`)}
         </button>
       </Stack>
     </Stack>
