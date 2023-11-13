@@ -1,17 +1,20 @@
 import { Button } from "@mui/material"
-import { Link } from "react-router-dom"
+import useCategoryHook from "./hooks/useCategoryHook"
+import { useState } from "react"
 
 const AddCategory = () => {
 
-    
+    const [Open, setOpen] = useState(false);
+
+
+    const {
+        t,
+    } = useCategoryHook();
 
     return (
         <>
-            <Button variant="contained">
-                <Link to={'add'} color="white">
-                    Add
-                </Link>
-            </Button>
+            
+
         </>
     )
 }

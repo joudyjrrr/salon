@@ -9,7 +9,7 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
 
     const { t } = useTranslation();
     const [query, setquery] = useState<string>('')
-    const { control, formState: { errors } } = useForm();
+    const { register, control, formState: { errors } } = useForm();
 
 
     useEffect(() => {
@@ -28,7 +28,7 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
 
     const {
         isPending: isDeletingCategory,
-        mutate
+        mutate: deleteCategory,
     } = CategoryQuery.DeleteBannerQuery()
 
     return {
@@ -36,7 +36,7 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         allCategoriesIsLoading,
         t,
         isDeletingCategory,
-        mutate,
+        deleteCategory,
         control,
         errors
     }

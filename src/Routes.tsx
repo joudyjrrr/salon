@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { Route, Routes as ReactRoutes } from "react-router-dom";
 import Fallback from "./Components/Fallback";
 import Category from "./pages/Category/Category";
+import AddCategory from "./pages/Category/AddCategory";
 
 const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
@@ -34,12 +35,23 @@ const Routes = () => {
           />
           <Route
             path="/category"
+            
             element={
               <Suspense fallback={<></>}>
                 <Category />
               </Suspense>
             }
-          />
+          >
+            <Route
+              path="addCategory"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddCategory />
+                </Suspense>
+              }
+            />
+
+          </Route>
           <Route
             path="/notifications"
             element={

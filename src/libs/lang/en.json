@@ -80,6 +80,7 @@
   "Category": {
     "type": "type",
     "title": "Category",
+    "add": "Add Category",
     "delete": "Category has been deleted",
     "wrong": "something went wrong"
   },
@@ -95,7 +96,7 @@
     "enTitle": "English Title",
     "arBody": "Arabic Body",
     "enBody": "English Body",
-    "Add": "Add",
+    "Add": "Add Notification",
     "Body": "Body",
     "Title": "Title",
     "AppType": "App Type",
@@ -109,6 +110,7 @@
     "Store": "Store",
     "Driver": "Driver",
     "deleted": "Notification Deleted successfully",
+    "added": "added",
     "wrong": "something went wrong"
   }
 }

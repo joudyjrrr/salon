@@ -6,7 +6,7 @@ import useNotificationsHook from './hooks/useNotificationsHook.tsx'
 import Pagination from '../../Components/Pagination'
 import Loading from '../../Components/Loading'
 import DeleteNotification from './DeleteNotification'
-import AddNotification from './AddNotification'
+import AddNotification from './AddNotification/AddNotification.tsx'
 
 const Notification = () => {
     const [Search, setSearch] = useState<string>('');
@@ -57,7 +57,7 @@ const Notification = () => {
                                                         return (
                                                             <Typography key={idx} variant='body2'>
                                                                 {notification.key === 'ar' ? t('Notification.arBody') : t('Notification.enBody')} :
-                                                                {notification.value ? notification.value  : '---'}
+                                                                {notification.value ? notification.value : '---'}
                                                             </Typography>
                                                         )
                                                     })
