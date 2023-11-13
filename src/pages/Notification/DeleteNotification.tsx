@@ -2,7 +2,7 @@ import { FC, useState } from 'react'
 
 import DeleteModal from '../../Components/DeleteModal';
 import useNotificationsHook from './hooks/useNotificationsHook.tsx';
-import { showError } from '../../libs/toast/Tostify';
+import { showError, showSuccess } from '../../libs/toast/Tostify';
 
 
 const DeleteNotification: FC<{ id: string }> = ({ id }) => {
@@ -14,9 +14,10 @@ const DeleteNotification: FC<{ id: string }> = ({ id }) => {
         deleteNotification(id, {
             onSuccess: () => {
                 setOpen(false)
+                showSuccess(t('Notification.deleted'))
             },
             onError: () => {
-                showError(t('sad'))
+                showError(t('Notification.wrong'))
             }
         })
     }

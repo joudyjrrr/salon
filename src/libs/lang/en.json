@@ -70,7 +70,7 @@
     "title": "Manege User Acount",
     "action": "Users has been saved successfully",
     "add": "Add User",
-    "edit":"Edit User",
+    "edit": "Edit User",
     "delete": "User has been Deleted"
   },
   "btns": {
@@ -107,6 +107,8 @@
     "cities": "cities",
     "Customer": "customer",
     "Store": "Store",
-    "Driver": "Driver"
+    "Driver": "Driver",
+    "deleted": "Notification Deleted successfully",
+    "wrong": "something went wrong"
   }
 }

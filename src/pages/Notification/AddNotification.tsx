@@ -3,7 +3,7 @@ import useNotificationsHook from './hooks/useNotificationsHook.tsx'
 import { INameAndId } from '../../interface/generic';
 import Loading from '../../Components/Loading';
 import { ChangeEvent, useState } from 'react';
-import { Controller, FieldValues, SubmitHandler } from 'react-hook-form';
+import { Controller, SubmitHandler } from 'react-hook-form';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { AddNotificationType } from './hooks/type.ts';
 import { showError, showSuccess } from '../../libs/toast/Tostify.tsx';
@@ -54,7 +54,6 @@ function AddNotification() {
             clearErrors('customers')
         }
 
-
         if (!city && publicUserCity === 'City') {
             setError('city.name', { message: 'City is Required' });
             return
@@ -69,16 +68,13 @@ function AddNotification() {
         } else {
             clearErrors('type')
         }
-        console.log(data.title);
-        const title = getValues('title');
-        console.log({ title });
-        const body = getValues('body');
-        console.log({ body });
-        return
+        
+
+
 
         setNotification({
             title: getValues('title'),
-            customers: data.customers.map((customer) => customer.userId),
+            users: data.customers.map((customer) => customer.userId),
             body: getValues('body'),
             cityId: data.city?.id!,
             notificationType: (publicUserCity === 'Public') ? 0 : (publicUserCity === 'User') ? 1 : 2,

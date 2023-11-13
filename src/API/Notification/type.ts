@@ -21,7 +21,7 @@ export interface setNotificationCpType {
     }
   ];
   notificationType: 0 | 1 | 2;
-  customers: string[];
+  users: string[];
   cityId: string;
   type: number;
 }

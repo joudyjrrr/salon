@@ -47,7 +47,7 @@ const Notification = () => {
                                                         return (
                                                             <Typography key={idx} variant='body2'>
                                                                 {notification.key === 'ar' ? t('Notification.arTitle') : t('Notification.enTitle')} :
-                                                                {notification.value}
+                                                                {notification.value ? notification.value : '---'}
                                                             </Typography>
                                                         )
                                                     })
@@ -57,7 +57,7 @@ const Notification = () => {
                                                         return (
                                                             <Typography key={idx} variant='body2'>
                                                                 {notification.key === 'ar' ? t('Notification.arBody') : t('Notification.enBody')} :
-                                                                {notification.value}
+                                                                {notification.value ? notification.value  : '---'}
                                                             </Typography>
                                                         )
                                                     })
