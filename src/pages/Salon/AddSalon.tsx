@@ -10,7 +10,11 @@ import SelectLocation from "../../Components/Form/SelectLocation";
 import UploadGenericImg from "../../Components/Img/UploadGenericImg";
 import ImgCard from "../../Components/Img/ImgCard";
 import { FileApi } from "../../API/File/FileApi";
-import { API_BASE_URL } from "../../API/domain";
+import {
+  API_BASE_URL,
+  API_SERVER_URL,
+  API_SERVER_URL_For_Img,
+} from "../../API/domain";
 import ModalImgCrop from "../../Components/Img/ModalImgCrop";
 
 const AddSalon = () => {
@@ -85,7 +89,7 @@ const AddSalon = () => {
                 />
               ) : (
                 <ImgCard
-                  imgSrc={`${API_BASE_URL}/${imgCoverAfterCrop}`}
+                  imgSrc={`${API_SERVER_URL_For_Img}/${imgCoverAfterCrop}`}
                   onDeleteImg={() => {
                     FileApi.DeleteFile(imgCoverAfterCrop);
                     setImgCoverAfterCrop("");
@@ -94,23 +98,24 @@ const AddSalon = () => {
                 />
               )}
             </Grid>
-            <Grid item lg={3} md={4} sm={6}>
+            <Grid item lg={3} md={4} sm={6} flexShrink="0" flexGrow="0">
               <UploadGenericImg
                 onFileUpload={handleManipulateImage}
                 buttonText={t("form.upLoadImg")}
                 setImg={() => setImgTitle("images")}
-               
               />
-              {imgagesAfterCrop &&
-                imgagesAfterCrop?.map((img, index) => (
+            </Grid>
+            {imgagesAfterCrop &&
+              imgagesAfterCrop?.map((img, index) => (
+                <Grid item lg={3} md={4} sm={6}>
                   <ImgCard
-                    imgSrc={`${API_BASE_URL}/${img}`}
+                    imgSrc={`${API_SERVER_URL_For_Img}/${img}`}
                     onDeleteImg={() => {
                       handleDeleteImg(index);
                     }}
                   />
-                ))}
-            </Grid>
+                </Grid>
+              ))}
           </Grid>
         </form>
         {genericFile && (

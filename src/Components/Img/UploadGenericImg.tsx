@@ -27,7 +27,7 @@ const UploadGenericImg = ({
     <>
       <div style={{
         width:"100%",
-        height:"100%"
+        height:"max-content"
       }}>
         <input
           ref={inputRef}
@@ -43,6 +43,7 @@ const UploadGenericImg = ({
             disabled={disable}
             sx={{
               height: "100%",
+              padding:"15px",
               color: "#fff",
               ...sx
             }}
