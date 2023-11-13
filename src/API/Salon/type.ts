@@ -5,7 +5,7 @@ export interface GetAllSalonType {
   name: string;
   description: string;
   rate: number;
-  logo: string;
+  logo: string | null;
   salonType: 0;
 }
 export interface GetSalonDetailsParamsType extends IPayload {
@@ -48,3 +48,24 @@ export interface GetSalonDetailsType {
     }[];
   };
 }
+export interface salonType {
+  id: number;
+  Gender: string;
+}
+export const SalonTypeArray: salonType[] = [
+  { id: 0, Gender: "Male" },
+  { id: 1, Gender: "Female" },
+];
+export interface Day {
+  id: number;
+  day: string;
+}
+export const DayArray: Day[] = [
+  { id: 0, day: "Sunday" },
+  { id: 1, day: "Monday" },
+  { id: 2, day: "Tuseday" },
+  { id: 3, day: "Wensday" },
+  { id: 4, day: "Thursday" },
+  { id: 5, day: "Friday" },
+  { id: 6, day: "Saturday" },
+];

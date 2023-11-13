@@ -14,7 +14,8 @@
     "Order": "Orders",
     "Permission": "Permission",
     "FeedBack": "FeedBack",
-    "offer": "Offer"
+    "offer": "Offer",
+    "salon":"Salon"
   },
   "form": {
     "userName": "User Name",
@@ -57,7 +58,8 @@
     "ChooseVariantsValues": "Choose Variants Values",
     "ChooseVariants": "Choose Variants",
     "description": "Description",
-    "login": "login"
+    "login": "login",
+    "rate":"Rate"
   },
   "table": {
     "name": "Name",
@@ -110,5 +112,13 @@
     "Driver": "Driver",
     "deleted": "Notification Deleted successfully",
     "wrong": "something went wrong"
+  },
+  "salon":{
+    "title":"Salon",
+    "add":"Add Salon",
+    "edit":"Edit Salon",
+    "action": "Salon has been saved successfully",
+    "delete": "Salon has been Deleted",
+    "salonType":"Salon Type"
   }
 }

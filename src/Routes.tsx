@@ -6,13 +6,13 @@ import Category from "./pages/Category/Category";
 const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
 const CpMangment = lazy(() => import("./pages/CpMangment/CpMangment"));
-const Notification = lazy(() => import("./pages/Notification/Notification"))
-
+const Notification = lazy(() => import("./pages/Notification/Notification"));
+const Salon = lazy(() => import("./pages/Salon/Salon"));
+const AddSalon = lazy(() => import("./pages/Salon/AddSalon"));
 const Routes = () => {
   return (
     <>
       <ReactRoutes>
-
         <Route
           path="/login"
           element={
@@ -48,6 +48,24 @@ const Routes = () => {
               </Suspense>
             }
           />
+          <Route path="/salon">
+            <Route
+              index
+              element={
+                <Suspense fallback={<></>}>
+                  <Salon />
+                </Suspense>
+              }
+            />
+            <Route 
+            path="add-salon"
+            element={
+              <Suspense fallback={<></>}>
+                <AddSalon />
+              </Suspense>
+            }
+            />
+          </Route>
         </Route>
       </ReactRoutes>
     </>

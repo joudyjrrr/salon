@@ -1,27 +1,26 @@
-import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
+import {  keepPreviousData, useQuery } from "@tanstack/react-query";
 import { IPayload } from "../../interface/generic";
 import { SalonApi } from "./SalonApi";
 import { GetSalonDetailsParamsType } from "./type";
 
-const GetSalonAllQuery = async (params: IPayload) => {
+const GetSalonAllQuery =  (params: IPayload) => {
   const queryResult = useQuery({
     queryKey: ["get-all-salon"],
     queryFn: async () => {
       const data = await SalonApi.GetSalonAll({
-        EnablePagination: params.EnablePagination,
+        EnablePagination: true,
         PageNumber: params.PageNumber,
         Query: params.Query,
       });
-      return {
-        data,
-        pageParam: 0,
-      };
+     return data 
     },
+    placeholderData : keepPreviousData
   });
+  
   return queryResult;
 };
 
-const GetSalonDetailsQuery = async (params: GetSalonDetailsParamsType) => {
+const GetSalonDetailsQuery =  (params: GetSalonDetailsParamsType) => {
   const queryResult = useQuery({
     queryKey: ["get-salon-details", params.salonId],
     queryFn: async () => {
