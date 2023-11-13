@@ -6,11 +6,11 @@ import DeleteModal from '../../Components/DeleteModal';
 const DeleteCategory: FC<{ id: string }> = ({ id }) => {
 
 
-    const { mutate, isDeletingCategory, t } = useCategoryHook();
+    const { deleteCategory, isDeletingCategory, t } = useCategoryHook();
     const [Open, setOpen] = useState<boolean>(false)
 
     const deleteHandler = () => {
-        mutate(id, {
+        deleteCategory(id, {
             onSuccess: () => {
                 showSuccess(t('Category.delete'));
                 setOpen(false);

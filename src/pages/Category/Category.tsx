@@ -1,4 +1,4 @@
-import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import Loading from "../../Components/Loading";
 import Pagination from "../../Components/Pagination";
 import useCategoryHook from "./hooks/useCategoryHook";
@@ -8,7 +8,7 @@ import DeleteCategory from "./DeleteCategory";
 import SearchField from "../../Components/SearchField";
 import Title from "../../Components/Title";
 import logo from '../../assets/1.jpg'
-import AddCategory from "./AddCategory";
+import { Link } from "react-router-dom";
 
 const Category = () => {
     const [PageNumber, setPageNumber] = useState(0)
@@ -31,7 +31,11 @@ const Category = () => {
                     <SearchField value={Search} onSearch={setSearch} />
                 </Grid>
                 <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
-                    <AddCategory />
+                    <Link to='addCategory'>
+                        <Button variant="contained">
+                            {t('Category.add')}
+                        </Button>
+                    </Link>
                 </Grid>
             </Grid >
             {
@@ -84,7 +88,7 @@ const Category = () => {
                                 onPageChange={setPageNumber}
                                 isFetching={allCategoriesIsLoading}
                                 totalPages={allCategories?.totalPages!}
-                                
+
                             />
                         </Grid>
                     </>
