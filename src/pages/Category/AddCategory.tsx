@@ -7,7 +7,9 @@ import UploadGenericImg from "../../Components/Img/UploadGenericImg";
 import { ChangeEvent, useState } from "react";
 import ImgCard from "../../Components/Img/ImgCard";
 import { DEVELOPMENT_BASE_URL } from "../../API/domain";
-import { FileQuery } from "../../API/File/FileQueries";
+import ModalImgCrop from "../../Components/Img/ModalImgCrop";
+import { handleCropImgType } from "../../interface/generic";
+
 
 
 const AddCategory = () => {
@@ -18,10 +20,21 @@ const AddCategory = () => {
         t,
         navigate,
         control,
-        register
+        register,
+        deleteImage,
+        mutateImg,
+        UploadingImg
     } = useCategoryHook();
 
-    
+    const handleCropImg: handleCropImgType = async (imgFile) => {
+        console.log(imgFile);
+        const formData = new FormData();
+        formData.append("File", imgFile);
+        mutateImg({
+            File: imgFile,
+            FileType: 0,
+        })
+    };
 
     const imageHandler = (event: ChangeEvent<HTMLInputElement>) => {
         if (!event.target.files?.length) return;
@@ -96,9 +109,20 @@ const AddCategory = () => {
                         <ImgCard
                             imgSrc={`${DEVELOPMENT_BASE_URL}/${img}`}
                             onDeleteImg={() => {
-                                // FileQuery.DeleteFileQuery(img)
+                                deleteImage(img)
                                 setImg("");
                             }}
+                        />
+                    )}
+
+                    {File && (
+                        <ModalImgCrop
+                            disableCropButton={UploadingImg}
+                            open={Open}
+                            onClose={setOpen}
+                            handleCropImg={handleCropImg}
+                            imageFile={File}
+                            aspect={1 / 1}
                         />
                     )}
                 </Grid>
