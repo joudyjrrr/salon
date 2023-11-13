@@ -13,6 +13,7 @@ import { canvasPreview } from "../../helper/imgHelper";
 import { useDebounceEffect } from "../../helper/imgHelper";
 import "react-image-crop/dist/ReactCrop.css";
 import Loading from "../Loading";
+import { Button } from "@mui/material";
 
 // This is to demonstate how to make and center a % aspect crop
 // which is a bit trickier so we use some helper functions.
@@ -179,13 +180,14 @@ export default function App({
         )}
       </div>
       <Stack direction={"row"} spacing={2}>
-        <button
+        <Button
           disabled={disableCropButton}
-          className={`bg-blue-100 text-white-100  p-3 rounded-md cursor-pointer`}
+          color="primary"
+          variant="contained"
           onClick={cropImageHandler}
         >
-          {disableCropButton ? <Loading color="#fff"/> : t(`form.crop`)}
-        </button>
+          {disableCropButton ? <Loading size={20} color="#fff"/> : t(`form.crop`)}
+        </Button>
       </Stack>
     </Stack>
   );

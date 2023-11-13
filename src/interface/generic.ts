@@ -40,3 +40,5 @@ export interface IGenericFormInputs {
   enName: string;
   arName?: string;
 }
+export type imgNameType = "cover" | "logo";
+export type imgNameTypeProdct = "cover" | "images";
