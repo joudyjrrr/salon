@@ -13,6 +13,55 @@ const Inputs: FC<{
   const { t } = useTranslation();
   return (
     <>
+     
+      <Grid item lg={3} md={4} sm={6}>
+        <FormTextField
+          control={control}
+          label={t("form.name")}
+          name="name"
+          // req={true}
+        />
+      </Grid>
+      <Grid item lg={3} md={4} sm={6}>
+        <FormTextField
+          control={control}
+          label={t("form.description")}
+          name="description"
+          // req={true}
+        />
+      </Grid>
+      <Grid item lg={3} md={4} sm={6}>
+        <FormTextField
+          control={control}
+          label={t("form.phoneNumber")}
+          name="phoneNumber"
+          // req={true}
+        />
+      </Grid>
+      <Grid item lg={3} md={4} sm={6}>
+        <FormTextField
+          control={control}
+          label={t("form.tempPhoneNumber")}
+          name="tempPhoneNumber"
+          // req={true}
+        />
+      </Grid>
+      <Grid item lg={3} md={4} sm={6}>
+        <FormTextField
+          control={control}
+          label={t("form.facebookUrl")}
+          name="facebookUrl"
+          // req={true}
+        />
+      </Grid>
+      <Grid item lg={3} md={4} sm={6}>
+        <FormTextField
+          control={control}
+          label={t("form.instagramUrl")}
+          name="instagramUrl"
+          // req={true}
+        />
+      </Grid>
       {!watch("latitude") && !watch("longitude") ? (
         <Grid item lg={3} md={4} sm={6}>
           <SelectLocation setValue={setValue} />
@@ -39,54 +88,6 @@ const Inputs: FC<{
           </Grid>
         </>
       )}
-      <Grid item lg={3} md={4} sm={6}>
-        <FormTextField
-          control={control}
-          label={t("form.name")}
-          name="name"
-          req={true}
-        />
-      </Grid>
-      <Grid item lg={3} md={4} sm={6}>
-        <FormTextField
-          control={control}
-          label={t("form.description")}
-          name="description"
-          req={true}
-        />
-      </Grid>
-      <Grid item lg={3} md={4} sm={6}>
-        <FormTextField
-          control={control}
-          label={t("form.phoneNumber")}
-          name="phoneNumber"
-          req={true}
-        />
-      </Grid>
-      <Grid item lg={3} md={4} sm={6}>
-        <FormTextField
-          control={control}
-          label={t("form.tempPhoneNumber")}
-          name="tempPhoneNumber"
-          req={true}
-        />
-      </Grid>
-      <Grid item lg={3} md={4} sm={6}>
-        <FormTextField
-          control={control}
-          label={t("form.facebookUrl")}
-          name="facebookUrl"
-          req={true}
-        />
-      </Grid>
-      <Grid item lg={3} md={4} sm={6}>
-        <FormTextField
-          control={control}
-          label={t("form.instagramUrl")}
-          name="instagramUrl"
-          req={true}
-        />
-      </Grid>
     </>
   );
 };

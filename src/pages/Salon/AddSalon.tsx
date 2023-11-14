@@ -1,21 +1,19 @@
-import { Box, Grid, Stack } from "@mui/material";
+import { Box, Grid, Paper, Stack } from "@mui/material";
 import useSalon from "./hook/useSalon";
 import TitleWithArrow from "../../Components/TitleWithArrwo";
 import { useTranslation } from "react-i18next";
 import Inputs from "../../Components/Salon/Inputs";
-import GenericObjectAutoCompleteNubmer from "../../Components/Form/GenericObjectAutoCompleteNubmer";
-import { SalonTypeArray } from "../../API/Salon/type";
 import { Controller } from "react-hook-form";
-import SelectLocation from "../../Components/Form/SelectLocation";
 import UploadGenericImg from "../../Components/Img/UploadGenericImg";
 import ImgCard from "../../Components/Img/ImgCard";
 import { FileApi } from "../../API/File/FileApi";
 import {
-  API_BASE_URL,
-  API_SERVER_URL,
   API_SERVER_URL_For_Img,
 } from "../../API/domain";
 import ModalImgCrop from "../../Components/Img/ModalImgCrop";
+import Select from "../../Components/Salon/Select";
+import SalonSchedule from "../../Components/Salon/salonSchedule";
+import SubmitButton from "../../Components/Form/SubmitButton";
 
 const AddSalon = () => {
   const {
@@ -26,14 +24,16 @@ const AddSalon = () => {
     handleManipulateImage,
     imgCoverAfterCrop,
     genericFile,
-    setImegesAfterCrop,
     setImgCoverAfterCrop,
     setImgTitle,
     imgagesAfterCrop,
     handleDeleteImg,
     isPendingImg,
+    handleSubmit,
+    onSubmit,
     openCropModal,
     setOpenCropModal,
+    isPending,
     imgTitle,
   } = useSalon();
   const { t } = useTranslation();
@@ -46,10 +46,12 @@ const AddSalon = () => {
         }}
       >
         <TitleWithArrow title={t("salon.add")} />
+        <Paper elevation={8} sx={{paddingX:"20px" , paddingBottom:"10px"}}>
         <form
           style={{
             marginTop: "50px",
           }}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <Grid
             item
@@ -60,20 +62,7 @@ const AddSalon = () => {
             spacing={{ xs: 2, md: 3 }}
           >
             <Inputs control={control} setValue={setValue} watch={watch} />
-            <Grid item lg={3} md={4} sm={6}>
-              <Controller
-                name="SalonType"
-                control={control}
-                render={({ field }) => (
-                  <GenericObjectAutoCompleteNubmer
-                    onChange={field.onChange}
-                    value={field.value}
-                    option={SalonTypeArray}
-                    label={t("form.chooseSalonType")}
-                  />
-                )}
-              />
-            </Grid>
+            <Select control={control} />
             <Grid item lg={3} md={4} sm={6}>
               {imgCoverAfterCrop === "" ? (
                 <Controller
@@ -117,7 +106,12 @@ const AddSalon = () => {
                 </Grid>
               ))}
           </Grid>
+          <SalonSchedule control={control} watch={watch}/>
+         <Stack marginInline={`auto`} justifyContent={`center`} width={`fit-content`} marginY={`15px`}>
+         <SubmitButton isSubmitting={isPending}/>
+         </Stack>
         </form>
+        </Paper>
         {genericFile && (
           <ModalImgCrop
             disableCropButton={isPendingImg}

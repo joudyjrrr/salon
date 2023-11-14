@@ -1,10 +1,12 @@
 import {
   Box,
   Card,
+  CardActions,
   CardContent,
   CardMedia,
   Fab,
   Grid,
+  IconButton,
   Stack,
   Typography,
   useMediaQuery,
@@ -14,13 +16,15 @@ import { useTranslation } from "react-i18next";
 import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
 import { SalonQueries } from "../../API/Salon/SalonQueries";
-import { API_BASE_URL } from "../../API/domain";
+import { API_BASE_URL, API_SERVER_URL_For_Img } from "../../API/domain";
 import { SalonTypeArray } from "../../API/Salon/type";
 import img from "../../assets/1.jpg";
 import Loading from "../../Components/Loading";
 import Pagination from "../../Components/Pagination";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteSalon from "./DeleteSalon";
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -30,6 +34,7 @@ const Salon = () => {
   const {
     data: salonData,
     isLoading,
+    refetch,
     isFetching,
   } = SalonQueries.GetSalonAllQuery({
     Query: query,
@@ -70,7 +75,7 @@ const Salon = () => {
                     component={"img"}
                     alt="Category image"
                     height={150}
-                    image={d.logo ? `${API_BASE_URL}/${d.logo}` : img}
+                    image={d.logo ? `${API_SERVER_URL_For_Img}/${d.logo}` : img}
                   />
                   <CardContent>
                     <Grid container flexDirection={"column"}>
@@ -108,6 +113,15 @@ const Salon = () => {
                       </Stack>
                     </Grid>
                   </CardContent>
+                  <CardActions>
+                    <IconButton>
+                      <EditIcon
+                        onClick={() => navigate(`edit-salon/${d.id}`)}
+                        color="primary"
+                      />
+                    </IconButton>
+                    <DeleteSalon refetch={refetch} id={d.id} />
+                  </CardActions>
                 </Card>
               </Grid>
             ))}

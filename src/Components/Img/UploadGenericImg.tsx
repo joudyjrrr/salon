@@ -2,14 +2,15 @@ import { SxProps, Typography } from "@mui/material";
 import Button from "@mui/material/Button";
 import React, { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import BackupIcon from '@mui/icons-material/Backup';
 interface IUploadImg {
   buttonText?: string;
   onFileUpload: (e: React.ChangeEvent<HTMLInputElement>) => void;
   disable?: boolean;
   errorMessage?: string;
   setImg?: () => void;
-  sx?:SxProps
-  className?:string;
+  sx?: SxProps;
+  className?: string;
 }
 const UploadGenericImg = ({
   buttonText,
@@ -18,21 +19,23 @@ const UploadGenericImg = ({
   errorMessage,
   setImg,
   sx,
-  className
+  className,
 }: IUploadImg) => {
   const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null!);
 
   return (
     <>
-      <div style={{
-        width:"100%",
-        height:"max-content"
-      }}>
+      <div
+        style={{
+          width: "100%",
+          height: "max-content",
+        }}
+      >
         <input
           ref={inputRef}
           accept="image/*"
-          style={{ opacity: "0"  , position:"absolute"}}
+          style={{ opacity: "0", position: "absolute" }}
           id="raised-button-files"
           type="file"
           onChange={onFileUpload}
@@ -43,19 +46,21 @@ const UploadGenericImg = ({
             disabled={disable}
             sx={{
               height: "100%",
-              padding:"15px",
+              padding: "15px",
               color: "#fff",
-              ...sx
+              background: "#ff5722",
+              "&:hover": {
+                background: "#ff8a65", // يتم تعيين اللون الحالي هنا
+              },
             }}
             onClick={() => {
               setImg?.();
               inputRef.current.click();
             }}
             variant="contained"
-            color="primary"
             fullWidth
           >
-            {buttonText ? buttonText : t("form.upLoadImg")}
+            {buttonText ? buttonText : t("form.upLoadImg") }<BackupIcon sx={{marginInline:"5px"}}/>
           </Button>
         </label>
         <Typography component={"p"} variant={"subtitle1"} color="error">

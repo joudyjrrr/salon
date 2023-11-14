@@ -65,7 +65,9 @@
     "tempPhoneNumber":"رقم الهاتف البديل",
     "facebookUrl":"رابط الفيسبوك",
     "instagramUrl":"رابط الانستغرام",
-    "chooseSalonType":"اختر نوع الصالون"
+    "chooseSalonType":"اختر نوع الصالون",
+    "chooseCountry":"اختر دولة",
+    "chooseCity":"اختر مدينة"
   },
   "table": {
     "name": "اسم المستخدم",

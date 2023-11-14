@@ -78,6 +78,8 @@ const Permission = {
 const Salon = {
   GET_ALL_SALON_CP: `${controller.Salon}/SalonGetAllCp`,
   GET_SALON_DETAILS_CP: `${controller.Salon}/GetSalonDetailsCp`,
+  SET_SALON:`${controller.Salon}/SetSalon`,
+  DELETE_SALON:`${controller.Salon}/DeleteSalonCp`
 };
 const Version = {
   SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,

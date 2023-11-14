@@ -5,6 +5,7 @@ import { UseFormSetValue } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { TransitionProps } from "@mui/material/transitions";
 import FadeModal from "./FadeModal";
+import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 const SelectLocation: FC<{
   setValue: UseFormSetValue<any>;
   error?: string;
@@ -51,42 +52,46 @@ const SelectLocation: FC<{
         sx={{
           width: "100%",
           height: "100%",
+          background: "#ff5722",
+          "&:hover": {
+            background: "#ff8a65", // يتم تعيين اللون الحالي هنا
+          },
         }}
       >
         {t("form.selectLocation")}
+        <AddLocationAltIcon sx={{marginInline:"3px"}}/>
       </Button>
       <FadeModal
         width={700}
         open={openActionModel}
         onClose={setOpenActionModel}
       >
-     
-          {isLoaded && (
-            <GoogleMap
-              mapContainerStyle={{ height: "400px", width: "100%" }}
-              center={{
-                lat: parseFloat("36.2137678"),
-                lng: parseFloat("37.1415791"),
-              }}
-              zoom={10}
-              onClick={handleMapClick}
-            >
-              {position && <Marker position={position} />}
-            </GoogleMap>
-          )}
-          <Button
-            sx={{
-              color: "#fff",
-              marginTop: "15px",
+        {isLoaded && (
+          <GoogleMap
+            mapContainerStyle={{ height: "400px", width: "100%" }}
+            center={{
+              lat: parseFloat("36.2137678"),
+              lng: parseFloat("37.1415791"),
             }}
-            onClick={handleAddLocation}
-            variant="contained"
-            color="primary"
-            fullWidth
+            zoom={10}
+            onClick={handleMapClick}
           >
-            {t("form.addLocation")}
-          </Button>
-       </FadeModal>
+            {position && <Marker position={position} />}
+          </GoogleMap>
+        )}
+        <Button
+          sx={{
+            color: "#fff",
+            marginTop: "15px",
+          }}
+          onClick={handleAddLocation}
+          variant="contained"
+          color="primary"
+          fullWidth
+        >
+          {t("form.addLocation")}
+        </Button>
+      </FadeModal>
     </>
   );
 };

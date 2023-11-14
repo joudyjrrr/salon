@@ -64,7 +64,9 @@
     "tempPhoneNumber":"tempPhoneNumber",
     "facebookUrl":"FacebookUrl",
     "instagramUrl":"InstagramUrl",
-    "chooseSalonType":"Choose SalonType"
+    "chooseSalonType":"Choose SalonType",
+    "chooseCountry":"Choose Country",
+    "chooseCity":"Choose City"
   },
   "table": {
     "name": "Name",

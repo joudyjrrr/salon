@@ -67,13 +67,21 @@ const Routes = () => {
                 </Suspense>
               }
             />
-            <Route 
-            path="add-salon"
-            element={
-              <Suspense fallback={<></>}>
-                <AddSalon />
-              </Suspense>
-            }
+            <Route
+              path="add-salon"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddSalon />
+                </Suspense>
+              }
+            />
+            <Route
+              path="edit-salon/:salonId"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddSalon />
+                </Suspense>
+              }
             />
           </Route>
         </Route>

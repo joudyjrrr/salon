@@ -42,3 +42,12 @@ export interface IGenericFormInputs {
 }
 export type imgNameType = "cover" | "logo";
 export type imgNameTypeProdct = "cover" | "images";
+export enum WeekDay {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday,
+}
