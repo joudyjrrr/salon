@@ -35,7 +35,7 @@ const FadeModal: FC<PropsWithChildren<ModalProps>> = ({
     transform: "translate(-50%, -50%)",
     width,
     height,
-    p: "10px", 
+    p: "10px",
     overflow: "hidden",
     borderRadius: "10px",
     border: "1px solid #666",
@@ -43,10 +43,10 @@ const FadeModal: FC<PropsWithChildren<ModalProps>> = ({
   };
   const smallScreenStyle: SxProps = {
     ...style,
-    width: "80vw", 
+    width: "80vw",
     height,
-    p: "5vw", 
-    pt: "2vw", 
+    p: "5vw",
+    pt: "2vw",
   };
   const styleToUse: SxProps = useMediaQuery("(max-width: 550px)") ? smallScreenStyle : style;
 
@@ -73,7 +73,7 @@ const FadeModal: FC<PropsWithChildren<ModalProps>> = ({
             onClick={handleClose}
             data-cy="close-modal-button"
           >
-    
+
           </IconButton>
 
           {children}

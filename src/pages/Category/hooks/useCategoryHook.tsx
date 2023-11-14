@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { AddCategoryType } from "./type";
+import { FileQuery } from "../../../API/File/FileQueries";
 
 
 const useCategoryHook = (pageNumber?: number, Query?: string) => {
@@ -28,7 +29,8 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         isLoading: allCategoriesIsLoading,
 
     } = CategoryQuery.GetAllCategoryQuery({ PageNumber: pageNumber, Query: query })
-
+    const { mutate: deleteImage } = FileQuery.DeleteFileQuery();
+    const { mutate: mutateImg, isPending : UploadingImg } = FileQuery.SetFileQuery()
     const {
         isPending: isDeletingCategory,
         mutate: deleteCategory,
@@ -43,7 +45,10 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         control,
         errors,
         navigate,
-        register
+        register,
+        deleteImage,
+        mutateImg,
+        UploadingImg
     }
 }
 
