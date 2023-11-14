@@ -11,13 +11,13 @@ import Loading from "../../Components/Loading";
 import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
 import AddUser from "./AddUser";
+import DeleteUser from "./DeleteUser";
 const CpMangment = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
+  const [id, setId] = useState<string>("");
   const TableHeaderArray = [
     t("table.name"),
     t("table.role"),
@@ -26,7 +26,7 @@ const CpMangment = () => {
   const {
     data: CpManagementData,
     isFetching,
-    isPlaceholderData,
+    refetch,
     isLoading,
   } = CpManagementQueries.GetUsersQuery({
     PageNumber: page,
@@ -36,23 +36,24 @@ const CpMangment = () => {
   console.log(matches);
   return (
     <>
-      <Box
-        sx={{
-          marginInline: "40px",
-          marginTop: "30px",
-          textAlign: "center",
-        }}
-      >
-        <AddUser />
-        <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
-          <Title text="Users" />
-          <SearchField onSearch={(value) => setQuery(value)} value={query} />
-        </Stack>
-        {isLoading ? (
-          <Box marginTop="150px">
-            <Loading />
-          </Box>
-        ) : (
+      {isLoading ? (
+        <Box marginTop="10px" height="100vh">
+          <Loading />
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            paddingInline: "40px",
+            marginTop: "30px",
+            textAlign: "center",
+            height: "initial",
+          }}
+        >
+          <AddUser />
+          <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
+            <Title text="Users" />
+            <SearchField onSearch={(value) => setQuery(value)} value={query} />
+          </Stack>
           <>
             <Stack marginTop="40px">
               <TableHeader TableHeaderArray={TableHeaderArray}>
@@ -65,12 +66,21 @@ const CpMangment = () => {
                       <TableCell align="center" sx={{ fontSize: "17px" }}>
                         {d.role}
                       </TableCell>
+                      <TableCell
+                    align="center"
+                    sx={{display:"flex" , justifyContent:"center"}}
+                      >
+                        <DeleteUser refetch={refetch} id={d.id} />
+                        <AddUser
+                            id={d.id}
+                            setId={() => setId(d.id ?? "")}
+                          />
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
               </TableHeader>
               <Pagination
-                // isPreviousData={isPlaceholderData}
                 page={page}
                 isFetching={isFetching}
                 onPageChange={setPage}
@@ -78,8 +88,8 @@ const CpMangment = () => {
               />
             </Stack>
           </>
-        )}
-      </Box>
+        </Box>
+      )}
     </>
   );
 };
