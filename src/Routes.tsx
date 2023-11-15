@@ -1,8 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes as ReactRoutes } from "react-router-dom";
-import Fallback from "./Components/Fallback";
-import Category from "./pages/Category/Category";
-import AddCategory from "./pages/Category/AddCategory";
+
+
 
 const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
@@ -10,6 +9,11 @@ const CpMangment = lazy(() => import("./pages/CpMangment/CpMangment"));
 const Notification = lazy(() => import("./pages/Notification/Notification"));
 const Salon = lazy(() => import("./pages/Salon/Salon"));
 const AddSalon = lazy(() => import("./pages/Salon/AddSalon"));
+const Fallback = lazy(() => import('./Components/Fallback'))
+const Category = lazy(() => import('./pages/Category/Category'));
+const AddCategory = lazy(() => import('./pages/Category/AddCategory'))
+
+
 const Routes = () => {
   return (
     <>
@@ -33,23 +37,25 @@ const Routes = () => {
               </Suspense>
             }
           />
-          <Route
-            path="/category"
-            element={
-              <Suspense fallback={<></>}>
-                <Category />
-              </Suspense>
-            }
-          />
+          <Route path="/category">
+            <Route
+              index
+              element={
+                <Suspense fallback={<></>}>
+                  <Category />
+                </Suspense>
+              }
+            />
+            <Route
+              path="addCategory"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddCategory />
+                </Suspense>
+              }
+            />
+          </Route>
 
-          <Route
-            path="/addCategory"
-            element={
-              <Suspense fallback={<></>}>
-                <AddCategory />
-              </Suspense>
-            }
-          />
           <Route
             path="/notifications"
             element={

@@ -5,10 +5,10 @@ export interface AddCategoryType {
       value: string;
     },
     {
-      key: "ar";
+      key: "en";
       value: string;
     }
   ];
   image: string;
-  type: 0 | 1 | 2;
+  type: 0 | 1 | 2 | null;
 }
