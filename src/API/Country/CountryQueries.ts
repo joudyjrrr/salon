@@ -4,7 +4,7 @@ import {
   useMutation,
   useQuery,
 } from "@tanstack/react-query";
-import { INameAndId, IPayload } from "../../interface/generic";
+import { IPayload } from "../../interface/generic";
 import { CountryApi } from "./CountryApi";
 
 const GetAllCountryQuery = (params: IPayload) => {
@@ -16,7 +16,7 @@ const GetAllCountryQuery = (params: IPayload) => {
         PageNumber: params.PageNumber,
         Query: params.Query,
       });
-      return data
+     return data;
     },
     placeholderData: keepPreviousData,
   });
@@ -35,13 +35,13 @@ const GetCountryAutoCompleteQuery = () => {
       data.data.map((data) => ({
         id: data.id,
         name: data.name,
-      }) as INameAndId),
+      })),
   });
   return queryResult;
 };
 const GetCountryByIdQuery = (id: string) => {
   const queryResult = useQuery({
-    queryKey: ["get-city-by-id", id],
+    queryKey: ["get-country-by-id", id],
     queryFn: () => CountryApi.getCountryById(id),
     enabled: !!id,
   });
@@ -57,7 +57,7 @@ const SetCountry = () => {
 
 const DeleteCountry = () => {
   const queryResult = useMutation({
-    mutationKey: ["delete-city"],
+    mutationKey: ["delete-country"],
     mutationFn: CountryApi.RemoveCountry,
   });
   return queryResult;

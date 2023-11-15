@@ -15,7 +15,7 @@
     "Permission": "Permission",
     "FeedBack": "FeedBack",
     "offer": "Offer",
-    "salon":"Salon"
+    "salon": "Salon"
   },
   "form": {
     "userName": "User Name",
@@ -28,7 +28,7 @@
     "arDescription": "Arabic Description",
     "enDescription": "English Description",
     "upLoadImg": "Upload Img",
-    "ubloadImgForCover":"Ubload Img for Cover",
+    "ubloadImgForCover": "Ubload Img for Cover",
     "crop": "Crop Img",
     "name": "Name",
     "fromDate": "fromDate",
@@ -47,6 +47,7 @@
     "ChooseRole": "Choose Roles",
     "values": "Values",
     "uploadImgForCover": "Upload Img for Cover",
+    "uploadImgFor": "Upload Img for Logo",
     "uploadImgForLogo": "Upload Img for Logo",
     "selectLocation": "Select Location",
     "addLocation": "Add Location",
@@ -60,20 +61,24 @@
     "ChooseVariants": "Choose Variants",
     "description": "Description",
     "login": "login",
-    "rate":"Rate",
-    "tempPhoneNumber":"tempPhoneNumber",
-    "facebookUrl":"FacebookUrl",
-    "instagramUrl":"InstagramUrl",
-    "chooseSalonType":"Choose SalonType",
-    "chooseCountry":"Choose Country",
-    "chooseCity":"Choose City"
+    "rate": "Rate",
+    "tempPhoneNumber": "tempPhoneNumber",
+    "facebookUrl": "FacebookUrl",
+    "instagramUrl": "InstagramUrl",
+    "chooseSalonType": "Choose SalonType",
+    "chooseCountry": "Choose Country",
+    "chooseCity": "Choose City",
+    "logoImg":"logo Img",
+    "countryCode": "countryCode",
+    "country": "Country Name"
   },
   "table": {
     "name": "Name",
     "handel": "Handle",
     "currency": "Currency",
     "role": "Role",
-    "desc": "Description"
+    "desc": "Description",
+    "countryCode": "countryCode"
   },
   "cpMangment": {
     "title": "Manege User Acount",
@@ -90,7 +95,7 @@
     "type": "type",
     "title": "Category",
     "add": "Add Category",
-    "addded" : "Category has been Added Successfully",
+    "addded": "Category has been Added Successfully",
     "delete": "Category has been deleted",
     "wrong": "something went wrong"
   },
@@ -123,12 +128,24 @@
     "added": "added",
     "wrong": "something went wrong"
   },
-  "salon":{
-    "title":"Salon",
-    "add":"Add Salon",
-    "edit":"Edit Salon",
+  "salon": {
+    "title": "Salon",
+    "add": "Add Salon",
+    "edit": "Edit Salon",
     "action": "Salon has been saved successfully",
     "delete": "Salon has been Deleted",
-    "salonType":"Salon Type"
+    "salonType": "Salon Type",
+    "SalonSchedule": " Salon Schedule",
+    "Day": "Day",
+    "Available": "Available",
+    "from": "from",
+    "to": "to"
+  },
+  "Country": {
+    "title": "Country",
+    "action": "Users has been saved successfully",
+    "add": "Add Country",
+    "edit":"Edit Country",
+    "delete": "Country has been Deleted"
   }
 }

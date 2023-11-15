@@ -11,7 +11,7 @@ const TitleWithArrow: FC<{ title: string }> = ({ title }) => {
     <>
        <Stack flexDirection={`row`} gap={`10px`}>
         {currentLanguageCode === "en" ? (
-         <ArrowForwardIcon 
+         <ArrowBackIcon 
          color="primary"
          sx={{
             marginTop:"10px"
@@ -19,7 +19,7 @@ const TitleWithArrow: FC<{ title: string }> = ({ title }) => {
          onClick={() => navigate(-1)}
          />
         ) : (
-          <ArrowBackIcon 
+          <ArrowForwardIcon 
            color="primary"
           sx={{
             marginTop:"10px"

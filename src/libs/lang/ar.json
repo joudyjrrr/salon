@@ -61,20 +61,24 @@
     "ChooseVariants": "اختر المتغيرات",
     "description": "الوصف",
     "login": "تسجيل الدخول",
-    "rate":"التقييم",
-    "tempPhoneNumber":"رقم الهاتف البديل",
-    "facebookUrl":"رابط الفيسبوك",
-    "instagramUrl":"رابط الانستغرام",
-    "chooseSalonType":"اختر نوع الصالون",
-    "chooseCountry":"اختر دولة",
-    "chooseCity":"اختر مدينة"
+    "rate": "التقييم",
+    "tempPhoneNumber": "رقم الهاتف البديل",
+    "facebookUrl": "رابط الفيسبوك",
+    "instagramUrl": "رابط الانستغرام",
+    "chooseSalonType": "اختر نوع الصالون",
+    "chooseCountry": "اختر دولة",
+    "chooseCity": "اختر مدينة",
+    "logoImg":"صورة الشعار",
+    "countryCode": "كود البلد",
+    "country": "اسم البلد"
   },
   "table": {
     "name": "اسم المستخدم",
     "handel": "التحكم",
     "currency": "العملة",
     "role": "الدور",
-    "desc": "الوصف"
+    "desc": "الوصف",
+    "countryCode": "كود البلد"
   },
   "cpMangment": {
     "title": "إدارة المستخدمين",
@@ -130,6 +134,18 @@
     "edit": "تعديل الصالون",
     "action": "تم حفظ الصالون بنجاح",
     "delete": "تم حذف الصالون بنجاح",
-    "salonType": "نوع الصالون"
+    "salonType": "نوع الصالون",
+    "SalonSchedule": "جدولة دوام الصالون",
+    "Day": "اليزم",
+    "Available": "متوفر",
+    "from": "من",
+    "to": "إلى"
+  },
+  "Country": {
+    "title": "إدارة المدن",
+    "action": "تم إضافة المدينة بنجاح",
+    "add": "إضافة مدينة",
+    "edit":"تعديل مدينة",
+    "delete": "تم حذف المدينة بنجاح"
   }
 }

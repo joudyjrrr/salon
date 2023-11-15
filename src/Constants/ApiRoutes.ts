@@ -42,7 +42,7 @@ const City = {
 };
 const Country = {
   GET_ALL_CP_Country: `/${controller.Country}/CountryGetAll`,
-  GET_Country_BY_ID: `/${controller.Country}/CountryGetById`,
+  GET_Country_BY_ID: `/${controller.Country}/CountryGetByIdCp`,
   SET_COUNTRY_CP: `${controller.Country}/CountrySetCp`,
   DELETe_CP_Country: `/${controller.Country}/CountryDeleteCp`,
 };
@@ -78,8 +78,8 @@ const Permission = {
 const Salon = {
   GET_ALL_SALON_CP: `${controller.Salon}/SalonGetAllCp`,
   GET_SALON_DETAILS_CP: `${controller.Salon}/GetSalonDetailsCp`,
-  SET_SALON:`${controller.Salon}/SetSalon`,
-  DELETE_SALON:`${controller.Salon}/DeleteSalonCp`
+  SET_SALON: `${controller.Salon}/SetSalon`,
+  DELETE_SALON: `${controller.Salon}/DeleteSalonCp`
 };
 const Version = {
   SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,

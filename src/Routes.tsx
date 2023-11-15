@@ -1,19 +1,16 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes as ReactRoutes } from "react-router-dom";
 
-
-
 const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
 const CpMangment = lazy(() => import("./pages/CpMangment/CpMangment"));
 const Notification = lazy(() => import("./pages/Notification/Notification"));
 const Salon = lazy(() => import("./pages/Salon/Salon"));
 const AddSalon = lazy(() => import("./pages/Salon/AddSalon"));
-const Fallback = lazy(() => import('./Components/Fallback'))
-const Category = lazy(() => import('./pages/Category/Category'));
-const AddCategory = lazy(() => import('./pages/Category/AddCategory'))
-
-
+const Fallback = lazy(() => import("./Components/Fallback"));
+const Category = lazy(() => import("./pages/Category/Category"));
+const AddCategory = lazy(() => import("./pages/Category/AddCategory"));
+const Country = lazy(() => import("./pages/Country/Country"));
 const Routes = () => {
   return (
     <>
@@ -61,6 +58,14 @@ const Routes = () => {
             element={
               <Suspense fallback={<></>}>
                 <Notification />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/country"
+            element={
+              <Suspense fallback={<></>}>
+                <Country />
               </Suspense>
             }
           />

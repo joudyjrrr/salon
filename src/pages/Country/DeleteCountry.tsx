@@ -1,23 +1,20 @@
 import { FC, useState } from "react";
 import { showError, showSuccess } from "../../libs/toast/Tostify";
 import DeleteModal from "../../Components/DeleteModal";
+import { CountryQueries } from "../../API/Country/CountryQueries";
 import { useTranslation } from "react-i18next";
-import { SalonQueries } from "../../API/Salon/SalonQueries";
 
-const DeleteSalon: FC<{ id: string; refetch: () => void }> = ({
-  id,
-  refetch,
-}) => {
-  const { mutate, isPending } = SalonQueries.DeleteSalon();
+const DeleteCountry: FC<{ id: string , refetch :()=>void}> = ({ id , refetch }) => {
+  const { mutate, isPending } = CountryQueries.DeleteCountry();
   const { t } = useTranslation();
   const [Open, setOpen] = useState<boolean>(false);
 
   const deleteHandler = () => {
     mutate(id, {
       onSuccess: () => {
-        showSuccess(t("salon.delete"));
+        showSuccess(t("Country.delete"));
         setOpen(false);
-        refetch();
+        refetch()
       },
       onError(error: any) {
         showError(error.response.data.errorMessage);
@@ -37,4 +34,4 @@ const DeleteSalon: FC<{ id: string; refetch: () => void }> = ({
   );
 };
 
-export default DeleteSalon;
+export default DeleteCountry;

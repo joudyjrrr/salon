@@ -49,15 +49,6 @@ const ImgCard = ({
         alt="image"
         sx={{ p: 1 }}
       />
-      {/* <img
-        src={imgSrc}
-        style={{
-          objectFit: "cover",
-          width: "100%",
-          height: "100%",
-          padding: "10px",
-        }}
-      /> */}
     </Card>
   );
 };

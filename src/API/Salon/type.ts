@@ -60,6 +60,7 @@ export interface SalonInput extends Salon {
   }[];
 }
 export interface SalonData extends Salon {
+  id?:string;
   logo:string
   salonType: number;
   address: {

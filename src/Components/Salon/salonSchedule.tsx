@@ -12,6 +12,7 @@ import { Control, Controller, UseFormWatch } from "react-hook-form";
 import { FC } from "react";
 import FormTextField from "../Form/FormTextField";
 import { DefaultFromDate } from "../../helper/imgHelper";
+import { useTranslation } from "react-i18next";
 
 const salonSchedule: FC<{ control: Control<SalonInput, any> ,  watch: UseFormWatch<any>;}> = ({
   control,
@@ -28,7 +29,8 @@ const salonSchedule: FC<{ control: Control<SalonInput, any> ,  watch: UseFormWat
     endTime: "",
     isFree: true,
   }));
-  const TableHeaderArray = ["Day", "Available", "from", "to"];
+  const {t}= useTranslation()
+  const TableHeaderArray = [t("salon.Day"), t("salon.Available"), t("salon.from"),t("salon.to")];
   return (
     <>
       <Stack
@@ -44,7 +46,7 @@ const salonSchedule: FC<{ control: Control<SalonInput, any> ,  watch: UseFormWat
             marginY: "10px",
           }}
         >
-          Salon Schedule
+        {t("salon.SalonSchedule")}
         </Typography>
         <TableHeader TableHeaderArray={TableHeaderArray}>
           <TableBody>
@@ -55,7 +57,7 @@ const salonSchedule: FC<{ control: Control<SalonInput, any> ,  watch: UseFormWat
                   <Controller
                     name={`workSchedule.${index}.isFree`}
                     control={control}
-                    render={({ field, fieldState }) => (
+                    render={({ field }) => (
                       <Switch checked={field.value} onChange={field.onChange} />
                     )}
                   />

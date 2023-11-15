@@ -71,7 +71,7 @@ const AddSalon = () => {
                   render={() => (
                     <UploadGenericImg
                       onFileUpload={handleManipulateImage}
-                      buttonText={t("form.ubloadImgForCover")}
+                      buttonText={t("form.uploadImgForLogo")}
                       setImg={() => setImgTitle("cover")}
                     />
                   )}
@@ -83,7 +83,7 @@ const AddSalon = () => {
                     FileApi.DeleteFile(imgCoverAfterCrop);
                     setImgCoverAfterCrop("");
                   }}
-                  title="Cover Img"
+                  title={t("form.logoImg")}
                 />
               )}
             </Grid>

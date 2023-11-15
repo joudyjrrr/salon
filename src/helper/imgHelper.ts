@@ -154,3 +154,12 @@ export const DefaultToDate = () => {
   const newNow = now.toISOString().slice(0, 16);
   return newNow;
 };
+
+export const convertToInputTime = (value : any) => {
+  const dateTime = new Date(value);
+  const hours = dateTime.getHours().toString().padStart(2, "0");
+  const minutes = dateTime.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+};
+
+
