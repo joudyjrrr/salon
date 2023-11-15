@@ -3,15 +3,15 @@ import Loading from "../../Components/Loading";
 import Pagination from "../../Components/Pagination";
 import useCategoryHook from "./hooks/useCategoryHook";
 import { useState } from "react";
-import { API_BASE_URL } from "../../API/domain";
+import { DEVELOPMENT_BASE_URL } from "../../API/domain";
 import DeleteCategory from "./DeleteCategory";
 import SearchField from "../../Components/SearchField";
 import Title from "../../Components/Title";
 import logo from '../../assets/1.jpg'
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Category = () => {
-    const [PageNumber, setPageNumber] = useState(0)
+    const [PageNumber, setPageNumber] = useState(0);
     const [Search, setSearch] = useState<string>('')
 
     const {
@@ -49,14 +49,12 @@ const Category = () => {
                             {allCategories?.data.map((category, idx) => {
 
                                 return (
-                                    <Grid key={idx} item xs={12} sm={6} lg={3}>
+                                    <Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
                                         <Card>
                                             <CardMedia
                                                 component={'img'}
                                                 alt="Category image"
-                                                height={150}
-                                                // image={`${API_BASE_URL}${category.imageUrl}`}
-                                                image={logo}
+                                                image={`${DEVELOPMENT_BASE_URL}/${category.imageUrl}`}
                                             />
                                             <CardContent>
                                                 <Grid container flexDirection={'column'}>
@@ -88,7 +86,7 @@ const Category = () => {
 
                             />
                         </Grid>
-                        <Outlet />
+
                     </>
 
 

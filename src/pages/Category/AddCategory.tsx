@@ -1,4 +1,4 @@
-import { Button, Grid, Select, TextField, MenuItem, InputLabel, FormControl } from "@mui/material"
+import { Button, Grid, Select, TextField, MenuItem, InputLabel, FormControl, Typography } from "@mui/material"
 import useCategoryHook from "./hooks/useCategoryHook"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Controller } from "react-hook-form";
@@ -30,7 +30,9 @@ const AddCategory = () => {
         handleSubmit,
         isCategoryLoading,
         SetCategory,
-        reset
+        reset,
+        setError,
+        errors
     } = useCategoryHook();
 
     const handleCropImg: handleCropImgType = async (imgFile) => {
@@ -56,6 +58,25 @@ const AddCategory = () => {
     }
 
     const SubmitHandler = (data: AddCategoryType) => {
+        console.log(errors);
+
+        if (data.name[0].value === '') {
+            setError('name.0.value', { message: t('form.required') });
+            return;
+        }
+        if (data.name[1].value === '') {
+            setError('name.1.value', { message: t('form.required') });
+            return;
+        }
+        if (data.type == null) {
+            setError('type', { message: t('form.required') });
+            return
+        }
+
+        if (img === '') {
+            setError('image', { message: t('Category.imgRequired') })
+            return
+        }
         SetCategory({
             name: data.name,
             image: img,
@@ -98,6 +119,8 @@ const AddCategory = () => {
                             variant="outlined"
                             label={t('form.arName')}
                             placeholder={t('form.arName')}
+                            error={!!errors.name?.[0]?.value?.message}
+                            helperText={errors.name?.[0]?.value?.message}
                         />
                     </Grid>
                     <Grid container item xs={6}>
@@ -106,11 +129,22 @@ const AddCategory = () => {
                             variant="outlined"
                             label={t('form.enName')}
                             placeholder={t('form.enName')}
+                            error={!!errors.name?.[1]?.value?.message}
+                            helperText={errors.name?.[1]?.value?.message}
                         />
                     </Grid>
-                    <Grid container justifyContent={'center'} item xs={12}>
-                        <FormControl fullWidth sx={{ mt: '10px', width: '25%' }}>
-                            <InputLabel id="demo-simple-select-label">{t('Notification.AppType')}</InputLabel>
+                    <Grid container direction={'column'} alignContent={'center'} item xs={12}>
+                        <FormControl
+                            error={!!errors.type?.message}
+                            fullWidth
+                            sx={{ mt: '10px', width: '25%' }}
+                        >
+                            <InputLabel
+                                error={!!errors.type?.message}
+                                id="demo-simple-select-label"
+                            >
+                                {t('Notification.AppType')}
+                            </InputLabel>
                             <Controller
                                 name="type"
                                 control={control}
@@ -120,20 +154,23 @@ const AddCategory = () => {
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
                                             {...field}
-                                            label={t('Notification.Type')}
+                                            label={t('Category.genderType')}
+
                                         >
-                                            <MenuItem value={0}>{t('Notification.Customer')}</MenuItem>
-                                            <MenuItem value={1}>{t('Notification.Store')}</MenuItem>
-                                            <MenuItem value={2}>{t('Notification.Driver')}</MenuItem>
+                                            <MenuItem value={0}>{t('Category.male')}</MenuItem>
+                                            <MenuItem value={1}>{t('Category.female')}</MenuItem>
                                         </Select>
                                     )
                                 }}
                             />
                         </FormControl>
+                        <Typography color={'error'}>
+                            {errors.type?.message}
+                        </Typography>
                     </Grid>
                     <Grid container justifyContent={'center'} item xs={12}>
                         {img === "" ? (
-                            <Grid item container justifyContent={'center'} xs = {3}>
+                            <Grid item container justifyContent={'center'} xs={3}>
                                 <UploadGenericImg
                                     onFileUpload={imageHandler}
                                     buttonText={t("form.upLoadImg")}
@@ -160,6 +197,10 @@ const AddCategory = () => {
                             />
                         )}
                     </Grid>
+                    <Typography color={'error'}>
+                        {errors.image?.message}
+                    </Typography>
+
                 </Grid>
                 <Grid sx={{ mt: 2 }} container justifyContent={'center'}>
                     <Button type="submit" variant="contained" disabled={isCategoryLoading}>

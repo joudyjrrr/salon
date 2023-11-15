@@ -12,7 +12,7 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
     const location = useLocation();
     const { t } = useTranslation();
     const [query, setquery] = useState<string>('')
-    const { setValue, register, control, formState: { errors }, handleSubmit, reset } = useForm<AddCategoryType>({
+    const { setValue, register, control, formState: { errors }, handleSubmit, reset, setError } = useForm<AddCategoryType>({
         defaultValues: {
             name: [
                 {
@@ -69,7 +69,8 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         isCategoryLoading,
         SetCategory,
         location,
-        reset
+        reset,
+        setError
     }
 }
 

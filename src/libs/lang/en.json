@@ -95,8 +95,12 @@
     "type": "type",
     "title": "Category",
     "add": "Add Category",
-    "addded": "Category has been Added Successfully",
+    "added": "Category has been Added Successfully",
     "delete": "Category has been deleted",
+    "genderType" : "gender",
+    "male": "male",
+    "female": "female",
+    "imgRequired" : "image is required",
     "wrong": "something went wrong"
   },
   "delete": {

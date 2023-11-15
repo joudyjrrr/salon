@@ -26,6 +26,14 @@ const Routes = () => {
 
         <Route element={<ProtectedPage />}>
           <Route
+            path="/"
+            element = {
+              <Suspense fallback = {<></>}>
+                <></>
+              </Suspense>
+            }
+          />
+          <Route
             path="/cp-management"
             index
             element={
