@@ -5,7 +5,7 @@ import { GetSalonDetailsParamsType } from "./type";
 
 const GetSalonAllQuery =  (params: IPayload) => {
   const queryResult = useQuery({
-    queryKey: ["get-all-salon"],
+    queryKey: ["get-all-salon",params.PageNumber,params.Query],
     queryFn: async () => {
       const data = await SalonApi.GetSalonAll({
         EnablePagination: true,

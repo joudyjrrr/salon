@@ -44,7 +44,7 @@ const useSalon = () => {
   const [imgCoverAfterCrop, setImgCoverAfterCrop] = useState<string>("");
   const [genericFile, setGenericFile] = useState<File | null>(null);
   const { salonId } = useParams();
-  const { data: salonDetails } = SalonQueries.GetSalonDetailsQuery(salonId!);
+  const { data: salonDetails , isLoading } = SalonQueries.GetSalonDetailsQuery(salonId!);
   const { data: cityOption } = CityQueries.GetCityAutoCompleteQuery();
   // console.log(salonDetails);
   useEffect(() => {
@@ -67,7 +67,7 @@ const useSalon = () => {
         setValue(`workSchedule.${index}.endTime`, convertToInputTime(day.endTime!))
       })
     }
-    console.log(salonDetails?.workSchedule)
+    // console.log(salonDetails?.workSchedule)
     //  setValue(`workSchedule.${1}.startTime`,convertToInputTime(salonDetails?.workSchedule[1].startTime!))
   }, [salonDetails, cityOption])
   const handleManipulateImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -149,6 +149,8 @@ const useSalon = () => {
   return {
     control,
     handleSubmit,
+    isLoading,
+    salonId,
     setValue,
     watch,
     isPendingImg,
