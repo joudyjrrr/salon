@@ -3,14 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
+import { AddCategoryType } from "./type";
+import { FileQuery } from "../../../API/File/FileQueries";
 
 
 const useCategoryHook = (pageNumber?: number, Query?: string) => {
 
     const { t } = useTranslation();
     const [query, setquery] = useState<string>('')
-    const { control, formState: { errors } } = useForm();
+    const { register, control, formState: { errors } } = useForm<AddCategoryType>();
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const time = setTimeout(() => {
@@ -25,10 +29,11 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         isLoading: allCategoriesIsLoading,
 
     } = CategoryQuery.GetAllCategoryQuery({ PageNumber: pageNumber, Query: query })
-
+    const { mutate: deleteImage } = FileQuery.DeleteFileQuery();
+    const { mutate: mutateImg, isPending : UploadingImg } = FileQuery.SetFileQuery()
     const {
         isPending: isDeletingCategory,
-        mutate
+        mutate: deleteCategory,
     } = CategoryQuery.DeleteBannerQuery()
 
     return {
@@ -36,9 +41,14 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         allCategoriesIsLoading,
         t,
         isDeletingCategory,
-        mutate,
+        deleteCategory,
         control,
-        errors
+        errors,
+        navigate,
+        register,
+        deleteImage,
+        mutateImg,
+        UploadingImg
     }
 }
 

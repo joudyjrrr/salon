@@ -4,7 +4,7 @@ import {
   useMutation,
   useQuery,
 } from "@tanstack/react-query";
-import { IPayload } from "../../interface/generic";
+import { INameAndId, IPayload } from "../../interface/generic";
 import { CountryApi } from "./CountryApi";
 
 const GetAllCountryQuery = (params: IPayload) => {
@@ -35,7 +35,7 @@ const GetCountryAutoCompleteQuery = () => {
       data.data.map((data) => ({
         id: data.id,
         name: data.name,
-      })),
+      }) as INameAndId),
   });
   return queryResult;
 };

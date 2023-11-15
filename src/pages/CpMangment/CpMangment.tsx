@@ -33,11 +33,10 @@ const CpMangment = () => {
     Query: query,
   });
   const matches = useMediaQuery("(max-width:700px)");
-  console.log(matches);
   return (
     <>
       {isLoading ? (
-        <Box marginTop="10px" height="100vh">
+        <Box marginTop="150px">
           <Loading />
         </Box>
       ) : (
@@ -46,7 +45,6 @@ const CpMangment = () => {
             paddingInline: "40px",
             marginTop: "30px",
             textAlign: "center",
-            height: "initial",
           }}
         >
           <AddUser />

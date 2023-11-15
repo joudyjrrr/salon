@@ -22,7 +22,25 @@ const useNotificationsHook = (pageNumber?: number, Query?: string) => {
     const { control, formState: { errors }, getValues, reset, register, handleSubmit, watch, setValue, setError, clearErrors } = useForm<AddNotificationType>({
         defaultValues: {
             publicUserCity: 'Public',
-            customers: []
+            customers: [],
+            // title: [{
+            //     key: 'ar',
+            //     value: ''
+            // },
+            // {
+            //     key: 'en',
+            //     value: ''
+            // }],
+            // body: [
+            //     {
+            //         key: 'ar',
+            //         value: ''
+            //     },
+            //     {
+            //         key: 'en',
+            //         value: ''
+            //     },
+            // ]
         }
     });
 

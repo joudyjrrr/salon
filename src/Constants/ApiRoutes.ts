@@ -17,6 +17,7 @@ const controller = {
   SearchWord: "SearchWord",
   Service: "Service",
   Version: "Version",
+  file: "File",
 };
 const Banner = {
   GET_ALL_BANNER_CP: `${controller.Banner}/BannerGetAllCp`,
@@ -77,6 +78,8 @@ const Permission = {
 const Salon = {
   GET_ALL_SALON_CP: `${controller.Salon}/SalonGetAllCp`,
   GET_SALON_DETAILS_CP: `${controller.Salon}/GetSalonDetailsCp`,
+  SET_SALON:`${controller.Salon}/SetSalon`,
+  DELETE_SALON:`${controller.Salon}/DeleteSalonCp`
 };
 const Version = {
   SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
@@ -87,6 +90,10 @@ const Service = {
 };
 const Feedback = {
   GET_FEEDBACK_CP: `${controller.Feedback}/Feedback`,
+};
+const File = {
+  GET_FILE_CP: `${controller.file}/SaveFile`,
+  DELETE_FILE_CP: `${controller.file}/DeleteFile`,
 };
 
 export const API_Routes = {
@@ -102,4 +109,5 @@ export const API_Routes = {
   Version,
   Service,
   Feedback,
+  File,
 };

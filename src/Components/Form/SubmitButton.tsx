@@ -22,9 +22,6 @@ const SubmitButton = ({
   ...props
 }: LoadingButtonProps) => {
   const { t } = useTranslation();
-  const STYLE = {
-    flexBasis: '40%'
-  };
   return (
     <Button
       disabled={isSubmitting}
@@ -32,7 +29,10 @@ const SubmitButton = ({
       type="submit"
       data-test={'submit'}
       color="primary"
-      sx={{ ...STYLE, ...((error && { bgcolor: "error.main" }) ?? "") }}
+      sx={{
+        paddingX:"20px",
+        paddingY:"5px"
+      }}
       {...props}
       
     >

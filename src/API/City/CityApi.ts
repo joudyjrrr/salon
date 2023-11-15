@@ -21,8 +21,8 @@ const GetAllCity = async (params: IPayload) => {
 };
 
 const GetAllCityAutoComplete = async (params: IPayload) => {
-  const { data } = await DeliveryApiInstances.get<getCityAllType[]>(
-    API_Routes.City.SET_CITY_CP,
+  const { data } = await DeliveryApiInstances.get<IPagination<getCityAllType>>(
+    API_Routes.City.GET_ALL_CP_City,
     {
       params: {
         ...params,

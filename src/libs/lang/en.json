@@ -14,7 +14,8 @@
     "Order": "Orders",
     "Permission": "Permission",
     "FeedBack": "FeedBack",
-    "offer": "Offer"
+    "offer": "Offer",
+    "salon":"Salon"
   },
   "form": {
     "userName": "User Name",
@@ -27,6 +28,7 @@
     "arDescription": "Arabic Description",
     "enDescription": "English Description",
     "upLoadImg": "Upload Img",
+    "ubloadImgForCover":"Ubload Img for Cover",
     "crop": "Crop Img",
     "name": "Name",
     "fromDate": "fromDate",
@@ -57,7 +59,14 @@
     "ChooseVariantsValues": "Choose Variants Values",
     "ChooseVariants": "Choose Variants",
     "description": "Description",
-    "login": "login"
+    "login": "login",
+    "rate":"Rate",
+    "tempPhoneNumber":"tempPhoneNumber",
+    "facebookUrl":"FacebookUrl",
+    "instagramUrl":"InstagramUrl",
+    "chooseSalonType":"Choose SalonType",
+    "chooseCountry":"Choose Country",
+    "chooseCity":"Choose City"
   },
   "table": {
     "name": "Name",
@@ -70,7 +79,7 @@
     "title": "Manege User Acount",
     "action": "Users has been saved successfully",
     "add": "Add User",
-    "edit":"Edit User",
+    "edit": "Edit User",
     "delete": "User has been Deleted"
   },
   "btns": {
@@ -80,6 +89,7 @@
   "Category": {
     "type": "type",
     "title": "Category",
+    "add": "Add Category",
     "delete": "Category has been deleted",
     "wrong": "something went wrong"
   },
@@ -95,7 +105,7 @@
     "enTitle": "English Title",
     "arBody": "Arabic Body",
     "enBody": "English Body",
-    "Add": "Add",
+    "Add": "Add Notification",
     "Body": "Body",
     "Title": "Title",
     "AppType": "App Type",
@@ -107,6 +117,17 @@
     "cities": "cities",
     "Customer": "customer",
     "Store": "Store",
-    "Driver": "Driver"
+    "Driver": "Driver",
+    "deleted": "Notification Deleted successfully",
+    "added": "added",
+    "wrong": "something went wrong"
+  },
+  "salon":{
+    "title":"Salon",
+    "add":"Add Salon",
+    "edit":"Edit Salon",
+    "action": "Salon has been saved successfully",
+    "delete": "Salon has been Deleted",
+    "salonType":"Salon Type"
   }
 }

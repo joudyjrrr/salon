@@ -4,7 +4,7 @@ import {
   useMutation,
   useQuery,
 } from "@tanstack/react-query";
-import { IPagination, IPayload } from "../../interface/generic";
+import { INameAndId, IPagination, IPayload } from "../../interface/generic";
 import { CityApi } from "./CityApi";
 import { getCityByCountryType, setCityType } from "./type";
 
@@ -35,10 +35,13 @@ const GetCityAutoCompleteQuery = () => {
       return data;
     },
     select: (data) =>
-      data.map((data) => ({
-        id: data.id,
-        name: data.name,
-      })),
+      data.data.map(
+        (data) =>
+          ({
+            id: data.id,
+            name: data.name,
+          } as INameAndId)
+      ),
   });
   return queryResult;
 };
