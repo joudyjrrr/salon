@@ -15,7 +15,7 @@
     "Permission": "Permission",
     "FeedBack": "FeedBack",
     "offer": "Offer",
-    "salon":"Salon"
+    "salon": "Salon"
   },
   "form": {
     "userName": "User Name",
@@ -28,7 +28,7 @@
     "arDescription": "Arabic Description",
     "enDescription": "English Description",
     "upLoadImg": "Upload Img",
-    "ubloadImgForCover":"Ubload Img for Cover",
+    "ubloadImgForCover": "Ubload Img for Cover",
     "crop": "Crop Img",
     "name": "Name",
     "fromDate": "fromDate",
@@ -60,11 +60,11 @@
     "ChooseVariants": "Choose Variants",
     "description": "Description",
     "login": "login",
-    "rate":"Rate",
-    "tempPhoneNumber":"tempPhoneNumber",
-    "facebookUrl":"FacebookUrl",
-    "instagramUrl":"InstagramUrl",
-    "chooseSalonType":"Choose SalonType"
+    "rate": "Rate",
+    "tempPhoneNumber": "tempPhoneNumber",
+    "facebookUrl": "FacebookUrl",
+    "instagramUrl": "InstagramUrl",
+    "chooseSalonType": "Choose SalonType"
   },
   "table": {
     "name": "Name",
@@ -88,8 +88,12 @@
     "type": "type",
     "title": "Category",
     "add": "Add Category",
-    "addded" : "Category has been Added Successfully",
+    "added": "Category has been Added Successfully",
     "delete": "Category has been deleted",
+    "genderType" : "gender",
+    "male": "male",
+    "female": "female",
+    "imgRequired" : "image is required",
     "wrong": "something went wrong"
   },
   "delete": {
@@ -121,12 +125,12 @@
     "added": "added",
     "wrong": "something went wrong"
   },
-  "salon":{
-    "title":"Salon",
-    "add":"Add Salon",
-    "edit":"Edit Salon",
+  "salon": {
+    "title": "Salon",
+    "add": "Add Salon",
+    "edit": "Edit Salon",
     "action": "Salon has been saved successfully",
     "delete": "Salon has been Deleted",
-    "salonType":"Salon Type"
+    "salonType": "Salon Type"
   }
 }
