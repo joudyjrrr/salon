@@ -44,13 +44,6 @@ const GetUserByIdQuery =  (userId: string) => {
   });
   return queryResult;
 };
-const DeleteUser = () => {
-  const queryResult = useMutation({
-    mutationKey: ["delete-user"],
-    mutationFn: CpManagementApi.DeleteUser,
-  });
-  return queryResult;
-};
 const GetRoles =  () => {
   const queryResult = useQuery({
     queryKey: ["get-roles"],
@@ -84,7 +77,6 @@ export const CpManagementQueries = {
   SetUserQuery,
   GetUserByIdQuery,
   GetUsersQuery,
-  DeleteUser,
   GetRoles,
   useCpCustomersNames,
 };

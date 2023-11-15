@@ -137,7 +137,7 @@ const useSalon = () => {
         onSuccess: () => {
           navigate(-1);
           queryClient.refetchQueries({ queryKey: ["get-all-salon"] });
-          showSuccess(t("salon.acion"));
+          showSuccess(t("salon.action"));
         },
         onError(error: any) {
           showError(error.response.data.errorMessage);

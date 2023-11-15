@@ -12,7 +12,9 @@ import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AddUser from "./AddUser";
-import DeleteUser from "./DeleteUser";
+import DeleteModal from "../../Components/DeleteModal";
+import { CpManagementApi } from "../../API/CpManagement/CpManagementApi";
+import DeleteCustome from "../../Components/DeleteCustome";
 const CpMangment = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -65,14 +67,17 @@ const CpMangment = () => {
                         {d.role}
                       </TableCell>
                       <TableCell
-                    align="center"
-                    sx={{display:"flex" , justifyContent:"center"}}
+                        align="center"
+                        sx={{ display: "flex", justifyContent: "center" }}
                       >
-                        <DeleteUser refetch={refetch} id={d.id} />
-                        <AddUser
-                            id={d.id}
-                            setId={() => setId(d.id ?? "")}
-                          />
+                        <DeleteCustome
+                          refetch={refetch}
+                          MassegeSuccess={t("cpMangment.delete")}
+                          onDelete={() => CpManagementApi.DeleteUser(id)}
+                          setId={() => setId(d?.id ?? "")}
+                          userId={id ?? ""}
+                        />
+                        <AddUser id={d.id} setId={() => setId(d.id ?? "")} />
                       </TableCell>
                     </TableRow>
                   ))}

@@ -38,16 +38,8 @@ const SetSalonQuery = () => {
   });
   return queryResult;
 };
-const DeleteSalon = () => {
-  const queryResult = useMutation({
-    mutationKey: ["delete-user"],
-    mutationFn: SalonApi.DeleteSalon,
-  });
-  return queryResult;
-};
 export const SalonQueries = {
   GetSalonAllQuery,
   GetSalonDetailsQuery,
   SetSalonQuery,
-  DeleteSalon
 };

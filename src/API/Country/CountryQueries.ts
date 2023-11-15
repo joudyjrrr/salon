@@ -55,18 +55,10 @@ const SetCountry = () => {
   return queryResult;
 };
 
-const DeleteCountry = () => {
-  const queryResult = useMutation({
-    mutationKey: ["delete-country"],
-    mutationFn: CountryApi.RemoveCountry,
-  });
-  return queryResult;
-};
 
 export const CountryQueries = {
   GetAllCountryQuery,
   GetCountryAutoCompleteQuery,
   GetCountryByIdQuery,
   SetCountry,
-  DeleteCountry,
 };

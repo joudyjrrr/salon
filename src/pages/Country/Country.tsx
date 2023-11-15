@@ -1,9 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { Card, CardMedia } from "@mui/material";
 import Loading from "../../Components/Loading";
 import Pagination from "../../Components/Pagination";
-import useCountryHook from "./hooks/useCountryHook"
-import { useState } from 'react';
+import useCountryHook from "./hooks/useCountryHook";
+import { useState } from "react";
 import { Box, Stack, Grid } from "@mui/material";
 import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
@@ -14,46 +13,33 @@ import TableCell from "@mui/material/TableCell";
 import { CountryQueries } from "../../API/Country/CountryQueries";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AddCountry from "./AddCountry";
-import DeleteCountry from './DeleteCountry'
+import DeleteCustome from "../../Components/DeleteCustome";
+import { CountryApi } from "../../API/Country/CountryApi";
 const Country = () => {
+  const { t } = useTranslation();
+  const [PageNumber, setPageNumber] = useState(0);
+  const [query, setQuery] = useState<string>("");
+  const [id, setId] = useState<string>("");
+  const TableHeaderArray = [
+    t("table.name"),
+    t("table.currency"),
+    t("table.countryCode"),
+    t("table.handel"),
+  ];
+  const { allCountries, allCountriesIsLoading, refetch, isFetching } =
+    useCountryHook(id, PageNumber , query);
 
-    const { t } = useTranslation();
-    const [PageNumber, setPageNumber] = useState(0)
-    const [query, setQuery] = useState<string>("");
-    const [id, setId] = useState<string>("");
+  console.log({ allCountries });
+  const matches = useMediaQuery("(max-width:700px)");
 
-    const TableHeaderArray = [
-        t("table.name"),
-        t("table.currency"),
-        t("table.countryCode"),
-        t("table.handel"),
-    ];
-    const {
-        // data: CpManagementData,
-        isFetching,
-        refetch,
-        isLoading,
-      } = CountryQueries.GetAllCountryQuery({
-        PageNumber,
-        Query: query,
-      });
-    const {
-        allCountries,
-        allCountriesIsLoading
-    } = useCountryHook( id, PageNumber)
-
-    console.log({ allCountries });
-    const matches = useMediaQuery("(max-width:700px)");
-
-    return (
-        <>
-            {
-                allCountriesIsLoading ?
-                <Box marginTop="10px" height="100vh">
-                <Loading />
-                </Box>
-                    :
-                    <Box
+  return (
+    <>
+      {allCountriesIsLoading ? (
+        <Box marginTop="10px" height="100vh">
+          <Loading />
+        </Box>
+      ) : (
+        <Box
           sx={{
             paddingInline: "40px",
             marginTop: "30px",
@@ -82,14 +68,17 @@ const Country = () => {
                         {d.countryCode}
                       </TableCell>
                       <TableCell
-                    align="center"
-                    sx={{display:"flex" , justifyContent:"center"}}
+                        align="center"
+                        sx={{ display: "flex", justifyContent: "center" }}
                       >
-                        <DeleteCountry refetch={refetch} id={d.id} />
-                        <AddCountry
-                            id={d.id}
-                            setId={() => setId(d.id ?? "")}
-                          />
+                        <DeleteCustome
+                          refetch={refetch}
+                          MassegeSuccess={t("Country.delete")}
+                          onDelete={() => CountryApi.RemoveCountry(id)}
+                          setId={() => setId(d?.id ?? "")}
+                          userId={id ?? ""}
+                        />
+                        <AddCountry id={d.id} setId={() => setId(d.id ?? "")} />
                       </TableCell>
                     </TableRow>
                   ))}
@@ -104,37 +93,9 @@ const Country = () => {
             </Stack>
           </>
         </Box>
-                    // <>
-                    //     {allCountries?.data.map((country, idx) => {
-                    //         console.log(country);
+      )}
+    </>
+  );
+};
 
-                    //         return (
-                    //             <Card key={idx}>
-                    //                 <CardMedia
-                    //                     component={'img'}
-                    //                     alt="Country image"
-                    //                     height={150}
-
-                    //                 >
-
-                    //                 </CardMedia>
-                    //             </Card>
-                    //         )
-                    //     })}
-
-                    //     < Pagination
-                    //         clickPrev={() => setPageNumber((prev) => prev - 1)}
-                    //         disablePrev={PageNumber < 1}
-                    //         clickNext={() => setPageNumber((prev) => prev + 1)}
-                    //         disableNext={allCountries?.pageNumber === allCountries?.totalPages}
-
-                    //     />
-                    // </>
-
-
-            }
-        </>
-    )
-}
-
-export default Country
+export default Country;

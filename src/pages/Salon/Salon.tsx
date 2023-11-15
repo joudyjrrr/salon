@@ -24,11 +24,13 @@ import Pagination from "../../Components/Pagination";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteSalon from "./DeleteSalon";
+import DeleteCustome from "../../Components/DeleteCustome";
+import { SalonApi } from "../../API/Salon/SalonApi";
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
+  const [id, setId] = useState<string>("");
   const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
   const {
@@ -120,7 +122,13 @@ const Salon = () => {
                         color="primary"
                       />
                     </IconButton>
-                    <DeleteSalon refetch={refetch} id={d.id} />
+                    <DeleteCustome
+                      refetch={refetch}
+                      MassegeSuccess={t("salon.delete")}
+                      onDelete={() => SalonApi.DeleteSalon(id)}
+                      setId={() => setId(d?.id ?? "")}
+                      userId={id ?? ""}
+                    />
                   </CardActions>
                 </Card>
               </Grid>

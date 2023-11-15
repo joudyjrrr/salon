@@ -7,7 +7,7 @@ import { showError, showSuccess } from "../../../libs/toast/Tostify";
 import { makeActionArray } from "../../../helper/imgHelper";
 import { useTranslation } from "react-i18next";
 
-const useCountryHook = (id?: string, pageNumber?: number) => {
+const useCountryHook = (id?: string, pageNumber?: number , query?: string) => {
   const {
     control,
     handleSubmit,
@@ -37,8 +37,8 @@ const useCountryHook = (id?: string, pageNumber?: number) => {
     }
   }, [countryDetails]);
 
-  const { data: allCountries, isLoading: allCountriesIsLoading } =
-    CountryQueries.GetAllCountryQuery({ PageNumber: pageNumber });
+  const { data: allCountries, isLoading: allCountriesIsLoading , refetch , isFetching } =
+    CountryQueries.GetAllCountryQuery({ PageNumber: pageNumber , Query : query });
   const { mutate, isPending } = CountryQueries.SetCountry();
   const onSubmit: SubmitHandler<SetCountryTypeInput> = async (data) => {
     mutate(
@@ -67,7 +67,9 @@ const useCountryHook = (id?: string, pageNumber?: number) => {
 
   return {
     allCountries,
+    isFetching,
     allCountriesIsLoading,
+    refetch,
     control,
     setValue,
     open,
