@@ -1,9 +1,4 @@
-import {
-  useInfiniteQuery,
-  useMutation,
-  useQuery,
-  useQueryClient,
-} from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { CouponApi } from "./CouponApi";
 import { IPayload } from "../../interface/generic";
 import { SetCustomerCouponsType } from "./type";
@@ -18,10 +13,7 @@ const GetALLCouponsQuery = (params: IPayload) => {
         PageNumber: params.PageNumber ?? 0,
         EnablePagination: params.EnablePagination || true,
       });
-      return {
-        data,
-        pageParam: 0,
-      };
+      return data;
     },
   });
   return queryResult;

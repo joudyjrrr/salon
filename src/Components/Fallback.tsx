@@ -1,13 +1,14 @@
 
 import { Typography } from '@mui/material';
+import Loading from './Loading';
 
 const Fallback = () => {
     return (
         <>
-            <Typography>
+            {/* <Typography>
                 Loading
-            </Typography>
-
+            </Typography> */}
+            <Loading/>
         </>
     )
 }

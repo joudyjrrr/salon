@@ -4,6 +4,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import CategoryIcon from '@mui/icons-material/Category';
 import GroupIcon from '@mui/icons-material/Group';
 import HomeIcon from '@mui/icons-material/Home';
+import DiscountIcon from '@mui/icons-material/Discount';
 const Links = () => {
   const { t } = useTranslation();
 
@@ -33,6 +34,11 @@ const Links = () => {
       href: "/salon",
       icon: <HomeIcon />,
 
+    },
+    {
+      title: t("links.coupon"),
+      href: "/coupon",
+      icon: <DiscountIcon />,
     }
   ]
   return {

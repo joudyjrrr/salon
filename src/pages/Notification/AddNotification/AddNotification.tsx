@@ -1,5 +1,5 @@
 import { Button, Dialog, DialogContent, DialogTitle, Grid } from '@mui/material'
-import useNotificationsHook from '../hooks/useNotificationsHook.tsx';
+import useNotificationsHook from '../hooks/useNotificationsHook.ts';
 import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { AddNotificationType } from '../hooks/type.ts';

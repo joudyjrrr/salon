@@ -2,11 +2,13 @@ import { IPayload } from "../../interface/generic";
 
 export interface GetALLCouponsCPType {
   id: string;
+  name: string;
   code: string;
-  fromDate: Date;
-  toDate: Date;
+  image: string;
+  fromDate: string;
+  toDate: string;
   value: number;
-  percent: number;
+  percentage: number;
   cityId: string;
   isExpired: boolean;
 }
@@ -24,18 +26,16 @@ export interface GetCouponCPType {
 
 export interface SetCouponCpType {
   id?: string;
+  name: string;
   code: string;
   fromDate: string;
   toDate: string;
+  image: string;
   value?: number | undefined;
-  percent?: number | undefined;
-  cityId: string;
+  percentage: number | undefined;
+  cityId: string | undefined;
   type: number;
   customers: string[] | undefined;
-}
-
-export interface DeleteCouponCpType {
-  id: string;
 }
 
 export interface SetCustomerCouponsType extends IPayload {

@@ -20,7 +20,7 @@ const Pagination: FC<IProps> = ({
 
   return (
     <>
-      <Grid container justifyContent={"start"} marginY="30px">
+      <Grid container justifyContent={"end"} marginY="30px">
         <Box display="flex" gap="10px">
           <Button
             color="primary"

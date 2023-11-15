@@ -2,7 +2,6 @@ import { API_Routes } from "../../Constants/ApiRoutes";
 import { IPagination, IPayload } from "../../interface/generic";
 import DeliveryApiInstances from "../axios";
 import {
-  DeleteCouponCpType,
   GetALLCouponsCPType,
   GetCouponCPType,
   GetCustomerCouponsType,
@@ -51,10 +50,10 @@ const SetCouponCp = async (data: SetCouponCpType) => {
   await DeliveryApiInstances.post(API_Routes.Coupon.SET_COUPON_CP, data);
 };
 
-const DeleteCouponCp = async (Params: DeleteCouponCpType) => {
+const DeleteCouponCp = async (id: string) => {
   await DeliveryApiInstances.put(API_Routes.Coupon.DELETE_COUPON_CP, null, {
     params: {
-      id: Params.id,
+      id: id,
     },
   });
 };

@@ -90,10 +90,10 @@
     "add": "Add Category",
     "added": "Category has been Added Successfully",
     "delete": "Category has been deleted",
-    "genderType" : "gender",
+    "genderType": "gender",
     "male": "male",
     "female": "female",
-    "imgRequired" : "image is required",
+    "imgRequired": "image is required",
     "wrong": "something went wrong"
   },
   "delete": {
@@ -132,5 +132,27 @@
     "action": "Salon has been saved successfully",
     "delete": "Salon has been Deleted",
     "salonType": "Salon Type"
+  },
+  "Coupon": {
+    "title": "Coupon",
+    "add": "Add Coupon",
+    "deleted": "Coupon Deleted successfully",
+    "name": "Name",
+    "code": "code",
+    "percentage": "Percentage",
+    "value": "Value",
+    "Expired": "Expired",
+    "active": "Active",
+    "PerValue": "Per Value",
+    "PerPercent": "Per Percent",
+    "Public": "public",
+    "ByUser": "By User",
+    "ByCity": "By City",
+    "Countries": "Countries",
+    "Cities": "Cities",
+    "Users": "Users",
+    "imageRequired": "Image is Required",
+    "fromError": "from Date must be before to date",
+    "wrong": "something went wrong"
   }
 }

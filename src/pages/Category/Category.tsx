@@ -7,7 +7,6 @@ import { DEVELOPMENT_BASE_URL } from "../../API/domain";
 import DeleteCategory from "./DeleteCategory";
 import SearchField from "../../Components/SearchField";
 import Title from "../../Components/Title";
-import logo from '../../assets/1.jpg'
 import { Link } from "react-router-dom";
 
 const Category = () => {
