@@ -17,7 +17,8 @@ const Category = () => {
     const {
         allCategories,
         allCategoriesIsLoading,
-        t
+        t,
+        location
     } = useCategoryHook(PageNumber, Search)
 
 
@@ -31,7 +32,7 @@ const Category = () => {
                     <SearchField value={Search} onSearch={setSearch} />
                 </Grid>
                 <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
-                    <Link to='/addCategory'>
+                    <Link to={`${location.pathname}/addCategory`}>
                         <Button variant="contained">
                             {t('Category.add')}
                         </Button>
@@ -79,11 +80,7 @@ const Category = () => {
                                 )
                             })}
 
-                            < Pagination
-                                // clickPrev={() => setPageNumber((prev) => prev - 1)}
-                                // disablePrev={PageNumber < 1}
-                                // clickNext={() => setPageNumber((prev) => prev + 1)}
-                                // disableNext={(Number(allCategories?.pageNumber) + 1) === allCategories?.totalPages}
+                            <Pagination
                                 page={PageNumber}
                                 onPageChange={setPageNumber}
                                 isFetching={allCategoriesIsLoading}

@@ -1,5 +1,5 @@
 import { AiOutlineClose } from "react-icons/ai";
-import { Typography } from "@mui/material";
+import { CardMedia, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import IconButton from "@mui/material/IconButton";
@@ -30,9 +30,9 @@ const ImgCard = ({
 }: IImgCardProps) => {
   // console.log(imgSrc)
   return (
-    <Card sx={{ ...sx, height: "100%", maxWidth:"100%"}}>
+    <Card >
       <CardHeader
-        sx={{textAlign: "center", color: "#072541", fontWeight: "500" , padding:"5px" }}
+        sx={{ textAlign: "center", color: "#072541", fontWeight: "500", padding: "5px" }}
         action={
           onDeleteImg && (
             <IconButton color={"primary"} onClick={(e) => onDeleteImg(e)}>
@@ -42,8 +42,14 @@ const ImgCard = ({
         }
         title={<Typography color={"primary.800"}>{title}</Typography>}
       />
-
-      <img
+      <CardMedia
+        component='img'
+        image={imgSrc}
+        height='196'
+        alt="image"
+        sx={{ p: 1 }}
+      />
+      {/* <img
         src={imgSrc}
         style={{
           objectFit: "cover",
@@ -51,7 +57,7 @@ const ImgCard = ({
           height: "100%",
           padding: "10px",
         }}
-      />
+      /> */}
     </Card>
   );
 };

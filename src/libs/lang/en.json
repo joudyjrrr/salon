@@ -88,6 +88,7 @@
     "type": "type",
     "title": "Category",
     "add": "Add Category",
+    "addded" : "Category has been Added Successfully",
     "delete": "Category has been deleted",
     "wrong": "something went wrong"
   },

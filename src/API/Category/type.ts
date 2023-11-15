@@ -14,7 +14,6 @@ export interface GetCategoryByIdType {
   imageUrl: string;
 }
 export interface SetCategoryType {
-  id: string;
   name: {
     key: string;
     value: string;

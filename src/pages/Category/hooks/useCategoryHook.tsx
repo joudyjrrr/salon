@@ -3,16 +3,30 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { AddCategoryType } from "./type";
 import { FileQuery } from "../../../API/File/FileQueries";
 
 
 const useCategoryHook = (pageNumber?: number, Query?: string) => {
-
+    const location = useLocation();
     const { t } = useTranslation();
     const [query, setquery] = useState<string>('')
-    const { register, control, formState: { errors } } = useForm<AddCategoryType>();
+    const { setValue, register, control, formState: { errors }, handleSubmit, reset } = useForm<AddCategoryType>({
+        defaultValues: {
+            name: [
+                {
+                    key: 'ar',
+                    value: ''
+                },
+                {
+                    key: 'en',
+                    value: ''
+                }
+            ],
+            type: null
+        }
+    });
 
     const navigate = useNavigate();
 
@@ -30,11 +44,12 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
 
     } = CategoryQuery.GetAllCategoryQuery({ PageNumber: pageNumber, Query: query })
     const { mutate: deleteImage } = FileQuery.DeleteFileQuery();
-    const { mutate: mutateImg, isPending : UploadingImg } = FileQuery.SetFileQuery()
+    const { mutate: mutateImg, isPending: UploadingImg } = FileQuery.SetFileQuery()
     const {
         isPending: isDeletingCategory,
         mutate: deleteCategory,
     } = CategoryQuery.DeleteBannerQuery()
+    const { mutate: SetCategory, isPending: isCategoryLoading } = CategoryQuery.SetCategoryQuery();
 
     return {
         allCategories,
@@ -48,7 +63,13 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         register,
         deleteImage,
         mutateImg,
-        UploadingImg
+        UploadingImg,
+        setValue,
+        handleSubmit,
+        isCategoryLoading,
+        SetCategory,
+        location,
+        reset
     }
 }
 
