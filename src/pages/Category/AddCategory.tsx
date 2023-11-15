@@ -16,8 +16,8 @@ import { showError, showSuccess } from "../../libs/reactToastify";
 
 const AddCategory = () => {
     const [File, setFile] = useState<File | null>();
-    const [Open, setOpen] = useState(false);
     const [img, setImg] = useState<string>("");
+    const [Open, setOpen] = useState(false);
     const {
         t,
         navigate,

@@ -11,6 +11,10 @@ const Fallback = lazy(() => import("./Components/Fallback"));
 const Category = lazy(() => import("./pages/Category/Category"));
 const AddCategory = lazy(() => import("./pages/Category/AddCategory"));
 const Country = lazy(() => import("./pages/Country/Country"));
+const Coupon = lazy(() => import('./pages/Coupon/Coupon'))
+const AddCoupon = lazy(() => import('./pages/Coupon/AddCoupon/AddCoupon'))
+
+
 const Routes = () => {
   return (
     <>
@@ -27,8 +31,8 @@ const Routes = () => {
         <Route element={<ProtectedPage />}>
           <Route
             path="/"
-            element = {
-              <Suspense fallback = {<></>}>
+            element={
+              <Suspense fallback={<></>}>
                 <></>
               </Suspense>
             }
@@ -102,6 +106,25 @@ const Routes = () => {
                 </Suspense>
               }
             />
+          </Route>
+          <Route path="/coupon">
+            <Route
+              index
+              element={
+                <Suspense fallback={<Fallback />}>
+                  <Coupon />
+                </Suspense>
+              }
+            />
+            <Route
+              path="addCoupon"
+              element={
+                <Suspense fallback={<Fallback />}>
+                  <AddCoupon />
+                </Suspense>
+              }
+            />
+
           </Route>
         </Route>
       </ReactRoutes>

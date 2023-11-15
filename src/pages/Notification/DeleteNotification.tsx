@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
 import DeleteModal from '../../Components/DeleteModal';
-import useNotificationsHook from './hooks/useNotificationsHook.tsx';
+import useNotificationsHook from './hooks/useNotificationsHook.ts';
 import { showError, showSuccess } from '../../libs/toast/Tostify';
 
 
