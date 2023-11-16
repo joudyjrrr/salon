@@ -68,12 +68,12 @@ export interface SalonData extends Salon {
     longitude: number;
     cityId: string;
   };
-  workSchedule: {
-    day: number;
-    startTime: string;
-    endTime: string;
-    isFree: boolean;
-  }[];
+    workSchedule: {
+      day: number;
+      startTime: string;
+      endTime: string;
+      isFree: boolean;
+    }[];
 }
 export interface salonType {
   id: number;

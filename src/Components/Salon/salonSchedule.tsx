@@ -14,8 +14,9 @@ import FormTextField from "../Form/FormTextField";
 import { DefaultFromDate } from "../../helper/imgHelper";
 import { useTranslation } from "react-i18next";
 
-const salonSchedule: FC<{ control: Control<SalonInput, any> ,  watch: UseFormWatch<any>;}> = ({
+const salonSchedule: FC<{ control: any,  watch: UseFormWatch<any> , title : string}> = ({
   control,
+  title,
   watch
 }) => {
   const workSchedule: {
@@ -46,7 +47,7 @@ const salonSchedule: FC<{ control: Control<SalonInput, any> ,  watch: UseFormWat
             marginY: "10px",
           }}
         >
-        {t("salon.SalonSchedule")}
+       {title}
         </Typography>
         <TableHeader TableHeaderArray={TableHeaderArray}>
           <TableBody>

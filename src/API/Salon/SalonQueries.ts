@@ -31,6 +31,7 @@ const GetSalonDetailsQuery =  (salonId : string) => {
   });
   return queryResult;
 };
+
 const SetSalonQuery = () => {
   const queryResult = useMutation({
     mutationKey: ["set-salon"],

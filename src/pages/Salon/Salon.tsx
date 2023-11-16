@@ -26,6 +26,7 @@ import { useNavigate } from "react-router";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { SalonApi } from "../../API/Salon/SalonApi";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -75,7 +76,6 @@ const Salon = () => {
                 <Card elevation={7}>
                   <CardMedia
                     component={"img"}
-                    alt="Category image"
                     height={150}
                     image={d.logo ? `${API_SERVER_URL_For_Img}/${d.logo}` : img}
                   />
@@ -129,6 +129,9 @@ const Salon = () => {
                       setId={() => setId(d?.id ?? "")}
                       userId={id ?? ""}
                     />
+                    <IconButton onClick={() => navigate(`employee/${d.id}`)}>
+                      <ManageAccountsIcon />
+                    </IconButton>
                   </CardActions>
                 </Card>
               </Grid>

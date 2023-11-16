@@ -16,7 +16,8 @@
     "notification": "الإشعارات",
     "FeedBack": "الاقتراحات",
     "offer": "العروض",
-    "salon": "صالون التجميل"
+    "salon": "صالون التجميل",
+    "employee":"الموظفين"
   },
   "form": {
     "userName": "اسم المستخدم",
@@ -70,7 +71,11 @@
     "chooseCity": "اختر مدينة",
     "logoImg":"صورة الشعار",
     "countryCode": "كود البلد",
-    "country": "اسم البلد"
+    "country": "اسم البلد",
+    "certificates":"الشهادات",
+    "experienceYears":"سنوات الخبرة",
+    "chooseGender":"اختر الجنس",
+    "img":"الصورة"
   },
   "table": {
     "name": "اسم المستخدم",
@@ -141,6 +146,18 @@
     "salonType": "نوع الصالون",
     "SalonSchedule": "جدولة دوام الصالون",
     "Day": "اليزم",
+    "Available": "متوفر",
+    "from": "من",
+    "to": "إلى"
+  },
+  "emp": {
+    "title": "الموظفين",
+    "add": "إضافة موظف",
+    "edit": "تعديل الموظف",
+    "action": "تم حفظ الموظف بنجاح",
+    "delete": "تم حذف الموظف بنجاح",
+    "empSchedule": "جدولة دوام الموظف",
+    "Day": "اليوم",
     "Available": "متوفر",
     "from": "من",
     "to": "إلى"

@@ -18,6 +18,7 @@ const controller = {
   Service: "Service",
   Version: "Version",
   file: "File",
+  Empolyee: "Employee",
 };
 const Banner = {
   GET_ALL_BANNER_CP: `${controller.Banner}/BannerGetAllCp`,
@@ -81,6 +82,12 @@ const Salon = {
   SET_SALON: `${controller.Salon}/SetSalon`,
   DELETE_SALON: `${controller.Salon}/DeleteSalonCp`
 };
+const Employee = {
+  GET_ALL_Employee_CP: `${controller.Employee}/GetSalonEmployees`,
+  GET_Employee_DETAILS_CP: `${controller.Employee}/GetEmployeeDetailsCp`,
+  SET_Employee: `${controller.Employee}/SetEmployeeCp`,
+  DELETE_Employee: `${controller.Employee}/DeleteEmployeeCp`
+};
 const Version = {
   SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
   DELETE_VERSION_CP: `${controller.Salon}/VersionDeleteCp`,
@@ -110,4 +117,5 @@ export const API_Routes = {
   Service,
   Feedback,
   File,
+  Employee
 };

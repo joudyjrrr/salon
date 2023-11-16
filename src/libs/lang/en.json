@@ -15,7 +15,8 @@
     "Permission": "Permission",
     "FeedBack": "FeedBack",
     "offer": "Offer",
-    "salon": "Salon"
+    "salon": "Salon",
+    "employee":"Employee"
   },
   "form": {
     "userName": "User Name",
@@ -70,7 +71,11 @@
     "chooseCity": "Choose City",
     "logoImg":"logo Img",
     "countryCode": "countryCode",
-    "country": "Country Name"
+    "country": "Country Name",
+    "certificates":"Certificates",
+    "experienceYears":"experienceYears",
+    "chooseGender":"chooseGender",
+    "img":"img"
   },
   "table": {
     "name": "Name",
@@ -140,6 +145,18 @@
     "delete": "Salon has been Deleted",
     "salonType": "Salon Type",
     "SalonSchedule": " Salon Schedule",
+    "Day": "Day",
+    "Available": "Available",
+    "from": "from",
+    "to": "to"
+  },
+  "emp": {
+    "title": "Employee",
+    "add": "Add Employee",
+    "edit": "Edit Employee",
+    "action": "Employee has been saved successfully",
+    "delete": "Employee has been Deleted",
+    "empSchedule": " Employee Schedule",
     "Day": "Day",
     "Available": "Available",
     "from": "from",

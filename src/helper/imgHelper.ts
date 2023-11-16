@@ -1,5 +1,6 @@
 import { PixelCrop } from "react-image-crop";
 import { useEffect, DependencyList } from "react";
+import moment from "moment"
 import {
   IGenericActionParam,
   IGenericFormInputs,
@@ -129,13 +130,12 @@ export const makeActionArrayValues = (data: any) => {
   return variantsValue;
 };
 export const dayTimeConvert = (Time: any) => {
-  // const inputTime = "02:02";
-
   const currentDate = new Date();
   const [hours, minutes] = Time.split(":");
   currentDate.setHours(Number(hours));
   currentDate.setMinutes(Number(minutes));
   const formattedTime = currentDate.toISOString();
+  // const utcTime =moment.utc(formattedTime)
   console.log(formattedTime);
   return formattedTime;
 };
@@ -144,7 +144,6 @@ export const DefaultFromDate = () => {
   const hours = now.getHours().toString().padStart(2, "0");
   const minutes = now.getMinutes().toString().padStart(2, "0");
   const currentTime = `${hours}:${minutes}`;
-
   return currentTime;
 };
 export const DefaultToDate = () => {
@@ -155,11 +154,20 @@ export const DefaultToDate = () => {
   return newNow;
 };
 
-export const convertToInputTime = (value : any) => {
+export const convertToInputTime = (value: any) => {
+  const dateTime = new Date(value);
+
+  // الحصول على التوقيت المحلي للجهاز
+  const timezoneOffset = dateTime.getTimezoneOffset();
+  const localDateTime = new Date(dateTime.getTime() - (timezoneOffset * 60 * 1000));
+
+  const hours = localDateTime.getHours().toString().padStart(2, "0");
+  const minutes = localDateTime.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+};
+export const convertToInputTimeSalon = (value : any) => {
   const dateTime = new Date(value);
   const hours = dateTime.getHours().toString().padStart(2, "0");
   const minutes = dateTime.getMinutes().toString().padStart(2, "0");
   return `${hours}:${minutes}`;
-};
-
-
+  };

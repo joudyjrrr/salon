@@ -1,4 +1,10 @@
-import { Button, Dialog, DialogContent, Slide } from "@mui/material";
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  Slide,
+  Typography,
+} from "@mui/material";
 import React, { FC, useState } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { UseFormSetValue } from "react-hook-form";
@@ -59,8 +65,13 @@ const SelectLocation: FC<{
         }}
       >
         {t("form.selectLocation")}
-        <AddLocationAltIcon sx={{marginInline:"3px"}}/>
+        <AddLocationAltIcon sx={{ marginInline: "3px" }} />
       </Button>
+      {error && (
+        <Typography color="#FF5252" marginY="5px" fontSize="15px">
+          {t("form.required")}
+        </Typography>
+      )}
       <FadeModal
         width={700}
         open={openActionModel}

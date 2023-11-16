@@ -25,6 +25,7 @@ const Select: FC<{ control: any }> = ({ control }) => {
               value={field.value}
               onChange={field.onChange}
               label={t("form.chooseCity")}
+              required={true}
             />
           )}
         />
@@ -39,6 +40,7 @@ const Select: FC<{ control: any }> = ({ control }) => {
               value={field.value}
               option={SalonTypeArray}
               label={t("form.chooseSalonType")}
+              req={true}
             />
           )}
         />
