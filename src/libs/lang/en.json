@@ -16,7 +16,7 @@
     "FeedBack": "FeedBack",
     "offer": "Offer",
     "salon": "Salon",
-    "employee":"Employee"
+    "employee": "Employee"
   },
   "form": {
     "userName": "User Name",
@@ -69,13 +69,13 @@
     "chooseSalonType": "Choose SalonType",
     "chooseCountry": "Choose Country",
     "chooseCity": "Choose City",
-    "logoImg":"logo Img",
+    "logoImg": "logo Img",
     "countryCode": "countryCode",
     "country": "Country Name",
-    "certificates":"Certificates",
-    "experienceYears":"experienceYears",
-    "chooseGender":"chooseGender",
-    "img":"img"
+    "certificates": "Certificates",
+    "experienceYears": "experienceYears",
+    "chooseGender": "chooseGender",
+    "img": "img"
   },
   "table": {
     "name": "Name",
@@ -101,6 +101,7 @@
     "title": "Category",
     "add": "Add Category",
     "added": "Category has been Added Successfully",
+    "edited": "Category has been Edited Successfully",
     "delete": "Category has been deleted",
     "genderType": "gender",
     "male": "male",
@@ -166,7 +167,7 @@
     "title": "Country",
     "action": "Users has been saved successfully",
     "add": "Add Country",
-    "edit":"Edit Country",
+    "edit": "Edit Country",
     "delete": "Country has been Deleted"
   },
   "Coupon": {

@@ -8,7 +8,8 @@ import DeleteCategory from "./DeleteCategory";
 import SearchField from "../../Components/SearchField";
 import Title from "../../Components/Title";
 import { Link } from "react-router-dom";
-
+import EditCategory from "./EditCategory";
+import EditIcon from '@mui/icons-material/Edit';
 const Category = () => {
     const [PageNumber, setPageNumber] = useState(0);
     const [Search, setSearch] = useState<string>('')
@@ -17,7 +18,7 @@ const Category = () => {
         allCategories,
         allCategoriesIsLoading,
         t,
-        location
+        location,navigate
     } = useCategoryHook(PageNumber, Search)
 
 
@@ -65,11 +66,14 @@ const Category = () => {
                                                         )
                                                     })}
                                                     <Typography variant="caption">
-                                                        {t('Category.type')} : {category.type}
+                                                        {t('Category.type')} : {category.type === 0 ? 'Male' : 'Female'}
                                                     </Typography>
                                                 </Grid>
                                             </CardContent>
                                             <CardActions>
+                                                <Button onClick={() => navigate(`editCategory/${category.id}`)}>
+                                                    <EditIcon />
+                                                </Button>
                                                 <DeleteCategory id={category.id} />
                                             </CardActions>
                                         </Card>

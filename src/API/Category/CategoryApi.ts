@@ -17,7 +17,7 @@ const GetAllCategory = async (payload: IPayload) => {
   });
   return data;
 };
-const getCategoryById = async (id: string) => {
+const getCategoryById = async (id: string | undefined) => {
   const { data } = await DeliveryApiInstances.get<GetCategoryByIdType>(
     API_Routes.Category.GET_CATEGORY_BY_ID_CP,
     {

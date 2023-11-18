@@ -3,16 +3,18 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { useForm } from "react-hook-form";
-import { useLocation, useNavigate } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 import { AddCategoryType } from "./type";
 import { FileQuery } from "../../../API/File/FileQueries";
 
 
 const useCategoryHook = (pageNumber?: number, Query?: string) => {
     const location = useLocation();
+    const params = useParams();
+    const id = params.id;
     const { t } = useTranslation();
     const [query, setquery] = useState<string>('')
-    const { setValue, register, control, formState: { errors }, handleSubmit, reset, setError } = useForm<AddCategoryType>({
+    const { setValue, register, control, formState: { errors }, handleSubmit, reset, setError, watch } = useForm<AddCategoryType>({
         defaultValues: {
             name: [
                 {
@@ -51,6 +53,8 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
     } = CategoryQuery.DeleteBannerQuery()
     const { mutate: SetCategory, isPending: isCategoryLoading } = CategoryQuery.SetCategoryQuery();
 
+    const { data: ThisCategory, isLoading: isThisCategoryLoading } = CategoryQuery.GetCategoryByIdQuery(id)
+
     return {
         allCategories,
         allCategoriesIsLoading,
@@ -70,7 +74,11 @@ const useCategoryHook = (pageNumber?: number, Query?: string) => {
         SetCategory,
         location,
         reset,
-        setError
+        setError,
+        params,
+        ThisCategory,
+        watch,
+        isThisCategoryLoading
     }
 }
 

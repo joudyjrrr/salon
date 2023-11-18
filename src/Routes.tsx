@@ -63,6 +63,14 @@ const Routes = () => {
                 </Suspense>
               }
             />
+            <Route
+              path="editCategory/:id"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddCategory />
+                </Suspense>
+              }
+            />
           </Route>
 
           <Route
@@ -123,7 +131,7 @@ const Routes = () => {
                   </Suspense>
                 }
               />
-               <Route
+              <Route
                 path="edit-employee/:empId"
                 element={
                   <Suspense fallback={<></>}>

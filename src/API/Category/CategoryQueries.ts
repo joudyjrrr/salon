@@ -16,13 +16,14 @@ const GetAllCategoryQuery = (payload: IPayload) => {
   });
   return queryResult;
 };
-const GetCategoryByIdQuery = async (id: string) => {
+const GetCategoryByIdQuery = (id: string | undefined) => {
   const queryResult = useQuery({
     queryKey: ["get-category-by-id", id],
     queryFn: async () => {
       const data = await CategoryApi.getCategoryById(id);
       return data;
     },
+    enabled: !!id,
   });
   return queryResult;
 };
