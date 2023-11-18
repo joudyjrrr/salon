@@ -122,7 +122,7 @@
     "Store": "Store",
     "Driver": "Driver",
     "deleted": "Notification Deleted successfully",
-    "added": "added",
+    "added": "Notification Added Successfully",
     "wrong": "something went wrong"
   },
   "salon": {
@@ -136,6 +136,8 @@
   "Coupon": {
     "title": "Coupon",
     "add": "Add Coupon",
+    "addTitle": "Add Title",
+    "added": "Coupon Added Successfully",
     "deleted": "Coupon Deleted successfully",
     "name": "Name",
     "code": "code",

@@ -5,7 +5,6 @@ import SearchField from '../../Components/SearchField';
 import CouponHook from './hook/CouponHook';
 import { Link } from 'react-router-dom';
 import Loading from '../../Components/Loading';
-import logo from '../../assets/1.jpg';
 import DeleteCoupon from './DeleteCoupon';
 import Pagination from '../../Components/Pagination';
 import { DEVELOPMENT_BASE_URL } from '../../API/domain';
@@ -16,7 +15,6 @@ const Coupon = () => {
     const {
         Coupons,
         isCouponsLoading,
-        register,
         t
     } = CouponHook(Search, PageNumber)
 
@@ -47,8 +45,6 @@ const Coupon = () => {
 
                             {
                                 Coupons?.data.map((coupon, idx) => {
-                                    console.log(coupon.image);
-
                                     return (
                                         <>
                                             <Grid item key={idx} xs={12} sm={6} md={4} lg={3}>
@@ -57,7 +53,7 @@ const Coupon = () => {
                                                         component={'img'}
                                                         alt="Coupon image"
                                                         image={`${DEVELOPMENT_BASE_URL}/${coupon.image}`}
-                                                    // image={logo}
+
                                                     />
                                                     <CardContent>
                                                         <Typography gutterBottom variant="body2" component="div">

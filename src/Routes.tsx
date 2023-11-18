@@ -96,7 +96,7 @@ const Routes = () => {
             <Route
               index
               element={
-                <Suspense fallback={<Fallback />}>
+                <Suspense fallback={<></>}>
                   <Coupon />
                 </Suspense>
               }
@@ -104,7 +104,7 @@ const Routes = () => {
             <Route
               path="addCoupon"
               element={
-                <Suspense fallback={<Fallback />}>
+                <Suspense fallback={<></>}>
                   <AddCoupon />
                 </Suspense>
               }

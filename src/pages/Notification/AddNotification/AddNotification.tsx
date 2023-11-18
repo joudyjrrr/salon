@@ -26,7 +26,7 @@ function AddNotification() {
     } = useNotificationsHook();
 
     const submitHandler: SubmitHandler<AddNotificationType> = (data: AddNotificationType) => {
-        console.log({ data });
+        
 
         const titleArabic = data.title[0].value.trim();
         const titleEnglish = data.title[1].value.trim();

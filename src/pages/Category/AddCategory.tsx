@@ -58,7 +58,6 @@ const AddCategory = () => {
     }
 
     const SubmitHandler = (data: AddCategoryType) => {
-        console.log(errors);
 
         if (data.name[0].value === '') {
             setError('name.0.value', { message: t('form.required') });
