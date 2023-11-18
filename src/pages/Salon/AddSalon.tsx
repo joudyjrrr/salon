@@ -1,17 +1,18 @@
-import { Box, Grid, Stack } from "@mui/material";
+import { Box, Grid, Paper, Stack } from "@mui/material";
 import useSalon from "./hook/useSalon";
 import TitleWithArrow from "../../Components/TitleWithArrwo";
 import { useTranslation } from "react-i18next";
 import Inputs from "../../Components/Salon/Inputs";
-import GenericObjectAutoCompleteNubmer from "../../Components/Form/GenericObjectAutoCompleteNubmer";
-import { SalonTypeArray } from "../../API/Salon/type";
 import { Controller } from "react-hook-form";
-import SelectLocation from "../../Components/Form/SelectLocation";
 import UploadGenericImg from "../../Components/Img/UploadGenericImg";
 import ImgCard from "../../Components/Img/ImgCard";
 import { FileApi } from "../../API/File/FileApi";
-import { API_BASE_URL } from "../../API/domain";
+import { API_SERVER_URL_For_Img } from "../../API/domain";
 import ModalImgCrop from "../../Components/Img/ModalImgCrop";
+import Select from "../../Components/Salon/Select";
+import SalonSchedule from "../../Components/Salon/salonSchedule";
+import SubmitButton from "../../Components/Form/SubmitButton";
+import Loading from "../../Components/Loading";
 
 const AddSalon = () => {
   const {
@@ -19,18 +20,23 @@ const AddSalon = () => {
     setValue,
     watch,
     handleCropImgProduct,
+    isLoading,
     handleManipulateImage,
     imgCoverAfterCrop,
     genericFile,
-    setImegesAfterCrop,
     setImgCoverAfterCrop,
     setImgTitle,
     imgagesAfterCrop,
     handleDeleteImg,
     isPendingImg,
+    handleSubmit,
+    onSubmit,
     openCropModal,
     setOpenCropModal,
+    isPending,
     imgTitle,
+    salonId,
+    errors
   } = useSalon();
   const { t } = useTranslation();
   return (
@@ -41,78 +47,88 @@ const AddSalon = () => {
           marginTop: "30px",
         }}
       >
-        <TitleWithArrow title={t("salon.add")} />
-        <form
-          style={{
-            marginTop: "50px",
-          }}
-        >
-          <Grid
-            item
-            container
-            lg={12}
-            md={12}
-            sm={12}
-            spacing={{ xs: 2, md: 3 }}
-          >
-            <Inputs control={control} setValue={setValue} watch={watch} />
-            <Grid item lg={3} md={4} sm={6}>
-              <Controller
-                name="SalonType"
-                control={control}
-                render={({ field }) => (
-                  <GenericObjectAutoCompleteNubmer
-                    onChange={field.onChange}
-                    value={field.value}
-                    option={SalonTypeArray}
-                    label={t("form.chooseSalonType")}
-                  />
-                )}
-              />
-            </Grid>
-            <Grid item lg={3} md={4} sm={6}>
-              {imgCoverAfterCrop === "" ? (
-                <Controller
-                  name="coverImage"
-                  control={control}
-                  render={() => (
-                    <UploadGenericImg
-                      onFileUpload={handleManipulateImage}
-                      buttonText={t("form.ubloadImgForCover")}
-                      setImg={() => setImgTitle("cover")}
+        <TitleWithArrow title={salonId ? t("salon.edit") : t("salon.add")} />
+        {isLoading && salonId ? (
+          <Box marginTop="150px">
+            <Loading />
+          </Box>
+        ) : (
+          <Paper elevation={8} sx={{ paddingX: "20px", paddingBottom: "10px" }}>
+            <form
+              style={{
+                marginTop: "50px",
+              }}
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <Grid
+                item
+                container
+                lg={12}
+                md={12}
+                sm={12}
+                spacing={{ xs: 2, md: 3 }}
+              >
+                <Inputs errors={errors} control={control} setValue={setValue} watch={watch} />
+                <Select control={control} />
+                <Grid item lg={3} md={4} sm={6}>
+                  {imgCoverAfterCrop === "" ? (
+                    <Controller
+                      name="coverImage"
+                      control={control}
+                      render={() => (
+                        <UploadGenericImg
+                          onFileUpload={handleManipulateImage}
+                          buttonText={t("form.uploadImgForLogo")}
+                          setImg={() => setImgTitle("cover")}
+                        />
+                      )}
+                    />
+                  ) : (
+                    <ImgCard
+                      imgSrc={`${API_SERVER_URL_For_Img}/${imgCoverAfterCrop}`}
+                      onDeleteImg={() => {
+                        FileApi.DeleteFile(imgCoverAfterCrop);
+                        setImgCoverAfterCrop("");
+                      }}
+                      title={t("form.logoImg")}
                     />
                   )}
-                />
-              ) : (
-                <ImgCard
-                  imgSrc={`${API_BASE_URL}/${imgCoverAfterCrop}`}
-                  onDeleteImg={() => {
-                    FileApi.DeleteFile(imgCoverAfterCrop);
-                    setImgCoverAfterCrop("");
-                  }}
-                  title="Cover Img"
-                />
-              )}
-            </Grid>
-            <Grid item lg={3} md={4} sm={6}>
-              <UploadGenericImg
-                onFileUpload={handleManipulateImage}
-                buttonText={t("form.upLoadImg")}
-                setImg={() => setImgTitle("images")}
-               
-              />
-              {imgagesAfterCrop &&
-                imgagesAfterCrop?.map((img, index) => (
-                  <ImgCard
-                    imgSrc={`${API_BASE_URL}/${img}`}
-                    onDeleteImg={() => {
-                      handleDeleteImg(index);
-                    }}
+                </Grid>
+                <Grid item lg={3} md={4} sm={6} flexShrink="0" flexGrow="0">
+                  <UploadGenericImg
+                    onFileUpload={handleManipulateImage}
+                    buttonText={t("form.upLoadImg")}
+                    setImg={() => setImgTitle("images")}
                   />
-                ))}
-            </Grid>
-          </Grid>
-        </form>
+                </Grid>
+                {imgagesAfterCrop &&
+                  imgagesAfterCrop?.map((img, index) => (
+                    <Grid item lg={3} md={4} sm={6}>
+                      <ImgCard
+                        imgSrc={`${API_SERVER_URL_For_Img}/${img}`}
+                        onDeleteImg={() => {
+                          handleDeleteImg(index);
+                        }}
+                      />
+                    </Grid>
+                  ))}
+              </Grid>
+              <SalonSchedule
+                title={t("salon.SalonSchedule")}
+                control={control}
+                watch={watch}
+              />
+              <Stack
+                marginInline={`auto`}
+                justifyContent={`center`}
+                width={`fit-content`}
+                marginY={`15px`}
+              >
+                <SubmitButton isSubmitting={isPending} />
+              </Stack>
+            </form>
+          </Paper>
+        )}
         {genericFile && (
           <ModalImgCrop
             disableCropButton={isPendingImg}

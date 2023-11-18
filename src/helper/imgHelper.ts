@@ -1,6 +1,11 @@
 import { PixelCrop } from "react-image-crop";
 import { useEffect, DependencyList } from "react";
-import { IGenericActionParam, IGenericFormInputs, IGenericFormInputsDesc } from "../interface/generic";
+import moment from "moment"
+import {
+  IGenericActionParam,
+  IGenericFormInputs,
+  IGenericFormInputsDesc,
+} from "../interface/generic";
 const TO_RADIANS = Math.PI / 180;
 
 export async function canvasPreview(
@@ -124,3 +129,45 @@ export const makeActionArrayValues = (data: any) => {
 
   return variantsValue;
 };
+export const dayTimeConvert = (Time: any) => {
+  const currentDate = new Date();
+  const [hours, minutes] = Time.split(":");
+  currentDate.setHours(Number(hours));
+  currentDate.setMinutes(Number(minutes));
+  const formattedTime = currentDate.toISOString();
+  // const utcTime =moment.utc(formattedTime)
+  console.log(formattedTime);
+  return formattedTime;
+};
+export const DefaultFromDate = () => {
+  const now = new Date();
+  const hours = now.getHours().toString().padStart(2, "0");
+  const minutes = now.getMinutes().toString().padStart(2, "0");
+  const currentTime = `${hours}:${minutes}`;
+  return currentTime;
+};
+export const DefaultToDate = () => {
+  var now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  now.setDate(now.getDate() + 1);
+  const newNow = now.toISOString().slice(0, 16);
+  return newNow;
+};
+
+export const convertToInputTime = (value: any) => {
+  const dateTime = new Date(value);
+
+  // الحصول على التوقيت المحلي للجهاز
+  const timezoneOffset = dateTime.getTimezoneOffset();
+  const localDateTime = new Date(dateTime.getTime() - (timezoneOffset * 60 * 1000));
+
+  const hours = localDateTime.getHours().toString().padStart(2, "0");
+  const minutes = localDateTime.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+};
+export const convertToInputTimeSalon = (value : any) => {
+  const dateTime = new Date(value);
+  const hours = dateTime.getHours().toString().padStart(2, "0");
+  const minutes = dateTime.getMinutes().toString().padStart(2, "0");
+  return `${hours}:${minutes}`;
+  };

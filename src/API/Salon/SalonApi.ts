@@ -5,6 +5,7 @@ import {
   GetAllSalonType,
   GetSalonDetailsParamsType,
   GetSalonDetailsType,
+  SalonData,
 } from "./type";
 
 const GetSalonAll = async (params: IPayload) => {
@@ -21,21 +22,36 @@ const GetSalonAll = async (params: IPayload) => {
   return data;
 };
 
-const GetSalonDetails = async (params: GetSalonDetailsParamsType) => {
-  const { data } = await DeliveryApiInstances.get<
-    IPagination<GetSalonDetailsType>
-  >(API_Routes.Salon.GET_SALON_DETAILS_CP, {
+const GetSalonDetails = async (salonId: string) => {
+  const { data } = await DeliveryApiInstances.get<GetSalonDetailsType>
+  (API_Routes.Salon.GET_SALON_DETAILS_CP, {
     params: {
-      salonId: params.salonId,
-      EnablePagination: params.EnablePagination,
-      Query: params.Query,
-      PageNumber: params.PageNumber,
+      salonId,
     },
   });
   return data;
 };
-
+const SetSalon = async (params: SalonData) => {
+  const { data } = await DeliveryApiInstances.post(
+    API_Routes.Salon.SET_SALON,
+    params
+  );
+  return data;
+};
+const DeleteSalon = async (SalonId: string) => {
+  const { data } = await DeliveryApiInstances.delete(
+    API_Routes.Salon.DELETE_SALON,
+    {
+      params: {
+        SalonId,
+      },
+    }
+  );
+  return data;
+};
 export const SalonApi = {
   GetSalonAll,
   GetSalonDetails,
+  SetSalon,
+  DeleteSalon
 };

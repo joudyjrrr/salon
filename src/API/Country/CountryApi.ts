@@ -7,12 +7,10 @@ const getCpCountry = async (params: IPayload) => {
   // console.log(params.Query)
   const { data } = await DeliveryApiInstances.get<
     IPagination<GetAllCountryType>
-  >(API_Routes.Country.GET_ALL_CP_Country, { 
-    params
-   });
+  >(API_Routes.Country.GET_ALL_CP_Country, { params });
   return data;
 };
-
+// console.log(API_Routes.Country.GET_ALL_CP_Country)
 const getCountryById = async (id: string | undefined) => {
   const { data } = await DeliveryApiInstances.get<GetCountryById>(
     API_Routes.Country.GET_Country_BY_ID,

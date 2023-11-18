@@ -1,10 +1,12 @@
 import {
   Box,
   Card,
+  CardActions,
   CardContent,
   CardMedia,
   Fab,
   Grid,
+  IconButton,
   Stack,
   Typography,
   useMediaQuery,
@@ -14,22 +16,28 @@ import { useTranslation } from "react-i18next";
 import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
 import { SalonQueries } from "../../API/Salon/SalonQueries";
-import { API_BASE_URL } from "../../API/domain";
+import { API_BASE_URL, API_SERVER_URL_For_Img } from "../../API/domain";
 import { SalonTypeArray } from "../../API/Salon/type";
 import img from "../../assets/1.jpg";
 import Loading from "../../Components/Loading";
 import Pagination from "../../Components/Pagination";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteCustome from "../../Components/DeleteCustome";
+import { SalonApi } from "../../API/Salon/SalonApi";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
+  const [id, setId] = useState<string>("");
   const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
   const {
     data: salonData,
     isLoading,
+    refetch,
     isFetching,
   } = SalonQueries.GetSalonAllQuery({
     Query: query,
@@ -68,9 +76,8 @@ const Salon = () => {
                 <Card elevation={7}>
                   <CardMedia
                     component={"img"}
-                    alt="Category image"
                     height={150}
-                    image={d.logo ? `${API_BASE_URL}/${d.logo}` : img}
+                    image={d.logo ? `${API_SERVER_URL_For_Img}/${d.logo}` : img}
                   />
                   <CardContent>
                     <Grid container flexDirection={"column"}>
@@ -108,6 +115,24 @@ const Salon = () => {
                       </Stack>
                     </Grid>
                   </CardContent>
+                  <CardActions>
+                    <IconButton>
+                      <EditIcon
+                        onClick={() => navigate(`edit-salon/${d.id}`)}
+                        color="primary"
+                      />
+                    </IconButton>
+                    <DeleteCustome
+                      refetch={refetch}
+                      MassegeSuccess={t("salon.delete")}
+                      onDelete={() => SalonApi.DeleteSalon(id)}
+                      setId={() => setId(d?.id ?? "")}
+                      userId={id ?? ""}
+                    />
+                    <IconButton onClick={() => navigate(`employee/${d.id}`)}>
+                      <ManageAccountsIcon />
+                    </IconButton>
+                  </CardActions>
                 </Card>
               </Grid>
             ))}

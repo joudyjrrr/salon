@@ -16,7 +16,8 @@
     "notification": "الإشعارات",
     "FeedBack": "الاقتراحات",
     "offer": "العروض",
-    "salon": "صالون التجميل"
+    "salon": "صالون التجميل",
+    "employee":"الموظفين"
   },
   "form": {
     "userName": "اسم المستخدم",
@@ -65,14 +66,24 @@
     "tempPhoneNumber": "رقم الهاتف البديل",
     "facebookUrl": "رابط الفيسبوك",
     "instagramUrl": "رابط الانستغرام",
-    "chooseSalonType": "اختر نوع الصالون"
+    "chooseSalonType": "اختر نوع الصالون",
+    "chooseCountry": "اختر دولة",
+    "chooseCity": "اختر مدينة",
+    "logoImg":"صورة الشعار",
+    "countryCode": "كود البلد",
+    "country": "اسم البلد",
+    "certificates":"الشهادات",
+    "experienceYears":"سنوات الخبرة",
+    "chooseGender":"اختر الجنس",
+    "img":"الصورة"
   },
   "table": {
     "name": "اسم المستخدم",
     "handel": "التحكم",
     "currency": "العملة",
     "role": "الدور",
-    "desc": "الوصف"
+    "desc": "الوصف",
+    "countryCode": "كود البلد"
   },
   "cpMangment": {
     "title": "إدارة المستخدمين",
@@ -132,6 +143,30 @@
     "edit": "تعديل الصالون",
     "action": "تم حفظ الصالون بنجاح",
     "delete": "تم حذف الصالون بنجاح",
-    "salonType": "نوع الصالون"
+    "salonType": "نوع الصالون",
+    "SalonSchedule": "جدولة دوام الصالون",
+    "Day": "اليزم",
+    "Available": "متوفر",
+    "from": "من",
+    "to": "إلى"
+  },
+  "emp": {
+    "title": "الموظفين",
+    "add": "إضافة موظف",
+    "edit": "تعديل الموظف",
+    "action": "تم حفظ الموظف بنجاح",
+    "delete": "تم حذف الموظف بنجاح",
+    "empSchedule": "جدولة دوام الموظف",
+    "Day": "اليوم",
+    "Available": "متوفر",
+    "from": "من",
+    "to": "إلى"
+  },
+  "Country": {
+    "title": "إدارة المدن",
+    "action": "تم إضافة المدينة بنجاح",
+    "add": "إضافة مدينة",
+    "edit":"تعديل مدينة",
+    "delete": "تم حذف المدينة بنجاح"
   }
 }

@@ -15,7 +15,8 @@
     "Permission": "Permission",
     "FeedBack": "FeedBack",
     "offer": "Offer",
-    "salon": "Salon"
+    "salon": "Salon",
+    "employee":"Employee"
   },
   "form": {
     "userName": "User Name",
@@ -47,6 +48,7 @@
     "ChooseRole": "Choose Roles",
     "values": "Values",
     "uploadImgForCover": "Upload Img for Cover",
+    "uploadImgFor": "Upload Img for Logo",
     "uploadImgForLogo": "Upload Img for Logo",
     "selectLocation": "Select Location",
     "addLocation": "Add Location",
@@ -64,14 +66,24 @@
     "tempPhoneNumber": "tempPhoneNumber",
     "facebookUrl": "FacebookUrl",
     "instagramUrl": "InstagramUrl",
-    "chooseSalonType": "Choose SalonType"
+    "chooseSalonType": "Choose SalonType",
+    "chooseCountry": "Choose Country",
+    "chooseCity": "Choose City",
+    "logoImg":"logo Img",
+    "countryCode": "countryCode",
+    "country": "Country Name",
+    "certificates":"Certificates",
+    "experienceYears":"experienceYears",
+    "chooseGender":"chooseGender",
+    "img":"img"
   },
   "table": {
     "name": "Name",
     "handel": "Handle",
     "currency": "Currency",
     "role": "Role",
-    "desc": "Description"
+    "desc": "Description",
+    "countryCode": "countryCode"
   },
   "cpMangment": {
     "title": "Manege User Acount",
@@ -131,7 +143,31 @@
     "edit": "Edit Salon",
     "action": "Salon has been saved successfully",
     "delete": "Salon has been Deleted",
-    "salonType": "Salon Type"
+    "salonType": "Salon Type",
+    "SalonSchedule": " Salon Schedule",
+    "Day": "Day",
+    "Available": "Available",
+    "from": "from",
+    "to": "to"
+  },
+  "emp": {
+    "title": "Employee",
+    "add": "Add Employee",
+    "edit": "Edit Employee",
+    "action": "Employee has been saved successfully",
+    "delete": "Employee has been Deleted",
+    "empSchedule": " Employee Schedule",
+    "Day": "Day",
+    "Available": "Available",
+    "from": "from",
+    "to": "to"
+  },
+  "Country": {
+    "title": "Country",
+    "action": "Users has been saved successfully",
+    "add": "Add Country",
+    "edit":"Edit Country",
+    "delete": "Country has been Deleted"
   },
   "Coupon": {
     "title": "Coupon",

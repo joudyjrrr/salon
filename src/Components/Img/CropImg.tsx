@@ -186,7 +186,7 @@ export default function App({
           variant="contained"
           onClick={cropImageHandler}
         >
-          {disableCropButton ? <Loading size={20} color="#fff"/> : t(`form.crop`)}
+          {disableCropButton ? <Loading size={20}/> : t(`form.crop`)}
         </Button>
       </Stack>
     </Stack>

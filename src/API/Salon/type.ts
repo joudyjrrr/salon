@@ -14,14 +14,11 @@ export interface GetSalonDetailsParamsType extends IPayload {
 export interface Salon {
   name: string;
   description: string;
-  rate: number;
   phoneNumber: string;
   tempPhoneNumber: string;
   facebookUrl: string;
   instagramUrl: string;
-  logo: string;
-
-  coverImage: string;
+ 
   imageUrls: string[];
 }
 export interface GetSalonDetailsType {
@@ -49,24 +46,34 @@ export interface GetSalonDetailsType {
   }[];
 }
 export interface SalonInput extends Salon {
+  coverImage: string;
   SalonType: salonType;
   latitude: number;
   longitude: number;
-  city : IAutoCompleteOption
+  city : IAutoCompleteOption;
+  country : IAutoCompleteOption;
+  workSchedule: {
+    day: Day;
+    startTime: string;
+    endTime: string;
+    isFree: boolean;
+  }[];
 }
 export interface SalonData extends Salon {
+  id?:string;
+  logo:string
   salonType: number;
   address: {
     latitude: number;
     longitude: number;
     cityId: string;
   };
-  workSchedule: {
-    day: number;
-    startTime: string;
-    endTime: string;
-    isFree: boolean;
-  }[];
+    workSchedule: {
+      day: number;
+      startTime: string;
+      endTime: string;
+      isFree: boolean;
+    }[];
 }
 export interface salonType {
   id: number;

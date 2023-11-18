@@ -16,7 +16,7 @@ const GetAllCountryQuery = (params: IPayload) => {
         PageNumber: params.PageNumber,
         Query: params.Query,
       });
-      return data
+     return data;
     },
     placeholderData: keepPreviousData,
   });
@@ -41,7 +41,7 @@ const GetCountryAutoCompleteQuery = () => {
 };
 const GetCountryByIdQuery = (id: string) => {
   const queryResult = useQuery({
-    queryKey: ["get-city-by-id", id],
+    queryKey: ["get-country-by-id", id],
     queryFn: () => CountryApi.getCountryById(id),
     enabled: !!id,
   });
@@ -55,18 +55,10 @@ const SetCountry = () => {
   return queryResult;
 };
 
-const DeleteCountry = () => {
-  const queryResult = useMutation({
-    mutationKey: ["delete-city"],
-    mutationFn: CountryApi.RemoveCountry,
-  });
-  return queryResult;
-};
 
 export const CountryQueries = {
   GetAllCountryQuery,
   GetCountryAutoCompleteQuery,
   GetCountryByIdQuery,
   SetCountry,
-  DeleteCountry,
 };

@@ -18,83 +18,98 @@ const Coupon = () => {
         t
     } = CouponHook(Search, PageNumber)
 
-    return (
+  return (
+    <>
+      <Grid container justifyContent={"space-between"} sx={{ mt: 2 }}>
+        <Grid container item xs={9}>
+          <Grid item sx={{ mx: 5 }}>
+            <Title text={t("Coupon.title")} />
+          </Grid>
+          <SearchField value={Search} onSearch={setSearch} />
+        </Grid>
+        <Grid
+          container
+          alignContent={"center"}
+          justifyContent={"center"}
+          item
+          xs={3}
+        >
+          <Link to={"addCoupon"}>
+            <Button variant="contained">{t("Coupon.add")}</Button>
+          </Link>
+        </Grid>
+      </Grid>
+
+      {isCouponsLoading ? (
+        <Loading />
+      ) : (
         <>
-            <Grid container justifyContent={'space-between'} sx={{ mt: 2 }} >
-                <Grid container item xs={9}>
-                    <Grid item sx={{ mx: 5 }}>
-                        <Title text={t('Coupon.title')} />
-                    </Grid>
-                    <SearchField value={Search} onSearch={setSearch} />
-                </Grid>
-                <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
-                    <Link to={'addCoupon'}>
-                        <Button variant='contained'>
-                            {t('Coupon.add')}
-                        </Button>
-                    </Link>
-                </Grid>
-            </Grid >
+          <Grid container spacing={2} sx={{ mt: 1, px: 2 }}>
+            {Coupons?.data.map((coupon, idx) => {
+              
 
-            {
-                isCouponsLoading ?
-                    <Loading />
-                    :
-                    <>
-                        <Grid container spacing={2} sx={{ mt: 1, px: 2 }}>
-
-                            {
-                                Coupons?.data.map((coupon, idx) => {
-                                    return (
-                                        <>
-                                            <Grid item key={idx} xs={12} sm={6} md={4} lg={3}>
-                                                <Card>
-                                                    <CardMedia
-                                                        component={'img'}
-                                                        alt="Coupon image"
-                                                        image={`${DEVELOPMENT_BASE_URL}/${coupon.image}`}
-
-                                                    />
-                                                    <CardContent>
-                                                        <Typography gutterBottom variant="body2" component="div">
-                                                            {t('Coupon.name')} : {coupon.name ?? '----'}
-                                                        </Typography>
-                                                        <Typography gutterBottom variant="body2" component="div">
-                                                            {t('Coupon.code')} : {coupon.code ?? '----'}
-                                                        </Typography>
-                                                        <Typography variant="body2" color="text.secondary">
-                                                            {t('form.fromDate')} : {coupon.fromDate}
-                                                        </Typography>
-                                                        <Typography variant="body2" color="text.secondary">
-                                                            {t('form.toDate')} : {coupon.toDate}
-                                                        </Typography>
-                                                        <Typography sx={{ mt: 1 }} variant="body1" color={coupon.isExpired ? 'red' : 'green'}>
-                                                            {coupon.isExpired ? t('Coupon.Expired') : t('Coupon.active')}
-                                                        </Typography>
-                                                    </CardContent>
-                                                    <CardActions>
-                                                        <Grid container justifyContent={'end'}>
-                                                            <DeleteCoupon id={coupon.id} />
-                                                        </Grid>
-                                                    </CardActions>
-                                                </Card>
-                                            </Grid>
-                                        </>
-                                    )
-                                })
-                            }
+              return (
+                <>
+                  <Grid item key={idx} xs={12} sm={6} md={4} lg={3}>
+                    <Card>
+                      <CardMedia
+                        component={"img"}
+                        alt="Coupon image"
+                        image={`${DEVELOPMENT_BASE_URL}/${coupon.image}`}
+                        
+                      />
+                      <CardContent>
+                        <Typography
+                          gutterBottom
+                          variant="body2"
+                          component="div"
+                        >
+                          {t("Coupon.name")} : {coupon.name ?? "----"}
+                        </Typography>
+                        <Typography
+                          gutterBottom
+                          variant="body2"
+                          component="div"
+                        >
+                          {t("Coupon.code")} : {coupon.code ?? "----"}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {t("form.fromDate")} : {coupon.fromDate}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {t("form.toDate")} : {coupon.toDate}
+                        </Typography>
+                        <Typography
+                          sx={{ mt: 1 }}
+                          variant="body1"
+                          color={coupon.isExpired ? "red" : "green"}
+                        >
+                          {coupon.isExpired
+                            ? t("Coupon.Expired")
+                            : t("Coupon.active")}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <Grid container justifyContent={"end"}>
+                          <DeleteCoupon id={coupon.id} />
                         </Grid>
-                        <Pagination
-                            isFetching={isCouponsLoading}
-                            totalPages={Coupons?.totalPages!}
-                            page={Coupons?.pageNumber!}
-                            onPageChange={setPageNumber}
-                        />
-                    </>
-            }
-
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                </>
+              );
+            })}
+          </Grid>
+          <Pagination
+            isFetching={isCouponsLoading}
+            totalPages={Coupons?.totalPages!}
+            page={Coupons?.pageNumber!}
+            onPageChange={setPageNumber}
+          />
         </>
-    )
-}
+      )}
+    </>
+  );
+};
 
-export default Coupon
+export default Coupon;

@@ -1,21 +1,20 @@
 import { Suspense, lazy } from "react";
 import { Route, Routes as ReactRoutes } from "react-router-dom";
 
-
-
 const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
 const CpMangment = lazy(() => import("./pages/CpMangment/CpMangment"));
 const Notification = lazy(() => import("./pages/Notification/Notification"));
 const Salon = lazy(() => import("./pages/Salon/Salon"));
 const AddSalon = lazy(() => import("./pages/Salon/AddSalon"));
-const Fallback = lazy(() => import('./Components/Fallback'))
-const Category = lazy(() => import('./pages/Category/Category'));
-const AddCategory = lazy(() => import('./pages/Category/AddCategory'))
-const Coupon = lazy(() => import('./pages/Coupon/Coupon'))
-const AddCoupon = lazy(() => import('./pages/Coupon/AddCoupon/AddCoupon'))
-
-
+const Fallback = lazy(() => import("./Components/Fallback"));
+const Category = lazy(() => import("./pages/Category/Category"));
+const AddCategory = lazy(() => import("./pages/Category/AddCategory"));
+const Country = lazy(() => import("./pages/Country/Country"));
+const Coupon = lazy(() => import("./pages/Coupon/Coupon"));
+const AddCoupon = lazy(() => import("./pages/Coupon/AddCoupon/AddCoupon"));
+const Employee = lazy(() => import("./pages/Employee/Employee"));
+const AddEmployee = lazy(() => import("./pages/Employee/AddEmployee"));
 const Routes = () => {
   return (
     <>
@@ -74,6 +73,14 @@ const Routes = () => {
               </Suspense>
             }
           />
+          <Route
+            path="/country"
+            element={
+              <Suspense fallback={<></>}>
+                <Country />
+              </Suspense>
+            }
+          />
           <Route path="/salon">
             <Route
               index
@@ -91,6 +98,40 @@ const Routes = () => {
                 </Suspense>
               }
             />
+            <Route
+              path="edit-salon/:salonId"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddSalon />
+                </Suspense>
+              }
+            />
+            <Route path="employee/:salonId">
+              <Route
+                index
+                element={
+                  <Suspense fallback={<></>}>
+                    <Employee />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="add-employee"
+                element={
+                  <Suspense fallback={<></>}>
+                    <AddEmployee />
+                  </Suspense>
+                }
+              />
+               <Route
+                path="edit-employee/:empId"
+                element={
+                  <Suspense fallback={<></>}>
+                    <AddEmployee />
+                  </Suspense>
+                }
+              />
+            </Route>
           </Route>
           <Route path="/coupon">
             <Route
@@ -109,7 +150,6 @@ const Routes = () => {
                 </Suspense>
               }
             />
-
           </Route>
         </Route>
       </ReactRoutes>

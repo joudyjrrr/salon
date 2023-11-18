@@ -1,11 +1,11 @@
-import {  keepPreviousData, useQuery } from "@tanstack/react-query";
+import {  keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
 import { IPayload } from "../../interface/generic";
 import { SalonApi } from "./SalonApi";
 import { GetSalonDetailsParamsType } from "./type";
 
 const GetSalonAllQuery =  (params: IPayload) => {
   const queryResult = useQuery({
-    queryKey: ["get-all-salon"],
+    queryKey: ["get-all-salon",params.PageNumber,params.Query],
     queryFn: async () => {
       const data = await SalonApi.GetSalonAll({
         EnablePagination: true,
@@ -20,23 +20,27 @@ const GetSalonAllQuery =  (params: IPayload) => {
   return queryResult;
 };
 
-const GetSalonDetailsQuery =  (params: GetSalonDetailsParamsType) => {
+const GetSalonDetailsQuery =  (salonId : string) => {
   const queryResult = useQuery({
-    queryKey: ["get-salon-details", params.salonId],
+    queryKey: ["get-salon-details",salonId],
     queryFn: async () => {
-      const data = await SalonApi.GetSalonDetails({
-        salonId: params.salonId,
-        EnablePagination: params.EnablePagination,
-        PageNumber: params.PageNumber,
-        Query: params.Query,
-      });
+      const data = await SalonApi.GetSalonDetails(salonId);
       return data;
     },
+    enabled : !!salonId
   });
   return queryResult;
 };
 
+const SetSalonQuery = () => {
+  const queryResult = useMutation({
+    mutationKey: ["set-salon"],
+    mutationFn: SalonApi.SetSalon
+  });
+  return queryResult;
+};
 export const SalonQueries = {
   GetSalonAllQuery,
   GetSalonDetailsQuery,
+  SetSalonQuery,
 };

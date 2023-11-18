@@ -18,6 +18,7 @@ const controller = {
   Service: "Service",
   Version: "Version",
   file: "File",
+  Empolyee: "Employee",
 };
 const Banner = {
   GET_ALL_BANNER_CP: `${controller.Banner}/BannerGetAllCp`,
@@ -42,7 +43,7 @@ const City = {
 };
 const Country = {
   GET_ALL_CP_Country: `/${controller.Country}/CountryGetAll`,
-  GET_Country_BY_ID: `/${controller.Country}/CountryGetById`,
+  GET_Country_BY_ID: `/${controller.Country}/CountryGetByIdCp`,
   SET_COUNTRY_CP: `${controller.Country}/CountrySetCp`,
   DELETe_CP_Country: `/${controller.Country}/CountryDeleteCp`,
 };
@@ -78,6 +79,14 @@ const Permission = {
 const Salon = {
   GET_ALL_SALON_CP: `${controller.Salon}/SalonGetAllCp`,
   GET_SALON_DETAILS_CP: `${controller.Salon}/GetSalonDetailsCp`,
+  SET_SALON: `${controller.Salon}/SetSalon`,
+  DELETE_SALON: `${controller.Salon}/DeleteSalonCp`
+};
+const Employee = {
+  GET_ALL_Employee_CP: `${controller.Employee}/GetSalonEmployees`,
+  GET_Employee_DETAILS_CP: `${controller.Employee}/GetEmployeeDetailsCp`,
+  SET_Employee: `${controller.Employee}/SetEmployeeCp`,
+  DELETE_Employee: `${controller.Employee}/DeleteEmployeeCp`
 };
 const Version = {
   SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
@@ -108,4 +117,5 @@ export const API_Routes = {
   Service,
   Feedback,
   File,
+  Employee
 };
