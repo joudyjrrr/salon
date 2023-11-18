@@ -75,7 +75,8 @@
     "certificates":"Certificates",
     "experienceYears":"experienceYears",
     "chooseGender":"chooseGender",
-    "img":"img"
+    "img":"img",
+    "period":"period"
   },
   "table": {
     "name": "Name",
@@ -161,6 +162,13 @@
     "Available": "Available",
     "from": "from",
     "to": "to"
+  },
+  "serv": {
+    "title": "Services",
+    "add": "Add Services",
+    "edit": "Edit Services",
+    "action": "Services has been saved successfully",
+    "delete": "Services has been Deleted"
   },
   "Country": {
     "title": "Country",

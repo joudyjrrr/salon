@@ -15,6 +15,8 @@ const Coupon = lazy(() => import("./pages/Coupon/Coupon"));
 const AddCoupon = lazy(() => import("./pages/Coupon/AddCoupon/AddCoupon"));
 const Employee = lazy(() => import("./pages/Employee/Employee"));
 const AddEmployee = lazy(() => import("./pages/Employee/AddEmployee"));
+const Service = lazy(() => import("./pages/Service/Service"));
+const AddService = lazy(() => import("./pages/Service/AddService"));
 const Routes = () => {
   return (
     <>
@@ -123,7 +125,7 @@ const Routes = () => {
                   </Suspense>
                 }
               />
-               <Route
+              <Route
                 path="edit-employee/:empId"
                 element={
                   <Suspense fallback={<></>}>
@@ -131,6 +133,40 @@ const Routes = () => {
                   </Suspense>
                 }
               />
+            </Route>
+            <Route path="service/:salonId">
+              <Route
+                index
+                element={
+                  <Suspense fallback={<></>}>
+                    <Service />
+                  </Suspense>
+                }
+              />
+              <Route
+                path="add-service"
+                element={
+                  <Suspense fallback={<></>}>
+                    <AddService />
+                  </Suspense>
+                }
+              />
+              {/* <Route
+                path="add-employee"
+                element={
+                  <Suspense fallback={<></>}>
+                    <AddEmployee />
+                  </Suspense>
+                }
+              />
+               <Route
+                path="edit-employee/:empId"
+                element={
+                  <Suspense fallback={<></>}>
+                    <AddEmployee />
+                  </Suspense>
+                }
+              /> */}
             </Route>
           </Route>
           <Route path="/coupon">

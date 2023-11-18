@@ -51,3 +51,7 @@ export enum WeekDay {
   Friday,
   Saturday,
 }
+export interface IValue {
+  key : string;
+  value : string;
+}
