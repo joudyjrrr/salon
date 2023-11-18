@@ -27,6 +27,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { SalonApi } from "../../API/Salon/SalonApi";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -46,9 +47,9 @@ const Salon = () => {
   return (
     <>
       {isLoading ? (
-        <Box marginTop="150px">
-          <Loading />
-        </Box>
+          <Box marginTop="150px">
+            <Loading />
+          </Box>
       ) : (
         <Box
           sx={{
@@ -131,6 +132,9 @@ const Salon = () => {
                     />
                     <IconButton onClick={() => navigate(`employee/${d.id}`)}>
                       <ManageAccountsIcon />
+                    </IconButton>
+                    <IconButton onClick={() => navigate(`service/${d.id}`)}>
+                      <MiscellaneousServicesIcon />
                     </IconButton>
                   </CardActions>
                 </Card>

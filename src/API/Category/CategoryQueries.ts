@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { IPayload } from "../../interface/generic";
+import { INameAndId, IPayload } from "../../interface/generic";
 import { CategoryApi } from "./CategoryApi";
 
 const GetAllCategoryQuery = (payload: IPayload) => {
@@ -27,6 +27,23 @@ const GetCategoryByIdQuery = (id: string | undefined) => {
   });
   return queryResult;
 };
+const GetCategoryAutoComplete =  () => {
+  const queryResult = useQuery({
+    queryKey: ["get-category-Auto"],
+    queryFn: async () => {
+      const data = await CategoryApi.GetAllCategory({
+        EnablePagination : false
+      });
+      return data;
+    },
+    select: (data) =>
+      data.data.map((data) => ({
+        id: data.id,
+        name: data.name.map((d) => d.value),
+      })) as unknown as INameAndId[],
+  });
+  return queryResult;
+};
 const SetCategoryQuery = () => {
   const queryResult = useMutation({
     mutationKey: ["set-category"],
@@ -50,4 +67,5 @@ export const CategoryQuery = {
   GetCategoryByIdQuery,
   SetCategoryQuery,
   DeleteBannerQuery,
+  GetCategoryAutoComplete
 };

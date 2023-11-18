@@ -42,7 +42,6 @@ const AddCategory = () => {
 
     useEffect(() => {
         if (!isAddCategory && !!ThisCategory) {
-            console.log({ ThisCategory });
             setValue('name', ThisCategory?.name);
             setValue('type', ThisCategory.type)
             setImg(ThisCategory.imageUrl)

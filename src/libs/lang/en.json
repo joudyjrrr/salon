@@ -72,10 +72,11 @@
     "logoImg": "logo Img",
     "countryCode": "countryCode",
     "country": "Country Name",
-    "certificates": "Certificates",
-    "experienceYears": "experienceYears",
-    "chooseGender": "chooseGender",
-    "img": "img"
+    "certificates":"Certificates",
+    "experienceYears":"experienceYears",
+    "chooseGender":"chooseGender",
+    "img":"img",
+    "period":"period"
   },
   "table": {
     "name": "Name",
@@ -162,6 +163,13 @@
     "Available": "Available",
     "from": "from",
     "to": "to"
+  },
+  "serv": {
+    "title": "Services",
+    "add": "Add Services",
+    "edit": "Edit Services",
+    "action": "Services has been saved successfully",
+    "delete": "Services has been Deleted"
   },
   "Country": {
     "title": "Country",

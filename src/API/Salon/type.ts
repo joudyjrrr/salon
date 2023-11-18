@@ -44,6 +44,7 @@ export interface GetSalonDetailsType {
     endTime: string;
     isFree: boolean;
   }[];
+  
 }
 export interface SalonInput extends Salon {
   coverImage: string;

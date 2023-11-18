@@ -75,7 +75,8 @@
     "certificates":"الشهادات",
     "experienceYears":"سنوات الخبرة",
     "chooseGender":"اختر الجنس",
-    "img":"الصورة"
+    "img":"الصورة",
+    "period":"مدة الخدمة"
   },
   "table": {
     "name": "اسم المستخدم",

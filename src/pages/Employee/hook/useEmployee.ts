@@ -11,6 +11,7 @@ import { FileQuery } from "../../../API/File/FileQueries";
 import {
   DefaultFromDate,
   convertToInputTime,
+  convertToInputTimeSalon,
   dayTimeConvert,
 } from "../../../helper/imgHelper";
 import { SalonQueries } from "../../../API/Salon/SalonQueries";
@@ -68,11 +69,11 @@ const useEmployee = () => {
         setValue(`workSchedule.${index}.isFree`, day.isFree);
         setValue(
           `workSchedule.${index}.startTime`,
-          convertToInputTime(day.startTime!)
+          convertToInputTimeSalon(day.startTime!)
         );
         setValue(
           `workSchedule.${index}.endTime`,
-          convertToInputTime(day.endTime!)
+          convertToInputTimeSalon(day.endTime!)
         );
       });
     }
