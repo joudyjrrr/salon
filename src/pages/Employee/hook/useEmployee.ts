@@ -10,6 +10,7 @@ import {
 import { FileQuery } from "../../../API/File/FileQueries";
 import {
   DefaultFromDate,
+  DefaultFromDateHours,
   convertToInputTime,
   convertToInputTimeSalon,
   dayTimeConvert,
@@ -35,8 +36,8 @@ const useEmployee = () => {
     defaultValues: {
       workSchedule: Array(7).fill({
         day: DayArray[0],
-        startTime: DefaultFromDate(),
-        endTime: DefaultFromDate(),
+        startTime: DefaultFromDateHours(),
+        endTime: DefaultFromDateHours(),
         isFree: true,
       }),
     },
@@ -128,8 +129,8 @@ const useEmployee = () => {
       },
       {
         onSuccess: () => {
-        //   navigate(-1);
-        //   queryClient.refetchQueries({ queryKey: ["get-all-employee"] });
+          navigate(-1);
+          queryClient.refetchQueries({ queryKey: ["get-all-employee"] });
           showSuccess(t("emp.action"));
         },
         onError(error: any) {

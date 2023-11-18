@@ -90,7 +90,7 @@ const AddSalon = () => {
                         FileApi.DeleteFile(imgCoverAfterCrop);
                         setImgCoverAfterCrop("");
                       }}
-                      title={t("form.logoImg")}
+                      title={t("form.imgCover")}
                     />
                   )}
                 </Grid>

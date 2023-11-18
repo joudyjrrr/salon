@@ -159,22 +159,14 @@ const Routes = () => {
                   </Suspense>
                 }
               />
-              {/* <Route
-                path="add-employee"
+              <Route
+                path="edit-service/:servId"
                 element={
                   <Suspense fallback={<></>}>
-                    <AddEmployee />
+                    <AddService />
                   </Suspense>
                 }
               />
-               <Route
-                path="edit-employee/:empId"
-                element={
-                  <Suspense fallback={<></>}>
-                    <AddEmployee />
-                  </Suspense>
-                }
-              /> */}
             </Route>
           </Route>
           <Route path="/coupon">

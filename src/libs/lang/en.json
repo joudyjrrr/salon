@@ -76,7 +76,9 @@
     "experienceYears":"experienceYears",
     "chooseGender":"chooseGender",
     "img":"img",
-    "period":"period"
+    "period":"period",
+    "chooseCategory":"chooseCategory",
+    "imgCover":"img Cover"
   },
   "table": {
     "name": "Name",

@@ -94,6 +94,8 @@ const Version = {
 };
 const Service = {
   SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
+  DELETE_SERVICE : `${controller.Service}/DeleteServiceCp`,
+  GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`
 };
 const Feedback = {
   GET_FEEDBACK_CP: `${controller.Feedback}/Feedback`,

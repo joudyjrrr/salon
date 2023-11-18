@@ -1,6 +1,6 @@
 import { PixelCrop } from "react-image-crop";
 import { useEffect, DependencyList } from "react";
-import moment from "moment"
+// import moment from "mo
 import {
   IGenericActionParam,
   IGenericFormInputs,
@@ -140,6 +140,15 @@ export const dayTimeConvert = (Time: any) => {
   return formattedTime;
 };
 export const DefaultFromDate = () => {
+  var now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+
+  const newNow = now.toISOString().slice(0, 16);
+
+  return newNow;
+};
+
+export const DefaultFromDateHours = () => {
   const now = new Date();
   const hours = now.getHours().toString().padStart(2, "0");
   const minutes = now.getMinutes().toString().padStart(2, "0");

@@ -1,10 +1,13 @@
 import {
   Box,
   Card,
+  CardActionArea,
+  CardActions,
   CardContent,
   CardMedia,
   Fab,
   Grid,
+  IconButton,
   Stack,
   Typography,
   useMediaQuery,
@@ -20,6 +23,9 @@ import Loading from "../../Components/Loading";
 import { API_SERVER_URL_For_Img } from "../../API/domain";
 import img from "../../assets/1.jpg";
 import Pagination from "../../Components/Pagination";
+import DeleteCustome from "../../Components/DeleteCustome";
+import { ServiceApi } from "../../API/Service/ServiceApi";
+import EditIcon from "@mui/icons-material/Edit";
 const Service = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -30,6 +36,7 @@ const Service = () => {
   const { salonId } = useParams();
   const {
     data: serviceData,
+    refetch,
     isLoading,
     isFetching,
   } = ServiceQueries.GetServiceDetailsQuery({
@@ -108,6 +115,21 @@ const Service = () => {
                       </Stack>
                     </Grid>
                   </CardContent>
+                  <CardActions>
+                  <IconButton>
+                      <EditIcon
+                        onClick={() => navigate(`edit-service/${d.id}`)}
+                        color="primary"
+                      />
+                    </IconButton>
+                  <DeleteCustome
+                      refetch={refetch}
+                      MassegeSuccess={t("serv.delete")}
+                      onDelete={() => ServiceApi.DeleteService(id)}
+                      setId={() => setId(d?.id ?? "")}
+                      userId={id ?? ""}
+                    />
+                  </CardActions>
                 </Card>
               </Grid>
             ))}

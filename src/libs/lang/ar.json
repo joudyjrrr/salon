@@ -76,7 +76,9 @@
     "experienceYears":"سنوات الخبرة",
     "chooseGender":"اختر الجنس",
     "img":"الصورة",
-    "period":"مدة الخدمة"
+    "period":"مدة الخدمة",
+    "chooseCategory":"اختر صنف",
+    "imgCover":"صورة الغلاف"
   },
   "table": {
     "name": "اسم المستخدم",

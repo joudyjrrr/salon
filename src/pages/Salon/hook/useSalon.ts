@@ -10,6 +10,7 @@ import {
 import { FileQuery } from "../../../API/File/FileQueries";
 import {
   DefaultFromDate,
+  DefaultFromDateHours,
   convertToInputTime,
   convertToInputTimeSalon,
   dayTimeConvert,
@@ -34,8 +35,8 @@ const useSalon = () => {
     defaultValues: {
       workSchedule: Array(7).fill({
         day: DayArray[0],
-        startTime: DefaultFromDate(),
-        endTime: DefaultFromDate(),
+        startTime: DefaultFromDateHours(),
+        endTime: DefaultFromDateHours(),
         isFree: true,
       }),
     },

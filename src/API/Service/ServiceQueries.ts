@@ -5,7 +5,7 @@ import { ServicePayload } from "./type";
 
 const GetServiceDetailsQuery = (params: ServicePayload) => {
   const queryResult = useQuery({
-    queryKey: ["get-service", params.PageNumber, params.Query, params.salonId],
+    queryKey: ["get-service", params.PageNumber, params.salonId , params.Query],
     queryFn: async () => {
       const data = await ServiceApi.GetServiceAll({
         PageNumber: params.PageNumber,
@@ -15,7 +15,6 @@ const GetServiceDetailsQuery = (params: ServicePayload) => {
       });
       return data;
     },
-    enabled: !!params.salonId,
     select: (data) => data.services,
   });
   return queryResult;
@@ -28,8 +27,19 @@ const SetServiceQuery = () => {
   });
   return queryResult;
 };
-
+const GetServDetailsQuery =  (id : string) => {
+  const queryResult = useQuery({
+    queryKey: ["get-serv-details",id],
+    queryFn: async () => {
+      const data = await ServiceApi.GetServiceDetails(id);
+      return data;
+    },
+    enabled : !!id
+  });
+  return queryResult;
+};
 export const ServiceQueries = {
   SetServiceQuery,
   GetServiceDetailsQuery,
+  GetServDetailsQuery
 };

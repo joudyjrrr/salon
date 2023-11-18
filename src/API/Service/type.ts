@@ -19,6 +19,7 @@ export interface ServicePayload extends IPayload {
   salonId: string;
 }
 export interface Service {
+  id?:string;
   price : number;
   offerPrice : number;
   period : string;
