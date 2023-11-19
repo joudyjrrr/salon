@@ -22,7 +22,7 @@ const ItemLink: FC<IProps> = ({
 }) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  console.log(isCollapsed);
+
   return (
     <>
       <MenuItem

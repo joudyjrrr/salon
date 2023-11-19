@@ -39,7 +39,7 @@ const getCityByCountry = async (params: getCityByCountryType) => {
       params: {
         query: params.Query ?? "",
         pageNumber: params.PageNumber ?? 0,
-        enablePagination: params.EnablePagination ?? true,
+        enablePagination: params.EnablePagination ?? false,
         CountryId: params.CountryId,
       },
     }

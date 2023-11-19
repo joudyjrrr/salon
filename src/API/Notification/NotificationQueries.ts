@@ -48,8 +48,21 @@ const GetNotificationCp = (params: IPayload) => {
   return queryResult;
 };
 
+const GetNotificationByIdQuery = (id: string | undefined) => {
+  const queryResult = useQuery({
+    queryKey: ["get-notification-by-id", id],
+    queryFn: async () => {
+      const data = await NotificationApi.GetNotificationByIdCp(id);
+      return data;
+    },
+    enabled: !!id,
+  });
+  return queryResult;
+};
+
 export const NotificationQueries = {
   SetNotificationCp,
   DeleteNotificationCp,
   GetNotificationCp,
+  GetNotificationByIdQuery,
 };

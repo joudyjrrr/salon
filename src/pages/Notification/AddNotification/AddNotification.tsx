@@ -1,6 +1,5 @@
-import { Button, Dialog, DialogContent, DialogTitle, Grid } from '@mui/material'
+import { Button, Grid } from '@mui/material'
 import useNotificationsHook from '../hooks/useNotificationsHook.ts';
-import { useState } from 'react';
 import { SubmitHandler } from 'react-hook-form';
 import { AddNotificationType } from '../hooks/type.ts';
 import { showError, showSuccess } from '../../../libs/toast/Tostify.tsx';
@@ -9,10 +8,15 @@ import CountryCity from './CountryCity.tsx';
 import Users from './Users.tsx';
 import AppType from './AppType.tsx';
 import ChooseType from './ChooseType.tsx';
+import Title from '../../../Components/Title.tsx';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useEffect } from 'react';
+import Loading from '../../../Components/Loading.tsx';
 
 
-function AddNotification() {
-    const [Open, setOpen] = useState(false);
+
+const AddNotification = () => {
+
     const {
         setNotification,
         isPosting,
@@ -22,11 +26,16 @@ function AddNotification() {
         handleSubmit,
         errors,
         watch, setValue, setError, clearErrors, reset, getValues,
-        countries, isCountryLoading, cities, isCitiesLoading, Customers, customerLoading
+        countries, isCountryLoading, cities, isCitiesLoading, Customers, customerLoading,
+        location, navigate,
+        ThisNotification,
+        isThisNotificationLoading
     } = useNotificationsHook();
 
+    const isAddingPath = location.pathname === '/notifications/addNotification'
+
     const submitHandler: SubmitHandler<AddNotificationType> = (data: AddNotificationType) => {
-        
+
 
         const titleArabic = data.title[0].value.trim();
         const titleEnglish = data.title[1].value.trim();
@@ -82,7 +91,6 @@ function AddNotification() {
         }, {
             onSuccess: () => {
                 reset();
-                setOpen(false);
                 showSuccess(t('Notification.added'))
 
             },
@@ -91,76 +99,88 @@ function AddNotification() {
             }
         })
     }
+
+    useEffect(() => {
+        if (!isAddingPath) {
+            setValue('title', ThisNotification?.title as [{ key: 'ar', value: string }, { key: 'en', value: string }])
+            setValue('body', ThisNotification?.body as [{ key: 'ar', value: string }, { key: 'en', value: string }])
+            // setValue('type')
+            
+        }
+    }, [ThisNotification])
+
+    if (isThisNotificationLoading) {
+        return <Loading />
+    }
+
     const publicUserCity = watch('publicUserCity');
 
     return (
         <>
-            <Button
-                variant="contained"
-                onClick={() => setOpen(true)}
-            >
-                {t('Notification.Add')}
-            </Button>
 
-            <Dialog
-                open={Open}
-                onClose={() => setOpen(false)}
-                aria-labelledby="child-modal-title"
-                aria-describedby="child-modal-description"
-            >
-                <DialogTitle>
-                    {t('Notification.Add')}
-                </DialogTitle>
-                <DialogContent>
-                    <form onSubmit={handleSubmit(submitHandler)}>
-                        <TitleAndBody
-                            register={register}
-                            errors={errors}
-                        />
+            <Grid container justifyContent={'space-between'} sx={{ mt: 2 }} >
+                <Grid container item xs={9}>
+                    <Button onClick={() => { navigate(-1) }}>
+                        <ArrowBackIcon />
+                    </Button>
+                    <Grid item sx={{ mx: 5 }}>
+                        <Title text={isAddingPath ? t('Notification.Add') : t('Notification.EditTitle')} />
+                    </Grid>
+                </Grid>
 
-                        <AppType control={control} errors={errors} />
+            </Grid >
 
-                        <ChooseType
-                            publicUserCity={publicUserCity}
-                            setValue={setValue}
-                        />
 
-                        {
-                            (publicUserCity === 'User') &&
-                            <>
-                                <Users
-                                    Customers={Customers}
-                                    errors={errors}
-                                    register={register}
-                                    setValue={setValue}
-                                    watch={watch}
-                                    customerLoading={customerLoading}
-                                />
-                            </>
-                        }
-                        {
-                            (publicUserCity === 'City') &&
-                            <>
-                                <CountryCity
-                                    watch={watch}
-                                    cities={cities}
-                                    countries={countries}
-                                    errors={errors}
-                                    setValue={setValue}
-                                    register={register}
-                                    isCitiesLoading={isCitiesLoading}
-                                    isCountryLoading={isCountryLoading}
-                                />
-                            </>
-                        }
-                        <Grid container justifyContent={'flex-end'}>
-                            <Button sx={{ mt: '10px' }} disabled={isPosting} type="submit" variant="contained">
-                                {t('form.submit')}
-                            </Button>
-                        </Grid>
-                    </form>
-                </DialogContent>
-            </Dialog >
+            <Grid container>
+
+                <form onSubmit={handleSubmit(submitHandler)} style={{ width: '100%', margin: '5%' }}>
+                    <TitleAndBody
+                        register={register}
+                        errors={errors}
+                    />
+
+                    <AppType control={control} errors={errors} />
+
+                    <ChooseType
+                        publicUserCity={publicUserCity}
+                        setValue={setValue}
+                    />
+
+                    {
+                        (publicUserCity === 'User') &&
+                        <>
+                            <Users
+                                Customers={Customers}
+                                errors={errors}
+                                register={register}
+                                setValue={setValue}
+                                watch={watch}
+                                customerLoading={customerLoading}
+                            />
+                        </>
+                    }
+                    {
+                        (publicUserCity === 'City') &&
+                        <>
+                            <CountryCity
+                                watch={watch}
+                                cities={cities}
+                                countries={countries}
+                                errors={errors}
+                                setValue={setValue}
+                                register={register}
+                                isCitiesLoading={isCitiesLoading}
+                                isCountryLoading={isCountryLoading}
+                            />
+                        </>
+                    }
+                    <Grid container justifyContent={'flex-end'}>
+                        <Button sx={{ mt: '10px' }} disabled={isPosting} type="submit" variant="contained">
+                            {t('form.submit')}
+                        </Button>
+                    </Grid>
+                </form>
+            </Grid>
         </>
     )
 }

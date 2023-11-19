@@ -16,10 +16,7 @@ const CountryCity: FC<{
     setValue: UseFormSetValue<AddNotificationType>,
     watch: UseFormWatch<AddNotificationType>,
     isCountryLoading: boolean,
-    countries: {
-        id: string;
-        name: string;
-    }[] | undefined,
+    countries: INameAndId[] | undefined,
     isCitiesLoading: boolean,
     cities: IPagination<getCityAllType> | undefined
 }> = ({
@@ -38,7 +35,7 @@ const CountryCity: FC<{
         return (
             <>
                 <Grid container spacing={2}>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6}>
                         <Autocomplete
                             id='CountrySelect'
                             {...register('country')}
@@ -62,7 +59,7 @@ const CountryCity: FC<{
                             ))}
                         />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={12} sm={6}>
 
                         <Autocomplete
                             id='CitySelect'

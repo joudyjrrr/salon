@@ -68,6 +68,7 @@ const CpManagement = {
 
 const Notifications = {
   GET_ALL_NOTIFICATION_CP: `${controller.Notification}/NotificationGetAllCp`,
+  GET_NOTIFICATION_BY_ID: `${controller.Notification}/NotificationGetByIdCp`,
   SET_NOTIFICATION_CP: `${controller.Notification}/NotificationSetCp`,
   DELETE_NOTIFICATION_CP: `${controller.Notification}/NotificationDeleteCp`,
 };
@@ -80,13 +81,13 @@ const Salon = {
   GET_ALL_SALON_CP: `${controller.Salon}/SalonGetAllCp`,
   GET_SALON_DETAILS_CP: `${controller.Salon}/GetSalonDetailsCp`,
   SET_SALON: `${controller.Salon}/SetSalon`,
-  DELETE_SALON: `${controller.Salon}/DeleteSalonCp`
+  DELETE_SALON: `${controller.Salon}/DeleteSalonCp`,
 };
 const Employee = {
   GET_ALL_Employee_CP: `${controller.Employee}/GetSalonEmployees`,
   GET_Employee_DETAILS_CP: `${controller.Employee}/GetEmployeeDetailsCp`,
   SET_Employee: `${controller.Employee}/SetEmployeeCp`,
-  DELETE_Employee: `${controller.Employee}/DeleteEmployeeCp`
+  DELETE_Employee: `${controller.Employee}/DeleteEmployeeCp`,
 };
 const Version = {
   SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
@@ -101,6 +102,12 @@ const Feedback = {
 const File = {
   GET_FILE_CP: `${controller.file}/SaveFile`,
   DELETE_FILE_CP: `${controller.file}/DeleteFile`,
+};
+const FQA = {
+  GET_ALL_FQA: `${controller.Fqa}/FqaGetAll`,
+  GET_FQA_BY_ID: `${controller.Fqa}/FqaGetById`,
+  SET_FQA: `${controller.Fqa}/FqaSet`,
+  DELETE_FQA: `${controller.Fqa}/FqaDelete`,
 };
 
 export const API_Routes = {
@@ -117,5 +124,6 @@ export const API_Routes = {
   Service,
   Feedback,
   File,
-  Employee
+  FQA,
+  Employee,
 };

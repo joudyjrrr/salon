@@ -139,20 +139,6 @@ export const dayTimeConvert = (Time: any) => {
   console.log(formattedTime);
   return formattedTime;
 };
-export const DefaultFromDate = () => {
-  const now = new Date();
-  const hours = now.getHours().toString().padStart(2, "0");
-  const minutes = now.getMinutes().toString().padStart(2, "0");
-  const currentTime = `${hours}:${minutes}`;
-  return currentTime;
-};
-export const DefaultToDate = () => {
-  var now = new Date();
-  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-  now.setDate(now.getDate() + 1);
-  const newNow = now.toISOString().slice(0, 16);
-  return newNow;
-};
 
 export const convertToInputTime = (value: any) => {
   const dateTime = new Date(value);

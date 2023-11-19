@@ -1,12 +1,14 @@
-import { Box, Card, Grid, Paper, Typography, CardActions } from '@mui/material'
-import React, { useState } from 'react'
+import { Box, Card, Grid, Typography, CardActions, Button } from '@mui/material'
+import { useState } from 'react'
 import Title from '../../Components/Title'
 import SearchField from '../../Components/SearchField'
 import useNotificationsHook from './hooks/useNotificationsHook.ts'
 import Pagination from '../../Components/Pagination'
 import Loading from '../../Components/Loading'
 import DeleteNotification from './DeleteNotification'
-import AddNotification from './AddNotification/AddNotification.tsx'
+import { Link } from 'react-router-dom'
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const Notification = () => {
     const [Search, setSearch] = useState<string>('');
@@ -15,7 +17,7 @@ const Notification = () => {
     const {
         Notifications,
         isFetching,
-        t
+        t,
     } = useNotificationsHook(PageNumber, Search)
 
     return (
@@ -28,7 +30,11 @@ const Notification = () => {
                     <SearchField value={Search} onSearch={setSearch} />
                 </Grid>
                 <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
-                    <AddNotification />
+                    <Link to={'addNotification'}>
+                        <Button variant='contained'>
+                            {t('Notification.Add')}
+                        </Button>
+                    </Link>
                 </Grid>
             </Grid >
             {
@@ -67,6 +73,11 @@ const Notification = () => {
                                                     {t('Notification.createdAt')} : {notification.createdAt}
                                                 </Box>
                                                 <CardActions>
+                                                    <Link to={`editNotification/${notification.id}`}>
+                                                        <Button>
+                                                            <EditIcon />
+                                                        </Button>
+                                                    </Link>
                                                     <DeleteNotification id={notification.id} />
                                                 </CardActions>
                                             </Card>

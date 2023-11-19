@@ -15,12 +15,13 @@ export interface GetALLCouponsCPType {
 
 export interface GetCouponCPType {
   id: string;
+  name : string,
   code: string;
-  fromDate: Date;
-  toDate: Date;
+  image : string,
+  fromDate: string;
+  toDate: string;
   value: number;
-  percent: number;
-  cityId: string;
+  percentage: number;
   isExpired: boolean;
 }
 

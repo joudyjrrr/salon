@@ -11,6 +11,7 @@ import ModalImgCrop from "../../Components/Img/ModalImgCrop";
 import { handleCropImgType } from "../../interface/generic";
 import { AddCategoryType } from "./hooks/type";
 import { showError, showSuccess } from "../../libs/reactToastify";
+import Loading from "../../Components/Loading";
 
 
 
@@ -93,7 +94,7 @@ const AddCategory = () => {
             return
         }
         SetCategory({
-            id : isAddCategory? undefined : ThisCategory?.id,
+            id: isAddCategory ? undefined : ThisCategory?.id,
             name: data.name,
             image: img,
             type: 0
@@ -111,6 +112,9 @@ const AddCategory = () => {
                 }
             })
     }
+    if (!isAddCategory && isThisCategoryLoading) {
+        return <Loading />
+    }
 
 
     return (
@@ -124,7 +128,7 @@ const AddCategory = () => {
                                 <ArrowBackIcon />
                             </Button>
                         </Grid>
-                        <Title text={t('Category.add')} />
+                        <Title text={isAddCategory ? t('Category.add') : t('Category.edit')} />
                     </Grid>
 
                 </Grid >
