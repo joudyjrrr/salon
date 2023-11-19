@@ -17,10 +17,7 @@ const GetAllCitiesQuery = (payload: IPayload) => {
         Query: payload.Query,
         EnablePagination: true,
       });
-      return {
-        data,
-        pageParam: 0,
-      };
+     return data
     },
   });
   return queryResult;
@@ -72,13 +69,14 @@ const GetCityByIdQuery = (id: string) => {
   return queryResult;
 };
 
-const SetCity = async () => {
+const SetCity =  () => {
   const queryResult = useMutation({
     mutationKey: ["post-city"],
     mutationFn: CityApi.SetCity,
   });
   return queryResult;
 };
+
 
 const DeleteCity = async () => {
   const queryResult = useMutation({

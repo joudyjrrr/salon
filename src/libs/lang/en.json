@@ -70,15 +70,14 @@
     "chooseCity": "Choose City",
     "logoImg":"logo Img",
     "countryCode": "countryCode",
-    "country": "Country Name"
+    "country": "Country Name",
+    "selectCountry": "Select Country"
   },
   "table": {
     "name": "Name",
     "handel": "Handle",
-    "currency": "Currency",
     "role": "Role",
-    "desc": "Description",
-    "countryCode": "countryCode"
+    "desc": "Description"
   },
   "cpMangment": {
     "title": "Manege User Acount",
@@ -147,10 +146,21 @@
   },
   "Country": {
     "title": "Country",
-    "action": "Users has been saved successfully",
+    "action": "Country has been saved successfully",
     "add": "Add Country",
     "edit":"Edit Country",
-    "delete": "Country has been Deleted"
+    "delete": "Country has been Deleted",
+    "countryCode": "countryCode",
+    "currency": "Currency",
+    "name": "Country Name"
+  },
+  "City": {
+    "title": "City",
+    "action": "City has been saved successfully",
+    "add": "Add City",
+    "edit":"Edit City",
+    "delete": "City has been Deleted",
+    "name": "City Name"
   },
   "Coupon": {
     "title": "Coupon",

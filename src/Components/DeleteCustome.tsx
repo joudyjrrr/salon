@@ -27,8 +27,8 @@ const DeleteCustome: FC<{
       refetch();
       // queryClient.refetchQueries({ queryKey: [key] })
     },
-    onError: (error: any) => {
-      showError(error.response.data.errorMessage);
+    onError: (errorMessage: any) => {
+      showError(errorMessage);
     },
   });
   const handleDelete = async () => {

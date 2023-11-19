@@ -6,6 +6,8 @@ import GroupIcon from "@mui/icons-material/Group";
 import HomeIcon from "@mui/icons-material/Home";
 import FlagIcon from '@mui/icons-material/Flag';
 import DiscountIcon from '@mui/icons-material/Discount';
+import LocationCityIcon from '@mui/icons-material/LocationCity';
+
 const Links = () => {
   const { t } = useTranslation();
 
@@ -29,6 +31,11 @@ const Links = () => {
       title: t("links.country"),
       href: "/country",
       icon: <FlagIcon />,
+    },
+    {
+      title: t("links.city"),
+      href: "/city",
+      icon: <LocationCityIcon />,
     },
     {
       title: t("links.salon"),

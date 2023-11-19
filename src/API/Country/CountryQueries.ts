@@ -49,11 +49,12 @@ const GetCountryByIdQuery = (id: string) => {
 };
 const SetCountry = () => {
   const queryResult = useMutation({
-    mutationKey: ["post-city"],
+    mutationKey: ["post-country"],
     mutationFn: CountryApi.postCountry,
   });
   return queryResult;
 };
+
 
 
 export const CountryQueries = {

@@ -11,9 +11,9 @@ const Fallback = lazy(() => import("./Components/Fallback"));
 const Category = lazy(() => import("./pages/Category/Category"));
 const AddCategory = lazy(() => import("./pages/Category/AddCategory"));
 const Country = lazy(() => import("./pages/Country/Country"));
+const City = lazy(() => import("./pages/City/City"));
 const Coupon = lazy(() => import('./pages/Coupon/Coupon'))
 const AddCoupon = lazy(() => import('./pages/Coupon/AddCoupon/AddCoupon'))
-
 
 const Routes = () => {
   return (
@@ -27,7 +27,6 @@ const Routes = () => {
             </Suspense>
           }
         />
-
         <Route element={<ProtectedPage />}>
           <Route
             path="/"
@@ -78,6 +77,14 @@ const Routes = () => {
             element={
               <Suspense fallback={<></>}>
                 <Country />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/city"
+            element={
+              <Suspense fallback={<></>}>
+                <City />
               </Suspense>
             }
           />

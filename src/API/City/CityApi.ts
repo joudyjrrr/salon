@@ -10,7 +10,7 @@ import {
 
 const GetAllCity = async (params: IPayload) => {
   const { data } = await DeliveryApiInstances.get<IPagination<getCityAllType>>(
-    API_Routes.City.SET_CITY_CP,
+    API_Routes.City.GET_ALL_CP_City,
     {
       params: {
         ...params,
@@ -19,7 +19,7 @@ const GetAllCity = async (params: IPayload) => {
   );
   return data;
 };
-
+// console.log(API_Routes.City.GET_ALL_CP_City)
 const GetAllCityAutoComplete = async (params: IPayload) => {
   const { data } = await DeliveryApiInstances.get<IPagination<getCityAllType>>(
     API_Routes.City.GET_ALL_CP_City,

@@ -1,17 +1,21 @@
-import { ICity, IPayload } from "../../interface/generic";
+import { IAutoCompleteOption, ICity, IPayload } from "../../interface/generic";
 
 export interface getCityAllType {
   id: string;
   name: string;
   countryId: string;
 }
-export interface setCityType {
+export interface setCityTypeInput {
   id: string;
-  name: {
-    key: string;
-    value: string;
-  }[];
-  countryId: string;
+  arName: string,
+  enName: string,
+  country: IAutoCompleteOption;
+}
+export interface setCityType 
+ {
+    id?: string,
+    name: ICity[];
+    countryId: string;
 }
 export interface getCityByIdType {
   id?: string;
