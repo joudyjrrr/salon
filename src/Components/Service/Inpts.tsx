@@ -19,7 +19,7 @@ const Inputs: FC<{
           control={control}
           label={t("form.enName")}
           name="enName"
-            req={true}
+          req={true}
           shrink
         />
       </Grid>
@@ -28,7 +28,7 @@ const Inputs: FC<{
           control={control}
           label={t("form.arName")}
           name="arName"
-            req={true}
+          req={true}
           shrink
         />
       </Grid>
@@ -37,7 +37,7 @@ const Inputs: FC<{
           control={control}
           label={t("form.enDescription")}
           name="enDescription"
-            req={true}
+          req={true}
           shrink
         />
       </Grid>
@@ -46,7 +46,7 @@ const Inputs: FC<{
           control={control}
           label={t("form.arDescription")}
           name="arDescription"
-            req={true}
+          req={true}
           shrink
         />
       </Grid>
@@ -56,7 +56,7 @@ const Inputs: FC<{
           label={t("form.price")}
           type="number"
           name="price"
-            req={true}
+          req={true}
           shrink
         />
       </Grid>
@@ -66,7 +66,7 @@ const Inputs: FC<{
           label={t("form.offerPrice")}
           name="offerPrice"
           type="number"
-            req={true}
+          req={true}
           shrink
         />
       </Grid>
@@ -75,8 +75,9 @@ const Inputs: FC<{
           control={control}
           label={t("form.period")}
           name="period"
-          type="datetime-local"
-            req={true}
+          type={"time"}
+          step={"1"}
+          req={true}
           shrink
         />
       </Grid>

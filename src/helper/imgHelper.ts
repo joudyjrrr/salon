@@ -165,8 +165,6 @@ export const DefaultToDate = () => {
 
 export const convertToInputTime = (value: any) => {
   const dateTime = new Date(value);
-
-  // الحصول على التوقيت المحلي للجهاز
   const timezoneOffset = dateTime.getTimezoneOffset();
   const localDateTime = new Date(dateTime.getTime() - (timezoneOffset * 60 * 1000));
 
@@ -176,6 +174,7 @@ export const convertToInputTime = (value: any) => {
 };
 export const convertToInputTimeSalon = (value : any) => {
   const dateTime = new Date(value);
+  console.log(value)
   const hours = dateTime.getHours().toString().padStart(2, "0");
   const minutes = dateTime.getMinutes().toString().padStart(2, "0");
   return `${hours}:${minutes}`;
