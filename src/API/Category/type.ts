@@ -10,10 +10,21 @@ export interface GetAllCategoryType {
 }
 export interface GetCategoryByIdType {
   id: string;
-  name: string;
+  name: [
+    {
+      key: "ar";
+      value: string;
+    },
+    {
+      key: "en";
+      value: string;
+    }
+  ];
   imageUrl: string;
+  type: 0 | 1;
 }
 export interface SetCategoryType {
+  id?: string;
   name: {
     key: string;
     value: string;

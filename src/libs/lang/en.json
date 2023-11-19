@@ -15,7 +15,8 @@
     "Permission": "Permission",
     "FeedBack": "FeedBack",
     "offer": "Offer",
-    "salon": "Salon"
+    "salon": "Salon",
+    "employee": "Employee"
   },
   "form": {
     "userName": "User Name",
@@ -68,16 +69,27 @@
     "chooseSalonType": "Choose SalonType",
     "chooseCountry": "Choose Country",
     "chooseCity": "Choose City",
-    "logoImg":"logo Img",
+    "selectCountry": "Select Country",
+    "logoImg": "logo Img",
     "countryCode": "countryCode",
     "country": "Country Name",
-    "selectCountry": "Select Country"
+    "certificates":"Certificates",
+    "experienceYears":"experienceYears",
+    "chooseGender":"chooseGender",
+    "img":"img",
+   
+    "chooseCategory":"chooseCategory",
+    "imgCover":"img Cover",
+    "chooseService":"chooseService",
+    "period": "period"
   },
   "table": {
     "name": "Name",
     "handel": "Handle",
+    "currency": "Currency",
     "role": "Role",
-    "desc": "Description"
+    "desc": "Description",
+    "countryCode": "countryCode"
   },
   "cpMangment": {
     "title": "Manege User Acount",
@@ -94,7 +106,9 @@
     "type": "type",
     "title": "Category",
     "add": "Add Category",
+    "edit": "Edit Category",
     "added": "Category has been Added Successfully",
+    "edited": "Category has been Edited Successfully",
     "delete": "Category has been deleted",
     "genderType": "gender",
     "male": "male",
@@ -115,6 +129,7 @@
     "arBody": "Arabic Body",
     "enBody": "English Body",
     "Add": "Add Notification",
+    "EditTitle": "Edit Notification",
     "Body": "Body",
     "Title": "Title",
     "AppType": "App Type",
@@ -128,7 +143,7 @@
     "Store": "Store",
     "Driver": "Driver",
     "deleted": "Notification Deleted successfully",
-    "added": "added",
+    "added": "Notification Added Successfully",
     "wrong": "something went wrong"
   },
   "salon": {
@@ -162,9 +177,39 @@
     "delete": "City has been Deleted",
     "name": "City Name"
   },
+  "emp": {
+    "title": "Employee",
+    "add": "Add Employee",
+    "edit": "Edit Employee",
+    "action": "Employee has been saved successfully",
+    "delete": "Employee has been Deleted",
+    "empSchedule": " Employee Schedule",
+    "Day": "Day",
+    "Available": "Available",
+    "from": "from",
+    "to": "to"
+  },
+  "serv": {
+    "titleWithEmp":"ServiceByEmployee",
+    "title": "Services",
+    "add": "Add Services",
+    "edit": "Edit Services",
+    "action": "Services has been saved successfully",
+    "delete": "Services has been Deleted"
+  },
+  "Country": {
+    "title": "Country",
+    "action": "Users has been saved successfully",
+    "add": "Add Country",
+    "edit": "Edit Country",
+    "delete": "Country has been Deleted"
+  },
   "Coupon": {
     "title": "Coupon",
     "add": "Add Coupon",
+    "addTitle": "Add Coupon",
+    "editTitle": "Edit Coupon",
+    "added": "Coupon Added Successfully",
     "deleted": "Coupon Deleted successfully",
     "name": "Name",
     "code": "code",

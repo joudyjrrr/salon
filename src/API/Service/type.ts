@@ -1,13 +1,41 @@
-export interface SetServiceType {
-  name: string;
-  description: string;
+import { IAutoCompleteOption, IPayload, IValue } from "../../interface/generic";
+export interface IPaginationService{
+  services: {
+    pageNumber: number;
+    totalPages: number;
+    totalDataCount: number;
+    data: ServiceGet[];
+  };
+}
+export interface ServiceGet {
+  id: string;
+  name: IValue[];
   price: number;
   offerPrice: number;
-  period: {
-    ticks: number;
-  };
-  salonId: string;
-  categoryId: string;
+  rate: number;
   coverImage: string;
-  images: string[];
+}
+export interface ServicePayload extends IPayload {
+  salonId: string;
+}
+export interface Service {
+  id?:string;
+  price : number;
+  offerPrice : number;
+  period : Date | string;
+  coverImage : string;
+  images : string[];
+  salonId : string;
+}
+export  interface ServiveInput extends Service {
+  arName :string;
+  enName : string;
+  arDescription : string;
+  enDescription : string;
+  category: IAutoCompleteOption;
+}
+export interface ServiceData extends Service {
+  name : IValue[]
+  description : IValue[];
+  categoryId : string;
 }

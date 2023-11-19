@@ -14,3 +14,10 @@ export const DefaultToDate = () => {
   const newNow = now.toISOString().slice(0, 16);
   return newNow;
 };
+
+export const FromISO = (date: string) => {
+  const originalDate = new Date(date);
+
+  const formattedDate = originalDate.toISOString().slice(0, 16);
+  return formattedDate;
+};

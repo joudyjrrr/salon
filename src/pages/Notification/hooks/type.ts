@@ -1,3 +1,5 @@
+import { INameAndId } from "../../../interface/generic";
+
 export interface AddNotificationType {
   id?: string;
   title: [
@@ -26,14 +28,8 @@ export interface AddNotificationType {
     userName: string;
     phoneNumber: number;
   }[];
-  country: {
-    id: string;
-    name: string;
-  } | null;
-  city: {
-    id: string;
-    name: string;
-  } | null;
+  country: INameAndId | null;
+  city: INameAndId | null;
   publicUserCity: "Public" | "User" | "City";
   type: number;
 }

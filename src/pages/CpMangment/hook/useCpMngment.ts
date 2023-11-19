@@ -19,11 +19,11 @@ const useCpMngment = (id: string) => {
   } = useForm<SetUserType>();
   const {data : userDetails , isLoading} = CpManagementQueries.GetUserByIdQuery(id)
 //   console.log(userDetails)
-  const { t } = useTranslation();
   const [open, setOpen] = React.useState(false);
   const { isPending, mutate, isSuccess } = CpManagementQueries.SetUserQuery();
   const { data: roleOption } = CpManagementQueries.GetRoles();
   const queryClient = useQueryClient();
+  const { t } = useTranslation();
   useEffect(() => {
     if (typeof userDetails !== undefined) {
       setValue("username", userDetails?.username!);

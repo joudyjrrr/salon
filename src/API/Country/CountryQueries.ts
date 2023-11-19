@@ -56,7 +56,6 @@ const SetCountry = () => {
 };
 
 
-
 export const CountryQueries = {
   GetAllCountryQuery,
   GetCountryAutoCompleteQuery,

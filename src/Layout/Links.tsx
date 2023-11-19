@@ -47,7 +47,7 @@ const Links = () => {
       title: t("links.coupon"),
       href: "/coupon",
       icon: <DiscountIcon />,
-    }
+    },
   ]
   return {
     dashBoardNavLinks,

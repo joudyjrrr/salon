@@ -1,29 +1,24 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
-import Title from "../../Components/Title";
-import SearchField from "../../Components/SearchField";
-import CouponHook from "./hook/CouponHook";
-import { Link } from "react-router-dom";
-import Loading from "../../Components/Loading";
-import DeleteCoupon from "./DeleteCoupon";
-import Pagination from "../../Components/Pagination";
-import { DEVELOPMENT_BASE_URL } from "../../API/domain";
+import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { useState } from 'react'
+import Title from '../../Components/Title';
+import SearchField from '../../Components/SearchField';
+import CouponHook from './hook/CouponHook';
+import { Link } from 'react-router-dom';
+import Loading from '../../Components/Loading';
+import DeleteCoupon from './DeleteCoupon';
+import Pagination from '../../Components/Pagination';
+import { DEVELOPMENT_BASE_URL } from '../../API/domain';
+import EditIcon from '@mui/icons-material/Edit';
+
 
 const Coupon = () => {
   const [PageNumber, setPageNumber] = useState<number>(0);
-  const [Search, setSearch] = useState<string>("");
-  const { Coupons, isCouponsLoading, register, t } = CouponHook(
-    Search,
-    PageNumber
-  );
+  const [Search, setSearch] = useState<string>('')
+  const {
+    Coupons,
+    isCouponsLoading,
+    t, navigate
+  } = CouponHook(Search, PageNumber)
 
   return (
     <>
@@ -53,7 +48,6 @@ const Coupon = () => {
         <>
           <Grid container spacing={2} sx={{ mt: 1, px: 2 }}>
             {Coupons?.data.map((coupon, idx) => {
-              console.log(coupon.image);
 
               return (
                 <>
@@ -63,7 +57,6 @@ const Coupon = () => {
                         component={"img"}
                         alt="Coupon image"
                         image={`${DEVELOPMENT_BASE_URL}/${coupon.image}`}
-                        // image={logo}
                       />
                       <CardContent>
                         <Typography
@@ -84,6 +77,12 @@ const Coupon = () => {
                           {t("form.fromDate")} : {coupon.fromDate}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
+                          {t("Coupon.value")} : {coupon.value ?? '----'}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {t("Coupon.percentage")} : {coupon.percentage ?? '----'}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
                           {t("form.toDate")} : {coupon.toDate}
                         </Typography>
                         <Typography
@@ -98,6 +97,9 @@ const Coupon = () => {
                       </CardContent>
                       <CardActions>
                         <Grid container justifyContent={"end"}>
+                          <Button onClick={() => navigate(`editCoupon/${coupon.id}`)}>
+                            <EditIcon />
+                          </Button>
                           <DeleteCoupon id={coupon.id} />
                         </Grid>
                       </CardActions>

@@ -33,8 +33,22 @@ const GetNotificationCp = async (params: IPayload) => {
   });
   return data;
 };
+
+const GetNotificationByIdCp = async (id: string | undefined) => {
+  const { data } = await DeliveryApiInstances.get<getNotificationCpType>(
+    API_Routes.Notifications.GET_NOTIFICATION_BY_ID,
+    {
+      params: {
+        id,
+      },
+    }
+  );
+  return data;
+};
+
 export const NotificationApi = {
   SetNotificationCp,
   DeleteNotificationCp,
   GetNotificationCp,
+  GetNotificationByIdCp
 };

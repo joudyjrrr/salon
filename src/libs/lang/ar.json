@@ -16,7 +16,8 @@
     "notification": "الإشعارات",
     "FeedBack": "الاقتراحات",
     "offer": "العروض",
-    "salon": "صالون التجميل"
+    "salon": "صالون التجميل",
+    "employee":"الموظفين"
   },
   "form": {
     "userName": "اسم المستخدم",
@@ -71,14 +72,23 @@
     "logoImg":"صورة الشعار",
     "countryCode": "كود البلد",
     "country": "اسم البلد",
-    "selectCountry": "اختر اسم البلد"
+    "selectCountry": "اختر اسم البلد",
+    "certificates":"الشهادات",
+    "experienceYears":"سنوات الخبرة",
+    "chooseGender":"اختر الجنس",
+    "img":"الصورة",
+    "period":"مدة الخدمة",
+    "chooseCategory":"اختر صنف",
+    "imgCover":"صورة الغلاف",
+    "chooseService":"اختر خدمة"
   },
   "table": {
     "name": "اسم المستخدم",
     "handel": "التحكم",
+    "currency": "العملة",
     "role": "الدور",
-    "desc": "الوصف"
-
+    "desc": "الوصف",
+    "countryCode": "كود البلد"
   },
   "cpMangment": {
     "title": "إدارة المستخدمين",
@@ -162,5 +172,13 @@
     "edit":"تعديل مدينة",
     "delete": "تم حذف المدينة بنجاح",
     "name" : "اسم المدينة"
+  },
+  "serv": {
+    "titleWithEmp":"الخدمات حسب الموظفين",
+    "title": "الخدمات",
+    "add": "إضافة خدمة",
+    "edit": "تعديل الخدمة",
+    "action": "تم حفظ الخدمة بنجاح",
+    "delete": "تم حذف الخدمة"
   }
 }

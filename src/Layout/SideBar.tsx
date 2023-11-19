@@ -18,18 +18,18 @@ const SideBarrr = () => {
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
-  
+
         },
         "& .pro-menu": {
-          height:"100vh"
+          height: "100vh"
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
         },
         "& .pro-inner-item": {
           padding: "5px 35px 5px 20px !important",
-          display:"flex",
-          gap:"5px"
+          display: "flex",
+          gap: "5px"
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
@@ -49,8 +49,8 @@ const SideBarrr = () => {
             style={{
               margin: "10px 0 20px 0",
               color: colors.grey[100],
-              display:"flex",
-              flexDirection:"column"
+              display: "flex",
+              flexDirection: "column"
             }}
           >
             {!isCollapsed && (
@@ -69,6 +69,7 @@ const SideBarrr = () => {
           <Box paddingLeft={isCollapsed ? undefined : "10%"} display="flex" flexDirection="column" gap="10">
             {dashBoardNavLinks.map((link) => (
               <ItemLink
+                key={link.href}
                 to={link.href}
                 icon={link.icon}
                 title={link.title}

@@ -9,6 +9,7 @@ import { CityQueries } from "../../../API/City/CityQueries";
 import { AddCouponType } from "./type";
 import { DefaultFromDate, DefaultToDate } from "../../../helper/DateHelpers";
 import { FileQuery } from "../../../API/File/FileQueries";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 const CouponHook = (Search?: string, PageNumber?: number) => {
   const [Query, setQuery] = useState<string>("");
@@ -29,7 +30,7 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
     setValue,
     reset,
     watch,
-    setError
+    setError,
   } = useForm<AddCouponType>({
     defaultValues: {
       fromDate: DefaultFromDate(),
@@ -65,7 +66,12 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
 
   const { data: Customers, isLoading: customerLoading } =
     CpManagementQueries.useCpCustomersNames();
+  const params = useParams();
+  const { data: ThisCoupon, isLoading: isThisCouponLoading } =
+    CouponQueries.GetCouponQuery(params.id);
 
+  const navigate = useNavigate();
+  const location = useLocation();
   return {
     register,
     control,
@@ -91,7 +97,12 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
     mutateImg,
     UploadingImg,
     deleteImage,
-    setError
+    setError,
+    navigate,
+    ThisCoupon,
+    isThisCouponLoading,
+    location,
+    params,
   };
 };
 

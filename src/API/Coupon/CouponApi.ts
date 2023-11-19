@@ -20,8 +20,8 @@ const GetAllCouponsCP = async (payload: IPayload) => {
   return data;
 };
 
-const GetCouponCp = async (id: string) => {
-  const { data } = await DeliveryApiInstances.get<IPagination<GetCouponCPType>>(
+const GetCouponCp = async (id: string | undefined) => {
+  const { data } = await DeliveryApiInstances.get<GetCouponCPType>(
     API_Routes.Coupon.GET_COUPON_CP,
     {
       params: {

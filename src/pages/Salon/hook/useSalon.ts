@@ -8,7 +8,13 @@ import {
   imgNameTypeProdct,
 } from "../../../interface/generic";
 import { FileQuery } from "../../../API/File/FileQueries";
-import { DefaultFromDate, convertToInputTime, dayTimeConvert } from "../../../helper/imgHelper";
+import {
+  DefaultFromDate,
+  DefaultFromDateHours,
+  convertToInputTime,
+  convertToInputTimeSalon,
+  dayTimeConvert,
+} from "../../../helper/imgHelper";
 import { SalonQueries } from "../../../API/Salon/SalonQueries";
 import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
@@ -21,15 +27,16 @@ const useSalon = () => {
     setValue,
     register,
     handleSubmit,
+    setError,
     watch,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
     reset,
   } = useForm<SalonInput>({
     defaultValues: {
       workSchedule: Array(7).fill({
         day: DayArray[0],
-        startTime: DefaultFromDate(),
-        endTime: DefaultFromDate(),
+        startTime: DefaultFromDateHours(),
+        endTime: DefaultFromDateHours(),
         isFree: true,
       }),
     },
@@ -44,32 +51,46 @@ const useSalon = () => {
   const [imgCoverAfterCrop, setImgCoverAfterCrop] = useState<string>("");
   const [genericFile, setGenericFile] = useState<File | null>(null);
   const { salonId } = useParams();
-  const { data: salonDetails , isLoading } = SalonQueries.GetSalonDetailsQuery(salonId!);
+  const { data: salonDetails, isLoading } = SalonQueries.GetSalonDetailsQuery(
+    salonId!
+  );
   const { data: cityOption } = CityQueries.GetCityAutoCompleteQuery();
   // console.log(salonDetails);
   useEffect(() => {
     if (salonDetails) {
-      setValue("name", salonDetails.name)
-      setValue("description", salonDetails.description)
-      setValue("phoneNumber", salonDetails.phoneNumber)
-      setValue("tempPhoneNumber", salonDetails.tempPhoneNumber)
-      setValue("instagramUrl", salonDetails.instagramUrl)
-      setValue("facebookUrl", salonDetails.facebookUrl)
-      setValue("SalonType", SalonTypeArray.find((d) => d.id === salonDetails.salonType)!)
-      setValue("latitude", salonDetails.address.latitude)
-      setValue("longitude", salonDetails.address.longitude)
-      setImgCoverAfterCrop(salonDetails.logo)
-      setValue("city", cityOption?.find((n) => n.id === salonDetails.address.cityId)!)
+      setValue("name", salonDetails.name);
+      setValue("description", salonDetails.description);
+      setValue("phoneNumber", salonDetails.phoneNumber);
+      setValue("tempPhoneNumber", salonDetails.tempPhoneNumber);
+      setValue("instagramUrl", salonDetails.instagramUrl);
+      setValue("facebookUrl", salonDetails.facebookUrl);
+      setValue(
+        "SalonType",
+        SalonTypeArray.find((d) => d.id === salonDetails.salonType)!
+      );
+      setValue("latitude", salonDetails.address.latitude);
+      setValue("longitude", salonDetails.address.longitude);
+      setImgCoverAfterCrop(salonDetails.logo);
+      setValue(
+        "city",
+        cityOption?.find((n) => n.id === salonDetails.address.cityId)!
+      );
       salonDetails.workSchedule.forEach((day, index) => {
         // setValue(`workSchedule.${index}.day`,day)
         setValue(`workSchedule.${index}.isFree`, day.isFree);
-        setValue(`workSchedule.${index}.startTime`, convertToInputTime(day.startTime!))
-        setValue(`workSchedule.${index}.endTime`, convertToInputTime(day.endTime!))
-      })
+        setValue(
+          `workSchedule.${index}.startTime`,
+          convertToInputTimeSalon(day.startTime!)
+        );
+        setValue(
+          `workSchedule.${index}.endTime`,
+          convertToInputTimeSalon(day.endTime!)
+        );
+      });
     }
     // console.log(salonDetails?.workSchedule)
     //  setValue(`workSchedule.${1}.startTime`,convertToInputTime(salonDetails?.workSchedule[1].startTime!))
-  }, [salonDetails, cityOption])
+  }, [salonDetails, cityOption]);
   const handleManipulateImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return;
     const file = e.target.files[0];
@@ -107,48 +128,60 @@ const useSalon = () => {
   };
 
   const onSubmit = () => {
-    mutate(
-      {
-        id: salonId ? salonId : undefined,
-        workSchedule: watch("workSchedule").map((day, index) => {
-          return {
-            day: index,
-            startTime: dayTimeConvert(day.startTime),
-            endTime: dayTimeConvert(day.endTime),
-            isFree: day.isFree ? day.isFree : false,
-          };
-        }),
-        salonType: watch("SalonType.id"),
-        address: {
-          latitude: watch("latitude")!,
-          longitude: watch("longitude")!,
-          cityId: watch("city").id,
+    if (!watch("latitude") && !watch("longitude")) {
+      setError("latitude", {
+        type: "required",
+        message: "Field is require",
+      });
+      setError("longitude", {
+        type: "required",
+        message: "Field is require",
+      });
+    } else {
+      mutate(
+        {
+          id: salonId ? salonId : undefined,
+          workSchedule: watch("workSchedule").map((day, index) => {
+            return {
+              day: index,
+              startTime: dayTimeConvert(day.startTime),
+              endTime: dayTimeConvert(day.endTime),
+              isFree: day.isFree ? day.isFree : false,
+            };
+          }),
+          salonType: watch("SalonType.id"),
+          address: {
+            latitude: watch("latitude")!,
+            longitude: watch("longitude")!,
+            cityId: watch("city").id,
+          },
+          name: watch("name"),
+          description: watch("description"),
+          phoneNumber: watch("phoneNumber"),
+          tempPhoneNumber: watch("tempPhoneNumber"),
+          facebookUrl: watch("facebookUrl"),
+          instagramUrl: watch("instagramUrl"),
+          logo: "files/Salon\\022d3e2e-3f6f-46b5-828e-a86df7262d2e.jpg",
+          imageUrls: imgagesAfterCrop,
         },
-        name: watch("name"),
-        description: watch("description"),
-        phoneNumber: watch("phoneNumber"),
-        tempPhoneNumber: watch("tempPhoneNumber"),
-        facebookUrl: watch("facebookUrl"),
-        instagramUrl: watch("instagramUrl"),
-        logo: "files/Salon\\022d3e2e-3f6f-46b5-828e-a86df7262d2e.jpg",
-        imageUrls: imgagesAfterCrop,
-      },
-      {
-        onSuccess: () => {
-          navigate(-1);
-          queryClient.refetchQueries({ queryKey: ["get-all-salon"] });
-          showSuccess(t("salon.action"));
-        },
-        onError(error: any) {
-          showError(error.response.data.errorMessage);
-        },
-      }
-    );
+        {
+          onSuccess: () => {
+            navigate(-1);
+            queryClient.refetchQueries({ queryKey: ["get-all-salon"] });
+            showSuccess(t("salon.action"));
+          },
+          onError(error: any) {
+            showError(error.response.data.errorMessage);
+          },
+        }
+      );
+    }
   };
 
   return {
     control,
     handleSubmit,
+    errors,
     isLoading,
     salonId,
     setValue,

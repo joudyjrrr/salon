@@ -77,7 +77,6 @@ const SetCity =  () => {
   return queryResult;
 };
 
-
 const DeleteCity = async () => {
   const queryResult = useMutation({
     mutationKey: ["delete-city"],

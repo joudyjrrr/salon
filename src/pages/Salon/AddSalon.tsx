@@ -36,6 +36,7 @@ const AddSalon = () => {
     isPending,
     imgTitle,
     salonId,
+    errors
   } = useSalon();
   const { t } = useTranslation();
   return (
@@ -67,7 +68,7 @@ const AddSalon = () => {
                 sm={12}
                 spacing={{ xs: 2, md: 3 }}
               >
-                <Inputs control={control} setValue={setValue} watch={watch} />
+                <Inputs errors={errors} control={control} setValue={setValue} watch={watch} />
                 <Select control={control} />
                 <Grid item lg={3} md={4} sm={6}>
                   {imgCoverAfterCrop === "" ? (
@@ -89,7 +90,7 @@ const AddSalon = () => {
                         FileApi.DeleteFile(imgCoverAfterCrop);
                         setImgCoverAfterCrop("");
                       }}
-                      title={t("form.logoImg")}
+                      title={t("form.imgCover")}
                     />
                   )}
                 </Grid>
@@ -112,7 +113,11 @@ const AddSalon = () => {
                     </Grid>
                   ))}
               </Grid>
-              <SalonSchedule control={control} watch={watch} />
+              <SalonSchedule
+                title={t("salon.SalonSchedule")}
+                control={control}
+                watch={watch}
+              />
               <Stack
                 marginInline={`auto`}
                 justifyContent={`center`}
