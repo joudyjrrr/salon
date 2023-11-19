@@ -1,4 +1,4 @@
-import { IAutoCompleteOption } from "../../interface/generic";
+import { IAutoCompleteOption, IValue } from "../../interface/generic";
 import { Day, salonType } from "../Salon/type";
 
 export interface EmployeeAllPayload {
@@ -40,4 +40,27 @@ export interface EmployeeData extends Employee {
     endTime: string;
     isFree: boolean;
   }[];
+
+}
+export interface EmployeeService {
+  services : {
+    id : string;
+    name : IValue [];
+    price : number;
+    offerPrice : number;
+    rate : number;
+    coverImage : string
+  }[]
+}
+export interface EmpServicINput {
+  employee : IAutoCompleteOption;
+  services : IAutoCompleteOption []
+}
+export interface EmpServiceData {
+  employeeId : string;
+  services : string []
+}
+export interface ServEmpId {
+  EmployeeId :string ;
+  ServiceId : string
 }

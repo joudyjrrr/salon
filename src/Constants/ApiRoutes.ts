@@ -86,17 +86,26 @@ const Employee = {
   GET_ALL_Employee_CP: `${controller.Employee}/GetSalonEmployees`,
   GET_Employee_DETAILS_CP: `${controller.Employee}/GetEmployeeDetailsCp`,
   SET_Employee: `${controller.Employee}/SetEmployeeCp`,
-  DELETE_Employee: `${controller.Employee}/DeleteEmployeeCp`
+  DELETE_Employee: `${controller.Employee}/DeleteEmployeeCp`,
+  GET_Service_BY_EMPID:`${controller.Employee}/GetEmployeeDetailsCp`,
+  SET_EMpSERVICE:`${controller.Employee}/SetEmployeeServiceCp`,
+  Delet_ServEmp : `${controller.Employee}/DeleteEmployeeServiceCp`
 };
 const Version = {
   SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
   DELETE_VERSION_CP: `${controller.Salon}/VersionDeleteCp`,
+
 };
 const Service = {
   SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
   DELETE_SERVICE : `${controller.Service}/DeleteServiceCp`,
-  GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`
+  GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`,
 };
+// const EmpService = {
+//   SET_EmpSERVICE_CP: `${controller.Service}/SetServiceCp`,
+//   DELETE_SERVICE : `${controller.Service}/DeleteServiceCp`,
+//   GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`
+// };
 const Feedback = {
   GET_FEEDBACK_CP: `${controller.Feedback}/Feedback`,
 };

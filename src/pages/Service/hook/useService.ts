@@ -76,6 +76,12 @@ const useService = () => {
   useEffect(()=>{
       if(servDetails){
         setValue("id",servDetails.id)
+        setValue("enName",servDetails.name.find((d)=>d.key == 'en')?.value!)
+        setValue("arName",servDetails.name.find((d)=>d.key == 'ar')?.value!)
+        setValue("enDescription",servDetails.description.find((d)=>d.key == 'en')?.value!)
+        setValue("arDescription",servDetails.description.find((d)=>d.key == 'ar')?.value!)
+        setValue("period",  new Date(servDetails.period).toISOString().slice(0, 16))
+        // console.log(servDetails.period.toISOString())
         setValue("price",servDetails.price)
         setValue("offerPrice",servDetails.offerPrice)
         setImgCoverAfterCrop(servDetails.coverImage)

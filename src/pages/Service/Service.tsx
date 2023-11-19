@@ -91,7 +91,7 @@ const Service = () => {
                         <Typography variant="caption">
                           {t("form.name")} :
                         </Typography>
-                        <Typography variant="caption">{d.name}</Typography>
+                        <Typography variant="caption">{d.name.find((d)=>d.key === 'en')?.value}</Typography>
                       </Stack>
                       <Stack flexDirection="row" gap="5px">
                         <Typography variant="caption">

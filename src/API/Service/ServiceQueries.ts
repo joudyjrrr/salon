@@ -19,6 +19,25 @@ const GetServiceDetailsQuery = (params: ServicePayload) => {
   });
   return queryResult;
 };
+const GetServiceDetailsAutoCompleteQuery = (salonId : string) => {
+  const queryResult = useQuery({
+    queryKey: ["get-service", salonId],
+    queryFn: async () => {
+      const data = await ServiceApi.GetServiceAll({
+        EnablePagination: false,
+        salonId :salonId
+      });
+      return data;
+    },
+    select: (data) => data.services.data.map((d)=>{
+      return {
+        id : d.id,
+        name : d.name.find((d)=>d.key === 'en')?.value!
+      }
+    }),
+  });
+  return queryResult;
+};
 
 const SetServiceQuery = () => {
   const queryResult = useMutation({
@@ -41,5 +60,6 @@ const GetServDetailsQuery =  (id : string) => {
 export const ServiceQueries = {
   SetServiceQuery,
   GetServiceDetailsQuery,
-  GetServDetailsQuery
+  GetServDetailsQuery,
+  GetServiceDetailsAutoCompleteQuery
 };

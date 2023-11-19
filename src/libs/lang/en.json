@@ -78,7 +78,8 @@
     "img":"img",
     "period":"period",
     "chooseCategory":"chooseCategory",
-    "imgCover":"img Cover"
+    "imgCover":"img Cover",
+    "chooseService":"chooseService"
   },
   "table": {
     "name": "Name",
@@ -167,6 +168,7 @@
     "to": "to"
   },
   "serv": {
+    "titleWithEmp":"ServiceByEmployee",
     "title": "Services",
     "add": "Add Services",
     "edit": "Edit Services",

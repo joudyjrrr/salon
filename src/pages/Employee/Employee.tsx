@@ -22,6 +22,7 @@ import { useState } from "react";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { EmployeeApi } from "../../API/Emplyee/EmployeeApi";
 import EditIcon from "@mui/icons-material/Edit";
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 const Employee = () => {
   const { t } = useTranslation();
   const matches = useMediaQuery("(max-width:700px)");
@@ -101,6 +102,9 @@ const Employee = () => {
                         setId={() => setId(d?.id ?? "")}
                         userId={id ?? ""}
                       />
+                        <IconButton onClick={() => navigate(`employeeService/${d.id}`)}>
+                      <MiscellaneousServicesIcon />
+                    </IconButton>
                     </CardActions>
                   </Card>
                 </Grid>

@@ -9,7 +9,7 @@ export interface IPaginationService{
 }
 export interface ServiceGet {
   id: string;
-  name: string;
+  name: IValue[];
   price: number;
   offerPrice: number;
   rate: number;
@@ -22,7 +22,7 @@ export interface Service {
   id?:string;
   price : number;
   offerPrice : number;
-  period : string;
+  period : Date | string;
   coverImage : string;
   images : string[];
   salonId : string;
