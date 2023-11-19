@@ -161,7 +161,7 @@ const useSalon = () => {
           tempPhoneNumber: watch("tempPhoneNumber"),
           facebookUrl: watch("facebookUrl"),
           instagramUrl: watch("instagramUrl"),
-          logo: "files/Salon\\022d3e2e-3f6f-46b5-828e-a86df7262d2e.jpg",
+          logo: imgCoverAfterCrop,
           imageUrls: imgagesAfterCrop,
         },
         {
