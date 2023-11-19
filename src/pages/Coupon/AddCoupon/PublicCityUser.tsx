@@ -2,10 +2,11 @@ import { Autocomplete, FormControl, FormControlLabel, Grid, Radio, RadioGroup, T
 import Loading from "../../../Components/Loading";
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CouponHook from "../hook/CouponHook";
-import { INameAndId } from "../../../interface/generic";
+import { INameAndId, IPagination } from "../../../interface/generic";
 import { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
 import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { AddCouponType } from "../hook/type";
+import { getCityAllType } from "../../../API/City/type";
 
 
 const PublicCityUser: FC<{
@@ -13,10 +14,12 @@ const PublicCityUser: FC<{
     setCityUser: Dispatch<SetStateAction<string>>,
     register: UseFormRegister<AddCouponType>,
     setValue: UseFormSetValue<AddCouponType>,
-    errors: FieldErrors<AddCouponType>
-}> = ({ CityUser, setCityUser, register, setValue, errors }) => {
+    errors: FieldErrors<AddCouponType>,
+    countries: INameAndId[] | undefined,
+    cities: IPagination<getCityAllType> | undefined
+}> = ({ CityUser, setCityUser, register, setValue, errors, countries, cities }) => {
 
-    const { t, customerLoading, Customers, countries, cities } = CouponHook()
+    const { t, customerLoading, Customers, } = CouponHook()
 
     return (
         <>

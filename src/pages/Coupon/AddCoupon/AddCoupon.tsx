@@ -1,6 +1,6 @@
 import { Box, Button, Grid } from "@mui/material"
 import CouponHook from "../hook/CouponHook"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { AddCouponType } from "../hook/type"
 import NameAndCode from "./NameAndCode"
 import SetDate from "./SetDate"
@@ -10,6 +10,10 @@ import CouponImage from "./CouponImage"
 import { showError, showSuccess } from "../../../libs/reactToastify.tsx"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Title from "../../../Components/Title.tsx"
+import { FromISO } from "../../../helper/DateHelpers.ts"
+import Loading from "../../../Components/Loading.tsx"
+
+
 
 const AddCoupon = () => {
 
@@ -19,13 +23,37 @@ const AddCoupon = () => {
         errors,
         t,
         setValue, register, setError, getValues, control,
-        navigate, reset
+        navigate, reset, location,
+        ThisCoupon, isThisCouponLoading, params, countries, cities
     } = CouponHook();
+
 
     const [img, setImg] = useState<string>("");
     const [PercentValue, setPercentValue] = useState('value');
     const [CityUser, setCityUser] = useState('Public');
+    const isAddingPath = location.pathname === '/coupon/addCoupon'
+    const id = params.id;
 
+
+
+    useEffect(() => {
+        if (!!ThisCoupon && !isAddingPath) {
+            setValue('name', ThisCoupon?.name)
+            setValue('code', ThisCoupon?.code)
+            // setValue('image', ThisCoupon.image)
+            setImg(ThisCoupon.image)
+            setValue('fromDate', FromISO(ThisCoupon.fromDate))
+            setValue('toDate', FromISO(ThisCoupon.toDate))
+            setValue('value', ThisCoupon.value)
+            setValue('percentage', ThisCoupon.percentage)
+            if (!!ThisCoupon.percentage) {
+                setPercentValue('percent')
+            }
+            // if(!!ThisCoupon.)
+
+        }
+
+    }, [ThisCoupon])
 
     const submitHandler = (data: AddCouponType) => {
 
@@ -75,6 +103,7 @@ const AddCoupon = () => {
         }
 
         addCoupon({
+            id: isAddingPath ? undefined : id,
             cityId: data.city?.id ?? undefined,
             code: data.code,
             image: img,
@@ -84,20 +113,22 @@ const AddCoupon = () => {
             percentage: data.percentage,
             value: getValues('value'),
             customers: data.customers?.map((customer) => customer.userId),
-            type: CityUser === 'Public' ? 0 : CityUser === 'ByCity' ? 1 : 2
+            type: CityUser === 'Public' ? 0 : CityUser === 'ByCity' ? 2 : 1
 
         },
             {
                 onSuccess: () => {
-                    showSuccess('Coupon.added')
+                    showSuccess(t('Coupon.added'))
                     reset()
                     navigate(-1)
-
                 },
                 onError: () => {
-                    showError('Coupon.wrong')
+                    showError(t('Coupon.wrong'))
                 }
             })
+    }
+    if (isThisCouponLoading && !isAddingCoupon) {
+        return <Loading />
     }
 
 
@@ -109,7 +140,7 @@ const AddCoupon = () => {
                         <ArrowBackIcon />
                     </Button>
                     <Grid item sx={{ mx: 5 }}>
-                        <Title text={t('Coupon.addTitle')} />
+                        <Title text={isAddingPath ? t('Coupon.addTitle') : t('Coupon.editTitle')} />
                     </Grid>
 
                 </Grid>
@@ -122,7 +153,11 @@ const AddCoupon = () => {
                     <Box sx={{ flexGrow: 1 }}>
                         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
 
-                            <NameAndCode errors={errors} register={register} />
+                            <NameAndCode
+                                errors={errors}
+                                register={register}
+                                control={control}
+                            />
 
                             <SetDate control={control} />
 
@@ -143,6 +178,8 @@ const AddCoupon = () => {
                             setValue={setValue}
                             register={register}
                             errors={errors}
+                            countries={countries}
+                            cities={cities}
                         />
 
                         <CouponImage

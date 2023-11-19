@@ -76,10 +76,11 @@
     "experienceYears":"experienceYears",
     "chooseGender":"chooseGender",
     "img":"img",
-    "period":"period",
+   
     "chooseCategory":"chooseCategory",
     "imgCover":"img Cover",
-    "chooseService":"chooseService"
+    "chooseService":"chooseService",
+    "period": "period"
   },
   "table": {
     "name": "Name",
@@ -104,6 +105,7 @@
     "type": "type",
     "title": "Category",
     "add": "Add Category",
+    "edit": "Edit Category",
     "added": "Category has been Added Successfully",
     "edited": "Category has been Edited Successfully",
     "delete": "Category has been deleted",
@@ -126,6 +128,7 @@
     "arBody": "Arabic Body",
     "enBody": "English Body",
     "Add": "Add Notification",
+    "EditTitle": "Edit Notification",
     "Body": "Body",
     "Title": "Title",
     "AppType": "App Type",
@@ -185,7 +188,8 @@
   "Coupon": {
     "title": "Coupon",
     "add": "Add Coupon",
-    "addTitle": "Add Title",
+    "addTitle": "Add Coupon",
+    "editTitle": "Edit Coupon",
     "added": "Coupon Added Successfully",
     "deleted": "Coupon Deleted successfully",
     "name": "Name",

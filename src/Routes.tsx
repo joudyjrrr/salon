@@ -5,6 +5,7 @@ const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
 const CpMangment = lazy(() => import("./pages/CpMangment/CpMangment"));
 const Notification = lazy(() => import("./pages/Notification/Notification"));
+const AddNotification = lazy(() => import('./pages/Notification/AddNotification/AddNotification'))
 const Salon = lazy(() => import("./pages/Salon/Salon"));
 const AddSalon = lazy(() => import("./pages/Salon/AddSalon"));
 const Fallback = lazy(() => import("./Components/Fallback"));
@@ -76,14 +77,32 @@ const Routes = () => {
             />
           </Route>
 
-          <Route
-            path="/notifications"
-            element={
-              <Suspense fallback={<></>}>
-                <Notification />
-              </Suspense>
-            }
-          />
+          <Route path="/notifications">
+            <Route
+              index
+              element={
+                <Suspense fallback={<></>}>
+                  <Notification />
+                </Suspense>
+              }
+            />
+            <Route
+              path="addNotification"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddNotification />
+                </Suspense>
+              }
+            />
+            <Route
+              path="editNotification/:id"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddNotification />
+                </Suspense>
+              }
+            />
+          </Route>
           <Route
             path="/country"
             element={
@@ -191,6 +210,14 @@ const Routes = () => {
             />
             <Route
               path="addCoupon"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddCoupon />
+                </Suspense>
+              }
+            />
+            <Route
+              path="editCoupon/:id"
               element={
                 <Suspense fallback={<></>}>
                   <AddCoupon />

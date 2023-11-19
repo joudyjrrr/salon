@@ -19,13 +19,14 @@ const GetALLCouponsQuery = (params: IPayload) => {
   return queryResult;
 };
 
-const GetCouponQuery = (id: string) => {
+const GetCouponQuery = (id: string | undefined) => {
   const queryResult = useQuery({
     queryKey: ["get-coupon", id],
     queryFn: async () => {
       const data = await CouponApi.GetCouponCp(id);
       return data;
     },
+    enabled: !!id,
   });
 
   return queryResult;

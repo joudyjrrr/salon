@@ -19,6 +19,6 @@ export interface getCityByIdType {
   countryId: string;
 }
 export interface getCityByCountryType extends IPayload {
-  CountryId: string;
+  CountryId?: string;
   enabled: boolean;
 }
