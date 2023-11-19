@@ -11,9 +11,7 @@ import { ServiceQueries } from "../../../API/Service/ServiceQueries";
 import {
   DefaultFromDate,
   DefaultFromDateHours,
-  convertToInputTime,
-  convertToInputTimeSalon,
-  dayTimeConvert,
+  dayTimeConverService,
   makeActionArray,
 } from "../../../helper/imgHelper";
 import { showError, showSuccess } from "../../../libs/reactToastify";
@@ -91,8 +89,7 @@ const useService = () => {
         "arDescription",
         servDetails.description.find((d) => d.key == "ar")?.value!
       );
-      setValue("period",new Date(servDetails.period).toISOString().slice(11, 16))
-      console.log(new Date(servDetails.period).toISOString().slice(1, 16))
+      setValue("period",servDetails.period.slice(11,16))
       setValue("price", servDetails.price);
       setValue("offerPrice", servDetails.offerPrice);
       setImgCoverAfterCrop(servDetails.coverImage);
@@ -101,9 +98,12 @@ const useService = () => {
         "category",
         categoryOP?.find((d) => d.id === servDetails.categoryId)!
       );
+      
     }
+
   }, [servDetails]);
   const { mutate, isPending } = ServiceQueries.SetServiceQuery();
+// console.log(  dayTimeConverService(watch("period")))
   const onSubmit: SubmitHandler<ServiveInput> = async (data) => {
     mutate(
       {
@@ -115,7 +115,7 @@ const useService = () => {
         images: imgagesAfterCrop,
         coverImage: imgCoverAfterCrop,
         categoryId: watch("category").id,
-        period: dayTimeConvert(watch("period")),
+        period: dayTimeConverService(watch("period")),
         salonId: salonId!,
       },
       {

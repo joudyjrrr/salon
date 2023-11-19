@@ -22,7 +22,7 @@ export interface Service {
   id?:string;
   price : number;
   offerPrice : number;
-  period : Date | string;
+  period :  string;
   coverImage : string;
   images : string[];
   salonId : string;

@@ -139,6 +139,19 @@ export const dayTimeConvert = (Time: any) => {
   console.log(formattedTime);
   return formattedTime;
 };
+
+export const dayTimeConverService = (Time: any) => {
+  const currentDate = new Date();
+  const [hours, minutes] = Time.split(":");
+  currentDate.setHours(Number(hours));
+  currentDate.setMinutes(Number(minutes));
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1;
+  const day = currentDate.getDate();
+  const formattedTime = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T${hours}:${minutes}:${currentDate.getSeconds()}.${currentDate.getMilliseconds()}Z`;
+  console.log(formattedTime);
+  return formattedTime;
+};
 export const DefaultFromDate = () => {
   var now = new Date();
   now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
