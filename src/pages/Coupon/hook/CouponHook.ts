@@ -53,7 +53,6 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
 
   const { mutate: addCoupon, isPending: isAddingCoupon } =
     CouponQueries.SetCouponQuery();
-
   const { data: countries, isLoading: isCountryLoading } =
     CountryQueries.GetCountryAutoCompleteQuery();
   const country = watch("country");

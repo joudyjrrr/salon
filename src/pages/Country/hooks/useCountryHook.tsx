@@ -29,7 +29,7 @@ const useCountryHook = (id?: string, pageNumber?: number , query?: string) => {
 
   useEffect(() => {
     if (typeof countryDetails !== undefined) {
-      console.log(countryDetails);
+      // console.log(countryDetails);
       setValue('enName', countryDetails?.name.find((d) => d.key === 'en')?.value!);
       setValue('arName' , countryDetails?.name.find((d) => d.key === 'ar')?.value!);
       setValue('currency' , countryDetails?.currency!);

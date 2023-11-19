@@ -19,7 +19,6 @@ const useCpMngment = (id: string) => {
   } = useForm<SetUserType>();
   const {data : userDetails , isLoading} = CpManagementQueries.GetUserByIdQuery(id)
 //   console.log(userDetails)
-
   const [open, setOpen] = React.useState(false);
   const { isPending, mutate, isSuccess } = CpManagementQueries.SetUserQuery();
   const { data: roleOption } = CpManagementQueries.GetRoles();

@@ -16,7 +16,6 @@ import Loading from "../../Components/Loading";
 
 
 const AddCategory = () => {
-
     const [File, setFile] = useState<File | null>();
     const [img, setImg] = useState<string>("");
     const [Open, setOpen] = useState(false);

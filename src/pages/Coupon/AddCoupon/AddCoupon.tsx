@@ -84,7 +84,6 @@ const AddCoupon = () => {
             setError('fromDate', { message: t('Coupon.fromError') });
             return
         }
-
         if (PercentValue === 'percent' && !getValues('percentage')) {
             setError('percentage', { message: t('form.required') })
             return

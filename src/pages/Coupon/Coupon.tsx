@@ -49,7 +49,6 @@ const Coupon = () => {
           <Grid container spacing={2} sx={{ mt: 1, px: 2 }}>
             {Coupons?.data.map((coupon, idx) => {
 
-
               return (
                 <>
                   <Grid item key={idx} xs={12} sm={6} md={4} lg={3}>
@@ -58,7 +57,6 @@ const Coupon = () => {
                         component={"img"}
                         alt="Coupon image"
                         image={`${DEVELOPMENT_BASE_URL}/${coupon.image}`}
-
                       />
                       <CardContent>
                         <Typography

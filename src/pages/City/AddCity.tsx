@@ -1,31 +1,28 @@
-import * as React from "react";
-import AddIcon from "@mui/icons-material/Add";
-import useCountryHook from "./hooks/useCountryHook";
+import React from 'react'
 import { useTranslation } from "react-i18next";
-import { Stack } from "@mui/material";
+import useCityHook from './hook/useCityHook';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Fab, Slide, Stack } from '@mui/material';
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
-import Fab from "@mui/material/Fab";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
+import AddIcon from "@mui/icons-material/Add";
+import Loading from '../../Components/Loading';
+import FormTextField from '../../Components/Form/FormTextField';
+import SubmitButton from '../../Components/Form/SubmitButton';
 import { TransitionProps } from "@mui/material/transitions";
-import Loading from "../../Components/Loading";
-import Slide from "@mui/material/Slide";
-import FormTextField from "../../Components/Form/FormTextField";
-import SubmitButton from "../../Components/Form/SubmitButton";
+import { CountryQueries } from '../../API/Country/CountryQueries';
+import GenericObjectAutoComplete from "../../Components/Form/GenericObjectAutoComplete";
+import { Controller } from 'react-hook-form';
 
 const Transition = React.forwardRef(function Transition(
-  props: TransitionProps & {
-    children: React.ReactElement<any, any>;
-  },
-  ref: React.Ref<unknown>
-) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+    props: TransitionProps & {
+      children: React.ReactElement<any, any>;
+    },
+    ref: React.Ref<unknown>
+  ) {
+    return <Slide direction="up" ref={ref} {...props} />;
+  });
 
-const AddCountry: React.FC<{
+const addCity: React.FC<{
     id?: string;
     setId?: (id: string) => void;
   }> = ({ id, setId }) => {
@@ -39,12 +36,15 @@ const AddCountry: React.FC<{
       setOpen,
       isPending,
       isLoading,
-      countryDetails,
-    } = useCountryHook(id);
+      cityDetails,
+    } = useCityHook(id);
   
     const { t } = useTranslation();
 
-return (
+    const { data: countryOption } = CountryQueries.GetCountryAutoCompleteQuery();
+
+
+  return (
     <>
       <Stack
         flexDirection="row"
@@ -77,7 +77,7 @@ return (
         sx={{ textAlign: "center" }}
       >
         <DialogTitle>
-          {id ? t("Country.edit") : t("Country.add")}
+          {id ? t("City.edit") : t("City.add")}
         </DialogTitle>
         <form onSubmit={handleSubmit(onSubmit)}>
           {isLoading ? (
@@ -99,20 +99,20 @@ return (
                   req={true}
                   shrink
                 />
-                <FormTextField
+                <Controller
+                  name="country"
                   control={control}
-                  name="currency"
-                  label={t("form.currency")}
-                  req
-                  shrink
+                  render={({ field, fieldState }) => (
+                  <GenericObjectAutoComplete
+                    option={countryOption}
+                    value={field.value}
+                    errorMessage={fieldState.error?.message}
+                    onChange={field.onChange}
+                    label={`${t("form.selectCountry")} *`}
+                    required={true}
                 />
-                <FormTextField
-                  control={control}
-                  name="countryCode"
-                  label={t("form.countryCode")}
-                  req
-                  shrink
-                />
+            )}
+          />
               </Stack>
             </DialogContent>
           )}
@@ -122,5 +122,7 @@ return (
         </form>
       </Dialog>
       </>
-)}
-export default AddCountry;
+  )
+}
+
+export default addCity

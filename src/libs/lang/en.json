@@ -69,6 +69,7 @@
     "chooseSalonType": "Choose SalonType",
     "chooseCountry": "Choose Country",
     "chooseCity": "Choose City",
+    "selectCountry": "Select Country",
     "logoImg": "logo Img",
     "countryCode": "countryCode",
     "country": "Country Name",
@@ -157,6 +158,24 @@
     "Available": "Available",
     "from": "from",
     "to": "to"
+  },
+  "Country": {
+    "title": "Country",
+    "action": "Country has been saved successfully",
+    "add": "Add Country",
+    "edit":"Edit Country",
+    "delete": "Country has been Deleted",
+    "countryCode": "countryCode",
+    "currency": "Currency",
+    "name": "Country Name"
+  },
+  "City": {
+    "title": "City",
+    "action": "City has been saved successfully",
+    "add": "Add City",
+    "edit":"Edit City",
+    "delete": "City has been Deleted",
+    "name": "City Name"
   },
   "emp": {
     "title": "Employee",

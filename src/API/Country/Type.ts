@@ -1,4 +1,4 @@
-import { IValue } from "../../interface/generic";
+import { ICity } from "../../interface/generic";
 
 export interface GetAllCountryType {
   id: string;
@@ -17,13 +17,13 @@ export interface SetCountryTypeInput
 export interface SetCountryType 
  {
     id?: string,
-    name: IValue[];
+    name: ICity[];
     currency: string,
     countryCode: string,
 }
 export interface GetCountryById {
   id: string;
-  name: IValue[];
+  name: ICity[];
   currency: string;
   countryCode: string;
 }
