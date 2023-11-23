@@ -7,7 +7,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import FlagIcon from '@mui/icons-material/Flag';
 import DiscountIcon from '@mui/icons-material/Discount';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
-
+import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
 const Links = () => {
   const { t } = useTranslation();
 
@@ -47,6 +47,11 @@ const Links = () => {
       title: t("links.coupon"),
       href: "/coupon",
       icon: <DiscountIcon />,
+    },
+    {
+      title: t("links.banner"),
+      href: "/banner",
+      icon: <ViewCarouselIcon />,
     },
   ]
   return {

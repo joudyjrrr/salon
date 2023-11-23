@@ -1,7 +1,7 @@
 import { API_Routes } from "../../Constants/ApiRoutes";
 import { IPagination, IPayload } from "../../interface/generic";
 import DeliveryApiInstances from "../axios";
-import { GetAllBannerCpType, GetBannerByIdType, SetBannerType } from "./type";
+import { GetAllBannerCpType, GetBannerByIdType, SetBannerTypeData } from "./type";
 
 const GetAllBanner = async (params: IPayload) => {
   const { data } = await DeliveryApiInstances.get<
@@ -26,7 +26,7 @@ const GetBannerById = async (id: string) => {
   return data;
 };
 
-const SetBanner = async (params: SetBannerType) => {
+const SetBanner = async (params: SetBannerTypeData) => {
   await DeliveryApiInstances.post(API_Routes.Banner.SET_BANNER_CP, params);
 };
 

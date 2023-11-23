@@ -5,7 +5,9 @@ const Login = lazy(() => import("./pages/Login/Login"));
 const ProtectedPage = lazy(() => import("./Layout/ProtectedPage"));
 const CpMangment = lazy(() => import("./pages/CpMangment/CpMangment"));
 const Notification = lazy(() => import("./pages/Notification/Notification"));
-const AddNotification = lazy(() => import('./pages/Notification/AddNotification/AddNotification'))
+const AddNotification = lazy(
+  () => import("./pages/Notification/AddNotification/AddNotification")
+);
 const Salon = lazy(() => import("./pages/Salon/Salon"));
 const AddSalon = lazy(() => import("./pages/Salon/AddSalon"));
 const Fallback = lazy(() => import("./Components/Fallback"));
@@ -13,13 +15,17 @@ const Category = lazy(() => import("./pages/Category/Category"));
 const AddCategory = lazy(() => import("./pages/Category/AddCategory"));
 const Country = lazy(() => import("./pages/Country/Country"));
 const City = lazy(() => import("./pages/City/City"));
-const Coupon = lazy(() => import('./pages/Coupon/Coupon'))
-const AddCoupon = lazy(() => import('./pages/Coupon/AddCoupon/AddCoupon'))
+const Coupon = lazy(() => import("./pages/Coupon/Coupon"));
+const AddCoupon = lazy(() => import("./pages/Coupon/AddCoupon/AddCoupon"));
 const Employee = lazy(() => import("./pages/Employee/Employee"));
 const AddEmployee = lazy(() => import("./pages/Employee/AddEmployee"));
 const Service = lazy(() => import("./pages/Service/Service"));
 const AddService = lazy(() => import("./pages/Service/AddService"));
-const EmployeeService = lazy(() => import("./pages/EmplyeeWithService/EmployeeService"));
+const EmployeeService = lazy(
+  () => import("./pages/EmplyeeWithService/EmployeeService")
+)
+const Banner = lazy(() => import("./pages/Banner/Banner"));
+const AddBanner = lazy(() => import("./pages/Banner/AddBanner"));
 const Routes = () => {
   return (
     <>
@@ -229,6 +235,24 @@ const Routes = () => {
               element={
                 <Suspense fallback={<></>}>
                   <AddCoupon />
+                </Suspense>
+              }
+            />
+          </Route>
+          <Route path="/banner">
+            <Route
+            index
+              element={
+                <Suspense fallback={<></>}>
+                  <Banner />
+                </Suspense>
+              }
+            />
+             <Route
+            path="add-banner"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddBanner />
                 </Suspense>
               }
             />

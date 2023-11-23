@@ -34,7 +34,7 @@
     "name": "Name",
     "fromDate": "fromDate",
     "toDate": "toDate",
-    "link": "link",
+    "link": "Link",
     "currency": "Currency",
     "latitude": "Latitude",
     "longitude": "Longitude",
@@ -77,11 +77,11 @@
     "experienceYears":"experienceYears",
     "chooseGender":"chooseGender",
     "img":"img",
-   
     "chooseCategory":"chooseCategory",
     "imgCover":"img Cover",
     "chooseService":"chooseService",
-    "period": "period"
+    "period": "period",
+    "chooseSalaon":"chooseSalaon"
   },
   "table": {
     "name": "Name",
@@ -228,5 +228,14 @@
     "imageRequired": "Image is Required",
     "fromError": "from Date must be before to date",
     "wrong": "something went wrong"
+  },
+  "Banner": {
+    "title": "Banner",
+    "add": "Add Banner",
+    "edit": "Edit Banner",
+    "show": "Show Banner",
+    "action": "Banner has been saved successfully",
+    "delete": "Banner has been Deleted",
+    "link":"link"
   }
 }

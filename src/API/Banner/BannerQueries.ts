@@ -2,12 +2,12 @@ import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
 import { IPayload } from "../../interface/generic";
 import { BannerAPI } from "./BannerApi";
 
-const GetAllBannerQuery = async (params: IPayload) => {
+const GetAllBannerQuery =  (params: IPayload) => {
   const queryResult = useQuery({
     queryKey: ["get-all-banner", params.Query, params.PageNumber],
     queryFn: async () => {
       const data = await BannerAPI.GetAllBanner({
-        EnablePagination: params.EnablePagination,
+        EnablePagination: true,
         PageNumber: params.PageNumber,
         Query: params.Query,
       });
@@ -17,7 +17,7 @@ const GetAllBannerQuery = async (params: IPayload) => {
   return queryResult;
 };
 
-const GetBannerByIdQuery = async (id: string) => {
+const GetBannerByIdQuery =  (id: string) => {
   const queryResult = useQuery({
     queryKey: ["get-banner-by-id", id],
     queryFn: async () => {

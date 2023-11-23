@@ -5,7 +5,7 @@ import { ServicePayload } from "./type";
 
 const GetServiceDetailsQuery = (params: ServicePayload) => {
   const queryResult = useQuery({
-    queryKey: ["get-service", params.PageNumber, params.salonId , params.Query],
+    queryKey: ["get-service", params.PageNumber, params.salonId, params.Query],
     queryFn: async () => {
       const data = await ServiceApi.GetServiceAll({
         PageNumber: params.PageNumber,
@@ -19,22 +19,24 @@ const GetServiceDetailsQuery = (params: ServicePayload) => {
   });
   return queryResult;
 };
-const GetServiceDetailsAutoCompleteQuery = (salonId : string) => {
+const GetServiceDetailsAutoCompleteQuery = (salonId: string) => {
   const queryResult = useQuery({
     queryKey: ["get-service", salonId],
     queryFn: async () => {
       const data = await ServiceApi.GetServiceAll({
         EnablePagination: false,
-        salonId :salonId
+        salonId: salonId,
       });
       return data;
     },
-    select: (data) => data.services.data.map((d)=>{
-      return {
-        id : d.id,
-        name : d.name.find((d)=>d.key === 'en')?.value!
-      }
-    }),
+    enabled: !!salonId,
+    select: (data) =>
+      data.services.data.map((d) => {
+        return {
+          id: d.id,
+          name: d.name.find((d) => d.key === "en")?.value!,
+        };
+      }),
   });
   return queryResult;
 };
@@ -46,14 +48,14 @@ const SetServiceQuery = () => {
   });
   return queryResult;
 };
-const GetServDetailsQuery =  (id : string) => {
+const GetServDetailsQuery = (id: string) => {
   const queryResult = useQuery({
-    queryKey: ["get-serv-details",id],
+    queryKey: ["get-serv-details", id],
     queryFn: async () => {
       const data = await ServiceApi.GetServiceDetails(id);
       return data;
     },
-    enabled : !!id
+    enabled: !!id,
   });
   return queryResult;
 };
@@ -61,5 +63,5 @@ export const ServiceQueries = {
   SetServiceQuery,
   GetServiceDetailsQuery,
   GetServDetailsQuery,
-  GetServiceDetailsAutoCompleteQuery
+  GetServiceDetailsAutoCompleteQuery,
 };

@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { SxProps, TextField } from "@mui/material";
 import { Control, Controller, FieldError } from "react-hook-form";
 import React from "react";
 export interface FormTextFieldProps {
@@ -19,6 +19,7 @@ export interface FormTextFieldProps {
   className?: string;
   error?: FieldError;
   defaultValue?: string | Date;
+  sx?:SxProps
 }
 
 const FormTextField: React.FC<FormTextFieldProps> = ({
@@ -33,6 +34,7 @@ const FormTextField: React.FC<FormTextFieldProps> = ({
   value,
   className,
   control,
+  sx,
   shrink,
   error,
   ...props
@@ -48,6 +50,7 @@ const FormTextField: React.FC<FormTextFieldProps> = ({
             "& label": {
               fontSize: "17px",
             },
+            ...sx
           }}
           defaultValue={defaultValue}
           {...field}
