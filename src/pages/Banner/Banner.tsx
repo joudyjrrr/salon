@@ -1,10 +1,12 @@
 import {
   Box,
   Card,
+  CardActions,
   CardContent,
   CardMedia,
   Fab,
   Grid,
+  IconButton,
   Stack,
   Typography,
   useMediaQuery,
@@ -20,6 +22,9 @@ import AddIcon from "@mui/icons-material/Add";
 import { API_SERVER_URL_For_Img } from "../../API/domain";
 import img from "../../assets/1.jpg";
 import moment from "moment";
+import DeleteCustome from "../../Components/DeleteCustome";
+import { BannerAPI } from "../../API/Banner/BannerApi";
+import EditIcon from "@mui/icons-material/Edit";
 const Banner = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -27,7 +32,11 @@ const Banner = () => {
   const [id, setId] = useState<string>("");
   const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
-  const { data: bannerData, isLoading } = BannerQuery.GetAllBannerQuery({
+  const {
+    data: bannerData,
+    isLoading,
+    refetch,
+  } = BannerQuery.GetAllBannerQuery({
     PageNumber: page,
     Query: query,
   });
@@ -95,6 +104,21 @@ const Banner = () => {
                         </Stack>
                       </Grid>
                     </CardContent>
+                    <CardActions>
+                      <DeleteCustome
+                        refetch={refetch}
+                        MassegeSuccess={t("salon.delete")}
+                        onDelete={() => BannerAPI.DeleteBanner(id)}
+                        setId={() => setId(d?.id ?? "")}
+                        userId={id ?? ""}
+                      />
+                        <IconButton>
+                        <EditIcon
+                          onClick={() => navigate(`edit-banner/${d.id}`)}
+                          color="primary"
+                        />
+                      </IconButton>
+                    </CardActions>
                   </Card>
                 </Grid>
               ))}

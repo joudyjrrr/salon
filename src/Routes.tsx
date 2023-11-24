@@ -23,7 +23,7 @@ const Service = lazy(() => import("./pages/Service/Service"));
 const AddService = lazy(() => import("./pages/Service/AddService"));
 const EmployeeService = lazy(
   () => import("./pages/EmplyeeWithService/EmployeeService")
-)
+);
 const Banner = lazy(() => import("./pages/Banner/Banner"));
 const AddBanner = lazy(() => import("./pages/Banner/AddBanner"));
 const Routes = () => {
@@ -241,15 +241,23 @@ const Routes = () => {
           </Route>
           <Route path="/banner">
             <Route
-            index
+              index
               element={
                 <Suspense fallback={<></>}>
                   <Banner />
                 </Suspense>
               }
             />
-             <Route
-            path="add-banner"
+            <Route
+              path="add-banner"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddBanner />
+                </Suspense>
+              }
+            />
+            <Route
+              path="edit-banner/:bannerId"
               element={
                 <Suspense fallback={<></>}>
                   <AddBanner />

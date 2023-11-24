@@ -28,7 +28,7 @@ const GetBannerByIdQuery =  (id: string) => {
   return queryResult;
 };
 
-const SetBannerQuery = async () => {
+const SetBannerQuery =  () => {
   const queryResult = useMutation({
     mutationKey: ["set-banner"],
     mutationFn: BannerAPI.SetBanner,

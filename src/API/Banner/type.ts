@@ -17,18 +17,21 @@ export interface GetBannerByIdType {
   toDate: string;
   link: string;
   imageURl: string;
+  servicedId?: string;
+  salonId?: string;
+  citytId?: string;
 }
 export interface Banner {
-  id: string;
+  id?: string;
   fromDate: string;
   toDate: string;
-  link: string;
+  link?: string;
   image: string;
 }
 export interface SetBannerTypeData extends Banner{
-  servicedId: string;
-  salonId: string;
-  citytId: string;
+  servicedId?: string;
+  salonId?: string;
+  citytId?: string;
 }
 export interface SetBannerTypeInput extends Banner {
   service : IAutoCompleteOption;
