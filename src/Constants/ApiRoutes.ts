@@ -95,6 +95,8 @@ const Employee = {
 const Version = {
   SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
   DELETE_VERSION_CP: `${controller.Salon}/VersionDeleteCp`,
+  GET_VERSION : `${controller.Version}/VersionGetAll`,
+  GET_Version_BY_Id:`${controller.Version}/VersionGetById`
 
 };
 const Service = {

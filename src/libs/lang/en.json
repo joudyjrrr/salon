@@ -16,7 +16,8 @@
     "FeedBack": "FeedBack",
     "offer": "Offer",
     "salon": "Salon",
-    "employee": "Employee"
+    "employee": "Employee",
+    "version":"Version"
   },
   "form": {
     "userName": "User Name",
@@ -81,7 +82,17 @@
     "imgCover":"img Cover",
     "chooseService":"chooseService",
     "period": "period",
-    "chooseSalaon":"chooseSalaon"
+    "chooseSalaon":"chooseSalaon",
+    "title":"title",
+    "body":"body",
+    "iosVersionNumber":"iosVersionNumber",
+    "iosVersionName":"iosVersionName",
+    "androidVersionNumber":"androidVersionNumber",
+    "androidVersionName":"androidVersionName",
+    "androidUrl":"androidUrl",
+    "iosUrl":"iosUrl",
+    "isRequired":"isRequired",
+    "appType":"appType"
   },
   "table": {
     "name": "Name",
@@ -237,5 +248,13 @@
     "action": "Banner has been saved successfully",
     "delete": "Banner has been Deleted",
     "link":"link"
+  },
+  "Version": {
+    "title": "Version",
+    "add": "Add Version",
+    "edit": "Edit Version",
+    "show": "Show Version",
+    "action": "Version has been saved successfully",
+    "delete": "Version has been Deleted"
   }
 }

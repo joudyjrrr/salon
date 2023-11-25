@@ -1,6 +1,5 @@
-
-import {useEffect} from "react"
-import {  useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import { SetUserType } from "../../../API/CpManagement/type";
 import { CpManagementQueries } from "../../../API/CpManagement/CpManagementQueries";
 import React from "react";
@@ -15,10 +14,12 @@ const useCpMngment = (id: string) => {
     register,
     watch,
     formState: { isSubmitting },
+    clearErrors,
     reset,
   } = useForm<SetUserType>();
-  const {data : userDetails , isLoading} = CpManagementQueries.GetUserByIdQuery(id)
-//   console.log(userDetails)
+  const { data: userDetails, isLoading } =
+    CpManagementQueries.GetUserByIdQuery(id);
+  //   console.log(userDetails)
   const [open, setOpen] = React.useState(false);
   const { isPending, mutate, isSuccess } = CpManagementQueries.SetUserQuery();
   const { data: roleOption } = CpManagementQueries.GetRoles();
@@ -27,15 +28,18 @@ const useCpMngment = (id: string) => {
   useEffect(() => {
     if (typeof userDetails !== undefined) {
       setValue("username", userDetails?.username!);
-      setValue("roles", roleOption?.find((r) => r.name === userDetails?.role));
+      setValue(
+        "roles",
+        roleOption?.find((r) => r.name === userDetails?.role)
+      );
       setValue("userId", userDetails?.id);
+      clearErrors("password");
     }
-  }, [userDetails , roleOption]);
+  }, [userDetails, roleOption]);
   const onSubmit = () => {
-    const Id = 
     mutate(
       {
-        userId : watch("userId") ?? undefined,
+        userId: watch("userId") ?? undefined,
         username: watch("username"),
         password: watch("password"),
         roleId: watch("roles.id"),
@@ -43,15 +47,17 @@ const useCpMngment = (id: string) => {
       {
         onSuccess: () => {
           setOpen(false);
-          reset({
-            password: "",
-            username: "",
-          });
+          if (!watch("userId")) {
+            reset({
+              password: "",
+              username: "",
+            });
+          }
           queryClient.refetchQueries({ queryKey: ["get-users"] });
           showSuccess(t("cpMangment.action"));
         },
-        onError(error: any) {
-          showError(error.response.data.errorMessage);
+        onError(errorMessage: any) {
+          showError(errorMessage);
         },
       }
     );
@@ -60,6 +66,7 @@ const useCpMngment = (id: string) => {
     control,
     setValue,
     open,
+    watch,
     setOpen,
     onSubmit,
     handleSubmit,
@@ -68,7 +75,8 @@ const useCpMngment = (id: string) => {
     register,
     isSuccess,
     userDetails,
-    isLoading
+    isLoading,
+    id,
   };
 };
 export default useCpMngment;

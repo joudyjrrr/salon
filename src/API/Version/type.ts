@@ -1,4 +1,6 @@
-export interface SetVersionType {
+
+
+export interface VersionGet {
   id?: string;
   title: string;
   body: string;
@@ -9,5 +11,21 @@ export interface SetVersionType {
   androidUrl: string;
   iosUrl: string;
   isRequired: boolean;
-  appType: number;
+ 
 }
+
+export interface VersionInput  extends VersionGet{
+  appType: appType[];
+}
+export interface VersionData extends VersionGet {
+  appType : number
+}
+export interface appType {
+  id: number;
+  name: string;
+}
+export const AppTypeArray: appType[] = [
+  { id: 0, name: "Customer" },
+  { id: 1, name: "Store" },
+  { id: 2, name: "Driver" },
+];

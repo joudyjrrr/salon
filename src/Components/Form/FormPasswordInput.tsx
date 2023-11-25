@@ -14,7 +14,7 @@ interface IFormPsswordInputProps {
   className?: string;
   shrink?: boolean;
   register: UseFormRegister<any>;
-  req: boolean;
+  req?: boolean;
   [key: string]: any;
 }
 
@@ -42,6 +42,7 @@ const FormPasswordInput = ({
       <OutlinedInput
         {...register("password")}
         id="outlined-adornment-password"
+        required={req}
         type={showPassword ? "text" : "password"}
         endAdornment={
           <InputAdornment position="end">
@@ -50,6 +51,7 @@ const FormPasswordInput = ({
               onClick={handleClickShowPassword}
               onMouseDown={handleMouseDownPassword}
               edge="end"
+            
             >
               {showPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>
