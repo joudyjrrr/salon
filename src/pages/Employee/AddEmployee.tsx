@@ -2,7 +2,7 @@ import { Box, Grid, Paper, Stack } from "@mui/material";
 import TitleWithArrow from "../../Components/TitleWithArrwo";
 import { useTranslation } from "react-i18next";
 import useEmployee from "./hook/useEmployee";
-import FormTextField from "../../Components/Form/FormTextField";
+
 import Inputs from "../../Components/Employee/Inputs";
 import { Controller } from "react-hook-form";
 import UploadGenericImg from "../../Components/Img/UploadGenericImg";

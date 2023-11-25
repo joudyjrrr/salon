@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, SxProps, TextField } from "@mui/material";
 import { IAutoCompleteOption, INameAndId } from "../../interface/generic";
 import { Dispatch, FC, SetStateAction, memo } from "react";
 import { UseFormSetValue } from "react-hook-form";
@@ -20,6 +20,7 @@ export type Props = {
   setValue?: UseFormSetValue<any>;
   name?: string;
   loading?: boolean;
+  sx?:SxProps
 };
 const GenericObjectAutoComplete: FC<Props> = ({
   value,
@@ -51,7 +52,7 @@ const GenericObjectAutoComplete: FC<Props> = ({
       }}
       sx={{ ...sx }}
       options={option ?? []}
-      disabled={!option?.length || disabled}
+      disabled={disabled}
       getOptionLabel={(option) => option.name || ""}
       multiple={multiple}
       renderOption={(prop, category) => (
