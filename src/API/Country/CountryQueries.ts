@@ -39,7 +39,7 @@ const GetCountryAutoCompleteQuery = () => {
   });
   return queryResult;
 };
-const GetCountryByIdQuery = (id: string) => {
+const GetCountryByIdQuery = (id: string | undefined) => {
   const queryResult = useQuery({
     queryKey: ["get-country-by-id", id],
     queryFn: () => CountryApi.getCountryById(id),

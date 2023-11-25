@@ -73,14 +73,14 @@
     "logoImg": "logo Img",
     "countryCode": "countryCode",
     "country": "Country Name",
-    "certificates":"Certificates",
-    "experienceYears":"experienceYears",
-    "chooseGender":"chooseGender",
-    "img":"img",
-   
-    "chooseCategory":"chooseCategory",
-    "imgCover":"img Cover",
-    "chooseService":"chooseService",
+    "certificates": "Certificates",
+    "experienceYears": "experienceYears",
+    "chooseGender": "chooseGender",
+    "img": "img",
+
+    "chooseCategory": "chooseCategory",
+    "imgCover": "img Cover",
+    "chooseService": "chooseService",
     "period": "period"
   },
   "table": {
@@ -163,7 +163,7 @@
     "title": "Country",
     "action": "Country has been saved successfully",
     "add": "Add Country",
-    "edit":"Edit Country",
+    "edit": "Edit Country",
     "delete": "Country has been Deleted",
     "countryCode": "countryCode",
     "currency": "Currency",
@@ -173,7 +173,7 @@
     "title": "City",
     "action": "City has been saved successfully",
     "add": "Add City",
-    "edit":"Edit City",
+    "edit": "Edit City",
     "delete": "City has been Deleted",
     "name": "City Name"
   },
@@ -190,7 +190,7 @@
     "to": "to"
   },
   "serv": {
-    "titleWithEmp":"ServiceByEmployee",
+    "titleWithEmp": "ServiceByEmployee",
     "title": "Services",
     "add": "Add Services",
     "edit": "Edit Services",
@@ -210,6 +210,7 @@
     "addTitle": "Add Coupon",
     "editTitle": "Edit Coupon",
     "added": "Coupon Added Successfully",
+    "edited": "Coupon has been Edited Successfully",
     "deleted": "Coupon Deleted successfully",
     "name": "Name",
     "code": "code",

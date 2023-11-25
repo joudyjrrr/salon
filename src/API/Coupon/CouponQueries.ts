@@ -23,7 +23,7 @@ const GetCouponQuery = (id: string | undefined) => {
   const queryResult = useQuery({
     queryKey: ["get-coupon", id],
     queryFn: async () => {
-      const data = await CouponApi.GetCouponCp(id);
+    const data = await CouponApi.GetCouponCp(id);
       return data;
     },
     enabled: !!id,

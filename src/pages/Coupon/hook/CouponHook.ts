@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { CouponQueries } from "../../../API/Coupon/CouponQueries";
 import { useTranslation } from "react-i18next";
-import { SetCouponCpType } from "../../../API/Coupon/type";
 import { CpManagementQueries } from "../../../API/CpManagement/CpManagementQueries";
 import { CountryQueries } from "../../../API/Country/CountryQueries";
 import { CityQueries } from "../../../API/City/CityQueries";
@@ -66,9 +65,16 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
 
   const { data: Customers, isLoading: customerLoading } =
     CpManagementQueries.useCpCustomersNames();
-  const params = useParams();
+  const { id } = useParams();
+
   const { data: ThisCoupon, isLoading: isThisCouponLoading } =
-    CouponQueries.GetCouponQuery(params.id);
+    CouponQueries.GetCouponQuery(id);
+
+  const { data: CityData, isLoading: isLoadingCityData } =
+    CityQueries.GetCityByIdQuery(ThisCoupon?.cityId);
+
+  const { data: CountryData, isLoading: isLoadingCountryData } =
+    CountryQueries.GetCountryByIdQuery(CityData?.countryId);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -102,7 +108,11 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
     ThisCoupon,
     isThisCouponLoading,
     location,
-    params,
+    id,
+    CityData,
+    isLoadingCityData,
+    CountryData,
+    isLoadingCountryData,
   };
 };
 
