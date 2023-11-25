@@ -24,23 +24,21 @@ const AddCoupon = () => {
         t,
         setValue, register, setError, getValues, control,
         navigate, reset, location,
-        ThisCoupon, isThisCouponLoading, params, countries, cities
+        ThisCoupon, isThisCouponLoading, id, countries, cities,
+        CityData, isLoadingCityData,
+        CountryData, isLoadingCountryData
     } = CouponHook();
 
 
     const [img, setImg] = useState<string>("");
     const [PercentValue, setPercentValue] = useState('value');
     const [CityUser, setCityUser] = useState('Public');
-    const isAddingPath = location.pathname === '/coupon/addCoupon'
-    const id = params.id;
-
-
+    const isAddingPath = !id;
 
     useEffect(() => {
         if (!!ThisCoupon && !isAddingPath) {
             setValue('name', ThisCoupon?.name)
             setValue('code', ThisCoupon?.code)
-            // setValue('image', ThisCoupon.image)
             setImg(ThisCoupon.image)
             setValue('fromDate', FromISO(ThisCoupon.fromDate))
             setValue('toDate', FromISO(ThisCoupon.toDate))
@@ -49,11 +47,18 @@ const AddCoupon = () => {
             if (!!ThisCoupon.percentage) {
                 setPercentValue('percent')
             }
-            // if(!!ThisCoupon.)
-
+            if (!!CountryData) {
+                setCityUser('ByCity')
+                setValue('country.id', CountryData?.id!)
+                setValue('country.name', CountryData?.name[0].value!)
+            }
+            if (!!CityData) {
+                setValue('city.id', CityData?.id!)
+                setValue('city.name', CityData?.name[0].value)
+            }
         }
 
-    }, [ThisCoupon])
+    }, [ThisCoupon, CountryData, CityData])
 
     const submitHandler = (data: AddCouponType) => {
 
@@ -101,6 +106,7 @@ const AddCoupon = () => {
             return
         }
 
+
         addCoupon({
             id: isAddingPath ? undefined : id,
             cityId: data.city?.id ?? undefined,
@@ -111,13 +117,13 @@ const AddCoupon = () => {
             toDate: data.toDate,
             percentage: data.percentage,
             value: getValues('value'),
-            customers: data.customers?.map((customer) => customer.userId),
+            customers: data.customers ? data.customers?.map((customer) => customer.userId) : undefined,
             type: CityUser === 'Public' ? 0 : CityUser === 'ByCity' ? 2 : 1
 
         },
             {
                 onSuccess: () => {
-                    showSuccess(t('Coupon.added'))
+                    showSuccess(isAddingPath ? t('Coupon.added') : t('Coupon.edited'))
                     reset()
                     navigate(-1)
                 },
@@ -126,7 +132,7 @@ const AddCoupon = () => {
                 }
             })
     }
-    if (isThisCouponLoading && !isAddingCoupon) {
+    if (isThisCouponLoading && !isAddingCoupon && !isLoadingCityData && !isLoadingCountryData) {
         return <Loading />
     }
 
@@ -172,6 +178,7 @@ const AddCoupon = () => {
 
 
                         <PublicCityUser
+                            control={control}
                             CityUser={CityUser}
                             setCityUser={setCityUser}
                             setValue={setValue}
