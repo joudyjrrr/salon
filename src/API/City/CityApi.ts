@@ -47,7 +47,7 @@ const getCityByCountry = async (params: getCityByCountryType) => {
   return data;
 };
 
-const getCityById = async (id: string) => {
+const getCityById = async (id: string | undefined) => {
   const { data } = await DeliveryApiInstances.get<getCityByIdType>(
     API_Routes.City.GET_CITY_BY_ID,
     {

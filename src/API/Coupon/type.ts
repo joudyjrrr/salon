@@ -15,14 +15,16 @@ export interface GetALLCouponsCPType {
 
 export interface GetCouponCPType {
   id: string;
-  name : string,
+  name: string;
   code: string;
-  image : string,
+  image: string;
   fromDate: string;
   toDate: string;
   value: number;
   percentage: number;
   isExpired: boolean;
+  cityId: string;
+  userId: string[];
 }
 
 export interface SetCouponCpType {

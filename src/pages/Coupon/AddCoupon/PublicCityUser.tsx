@@ -4,12 +4,14 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import CouponHook from "../hook/CouponHook";
 import { INameAndId, IPagination } from "../../../interface/generic";
 import { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
-import { FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
+import { Control, Controller, FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { AddCouponType } from "../hook/type";
 import { getCityAllType } from "../../../API/City/type";
+import GenericObjectAutoComplete from "../../../Components/Form/GenericObjectAutoComplete";
 
 
 const PublicCityUser: FC<{
+    control: Control<AddCouponType, any>,
     CityUser: string,
     setCityUser: Dispatch<SetStateAction<string>>,
     register: UseFormRegister<AddCouponType>,
@@ -17,7 +19,7 @@ const PublicCityUser: FC<{
     errors: FieldErrors<AddCouponType>,
     countries: INameAndId[] | undefined,
     cities: IPagination<getCityAllType> | undefined
-}> = ({ CityUser, setCityUser, register, setValue, errors, countries, cities }) => {
+}> = ({ CityUser, control, setCityUser, register, setValue, errors, countries, cities }) => {
 
     const { t, customerLoading, Customers, } = CouponHook()
 
@@ -93,56 +95,77 @@ const PublicCityUser: FC<{
                 {CityUser === 'ByCity' &&
                     <Grid container spacing={2}>
                         <Grid item xs={6}>
-                            <Autocomplete
-                                id='CountrySelect'
-                                {...register('country')}
-                                fullWidth
-                                onChange={(_, newValue) => setValue('country', newValue)}
-                                renderOption={(prop, country) => (
-                                    <li {...prop} key={country.id}>
-                                        {country.name ?? 'No Name'}
-                                    </li>
-                                )}
-                                getOptionLabel={(option: INameAndId) => option.name ?? 'No Name'}
-                                options={countries ?? []}
-                                renderInput={((params) => (
-                                    <TextField
-                                        {...params}
-                                        label={t("Coupon.Countries")}
-                                        placeholder={t("Coupon.Countries")}
-                                        fullWidth
-                                        required={CityUser === 'ByCity'}
-
-                                    />
-                                ))}
+                            <Controller
+                                name="country"
+                                control={control}
+                                render={({ field }) => {
+                                    return (
+                                        <Autocomplete
+                                            id='CountrySelect'
+                                            // {...register('country')}
+                                            {...field}
+                                            fullWidth
+                                            onChange={(_, newValue) => {
+                                                setValue('country', newValue)
+                                                setValue('city', null)
+                                            }}
+                                            renderOption={(prop, country) => (
+                                                <li {...prop} key={country.id}>
+                                                    {country.name ?? 'No Name'}
+                                                </li>
+                                            )}
+                                            getOptionLabel={(option: INameAndId) => option.name ?? 'No Name'}
+                                            options={countries ?? []}
+                                            renderInput={((params) => (
+                                                <TextField
+                                                    {...params}
+                                                    label={t("Coupon.Countries")}
+                                                    placeholder={t("Coupon.Countries")}
+                                                    fullWidth
+                                                    required={CityUser === 'ByCity'}
+                                                />
+                                            ))}
+                                        />
+                                    )
+                                }}
                             />
+
 
                         </Grid>
                         <Grid item xs={6}>
+                            <Controller
+                                name='city'
+                                control={control}
+                                render={({ field }) => {
+                                    return (
+                                        <Autocomplete
+                                            id='CitySelect'
+                                            // {...register('city')}
 
-                            <Autocomplete
-                                id='CitySelect'
-                                {...register('city')}
-                                fullWidth
-                                onChange={(_, newValue) => setValue('city', newValue)}
-                                renderOption={(prop, customer) => (
-                                    <li {...prop} key={customer.id}>
-                                        {customer.name ?? 'No Name'}
-                                    </li>
-                                )}
+                                            {...field}
+                                            fullWidth
+                                            onChange={(_, newValue) => setValue('city', newValue)}
+                                            renderOption={(prop, customer) => (
+                                                <li {...prop} key={customer.id}>
+                                                    {customer.name ?? 'No Name'}
+                                                </li>
+                                            )}
+                                            getOptionLabel={(option: INameAndId) => option.name ?? 'No Name'}
+                                            options={cities?.data ?? []}
+                                            renderInput={((params) => (
+                                                <TextField
+                                                    {...params}
+                                                    label={t("Coupon.Cities")}
+                                                    placeholder={t("Coupon.Cities")}
+                                                    fullWidth
+                                                    required={CityUser === 'ByCity'}
 
-                                getOptionLabel={(option: INameAndId) => option.name ?? 'No Name'}
-                                options={cities?.data ?? []}
-                                renderInput={((params) => (
-                                    <TextField
-                                        {...params}
-                                        label={t("Coupon.Cities")}
-                                        placeholder={t("Coupon.Cities")}
-                                        fullWidth
-                                        required={CityUser === 'ByCity'}
+                                                />
+                                            ))}
+                                        />
+                                    )
+                                }}
 
-                                    />
-                                ))}
                             />
                         </Grid>
                     </Grid>

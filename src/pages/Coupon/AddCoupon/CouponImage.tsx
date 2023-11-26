@@ -57,7 +57,7 @@ const CouponImage: FC<{
                         <ImgCard
                             imgSrc={`${DEVELOPMENT_BASE_URL}/${img}`}
                             onDeleteImg={() => {
-                                deleteImage(img)
+                                // deleteImage(img)
                                 setImg("");
                             }}
                         />
