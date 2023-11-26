@@ -110,7 +110,7 @@ const Service = {
 //   GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`
 // };
 const Feedback = {
-  GET_FEEDBACK_CP: `${controller.Feedback}/Feedback`,
+  GET_FEEDBACK_CP: `${controller.Feedback}`,
 };
 const File = {
   GET_FILE_CP: `${controller.file}/SaveFile`,
