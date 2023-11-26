@@ -8,6 +8,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import DiscountIcon from '@mui/icons-material/Discount';
 import LocationCityIcon from '@mui/icons-material/LocationCity';
 import ViewCarouselIcon from '@mui/icons-material/ViewCarousel';
+import FeedbackIcon from '@mui/icons-material/Feedback';
 const Links = () => {
   const { t } = useTranslation();
 
@@ -52,6 +53,11 @@ const Links = () => {
       title: t("links.banner"),
       href: "/banner",
       icon: <ViewCarouselIcon />,
+    },
+    {
+      title: t("links.FeedBack"),
+      href: "/feedBack",
+      icon: <FeedbackIcon />,
     },
   ]
   return {

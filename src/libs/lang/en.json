@@ -197,12 +197,13 @@
     "action": "Services has been saved successfully",
     "delete": "Services has been Deleted"
   },
-  "Country": {
-    "title": "Country",
-    "action": "Users has been saved successfully",
-    "add": "Add Country",
-    "edit": "Edit Country",
-    "delete": "Country has been Deleted"
+  "FeedBack": {
+    "title": "FeedBack",
+    "titleCard":"Title",
+    "userName": "User Name",
+    "description": "Description",
+    "phoneNumber": "Phone Number",
+    "number": "FeedBack Number "
   },
   "Coupon": {
     "title": "Coupon",
