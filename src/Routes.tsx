@@ -28,6 +28,8 @@ const Banner = lazy(() => import("./pages/Banner/Banner"));
 const AddBanner = lazy(() => import("./pages/Banner/AddBanner"));
 const FeedBack = lazy(() => import("./pages//FeedBack/FeedBack"));
 
+const Version = lazy(() => import("./pages/Version/Version"));
+const AddVersion = lazy(() => import("./pages/Version/AddVersion"));
 const Routes = () => {
   return (
     <>
@@ -275,6 +277,32 @@ const Routes = () => {
               </Suspense>
             }
             />
+          <Route path="/version">
+            <Route
+              index
+              element={
+                <Suspense fallback={<></>}>
+                  <Version />
+                </Suspense>
+              }
+            />
+            <Route
+              path="add-version"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddVersion />
+                </Suspense>
+              }
+            />
+            <Route
+              path="edit-version/:versionId"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddVersion />
+                </Suspense>
+              }
+            />
+          </Route>
         </Route>
       
       </ReactRoutes>

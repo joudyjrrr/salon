@@ -41,6 +41,7 @@ const AddUser: React.FC<{
     open,
     setOpen,
     isPending,
+    watch,
     isLoading,
     userDetails,
   } = useCpMngment(id!);
@@ -94,7 +95,7 @@ const AddUser: React.FC<{
                   req
                   shrink
                 />
-                <FormPasswordInput register={register} req />
+                <FormPasswordInput register={register} req={!watch("userId")} />
                 <Controller
                   name="roles"
                   control={control}
@@ -104,6 +105,7 @@ const AddUser: React.FC<{
                       onChange={field.onChange}
                       option={roleOption!}
                       label={t("form.ChooseRole")}
+                      required
                     />
                   )}
                 />

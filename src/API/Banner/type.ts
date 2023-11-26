@@ -17,7 +17,7 @@ export interface GetBannerByIdType {
   toDate: string;
   link: string;
   imageURl: string;
-  servicedId?: string;
+  serviceId?: string;
   salonId?: string;
   citytId?: string;
 }
@@ -29,7 +29,7 @@ export interface Banner {
   image: string;
 }
 export interface SetBannerTypeData extends Banner{
-  servicedId?: string;
+  serviceId?: string;
   salonId?: string;
   citytId?: string;
 }

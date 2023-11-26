@@ -42,10 +42,10 @@ const useBanner = () => {
       if (bannerDetails.link) {
         setRadioSelect("link")
         setValue("link", bannerDetails.link)
-      } else if (bannerDetails.salonId && bannerDetails.servicedId) {
+      } else if (bannerDetails.salonId && bannerDetails.serviceId) {
         setRadioSelect("service")
         setValue("salon", salonOption?.find(d => d.id === bannerDetails.salonId)!)
-        setValue("service", serviceOption?.find(d => d.id === bannerDetails.servicedId)!)
+        setValue("service", serviceOption?.find(d => d.id === bannerDetails.serviceId)!)
       }
       else if (bannerDetails.salonId) {
         setRadioSelect("salon")
@@ -79,7 +79,7 @@ const useBanner = () => {
     mutationImg(
       {
         File: imgFile,
-        FileType: 4,
+        FileType: 1,
       },
       {
         onSuccess(data) {
@@ -98,8 +98,8 @@ const useBanner = () => {
       image: imgAfterCrop,
       citytId: watch("city").id,
       link: watch("link") ? watch("link") : undefined,
-      servicedId: watch("service") ? watch("service").id! : undefined,
-      salonId: watch("salon") ? watch("salon").id : undefined
+      serviceId: watch("service") ? watch("service").id! : undefined,
+      salonId: radioSelect === "salon" && watch("salon") ? watch("salon").id : undefined
     },
 
       {
