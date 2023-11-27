@@ -32,7 +32,7 @@ const DeleteCustome: FC<{
     },
   });
   const handleDelete = async () => {
-    console.log(userId);
+    // console.log(userId);
 
     if (userId !== "" && typeof userId !== undefined) {
       mutation.mutate(userId);

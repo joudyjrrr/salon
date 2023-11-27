@@ -82,7 +82,17 @@
     "chooseCategory":"اختر صنف",
     "imgCover":"صورة الغلاف",
     "chooseService":"اختر خدمة",
-    "chooseSalaon":"اختر صالون تجميل"
+    "chooseSalaon":"اختر صالون تجميل",
+    "title":"العنوان",
+    "body":"المحتوى",
+    "iosVersionNumber":"اسم اصدار الايفون",
+    "iosVersionName":"رقم اصدار الايفون",
+    "androidVersionNumber":"رقم اصدار الاندرويد",
+    "androidVersionName":"اسم اصدار الاندرويد",
+    "androidUrl":"رابط الاندرويد",
+    "iosUrl":"رابط الايفون",
+    "isRequired":"هل مطلوب",
+    "appType":"نوع التطبيق"
   },
   "table": {
     "name": "اسم المستخدم",
@@ -197,5 +207,13 @@
     "userName": "اسم المستخدم",
     "description": "الوصف",
     "phoneNumber": "رقم الهاتف"
+  },
+  "Version": {
+    "title": "الإصدارات",
+    "add": "إضافة إصدار",
+    "edit": "تعديل الإصدار",
+    "show": "عرض الإصدار",
+    "action": "تمت إضافة الإصدار بنجاح",
+    "delete": "تم حذف الإصدار بنجاح"
   }
 }

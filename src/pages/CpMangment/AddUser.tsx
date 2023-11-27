@@ -25,8 +25,7 @@ const Transition = React.forwardRef(function Transition(
   ref: React.Ref<unknown>
 ) {
   return <Slide direction="up" ref={ref} {...props} />;
-});
-
+})
 const AddUser: React.FC<{
   id?: string;
   setId?: (id: string) => void;
@@ -37,16 +36,14 @@ const AddUser: React.FC<{
     onSubmit,
     roleOption,
     register,
-    setValue,
     open,
     setOpen,
     isPending,
     watch,
     isLoading,
-    userDetails,
   } = useCpMngment(id!);
   const { t } = useTranslation();
-  console.log(userDetails);
+  // console.log(userDetails);
   return (
     <React.Fragment>
       <Stack

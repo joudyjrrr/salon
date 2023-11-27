@@ -8,7 +8,7 @@ const getVersion = async () => {
   );
   return data;
 };
-const SetVersion = async (params: VersionGet) => {
+const SetVersion = async (params: VersionData) => {
   await DeliveryApiInstances.post(API_Routes.Version.SET_VERSION_CP, params);
 };
 
@@ -20,7 +20,7 @@ const DeleteVersion = async (id: string) => {
   });
 };
 const GetVersionDetails = async (id: string) => {
-  const { data } = await DeliveryApiInstances.get<VersionGet>(
+  const { data } = await DeliveryApiInstances.get<VersionData>(
     API_Routes.Version.GET_Version_BY_Id,
     {
       params: {

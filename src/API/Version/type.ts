@@ -15,7 +15,7 @@ export interface VersionGet {
 }
 
 export interface VersionInput  extends VersionGet{
-  appType: appType[];
+  appType: appType;
 }
 export interface VersionData extends VersionGet {
   appType : number
