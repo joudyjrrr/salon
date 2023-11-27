@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { MdCategory } from "react-icons/md";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import CategoryIcon from "@mui/icons-material/Category";
 import GroupIcon from "@mui/icons-material/Group";
@@ -10,7 +9,10 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import ViewCarouselIcon from "@mui/icons-material/ViewCarousel";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import UpdateIcon from "@mui/icons-material/Update";
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
+
 const Links = () => {
+
   const { t } = useTranslation();
 
   const dashBoardNavLinks = [
@@ -62,7 +64,12 @@ const Links = () => {
     {
       title: t("links.version"),
       href: "/version",
-      icon: <UpdateIcon />,
+      icon: <UpdateIcon />
+    },
+    {
+      title: t("links.booking"),
+      href: "/booking",
+      icon: <ShoppingCartCheckoutIcon />,
     },
   ];
   return {
