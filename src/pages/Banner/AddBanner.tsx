@@ -108,6 +108,7 @@ const AddBanner = () => {
                         onChange={field.onChange}
                         label={t("form.chooseCity")}
                         required={true}
+                        disabled={typeof cityOption === "undefined"}
                       />
                     )}
                   />

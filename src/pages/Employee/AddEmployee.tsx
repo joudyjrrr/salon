@@ -40,7 +40,7 @@ const AddEmployee = () => {
           marginTop: "30px",
         }}
       >
-        <TitleWithArrow title={t("emp.add")} />
+        <TitleWithArrow title={empId ?t("emp.edit") :t("emp.add")} />
         {isLoading && empId ? (
           <Box marginTop="150px">
             <Loading />

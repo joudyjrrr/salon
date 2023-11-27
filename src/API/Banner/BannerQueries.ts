@@ -24,7 +24,8 @@ const GetBannerByIdQuery =  (id: string) => {
       const data = await BannerAPI.GetBannerById(id);
       return data;
     },
-  });
+    enabled : !!id
+  })
   return queryResult;
 };
 

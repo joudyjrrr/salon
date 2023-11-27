@@ -89,7 +89,10 @@
     "androidUrl":"androidUrl",
     "iosUrl":"iosUrl",
     "isRequired":"isRequired",
-    "appType":"appType"
+    "appType":"appType",
+    "experienceYears":"experienceYears",
+    "chooseGender":"chooseGender",
+    "img":"img"
   },
   "table": {
     "name": "Name",

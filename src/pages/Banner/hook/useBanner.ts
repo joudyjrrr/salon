@@ -37,12 +37,13 @@ const useBanner = () => {
         "toDate",
         bannerDetails.toDate.slice(0, 16)
       );
+      setValue("city",cityOption?.find((d)=>d.id === bannerDetails.cityId)!)
       setValue("id", bannerDetails.id)
       setImgAfterCrop(bannerDetails.imageURl)
       if (bannerDetails.link) {
         setRadioSelect("link")
         setValue("link", bannerDetails.link)
-      } else if (bannerDetails.salonId && bannerDetails.serviceId) {
+      } else if (bannerDetails.serviceId) {
         setRadioSelect("service")
         setValue("salon", salonOption?.find(d => d.id === bannerDetails.salonId)!)
         setValue("service", serviceOption?.find(d => d.id === bannerDetails.serviceId)!)

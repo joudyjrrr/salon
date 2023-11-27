@@ -37,6 +37,7 @@ const useEmpService = () => {
           setOpen(false);
           queryClient.refetchQueries({ queryKey: ["get-emp-service-details"] });
           showSuccess(t("serv.action"));
+          reset({services : []})
         },
         onError(error: any) {
           showError(error.response.data.errorMessage);
