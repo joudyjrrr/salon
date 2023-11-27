@@ -1,7 +1,7 @@
 export interface IFeedBackGet {
   id: string;
   title: string;
-  description: string;
+  body: string;
   userName: string;
   phoneNumber: string;
 }

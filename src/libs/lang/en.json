@@ -16,7 +16,8 @@
     "FeedBack": "FeedBack",
     "offer": "Offer",
     "salon": "Salon",
-    "employee": "Employee"
+    "employee": "Employee",
+    "version":"Version"
   },
   "form": {
     "userName": "User Name",
@@ -78,10 +79,17 @@
     "imgCover": "img Cover",
     "chooseService": "chooseService",
     "period": "period",
-    "experienceYears": "experienceYears",
-    "chooseGender": "chooseGender",
-    "img": "img",
-    "chooseSalaon": "chooseSalaon"
+    "chooseSalaon":"chooseSalaon",
+    "title":"title",
+    "body":"body",
+    "iosVersionNumber":"iosVersionNumber",
+    "iosVersionName":"iosVersionName",
+    "androidVersionNumber":"androidVersionNumber",
+    "androidVersionName":"androidVersionName",
+    "androidUrl":"androidUrl",
+    "iosUrl":"iosUrl",
+    "isRequired":"isRequired",
+    "appType":"appType"
   },
   "table": {
     "name": "Name",
@@ -197,12 +205,13 @@
     "action": "Services has been saved successfully",
     "delete": "Services has been Deleted"
   },
-  "Country": {
-    "title": "Country",
-    "action": "Users has been saved successfully",
-    "add": "Add Country",
-    "edit": "Edit Country",
-    "delete": "Country has been Deleted"
+  "FeedBack": {
+    "title": "FeedBack",
+    "titleCard":"Title",
+    "userName": "User Name",
+    "description": "Description",
+    "phoneNumber": "Phone Number",
+    "number": "FeedBack Number "
   },
   "Coupon": {
     "title": "Coupon",
@@ -237,6 +246,14 @@
     "show": "Show Banner",
     "action": "Banner has been saved successfully",
     "delete": "Banner has been Deleted",
-    "link": "link"
+    "link":"link"
+  },
+  "Version": {
+    "title": "Version",
+    "add": "Add Version",
+    "edit": "Edit Version",
+    "show": "Show Version",
+    "action": "Version has been saved successfully",
+    "delete": "Version has been Deleted"
   }
 }

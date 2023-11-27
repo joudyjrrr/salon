@@ -93,8 +93,10 @@ const Employee = {
   Delet_ServEmp : `${controller.Employee}/DeleteEmployeeServiceCp`
 };
 const Version = {
-  SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
-  DELETE_VERSION_CP: `${controller.Salon}/VersionDeleteCp`,
+  SET_VERSION_CP: `${controller.Version}/VersionSetCp`,
+  DELETE_VERSION_CP: `${controller.Version}/VersionDeleteCp`,
+  GET_VERSION : `${controller.Version}/VersionGetAll`,
+  GET_Version_BY_Id:`${controller.Version}/VersionGetById`
 
 };
 const Service = {
@@ -108,7 +110,7 @@ const Service = {
 //   GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`
 // };
 const Feedback = {
-  GET_FEEDBACK_CP: `${controller.Feedback}/Feedback`,
+  GET_FEEDBACK_CP: `${controller.Feedback}`,
 };
 const File = {
   GET_FILE_CP: `${controller.file}/SaveFile`,
