@@ -11,5 +11,5 @@ export interface AddCouponType {
   percentage: number | undefined;
   country: INameAndId | null;
   city?: INameAndId | null;
-  customers?: GetCustomersNamesCpType[] | null;
+  customers: GetCustomersNamesCpType[];
 }

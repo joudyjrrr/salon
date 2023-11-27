@@ -8,6 +8,7 @@ import { Control, Controller, FieldErrors, UseFormRegister, UseFormSetValue } fr
 import { AddCouponType } from "../hook/type";
 import { getCityAllType } from "../../../API/City/type";
 import GenericObjectAutoComplete from "../../../Components/Form/GenericObjectAutoComplete";
+import GenericCustomers from "../../../Components/Coupon/GenericCustomers";
 
 
 const PublicCityUser: FC<{
@@ -22,7 +23,9 @@ const PublicCityUser: FC<{
 }> = ({ CityUser, control, setCityUser, register, setValue, errors, countries, cities }) => {
 
     const { t, customerLoading, Customers, } = CouponHook()
-
+    console.log({ Customers });
+    console.log({control}, 'in coupon');
+    
     return (
         <>
             <FormControl>
@@ -44,49 +47,64 @@ const PublicCityUser: FC<{
             <Grid container >
                 {CityUser === 'ByUser' &&
                     <Grid xs={12}>
-                        <Autocomplete
-                            multiple
-                            blurOnSelect={false}
-                            clearOnEscape={false}
-                            disableCloseOnSelect
-                            filterSelectedOptions
-                            getOptionLabel={(option) => `${option.userName} - ${option.phoneNumber}`}
-                            filterOptions={(options, { inputValue }) => {
-                                return options.filter((option) =>
-                                    option.phoneNumber.toString().includes(inputValue) || option.userName.includes(inputValue)
-                                );
+                        {/* <Controller
+                            name="customers"
+                            control={control}
+                            render={({ field }) => {
+                                return (
+                                    <Autocomplete
+                                        multiple
+                                        blurOnSelect={false}
+                                        clearOnEscape={false}
+                                        disableCloseOnSelect
+                                        filterSelectedOptions
+                                        id='UserSelect'
+                                        {...field}
+                                        fullWidth
+
+                                        getOptionLabel={(option) => `${option.userName} - ${option.phoneNumber}`}
+                                        filterOptions={(options, { inputValue }) => {
+                                            return options.filter((option) =>
+                                                option.phoneNumber.toString().includes(inputValue) || option.userName.includes(inputValue)
+                                            );
+                                        }}
+                                        onChange={(_, newValue) => {
+                                            setValue('customers', (newValue));
+                                        }}
+                                        renderOption={(prop, customer) => (
+                                            <li {...prop} key={customer.userId}>
+                                                <Grid container justifyContent={'space-between'}>
+                                                    <Typography>
+                                                        {customer.userName ?? 'No Name'}
+                                                    </Typography>
+                                                    <Typography>
+                                                        {customer.phoneNumber ?? 'No Number'}
+                                                    </Typography>
+                                                </Grid>
+                                            </li>
+                                        )}
+
+                                        options={Customers?.filter((customer) => customer.userName !== null) ?? []}
+
+                                        renderInput={((params) => (
+                                            <TextField
+                                                {...params}
+                                                label={t('Notification.users')}
+                                                placeholder='users'
+                                                fullWidth
+                                                helperText={errors.customers?.message}
+                                                error={!!errors.customers?.message}
+                                            />
+                                        ))}
+                                    />
+                                )
                             }}
-                            popupIcon={customerLoading ? <Loading size={25} /> : <ArrowDropDownIcon />}
-                            id='UserSelect'
-                            {...register('customers')}
-                            fullWidth
-                            onChange={(_, newValue) => setValue('customers', newValue)}
-
-                            renderOption={(prop, customer) => (
-                                <li {...prop} key={customer.userId}>
-                                    <Grid container justifyContent={'space-between'}>
-                                        <Typography>
-                                            {customer.userName ?? 'No Name'}
-                                        </Typography>
-                                        <Typography>
-                                            {customer.phoneNumber ?? 'No Number'}
-                                        </Typography>
-                                    </Grid>
-                                </li>
-                            )}
-
-                            options={Customers?.filter((customer) => customer.userName !== null) ?? []}
-
-                            renderInput={((params) => (
-                                <TextField
-                                    {...params}
-                                    label={t("Coupon.Users")}
-                                    placeholder='users'
-                                    fullWidth
-                                    error={!!errors.customers?.message}
-                                    helperText={errors.customers?.message}
-                                />
-                            ))}
+                        /> */}
+                        <GenericCustomers
+                            name="customers"
+                            control={control}
+                            setValue={setValue}
+                            errors={errors}
                         />
 
                     </Grid>
@@ -102,7 +120,6 @@ const PublicCityUser: FC<{
                                     return (
                                         <Autocomplete
                                             id='CountrySelect'
-                                            // {...register('country')}
                                             {...field}
                                             fullWidth
                                             onChange={(_, newValue) => {
@@ -140,7 +157,7 @@ const PublicCityUser: FC<{
                                     return (
                                         <Autocomplete
                                             id='CitySelect'
-                                            // {...register('city')}
+                                            
 
                                             {...field}
                                             fullWidth

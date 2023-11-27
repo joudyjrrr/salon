@@ -1,3 +1,4 @@
+import { GetCustomersNamesCpType } from "../../../API/CpManagement/type";
 import { INameAndId } from "../../../interface/generic";
 
 export interface AddNotificationType {
@@ -23,13 +24,9 @@ export interface AddNotificationType {
     }
   ];
   notificationType: 0 | 1 | 2;
-  customers: {
-    userId: string;
-    userName: string;
-    phoneNumber: number;
-  }[];
+  customers: GetCustomersNamesCpType[];
   country: INameAndId | null;
   city: INameAndId | null;
   publicUserCity: "Public" | "User" | "City";
-  type: number;
+  AppType: number;
 }

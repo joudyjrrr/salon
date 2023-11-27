@@ -21,9 +21,10 @@ const NameAndCode: FC<{
                     control={control}
                     name='name'
                     label={t("Coupon.name")}
+                    placeholder={t("Coupon.name")}
                     helperText={errors.name?.message}
                     errors={!!errors.name?.message}
-                    focused
+                    shrink
                 />
 
             </Grid>
@@ -32,9 +33,10 @@ const NameAndCode: FC<{
                     control={control}
                     name='code'
                     label={t("Coupon.code")}
+                    placeholder={t("Coupon.code")}
                     helperText={errors.code?.message}
                     errors={!!errors.code?.message}
-                    focused
+                    shrink
                 />
 
             </Grid>

@@ -12,6 +12,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Title from "../../../Components/Title.tsx"
 import { FromISO } from "../../../helper/DateHelpers.ts"
 import Loading from "../../../Components/Loading.tsx"
+import { DevTool } from "@hookform/devtools"
 
 
 
@@ -23,7 +24,7 @@ const AddCoupon = () => {
         errors,
         t,
         setValue, register, setError, getValues, control,
-        navigate, reset, location,
+        navigate, reset,
         ThisCoupon, isThisCouponLoading, id, countries, cities,
         CityData, isLoadingCityData,
         CountryData, isLoadingCountryData
@@ -132,7 +133,7 @@ const AddCoupon = () => {
                 }
             })
     }
-    if (isThisCouponLoading && !isAddingCoupon && !isLoadingCityData && !isLoadingCountryData) {
+    if ((isThisCouponLoading || isLoadingCityData || isLoadingCountryData)) {
         return <Loading />
     }
 
@@ -163,9 +164,7 @@ const AddCoupon = () => {
                                 register={register}
                                 control={control}
                             />
-
                             <SetDate control={control} />
-
                             <PercentValueComponent
                                 setPercentValue={setPercentValue}
                                 PercentValue={PercentValue}
@@ -202,6 +201,7 @@ const AddCoupon = () => {
                     </Grid>
                 </form>
             </Box>
+            <DevTool control={control} />
         </>
     )
 }
