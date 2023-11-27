@@ -40,8 +40,8 @@ const PublicCityUser: FC<{
                     }
                 >
                     <FormControlLabel value="Public" control={<Radio />} label={t("Coupon.Public")} />
-                    <FormControlLabel value="ByCity" control={<Radio />} label={t("Coupon.ByCity")} />
                     <FormControlLabel value="ByUser" control={<Radio />} label={t("Coupon.ByUser")} />
+                    <FormControlLabel value="ByCity" control={<Radio />} label={t("Coupon.ByCity")} />
                 </RadioGroup>
             </FormControl>
             <Grid container >
