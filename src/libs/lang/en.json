@@ -17,7 +17,8 @@
     "offer": "Offer",
     "salon": "Salon",
     "employee": "Employee",
-    "version":"Version"
+    "version":"Version",
+    "booking": "Booking"
   },
   "form": {
     "userName": "User Name",
@@ -255,5 +256,13 @@
     "show": "Show Version",
     "action": "Version has been saved successfully",
     "delete": "Version has been Deleted"
+  },
+  "Booking": {
+    "title": "Booking",
+    "code": "Code", 
+    "customerName": "Customer Name" ,
+    "customerNumber": "Customer Number",
+    "bookingStatus": "Booking Status"
+
   }
 }

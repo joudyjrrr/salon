@@ -18,7 +18,8 @@
     "offer": "العروض",
     "salon": "صالون التجميل",
     "employee":"الموظفين",
-    "version":"الاصدارات"
+    "version":"الاصدارات",
+    "booking": "الحجوزات"
   },
   "form": {
     "userName": "اسم المستخدم",
@@ -197,5 +198,12 @@
     "userName": "اسم المستخدم",
     "description": "الوصف",
     "phoneNumber": "رقم الهاتف"
+  },
+  "Booking": {
+    "title": "إدارة الحجوزات",
+    "code": "الكود", 
+    "customerName": "اسم المستهلك" ,
+    "customerNumber": "رقم المستهلك",
+    "bookingStatus": "حالة الحجز"
   }
 }

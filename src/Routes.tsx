@@ -27,9 +27,10 @@ const EmployeeService = lazy(
 const Banner = lazy(() => import("./pages/Banner/Banner"));
 const AddBanner = lazy(() => import("./pages/Banner/AddBanner"));
 const FeedBack = lazy(() => import("./pages//FeedBack/FeedBack"));
-
 const Version = lazy(() => import("./pages/Version/Version"));
 const AddVersion = lazy(() => import("./pages/Version/AddVersion"));
+const Booking = lazy(() => import("./pages/Booking/Booking"));
+
 const Routes = () => {
   return (
     <>
@@ -303,6 +304,14 @@ const Routes = () => {
               }
             />
           </Route>
+          <Route
+            path="/booking"
+            element={
+              <Suspense fallback={<></>}>
+                <Booking/>
+              </Suspense>
+            }
+            />
         </Route>
       
       </ReactRoutes>
