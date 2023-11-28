@@ -74,7 +74,7 @@ const Links = () => {
     },
     {
       title: t("links.fqa"),
-      href: "/fqa",
+      href: "/fQa",
       icon: <HelpOutlineIcon />,
     },
   ];
