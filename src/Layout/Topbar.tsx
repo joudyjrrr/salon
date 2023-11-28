@@ -34,7 +34,7 @@ const Topbar = () => {
   const mode = useSelector((state: RootState) => state.them.mode);
   const toggleColorMode = () => {
     dispatch(themAction.setMode(mode === "light" ? "dark" : "light"));
-    localStorage.setItem('mode', mode === 'light' ? 'light' : 'dark')
+    localStorage.setItem('mode', mode === 'dark' ? 'light' : 'dark')
   };
 
   useEffect(() => {
