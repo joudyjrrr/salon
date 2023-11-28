@@ -16,7 +16,10 @@
     "FeedBack": "FeedBack",
     "offer": "Offer",
     "salon": "Salon",
-    "employee": "Employee"
+    "employee": "Employee",
+    "version":"Version",
+    "booking": "Booking",
+    "fqa": "FQA"
   },
   "form": {
     "userName": "User Name",
@@ -73,15 +76,25 @@
     "logoImg": "logo Img",
     "countryCode": "countryCode",
     "country": "Country Name",
-    "certificates":"Certificates",
-    "experienceYears":"experienceYears",
-    "chooseGender":"chooseGender",
-    "img":"img",
-    "chooseCategory":"chooseCategory",
-    "imgCover":"img Cover",
-    "chooseService":"chooseService",
+    "certificates": "Certificates",
+    "chooseCategory": "chooseCategory",
+    "imgCover": "img Cover",
+    "chooseService": "chooseService",
     "period": "period",
-    "chooseSalaon":"chooseSalaon"
+    "chooseSalaon": "chooseSalaon",
+    "title": "title",
+    "body": "body",
+    "iosVersionNumber": "iosVersionNumber",
+    "iosVersionName": "iosVersionName",
+    "androidVersionNumber": "androidVersionNumber",
+    "androidVersionName": "androidVersionName",
+    "androidUrl": "androidUrl",
+    "iosUrl": "iosUrl",
+    "isRequired": "isRequired",
+    "appType": "appType",
+    "experienceYears": "experienceYears",
+    "chooseGender": "chooseGender",
+    "img": "img"
   },
   "table": {
     "name": "Name",
@@ -137,8 +150,8 @@
     "byUsers": "by User",
     "byCity": "by City",
     "users": "users",
-    "country": "Countries",
-    "cities": "cities",
+    "country": "Country",
+    "cities": "city",
     "Customer": "customer",
     "Store": "Store",
     "Driver": "Driver",
@@ -163,7 +176,7 @@
     "title": "Country",
     "action": "Country has been saved successfully",
     "add": "Add Country",
-    "edit":"Edit Country",
+    "edit": "Edit Country",
     "delete": "Country has been Deleted",
     "countryCode": "countryCode",
     "currency": "Currency",
@@ -173,7 +186,7 @@
     "title": "City",
     "action": "City has been saved successfully",
     "add": "Add City",
-    "edit":"Edit City",
+    "edit": "Edit City",
     "delete": "City has been Deleted",
     "name": "City Name"
   },
@@ -190,19 +203,20 @@
     "to": "to"
   },
   "serv": {
-    "titleWithEmp":"ServiceByEmployee",
+    "titleWithEmp": "ServiceByEmployee",
     "title": "Services",
     "add": "Add Services",
     "edit": "Edit Services",
     "action": "Services has been saved successfully",
     "delete": "Services has been Deleted"
   },
-  "Country": {
-    "title": "Country",
-    "action": "Users has been saved successfully",
-    "add": "Add Country",
-    "edit": "Edit Country",
-    "delete": "Country has been Deleted"
+  "FeedBack": {
+    "title": "FeedBack",
+    "titleCard": "Title",
+    "userName": "User Name",
+    "description": "Description",
+    "phoneNumber": "Phone Number",
+    "number": "FeedBack Number "
   },
   "Coupon": {
     "title": "Coupon",
@@ -210,6 +224,7 @@
     "addTitle": "Add Coupon",
     "editTitle": "Edit Coupon",
     "added": "Coupon Added Successfully",
+    "edited": "Coupon has been Edited Successfully",
     "deleted": "Coupon Deleted successfully",
     "name": "Name",
     "code": "code",
@@ -236,6 +251,34 @@
     "show": "Show Banner",
     "action": "Banner has been saved successfully",
     "delete": "Banner has been Deleted",
-    "link":"link"
+    "link": "link"
+  },
+  "Version": {
+    "title": "Version",
+    "add": "Add Version",
+    "edit": "Edit Version",
+    "show": "Show Version",
+    "action": "Version has been saved successfully",
+    "delete": "Version has been Deleted"
+  },
+  "Booking": {
+    "title": "Booking",
+    "code": "Code", 
+    "customerName": "Customer Name" ,
+    "customerNumber": "Customer Number",
+    "bookingStatus": "Booking Status"
+  },
+  "FQA": {
+    "title": "FQA",
+    "Add": "Add FQA",
+    "Edit": "Edit FQA",
+    "Added": "FQA has been Added Successfully",
+    "Deleted": "FQA has been deleted Successfully",
+    "edited": "FQA has been Edited Successfully",
+    "enQuestion": "English question",
+    "arQuestion": "Arabic question",
+    "enAnswer": "English Answer",
+    "arAnswer": "Arabic Answer",
+    "wrong": "something went wrong"
   }
 }

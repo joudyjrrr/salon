@@ -17,7 +17,9 @@
     "FeedBack": "الاقتراحات",
     "offer": "العروض",
     "salon": "صالون التجميل",
-    "employee":"الموظفين"
+    "employee":"الموظفين",
+    "version":"الاصدارات",
+    "booking": "الحجوزات"
   },
   "form": {
     "userName": "اسم المستخدم",
@@ -81,7 +83,17 @@
     "chooseCategory":"اختر صنف",
     "imgCover":"صورة الغلاف",
     "chooseService":"اختر خدمة",
-    "chooseSalaon":"اختر صالون تجميل"
+    "chooseSalaon":"اختر صالون تجميل",
+    "title":"العنوان",
+    "body":"المحتوى",
+    "iosVersionNumber":"اسم اصدار الايفون",
+    "iosVersionName":"رقم اصدار الايفون",
+    "androidVersionNumber":"رقم اصدار الاندرويد",
+    "androidVersionName":"اسم اصدار الاندرويد",
+    "androidUrl":"رابط الاندرويد",
+    "iosUrl":"رابط الايفون",
+    "isRequired":"هل مطلوب",
+    "appType":"نوع التطبيق"
   },
   "table": {
     "name": "اسم المستخدم",
@@ -189,5 +201,27 @@
     "action": "تمت إضافة الإعلان بنجاح",
     "delete": "تم حذف الإعلان بنجاح",
     "show": "عرض الصنف"
+  },
+  "FeedBack": {
+    "title": "إدارة الاقتراحات",
+    "titleCard":"العنوان",
+    "userName": "اسم المستخدم",
+    "description": "الوصف",
+    "phoneNumber": "رقم الهاتف"
+  },
+  "Version": {
+    "title": "الإصدارات",
+    "add": "إضافة إصدار",
+    "edit": "تعديل الإصدار",
+    "show": "عرض الإصدار",
+    "action": "تمت إضافة الإصدار بنجاح",
+    "delete": "تم حذف الإصدار بنجاح"
+  },
+  "Booking": {
+    "title": "إدارة الحجوزات",
+    "code": "الكود", 
+    "customerName": "اسم المستهلك" ,
+    "customerNumber": "رقم المستهلك",
+    "bookingStatus": "حالة الحجز"
   }
 }

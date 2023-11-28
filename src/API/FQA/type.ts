@@ -1,7 +1,25 @@
 export interface getAllFQA {
   id: string;
-  question: string;
-  answer: string;
+  question: [
+    {
+      key: "en";
+      value: string;
+    },
+    {
+      key: "ar";
+      value: string;
+    }
+  ];
+  answer: [
+    {
+      key: "en";
+      value: string;
+    },
+    {
+      key: "ar";
+      value: string;
+    }
+  ];
 }
 
 export interface setFQA {

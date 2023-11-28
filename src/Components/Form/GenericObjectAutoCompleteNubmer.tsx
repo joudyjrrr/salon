@@ -2,6 +2,7 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { INameAndIdNumber } from "../../interface/generic"
 import { Dispatch, FC, SetStateAction} from "react";
+import { appType } from "../../API/Version/type";
 export type Props = {
     errorMessage?: string | undefined;
     disabled?: boolean;
@@ -14,7 +15,7 @@ export type Props = {
     dataTest?: string
     [key: string]: any;
     multiple?: false;
-    value:{id:number,name:string};
+    value: INameAndIdNumber;
     onChange: (value: INameAndIdNumber | null) => void;
     setId?: Dispatch<SetStateAction<number | undefined>>;
     req?:boolean

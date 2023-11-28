@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { CouponQueries } from "../../../API/Coupon/CouponQueries";
 import { useTranslation } from "react-i18next";
-import { SetCouponCpType } from "../../../API/Coupon/type";
 import { CpManagementQueries } from "../../../API/CpManagement/CpManagementQueries";
 import { CountryQueries } from "../../../API/Country/CountryQueries";
 import { CityQueries } from "../../../API/City/CityQueries";
@@ -10,6 +9,7 @@ import { AddCouponType } from "./type";
 import { DefaultFromDate, DefaultToDate } from "../../../helper/DateHelpers";
 import { FileQuery } from "../../../API/File/FileQueries";
 import { useLocation, useNavigate, useParams } from "react-router";
+import { showError, showSuccess } from "../../../libs/reactToastify";
 
 const CouponHook = (Search?: string, PageNumber?: number) => {
   const [Query, setQuery] = useState<string>("");
@@ -31,6 +31,7 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
     reset,
     watch,
     setError,
+    clearErrors,
   } = useForm<AddCouponType>({
     defaultValues: {
       fromDate: DefaultFromDate(),
@@ -66,12 +67,107 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
 
   const { data: Customers, isLoading: customerLoading } =
     CpManagementQueries.useCpCustomersNames();
-  const params = useParams();
+  const { id } = useParams();
+
   const { data: ThisCoupon, isLoading: isThisCouponLoading } =
-    CouponQueries.GetCouponQuery(params.id);
+    CouponQueries.GetCouponQuery(id);
+
+  const { data: CityData, isLoading: isLoadingCityData } =
+    CityQueries.GetCityByIdQuery(ThisCoupon?.cityId);
+
+  const { data: CountryData, isLoading: isLoadingCountryData } =
+    CountryQueries.GetCountryByIdQuery(CityData?.countryId);
 
   const navigate = useNavigate();
   const location = useLocation();
+  const isAddingPath = !id;
+
+  const [img, setImg] = useState<string>("");
+  const [PercentValue, setPercentValue] = useState("value");
+  const [CityUser, setCityUser] = useState("Public");
+
+  useEffect(() => {
+    if (img !== "") {
+      clearErrors("image");
+    }
+  }, [img]);
+
+  const submitHandler = (data: AddCouponType) => {
+    clearErrors("image");
+    if (!data.name) {
+      setError("name", { message: t("form.required") });
+      return;
+    }
+    if (!data.code) {
+      setError("code", { message: t("form.required") });
+      return;
+    }
+    if (!data.fromDate) {
+      setError("fromDate", { message: t("form.required") });
+      return;
+    }
+    if (!data.fromDate) {
+      setError("fromDate", { message: t("form.required") });
+      return;
+    }
+    if (PercentValue === "value") {
+      setValue("percentage", undefined);
+    } else {
+      setValue("value", undefined);
+    }
+
+    if (data.fromDate >= data.toDate) {
+      setError("fromDate", { message: t("Coupon.fromError") });
+      return;
+    }
+    if (PercentValue === "percent" && !getValues("percentage")) {
+      setError("percentage", { message: t("form.required") });
+      return;
+    }
+    if (PercentValue === "value" && !getValues("value")) {
+      setError("value", { message: t("form.required") });
+      return;
+    }
+    if (CityUser === "ByUser" && data.customers?.length === 0) {
+      setError("customers", { message: t("form.required") });
+      return;
+    }
+    if (img === "") {
+      setError("image", { message: t("Coupon.imageRequired") });
+      return;
+    } else {
+      clearErrors("image");
+    }
+
+    addCoupon(
+      {
+        id: isAddingPath ? undefined : id,
+        cityId: data.city?.id ?? undefined,
+        code: data.code,
+        image: img,
+        name: data.name,
+        fromDate: data.fromDate,
+        toDate: data.toDate,
+        percentage: data.percentage,
+        value: getValues("value"),
+        customers: data.customers
+          ? data.customers?.map((customer) => customer.userId)
+          : undefined,
+        type: CityUser === "Public" ? 0 : CityUser === "ByCity" ? 2 : 1,
+      },
+      {
+        onSuccess: () => {
+          showSuccess(isAddingPath ? t("Coupon.added") : t("Coupon.edited"));
+          reset();
+          navigate(-1);
+        },
+        onError: () => {
+          showError(t("Coupon.wrong"));
+        },
+      }
+    );
+  };
+
   return {
     register,
     control,
@@ -102,7 +198,19 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
     ThisCoupon,
     isThisCouponLoading,
     location,
-    params,
+    id,
+    CityData,
+    isLoadingCityData,
+    CountryData,
+    isLoadingCountryData,
+    isAddingPath,
+    setCityUser,
+    setImg,
+    setPercentValue,
+    submitHandler,
+    PercentValue,
+    img,
+    CityUser,
   };
 };
 

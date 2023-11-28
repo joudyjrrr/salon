@@ -1,8 +1,9 @@
-import { Grid, TextField } from '@mui/material'
+import { Grid } from '@mui/material'
 import CouponHook from '../hook/CouponHook'
 import { FC } from 'react';
-import { Control, Controller, FieldErrors, UseFormRegister } from 'react-hook-form';
+import { Control, FieldErrors, UseFormRegister } from 'react-hook-form';
 import { AddCouponType } from '../hook/type';
+import FormTextField from '../../../Components/Form/FormTextField';
 
 const NameAndCode: FC<{
     register: UseFormRegister<AddCouponType>,
@@ -16,40 +17,28 @@ const NameAndCode: FC<{
     return (
         <>
             <Grid item xs={12} sm={6} sx={{ mt: '20px' }} width={1}>
-                <Controller
-                    name='name'
+                <FormTextField
                     control={control}
-                    render={({ field }) =>
-                        <TextField
-                            focused
-                            helperText={errors.name?.message}
-                            error={!!errors.name?.message}
-                            {...field}
-                            label={t("Coupon.name")}
-                            variant="outlined"
-                            fullWidth
-                        />
-                    }
+                    name='name'
+                    label={t("Coupon.name")}
+                    placeholder={t("Coupon.name")}
+                    helperText={errors.name?.message}
+                    errors={!!errors.name?.message}
+                    shrink
                 />
+
             </Grid>
             <Grid item xs={12} sm={6} sx={{ mt: '20px' }} width={1}>
-
-                <Controller
-                    name='code'
+                <FormTextField
                     control={control}
-                    render={({ field }) =>
-
-                        <TextField
-                            focused
-                            helperText={errors.code?.message}
-                            error={!!errors.code?.message}
-                            {...field}
-                            label={t("Coupon.code")}
-                            fullWidth
-                            variant="outlined"
-                        />
-                    }
+                    name='code'
+                    label={t("Coupon.code")}
+                    placeholder={t("Coupon.code")}
+                    helperText={errors.code?.message}
+                    errors={!!errors.code?.message}
+                    shrink
                 />
+
             </Grid>
         </>
     )

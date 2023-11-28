@@ -17,7 +17,7 @@ const GetAllCitiesQuery = (payload: IPayload) => {
         Query: payload.Query,
         EnablePagination: true,
       });
-     return data
+      return data;
     },
   });
   return queryResult;
@@ -60,7 +60,7 @@ const GetCityByCountryQuery = (params: getCityByCountryType) => {
   return queryResult;
 };
 
-const GetCityByIdQuery = (id: string) => {
+const GetCityByIdQuery = (id: string | undefined) => {
   const queryResult = useQuery({
     queryKey: ["get-city-by-id", id],
     queryFn: () => CityApi.getCityById(id),
@@ -69,7 +69,7 @@ const GetCityByIdQuery = (id: string) => {
   return queryResult;
 };
 
-const SetCity =  () => {
+const SetCity = () => {
   const queryResult = useMutation({
     mutationKey: ["post-city"],
     mutationFn: CityApi.SetCity,

@@ -93,14 +93,17 @@ const Employee = {
   Delet_ServEmp : `${controller.Employee}/DeleteEmployeeServiceCp`
 };
 const Version = {
-  SET_VERSION_CP: `${controller.Salon}/VersionSetCp`,
-  DELETE_VERSION_CP: `${controller.Salon}/VersionDeleteCp`,
+  SET_VERSION_CP: `${controller.Version}/VersionSetCp`,
+  DELETE_VERSION_CP: `${controller.Version}/VersionDeleteCp`,
+  GET_VERSION : `${controller.Version}/VersionGetAll`,
+  GET_Version_BY_Id:`${controller.Version}/VersionGetById`
 
 };
 const Service = {
   SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
   DELETE_SERVICE : `${controller.Service}/DeleteServiceCp`,
   GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`,
+  GET_SalonID_ByService : `${controller.Service}/GetSalonIdByServiceId`
 };
 // const EmpService = {
 //   SET_EmpSERVICE_CP: `${controller.Service}/SetServiceCp`,
@@ -108,7 +111,7 @@ const Service = {
 //   GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`
 // };
 const Feedback = {
-  GET_FEEDBACK_CP: `${controller.Feedback}/Feedback`,
+  GET_FEEDBACK_CP: `${controller.Feedback}`,
 };
 const File = {
   GET_FILE_CP: `${controller.file}/SaveFile`,
@@ -120,7 +123,11 @@ const FQA = {
   SET_FQA: `${controller.Fqa}/FqaSet`,
   DELETE_FQA: `${controller.Fqa}/FqaDelete`,
 };
-
+const Booking = {
+  GET_ALL_Booking_CP: `${controller.Booking}/GetBookningAllCp`,
+  Get_Booking_Details_Cp: `${controller.Booking}/GetBookningDetailsCp`,
+  Get_Booking_Status_Cp: `${controller.Booking}/ChangeBookingStatusCp`,
+};
 export const API_Routes = {
   Banner,
   Category,
@@ -137,4 +144,5 @@ export const API_Routes = {
   File,
   FQA,
   Employee,
+  Booking,
 };

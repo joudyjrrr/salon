@@ -7,17 +7,18 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogTitle from "@mui/material/DialogTitle";
 import { BiSolidTrashAlt } from "react-icons/bi";
 import { useMutation } from "@tanstack/react-query";
-import Loading from "../../libs/Loading";
+import Loading from "../Loading";
+
 
 const DeleteModal: FC<{
   MassegeSuccess: string;
-  refetch:()=>void
+  refetch: () => void
   userId: string;
   onDelete: (id: string) => Promise<unknown>;
   setId: (id: string) => void;
   className?: string;
-  key?:string;
-}> = ({ onDelete, MassegeSuccess, userId, setId, className , refetch}) => {
+  key?: string;
+}> = ({ onDelete, MassegeSuccess, userId, setId, className, refetch }) => {
   const { t } = useTranslation();
   const [openModal, setOpenModal] = useState(false);
   const mutation = useMutation({
@@ -74,7 +75,7 @@ const DeleteModal: FC<{
             disabled={mutation.isPaused}
           >
             {mutation.isPending ? (
-              <Loading loadingSize={20} />
+              <Loading />
             ) : (
               t("delete.yes")
             )}

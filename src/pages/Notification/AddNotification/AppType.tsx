@@ -1,45 +1,54 @@
 import { FormControl, InputLabel, Select, Typography, MenuItem } from "@mui/material"
 import { FC } from "react"
-import { Control, Controller, FieldErrors } from "react-hook-form"
+import { Control, Controller, FieldErrors, UseFormWatch } from "react-hook-form"
 import { useTranslation } from "react-i18next"
 import { AddNotificationType } from "../hooks/type"
 
 
 const AppType: FC<{
     control: Control<AddNotificationType, any>,
-    errors: FieldErrors<AddNotificationType>
+    errors: FieldErrors<AddNotificationType>,
+    watch: UseFormWatch<AddNotificationType>,
 }> = ({
     control,
-    errors
+    errors,
+    watch,
 }) => {
-
         const { t } = useTranslation();
 
         return (
             <>
-                <FormControl fullWidth sx={{ mt: '10px' }}>
-                    <InputLabel id="demo-simple-select-label">{t('Notification.AppType')}</InputLabel>
-                    <Controller
-                        name="type"
-                        control={control}
-                        render={({ field }) => {
-                            return (
+                <Controller
+                    name="AppType"
+                    control={control}
+                    render={({ field }) => {
+                        return (
+                            <FormControl
+                                fullWidth
+                                sx={{ mt: '10px' }}
+                            >
+                                <InputLabel id="demo-simple-select-label" shrink>
+                                    {t('Notification.AppType')}
+                                </InputLabel>
+
                                 <Select
-                                    labelId="demo-simple-select-label"
                                     id="demo-simple-select"
                                     {...field}
-                                    label={t('Notification.Type')}
+                                    placeholder={t('Notification.AppType')}
+                                    value={watch('AppType') ?? null}
                                     sx={{ maxWidth: '250px' }}
+
                                 >
-                                    <MenuItem value={0}>{t('Notification.Customer')}</MenuItem>
-                                    <MenuItem value={1}>{t('Notification.Store')}</MenuItem>
-                                    <MenuItem value={2}>{t('Notification.Driver')}</MenuItem>
+                                    <MenuItem value={1}>{t('Notification.Customer')}</MenuItem>
+                                    <MenuItem value={2}>{t('Notification.Store')}</MenuItem>
+                                    <MenuItem value={3}>{t('Notification.Driver')}</MenuItem>
                                 </Select>
-                            )
-                        }}
-                    />
-                </FormControl>
-                <Typography color={'error'} variant="subtitle2" sx={{ mt: '10px' }}>{errors.type?.message}</Typography>
+                            </FormControl >
+                        )
+                    }}
+                />
+
+                <Typography color={'error'} variant="subtitle2" sx={{ mt: '10px' }}> {errors.AppType?.message}</Typography >
 
             </>
         )

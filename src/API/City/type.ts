@@ -7,15 +7,14 @@ export interface getCityAllType {
 }
 export interface setCityTypeInput {
   id: string;
-  arName: string,
-  enName: string,
+  arName: string;
+  enName: string;
   country: IAutoCompleteOption;
 }
-export interface setCityType 
- {
-    id?: string,
-    name: ICity[];
-    countryId: string;
+export interface setCityType {
+  id?: string;
+  name: ICity[];
+  countryId: string;
 }
 export interface getCityByIdType {
   id?: string;

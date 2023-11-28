@@ -52,7 +52,7 @@ const useEmployee = () => {
   const [genericFile, setGenericFile] = useState<File | null>(null);
   const { data: employeeDetails, isLoading } =
     EmployeeQureis.GetEmpDetailsQuery(empId!);
-  console.log(employeeDetails);
+  // console.log(employeeDetails);
   useEffect(() => {
     if (employeeDetails) {
       setValue("userName", employeeDetails.empName!);
@@ -104,10 +104,8 @@ const useEmployee = () => {
       }
     );
   };
-  console.log(dayTimeConvert(watch("workSchedule")[0].startTime))
   const { mutate, isPending } = EmployeeQureis.SetEmpQuery();
   const onSubmit = () => {
-  console.log(watch("workSchedule"))
     mutate(
       {
         id: empId ? empId : undefined,
@@ -138,7 +136,7 @@ const useEmployee = () => {
         },
       }
     );
-    console.log(watch("workSchedule"));
+    // console.log(watch("workSchedule"));
   };
   return {
     control,
