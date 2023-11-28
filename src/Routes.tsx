@@ -31,6 +31,8 @@ const Fqa = lazy(() => import('./pages/FQA/FQA'))
 const AddFQA = lazy(() => import('./pages/FQA/AddFQA'));
 const Version = lazy(() => import("./pages/Version/Version"));
 const AddVersion = lazy(() => import("./pages/Version/AddVersion"));
+const Booking = lazy(() => import("./pages/Booking/Booking"));
+
 const Routes = () => {
   return (
     <>
@@ -332,6 +334,14 @@ const Routes = () => {
               }
             />
           </Route>
+          <Route
+            path="/booking"
+            element={
+              <Suspense fallback={<></>}>
+                <Booking />
+              </Suspense>
+            }
+          />
         </Route>
 
       </ReactRoutes>

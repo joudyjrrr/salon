@@ -19,7 +19,7 @@ export interface GetBannerByIdType {
   imageURl: string;
   serviceId?: string;
   salonId?: string;
-  citytId?: string;
+  cityId?: string;
 }
 export interface Banner {
   id?: string;

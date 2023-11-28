@@ -4,7 +4,7 @@ import { FeedbackQueries } from '../../API/Feddback/FeedbackQueries';
 import Title from '../../Components/Title';
 import SearchField from '../../Components/SearchField';
 import Loading from "../../Components/Loading";
-import { Box, Card, Grid, Stack, Typography, useMediaQuery } from '@mui/material';
+import { Box, Card, Grid,CardContent, Stack, Typography, useMediaQuery } from '@mui/material';
 import Pagination from '../../Components/Pagination';
 
 function FeedBack() {
@@ -40,21 +40,32 @@ const matches = useMediaQuery("(max-width:700px)");
         <Title text={t('FeedBack.title')} />
             <SearchField onSearch={setQuery} value={query} />
           </Stack>
-        {/* {feedBackData?.data?.map((d, index) => (
-        ))
-    } */}
     <Grid container spacing={2} sx={{ mt: 3, px: 1 }}>
             {
                 feedBackData?.data.map((feed, index) => {
                     return (
                         <Grid key={index} item xs={12} sm={6} lg={3}>
                             <Card sx={{ padding: 2 }}>
-                            <Typography key={index} variant='body2'  sx={{ textAlign: 'start' }}>
-                            {t("FeedBack.titleCard")} : {feed.title} <br/>
-                            {t("FeedBack.userName")} : {feed.userName}    <br/>                                                        
-                            {t("FeedBack.description")} : {feed.body}     <br/>                                                       
-                            {t("FeedBack.phoneNumber")} : {feed.phoneNumber}    <br/>                                                                                                                    
-                            </Typography>
+                            <CardContent>
+                                <Grid container flexDirection={"column"} gap={`10px`}>
+                                <Stack flexDirection="row" gap="5px">
+                                    <Typography variant="body1">
+                                    {t("FeedBack.titleCard")} : {feed.title}</Typography>
+                                </Stack>
+                                <Stack flexDirection="row" gap="5px">
+                                    <Typography variant="body1">
+                                    {t("FeedBack.userName")} : {feed.userName}</Typography>
+                                </Stack>
+                                <Stack flexDirection="row" gap="5px">
+                                    <Typography variant="body1">
+                                    {t("FeedBack.description")} : {feed.body}</Typography>
+                                </Stack>
+                                <Stack flexDirection="row" gap="5px">
+                                    <Typography variant="body1">
+                                    {t("FeedBack.phoneNumber")} : {feed.phoneNumber}</Typography>
+                                </Stack>
+                                </Grid>
+                            </CardContent>
                             </Card>
                         </Grid>
                             )

@@ -43,7 +43,7 @@ const AddEmployeeService: React.FC<{
     onSubmit,
     isPending,
   } = useEmpService();
-  console.log(ServOption);
+  // console.log(ServOption);
   const { t } = useTranslation();
   return (
     <>

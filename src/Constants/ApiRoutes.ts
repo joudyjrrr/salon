@@ -122,7 +122,11 @@ const FQA = {
   SET_FQA: `${controller.Fqa}/FqaSet`,
   DELETE_FQA: `${controller.Fqa}/FqaDelete`,
 };
-
+const Booking = {
+  GET_ALL_Booking_CP: `${controller.Booking}/GetBookningAllCp`,
+  Get_Booking_Details_Cp: `${controller.Booking}/GetBookningDetailsCp`,
+  Get_Booking_Status_Cp: `${controller.Booking}/ChangeBookingStatusCp`,
+};
 export const API_Routes = {
   Banner,
   Category,
@@ -139,4 +143,5 @@ export const API_Routes = {
   File,
   FQA,
   Employee,
+  Booking,
 };

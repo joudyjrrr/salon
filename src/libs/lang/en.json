@@ -18,7 +18,8 @@
     "salon": "Salon",
     "employee": "Employee",
     "version": "Version",
-    "fqa": "FQA"
+    "fqa": "FQA",
+    "booking": "Booking"
   },
   "form": {
     "userName": "User Name",
@@ -90,7 +91,10 @@
     "androidUrl": "androidUrl",
     "iosUrl": "iosUrl",
     "isRequired": "isRequired",
-    "appType": "appType"
+    "appType": "appType",
+    "experienceYears": "experienceYears",
+    "chooseGender": "chooseGender",
+    "img": "img"
   },
   "table": {
     "name": "Name",
@@ -269,5 +273,12 @@
     "enAnswer": "English Answer",
     "arAnswer": "Arabic Answer",
     "wrong": "something went wrong"
+  },
+  "Booking": {
+    "title": "Booking",
+    "code": "Code",
+    "customerName": "Customer Name",
+    "customerNumber": "Customer Number",
+    "bookingStatus": "Booking Status"
   }
 }

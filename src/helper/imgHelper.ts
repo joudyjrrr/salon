@@ -136,7 +136,7 @@ export const dayTimeConvert = (Time: any) => {
   currentDate.setMinutes(Number(minutes));
   const formattedTime = currentDate.toISOString();
   // const utcTime =moment.utc(formattedTime)
-  console.log(formattedTime);
+  // console.log(formattedTime);
   return formattedTime;
 };
 
@@ -148,7 +148,12 @@ export const dayTimeConverService = (Time: any) => {
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth() + 1;
   const day = currentDate.getDate();
-  const formattedTime = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}T${hours}:${minutes}:${currentDate.getSeconds()}.${currentDate.getMilliseconds()}Z`;
+  const formattedTime = `${year}-${month.toString().padStart(2, "0")}-${day
+    .toString()
+    .padStart(
+      2,
+      "0"
+    )}T${hours}:${minutes}:${currentDate.getSeconds()}.${currentDate.getMilliseconds()}Z`;
   console.log(formattedTime);
   return formattedTime;
 };
@@ -178,16 +183,18 @@ export const DefaultToDate = () => {
 export const convertToInputTime = (value: any) => {
   const dateTime = new Date(value);
   const timezoneOffset = dateTime.getTimezoneOffset();
-  const localDateTime = new Date(dateTime.getTime() - (timezoneOffset * 60 * 1000));
+  const localDateTime = new Date(
+    dateTime.getTime() - timezoneOffset * 60 * 1000
+  );
 
   const hours = localDateTime.getHours().toString().padStart(2, "0");
   const minutes = localDateTime.getMinutes().toString().padStart(2, "0");
   return `${hours}:${minutes}`;
 };
-export const convertToInputTimeSalon = (value : any) => {
+export const convertToInputTimeSalon = (value: any) => {
   const dateTime = new Date(value);
-  console.log(value)
+  // console.log(value)
   const hours = dateTime.getHours().toString().padStart(2, "0");
   const minutes = dateTime.getMinutes().toString().padStart(2, "0");
   return `${hours}:${minutes}`;
-  };
+};

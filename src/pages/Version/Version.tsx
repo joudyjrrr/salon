@@ -59,7 +59,7 @@ const Version = () => {
           <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
             {versionData?.map((d, index) => (
               <Grid key={index} item xs={12} sm={6} lg={4}>
-                <Card>
+                <Card elevation={5}>
                   <CardContent>
                     <Grid container flexDirection={"column"} gap={`10px`}>
                       <Stack flexDirection="row" gap="5px">
