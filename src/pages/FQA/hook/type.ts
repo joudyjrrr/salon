@@ -1,5 +1,4 @@
-export interface getAllFQA {
-  id: string;
+export interface SetFQAType {
   question: [
     {
       key: "en";
@@ -20,16 +19,4 @@ export interface getAllFQA {
       value: string;
     }
   ];
-}
-
-export interface setFQA {
-  id?: string;
-  question: {
-    key: string;
-    value: string;
-  }[];
-  answer: {
-    key: string;
-    value: string;
-  }[];
 }
