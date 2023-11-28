@@ -10,7 +10,7 @@ import ViewCarouselIcon from "@mui/icons-material/ViewCarousel";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import UpdateIcon from "@mui/icons-material/Update";
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
-
+import SecurityIcon from '@mui/icons-material/Security';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 const Links = () => {
 
@@ -21,6 +21,11 @@ const Links = () => {
       title: t("links.cpMangment"),
       href: "/cp-management",
       icon: <GroupIcon />,
+    },
+    {
+      title: t("links.Permission"),
+      href: "/permission",
+      icon: <SecurityIcon />,
     },
     {
       title: t("links.category"),
