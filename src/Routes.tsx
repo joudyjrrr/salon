@@ -32,7 +32,8 @@ const AddFQA = lazy(() => import("./pages/FQA/AddFQA"));
 const Version = lazy(() => import("./pages/Version/Version"));
 const AddVersion = lazy(() => import("./pages/Version/AddVersion"));
 const Booking = lazy(() => import("./pages/Booking/Booking"));
-
+const Permission = lazy(() => import("./pages/Permission/Permission"));
+const EditRole = lazy(() => import("./pages/Permission/EditRole"));
 const Routes = () => {
   return (
     <>
@@ -62,7 +63,25 @@ const Routes = () => {
                 <CpMangment />
               </Suspense>
             }
-          />
+          />{" "}
+          <Route path="/permission">
+            <Route
+              index
+              element={
+                <Suspense fallback={<></>}>
+                  <Permission />
+                </Suspense>
+              }
+            />
+            <Route
+              path="edit-role/:roleId"
+              element={
+                <Suspense fallback={<></>}>
+                  <EditRole />
+                </Suspense>
+              }
+            />
+          </Route>
           <Route path="/category">
             <Route
               index
@@ -89,7 +108,6 @@ const Routes = () => {
               }
             />
           </Route>
-
           <Route path="/notifications">
             <Route
               index
@@ -314,7 +332,6 @@ const Routes = () => {
               </Suspense>
             }
           />
-
           <Route path="fQa">
             <Route
               index

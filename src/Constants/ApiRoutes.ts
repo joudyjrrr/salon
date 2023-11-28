@@ -103,6 +103,7 @@ const Service = {
   SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
   DELETE_SERVICE : `${controller.Service}/DeleteServiceCp`,
   GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`,
+  GET_SalonID_ByService : `${controller.Service}/GetSalonIdByServiceId`
 };
 // const EmpService = {
 //   SET_EmpSERVICE_CP: `${controller.Service}/SetServiceCp`,
