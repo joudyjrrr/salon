@@ -27,6 +27,8 @@ const EmployeeService = lazy(
 const Banner = lazy(() => import("./pages/Banner/Banner"));
 const AddBanner = lazy(() => import("./pages/Banner/AddBanner"));
 const FeedBack = lazy(() => import("./pages//FeedBack/FeedBack"));
+const Fqa = lazy(() => import("./pages/FQA/FQA"));
+const AddFQA = lazy(() => import("./pages/FQA/AddFQA"));
 const Version = lazy(() => import("./pages/Version/Version"));
 const AddVersion = lazy(() => import("./pages/Version/AddVersion"));
 const Booking = lazy(() => import("./pages/Booking/Booking"));
@@ -274,10 +276,10 @@ const Routes = () => {
             path="/feedBack"
             element={
               <Suspense fallback={<></>}>
-                <FeedBack/>
+                <FeedBack />
               </Suspense>
             }
-            />
+          />
           <Route path="/version">
             <Route
               index
@@ -308,12 +310,38 @@ const Routes = () => {
             path="/booking"
             element={
               <Suspense fallback={<></>}>
-                <Booking/>
+                <Booking />
               </Suspense>
             }
+          />
+
+          <Route path="fQa">
+            <Route
+              index
+              element={
+                <Suspense fallback={<></>}>
+                  <Fqa />
+                </Suspense>
+              }
             />
+            <Route
+              path="addFQA"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddFQA />
+                </Suspense>
+              }
+            />
+            <Route
+              path="editFQA/:id"
+              element={
+                <Suspense fallback={<></>}>
+                  <AddFQA />
+                </Suspense>
+              }
+            />
+          </Route>
         </Route>
-      
       </ReactRoutes>
     </>
   );

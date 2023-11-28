@@ -18,7 +18,7 @@ const DeleteModal: FC<{
 
     return (
         <>
-            <Button onClick={() => setOpen(true)}>
+            <Button color="error" onClick={() => setOpen(true)}>
                 <DeleteIcon color="error" />
             </Button>
             <Dialog

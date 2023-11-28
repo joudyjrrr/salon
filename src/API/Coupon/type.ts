@@ -21,12 +21,15 @@ export interface GetCouponCPType {
   fromDate: string;
   toDate: string;
   value: number;
+  type: 0 | 1 | 2;
   percentage: number;
-  isExpired: boolean;
   cityId: string;
-  userId: string[];
+  userInfo: {
+    id: string;
+    name: string;
+    phoneNumber: number;
+  }[];
 }
-
 export interface SetCouponCpType {
   id?: string;
   name: string;

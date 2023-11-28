@@ -11,6 +11,7 @@ import FeedbackIcon from "@mui/icons-material/Feedback";
 import UpdateIcon from "@mui/icons-material/Update";
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 const Links = () => {
 
   const { t } = useTranslation();
@@ -70,6 +71,11 @@ const Links = () => {
       title: t("links.booking"),
       href: "/booking",
       icon: <ShoppingCartCheckoutIcon />,
+    },
+    {
+      title: t("links.fqa"),
+      href: "/fqa",
+      icon: <HelpOutlineIcon />,
     },
   ];
   return {

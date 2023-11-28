@@ -20,10 +20,10 @@ export interface setNotificationCpType {
       value: string;
     }
   ];
-  notificationType: 0 | 1 | 2;
+  notificationType: 1 | 2 | 3;
   users: string[];
   cityId: string;
-  type: number;
+  appType: number;
 }
 
 export interface getNotificationCpType {
@@ -36,5 +36,13 @@ export interface getNotificationCpType {
     key: string;
     value: string;
   }[];
+  appType: number;
   createdAt: string;
+  cityId: string;
+  customers: {
+    id: string;
+    name: string;
+    phoneNumber: number;
+  }[];
+  notificationType: number;
 }

@@ -4,13 +4,13 @@ import { API_Routes } from "../../Constants/ApiRoutes";
 import { getAllFQA, setFQA } from "./type";
 
 const GetAllFQA = async () => {
-  const { data } = await DeliveryApiInstances.get<getAllFQA>(
+  const { data } = await DeliveryApiInstances.get<getAllFQA[]>(
     API_Routes.FQA.GET_ALL_FQA
   );
   return data;
 };
 
-const GetFQAById = async (id: string) => {
+const GetFQAById = async (id: string | undefined) => {
   const { data } = await DeliveryApiInstances.get<getAllFQA>(
     API_Routes.FQA.GET_FQA_BY_ID,
     {

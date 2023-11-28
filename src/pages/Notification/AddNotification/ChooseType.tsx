@@ -30,8 +30,8 @@ const ChooseType: FC<{
                         }
                     >
                         <FormControlLabel value="Public" control={<Radio />} label={t('Notification.public')} />
-                        <FormControlLabel value="User" control={<Radio />} label={t('Notification.byUsers')} />
                         <FormControlLabel value="City" control={<Radio />} label={t('Notification.byCity')} />
+                        <FormControlLabel value="User" control={<Radio />} label={t('Notification.byUsers')} />
 
                     </RadioGroup>
                 </FormControl>

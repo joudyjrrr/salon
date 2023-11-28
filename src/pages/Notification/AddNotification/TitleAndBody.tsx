@@ -1,16 +1,19 @@
 import { Grid, TextField, Typography } from "@mui/material"
 import { FC } from "react"
-import { FieldErrors, UseFormRegister } from "react-hook-form"
+import { Control, Controller, FieldErrors, UseFormRegister } from "react-hook-form"
 import { AddNotificationType } from "../hooks/type"
 import { useTranslation } from "react-i18next"
+import FormTextField from "../../../Components/Form/FormTextField"
 
 const TitleAndBody: FC<{
     register: UseFormRegister<AddNotificationType>
-    errors: FieldErrors<AddNotificationType>
+    errors: FieldErrors<AddNotificationType>,
+    control: Control<AddNotificationType, any>
 
 }> = ({
     register,
-    errors
+    errors,
+    control
 }) => {
         const { t } = useTranslation()
 
@@ -19,52 +22,56 @@ const TitleAndBody: FC<{
                 <Typography variant="h6" sx={{ mb: '10px' }}>{t('Notification.Title')}</Typography>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
-                        <TextField
-                            {...register('title.0.value')}
-                            fullWidth
-                            id="outlined-basic"
+
+                        <FormTextField
+                            control={control}
+                            name="title.0.value"
                             label={t('Notification.arTitle')}
-                            variant="outlined"
+                            placeholder={t('Notification.arTitle')}
+                            shrink
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField
-                            {...register('title.1.value')}
-                            fullWidth id="outlined-basic"
+
+                        <FormTextField
+                            control={control}
+                            name="title.1.value"
                             label={t('Notification.enTitle')}
-                            variant="outlined"
+                            placeholder={t('Notification.enTitle')}
+                            shrink
                         />
                     </Grid>
                 </Grid>
 
-                <Typography variant="subtitle2" color={'error'}>{errors.title?.[0]?.value?.message}</Typography>
 
                 <Typography variant="h6" sx={{ mb: '10px' }}>{t('Notification.Body')}</Typography>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
-                        <TextField
-                            fullWidth
-                            {...register('body.0.value')}
-                            id="outlined-basic"
-                            multiline
-                            rows={4}
+
+                        <FormTextField
+                            control={control}
+                            name="body.0.value"
                             label={t('Notification.arBody')}
-                            variant="outlined"
+                            placeholder={t('Notification.arBody')}
+                            rows={4}
+                            multiline
+                            shrink
                         />
                     </Grid>
                     <Grid item xs={12} sm={6}>
-                        <TextField
-                            fullWidth
-                            {...register('body.1.value')}
-                            id="outlined-basic"
-                            multiline
-                            rows={4}
+
+                        <FormTextField
+                            control={control}
+                            name="body.1.value"
                             label={t('Notification.enBody')}
-                            variant="outlined"
+                            placeholder={t('Notification.enBody')}
+                            rows={4}
+                            multiline
+                            shrink
                         />
                     </Grid>
                 </Grid>
-                <Typography variant="subtitle2" color={'error'}>{errors.body?.[0]?.value?.message}</Typography>
+
             </>
         )
     }
