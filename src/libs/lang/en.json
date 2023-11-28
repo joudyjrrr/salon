@@ -280,5 +280,8 @@
     "enAnswer": "English Answer",
     "arAnswer": "Arabic Answer",
     "wrong": "something went wrong"
+  },
+  "NoData":{
+  "noData" : "Data Not Found ..."
   }
 }

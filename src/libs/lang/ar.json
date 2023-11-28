@@ -223,5 +223,8 @@
     "customerName": "اسم المستهلك" ,
     "customerNumber": "رقم المستهلك",
     "bookingStatus": "حالة الحجز"
-  }
+  },
+  "NoData":{
+    "noData" : " لا يوجد بيانات لعرضها..."
+    }
 }
