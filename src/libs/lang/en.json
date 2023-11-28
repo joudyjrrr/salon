@@ -253,6 +253,18 @@
     "delete": "Banner has been Deleted",
     "link": "link"
   },
+  "permission": {
+    "title": "Manege Permission",
+    "add": "Add Role",
+    "edit": "Edit Role",
+    "name": "Name",
+    "show": "Show Permission",
+    "action": "Permission has been saved successfully",
+    "delete": "Permission has been Deleted",
+    "added": "Permission Edited successfully",
+    "Added": "Permission Added successfully",
+    "wrong": "some thing went wrong"
+  },
   "Version": {
     "title": "Version",
     "add": "Add Version",

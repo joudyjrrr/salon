@@ -5,6 +5,7 @@ import TableHeader from "../../Components/TableHeader";
 import { PermissionQueries } from "../../API/Permission/PermissionQueries";
 import EditIcon from "@mui/icons-material/Edit";
 import { useNavigate } from "react-router";
+import Loading from "../../Components/Loading";
 const Permission = () => {
   const { t } = useTranslation();
   const matches = useMediaQuery("(max-width:700px)");
@@ -16,6 +17,11 @@ const Permission = () => {
   const {data , isLoading} = PermissionQueries.GetRolesContentsQuery()
   return (
     <>
+    {isLoading ? 
+     <Box marginTop="150px">
+     <Loading />
+   </Box>
+    :
       <Box
         sx={{
           paddingInline: "40px",
@@ -49,6 +55,7 @@ const Permission = () => {
           </TableHeader>
         </Stack>
       </Box>
+}
     </>
   );
 };
