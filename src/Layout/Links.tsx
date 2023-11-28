@@ -9,9 +9,9 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import ViewCarouselIcon from "@mui/icons-material/ViewCarousel";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import UpdateIcon from "@mui/icons-material/Update";
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout';
 
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 const Links = () => {
 
   const { t } = useTranslation();
@@ -74,7 +74,7 @@ const Links = () => {
     },
     {
       title: t("links.fqa"),
-      href: "/fqa",
+      href: "/fQa",
       icon: <HelpOutlineIcon />,
     },
   ];

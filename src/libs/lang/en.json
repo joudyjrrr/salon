@@ -17,9 +17,9 @@
     "offer": "Offer",
     "salon": "Salon",
     "employee": "Employee",
-    "version": "Version",
-    "fqa": "FQA",
-    "booking": "Booking"
+    "version":"Version",
+    "booking": "Booking",
+    "fqa": "FQA"
   },
   "form": {
     "userName": "User Name",
@@ -261,6 +261,13 @@
     "action": "Version has been saved successfully",
     "delete": "Version has been Deleted"
   },
+  "Booking": {
+    "title": "Booking",
+    "code": "Code", 
+    "customerName": "Customer Name" ,
+    "customerNumber": "Customer Number",
+    "bookingStatus": "Booking Status"
+  },
   "FQA": {
     "title": "FQA",
     "Add": "Add FQA",
@@ -273,12 +280,5 @@
     "enAnswer": "English Answer",
     "arAnswer": "Arabic Answer",
     "wrong": "something went wrong"
-  },
-  "Booking": {
-    "title": "Booking",
-    "code": "Code",
-    "customerName": "Customer Name",
-    "customerNumber": "Customer Number",
-    "bookingStatus": "Booking Status"
   }
 }
