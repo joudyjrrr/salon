@@ -8,11 +8,15 @@ import Routes from "./Routes";
 import RTL from "./libs/lang/Rtl";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { PaletteMode } from "@mui/material";
 const App = () => {
   const mode = useSelector((state: RootState) => state.them.mode);
   const lang = useSelector((state: RootState) => state.lang.lang);
   //
-  const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
+  const theme = React.useMemo(
+    () => createTheme(getDesignTokens(mode as PaletteMode)),
+    [mode]
+  );
 
   return (
     <>

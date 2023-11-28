@@ -10,6 +10,7 @@ import { themAction } from "../libs/redux/themSlice";
 import { Select, SelectChangeEvent } from "@mui/material";
 import { langActions } from "../libs/redux/langSlice";
 import { useTranslation } from "react-i18next";
+import LogoutModal from "./LogOutModal";
 // import cookies from "js-cookie";
 const languages = [
   {
@@ -68,7 +69,7 @@ const Topbar = () => {
     >
       {/* SEARCH BAR */}
       {/* ICONS */}
-      <Box display="flex">
+      <Box display="flex" gap={`10px`}>
         <IconButton onClick={toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
@@ -82,6 +83,7 @@ const Topbar = () => {
             <MenuItem key={idx} value={code}>{name}</MenuItem>
           ))}
         </Select>
+        <LogoutModal />
       </Box>
     </Box>
   );

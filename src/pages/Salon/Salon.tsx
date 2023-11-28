@@ -7,11 +7,12 @@ import {
   Fab,
   Grid,
   IconButton,
+  Popover,
   Stack,
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
@@ -27,12 +28,19 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { SalonApi } from "../../API/Salon/SalonApi";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
   const [id, setId] = useState<string>("");
+  const [anchorEMployee, setAnchorElmpyee] = React.useState<HTMLElement | null>(
+    null
+  );
+  const open = Boolean(anchorEMployee);
+  const [anchorerService, setAnchorService] =
+    React.useState<HTMLElement | null>(null);
+  const openService = Boolean(anchorerService);
   const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
   const {
@@ -47,9 +55,9 @@ const Salon = () => {
   return (
     <>
       {isLoading ? (
-          <Box marginTop="150px">
-            <Loading />
-          </Box>
+        <Box marginTop="150px">
+          <Loading />
+        </Box>
       ) : (
         <Box
           sx={{
@@ -130,12 +138,72 @@ const Salon = () => {
                       setId={() => setId(d?.id ?? "")}
                       userId={id ?? ""}
                     />
-                    <IconButton onClick={() => navigate(`employee/${d.id}`)}>
+                    <IconButton
+                      aria-owns={open ? "mouse-over-popover" : undefined}
+                      aria-haspopup="true"
+                      onMouseEnter={(event) =>
+                        setAnchorElmpyee(event.currentTarget)
+                      }
+                      onMouseLeave={() => setAnchorElmpyee(null)}
+                      onClick={() => navigate(`employee/${d.id}`)}
+                    >
                       <ManageAccountsIcon />
                     </IconButton>
-                    <IconButton onClick={() => navigate(`service/${d.id}`)}>
+                    <IconButton
+                      aria-owns={open ? "mouse-over-popover" : undefined}
+                      aria-haspopup="true"
+                      onMouseEnter={(event) =>
+                        setAnchorService(event.currentTarget)
+                      }
+                      onMouseLeave={() => setAnchorService(null)}
+                      onClick={() => navigate(`service/${d.id}`)}
+                    >
                       <MiscellaneousServicesIcon />
                     </IconButton>
+                    <Popover
+                      id="mouse-over-popover"
+                      sx={{
+                        pointerEvents: "none",
+                      }}
+                      open={open}
+                      anchorEl={anchorEMployee}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                      onClose={() => setAnchorElmpyee(null)}
+                      disableRestoreFocus
+                    >
+                      <Typography sx={{ p: 1, fontWeight: "bold" }}>
+                        Employee
+                      </Typography>
+                    </Popover>
+                    <Popover
+                      id="mouse-over-popover"
+                      sx={{
+                        pointerEvents: "none",
+                      }}
+                      open={openService}
+                      anchorEl={anchorerService}
+                      anchorOrigin={{
+                        vertical: "bottom",
+                        horizontal: "left",
+                      }}
+                      transformOrigin={{
+                        vertical: "top",
+                        horizontal: "left",
+                      }}
+                      onClose={() => setAnchorService(null)}
+                      disableRestoreFocus
+                    >
+                      <Typography sx={{ p: 1, fontWeight: "bold" }}>
+                        Service
+                      </Typography>
+                    </Popover>
                   </CardActions>
                 </Card>
               </Grid>

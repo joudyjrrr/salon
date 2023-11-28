@@ -295,5 +295,13 @@
   },
   "NoData":{
   "noData" : "Data Not Found ..."
+  },
+  "Login": {
+    "login": "Login In",
+    "success": "Success Login",
+    "Massegelogout": "Are You Shure Log Out ... ?",
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "logout": "Log Out"
   }
 }
