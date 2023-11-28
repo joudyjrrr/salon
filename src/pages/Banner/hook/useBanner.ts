@@ -27,7 +27,7 @@ const useBanner = () => {
   const { data: bannerDetails, isLoading } = BannerQuery.GetBannerByIdQuery(
     bannerId!
   );
-  console.log(bannerDetails, bannerId);
+  // console.log(bannerDetails, bannerId);
   const { data: salonId } = ServiceQueries.GetSalonByServIdDetailsQuery(
     bannerDetails?.serviceId ? bannerDetails?.serviceId! : ""
   );
@@ -57,7 +57,7 @@ const useBanner = () => {
         );
       }
     }
-  }, [bannerDetails]);
+  }, [bannerDetails , salonId]);
   const { data: salonOption } = SalonQueries.GetSalonOption();
   // console.log(watch("salon"))
   const [openCropModal, setOpenCropModal] = useState<boolean>(false);

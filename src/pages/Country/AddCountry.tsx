@@ -33,13 +33,10 @@ const AddCountry: React.FC<{
       control,
       handleSubmit,
       onSubmit,
-      register,
-      setValue,
       open,
       setOpen,
       isPending,
       isLoading,
-      countryDetails,
     } = useCountryHook(id);
   
     const { t } = useTranslation();
