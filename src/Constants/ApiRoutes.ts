@@ -73,7 +73,7 @@ const Notifications = {
   DELETE_NOTIFICATION_CP: `${controller.Notification}/NotificationDeleteCp`,
 };
 const Permission = {
-  GET_ROLES_CONTENTS: `${controller.Permission}/GetRolesContentsA`,
+  GET_ROLES_CONTENTS: `${controller.Permission}/GetRolesContents`,
   GET_CONTENTS_BY_ROLE_ID: `${controller.Permission}/GetContentsByRoleId`,
   SET_PERMISSION: `${controller.Permission}/SetPermission`,
 };
