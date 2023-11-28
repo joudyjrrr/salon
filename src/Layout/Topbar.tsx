@@ -1,6 +1,6 @@
 import { Box, IconButton, MenuItem } from "@mui/material";
 import { useTheme } from '@mui/material/styles';
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import { tokens } from "../libs/them"
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -34,6 +34,7 @@ const Topbar = () => {
   const mode = useSelector((state: RootState) => state.them.mode);
   const toggleColorMode = () => {
     dispatch(themAction.setMode(mode === "light" ? "dark" : "light"));
+    localStorage.setItem('mode', mode === 'light' ? 'light' : 'dark')
   };
 
   useEffect(() => {
@@ -46,7 +47,7 @@ const Topbar = () => {
     i18n.changeLanguage(e.target.value);
     localStorage.setItem("lang", e.target.value);
     document.documentElement.lang = e.target.value;
-    localStorage.setItem("lang", e.target.value);
+
     switch (e.target.value) {
       case "ar":
         document.dir = "rtl";

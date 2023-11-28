@@ -4,7 +4,7 @@ import {PaletteMode} from "@mui/material"
 //     mode : PaletteMode
 // }
 const InitialValues  = {
-  mode: 'light' as PaletteMode,
+  mode: localStorage.getItem('mode') ?? 'light' as PaletteMode,
 };
 
 const themSlice = createSlice({

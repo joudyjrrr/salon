@@ -39,16 +39,18 @@ const FQA = () => {
                         <Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
                             <Card sx={{ p: 2 }}>
                                 <CardContent>
-                                    {/* <Typography>
-                                    {t('FQA.enQuestion')} : {fqa?.question.filter((fqaElement) => fqaElement.key === 'en')[0].value}
-                                </Typography> */}
                                     <Typography variant="body2">
-                                        {t('FQA.enQuestion')} : {fqa?.question}
+                                        {t('FQA.enQuestion')} : {fqa?.question[0].value}
                                     </Typography>
                                     <Typography variant="body2">
-                                        {t('FQA.enAnswer')} : {fqa?.answer}
+                                        {t('FQA.arQuestion')} : {fqa?.question[1].value}
                                     </Typography>
-
+                                    <Typography variant="body2">
+                                        {t('FQA.enAnswer')} : {fqa?.answer[0].value}
+                                    </Typography>
+                                    <Typography variant="body2">
+                                        {t('FQA.arAnswer')} : {fqa?.answer[1].value}
+                                    </Typography>
                                 </CardContent>
 
                                 <CardActions>
