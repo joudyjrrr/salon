@@ -7,16 +7,17 @@ import {
   Fab,
   Grid,
   IconButton,
+  Popover,
   Stack,
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
 import { SalonQueries } from "../../API/Salon/SalonQueries";
-import { API_SERVER_URL_For_Img } from "../../API/domain";
+import { API_BASE_URL, API_SERVER_URL_For_Img } from "../../API/domain";
 import { SalonTypeArray } from "../../API/Salon/type";
 import img from "../../assets/1.jpg";
 import Loading from "../../Components/Loading";
@@ -28,11 +29,19 @@ import DeleteCustome from "../../Components/DeleteCustome";
 import { SalonApi } from "../../API/Salon/SalonApi";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
+import PopOver from "../../Components/Salon/PopOver";
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
   const [id, setId] = useState<string>("");
+  const [anchorEMployee, setAnchorElmpyee] = React.useState<HTMLElement | null>(
+    null
+  );
+  const open = Boolean(anchorEMployee);
+  const [anchorerService, setAnchorService] =
+    React.useState<HTMLElement | null>(null);
+  const openService = Boolean(anchorerService);
   const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
   const {
@@ -130,12 +139,40 @@ const Salon = () => {
                       setId={() => setId(d?.id ?? "")}
                       userId={id ?? ""}
                     />
-                    <IconButton onClick={() => navigate(`employee/${d.id}`)}>
+                    <IconButton
+                      aria-owns={open ? "mouse-over-popover" : undefined}
+                      aria-haspopup="true"
+                      onMouseEnter={(event) =>
+                        setAnchorElmpyee(event.currentTarget)
+                      }
+                      onMouseLeave={() => setAnchorElmpyee(null)}
+                      onClick={() => navigate(`employee/${d.id}`)}
+                    >
                       <ManageAccountsIcon />
                     </IconButton>
-                    <IconButton onClick={() => navigate(`service/${d.id}`)}>
+                    <IconButton
+                      aria-owns={open ? "mouse-over-popover" : undefined}
+                      aria-haspopup="true"
+                      onMouseEnter={(event) =>
+                        setAnchorService(event.currentTarget)
+                      }
+                      onMouseLeave={() => setAnchorService(null)}
+                      onClick={() => navigate(`service/${d.id}`)}
+                    >
                       <MiscellaneousServicesIcon />
                     </IconButton>
+                    <PopOver
+                    open = {open}
+                    anchor={anchorEMployee}
+                    setAnchor={setAnchorElmpyee}
+                    titel="Employee"
+                    />
+                    <PopOver
+                    open = {openService}
+                    anchor={anchorerService}
+                    setAnchor={setAnchorService}
+                    titel="Services"
+                    />
                   </CardActions>
                 </Card>
               </Grid>
