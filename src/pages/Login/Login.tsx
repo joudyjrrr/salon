@@ -5,6 +5,8 @@ import { LoginType } from "./hooks/type"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyIcon from '@mui/icons-material/Key';
 import logo from '../../assets/react.svg'
+import { useDispatch } from "react-redux";
+import { PermissionActions } from "../../libs/redux/permissions-slice";
 
 const Login = () => {
 
@@ -21,7 +23,7 @@ const Login = () => {
   // if(localStorage.getItem('token')){
   //   navigate('/')
   // }
-
+  const dispatch = useDispatch();
   const submitHandler: SubmitHandler<LoginType> = (data) => {
     mutate(data, {
       onError: () => console.log('error'),
@@ -29,6 +31,8 @@ const Login = () => {
         localStorage.setItem('token', data.token);
         localStorage.setItem('refreshToken', data.refreshToken);
         localStorage.setItem('userId', data.userId);
+        localStorage.setItem("RoleId",data.roleId)
+        dispatch(PermissionActions.setRoleId(data.roleId))
         navigate('/')
       }
     })

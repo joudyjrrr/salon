@@ -1,7 +1,7 @@
 import React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { useSelector } from "react-redux";
-import { RootState } from "./libs/redux";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "./libs/redux";
 import CssBaseline from "@mui/material/CssBaseline";
 import getDesignTokens from "./libs/getDesignTokens";
 import Routes from "./Routes";
@@ -9,6 +9,10 @@ import RTL from "./libs/lang/Rtl";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { PaletteMode } from "@mui/material";
+import { PermissionApi } from "./API/Permission/PermissionApi";
+import { PermissionQueries } from "./API/Permission/PermissionQueries";
+import { PermissionActions } from "./libs/redux/permissions-slice";
+import Loading from "./Components/Loading";
 const App = () => {
   const mode = useSelector((state: RootState) => state.them.mode);
   const lang = useSelector((state: RootState) => state.lang.lang);
@@ -17,6 +21,22 @@ const App = () => {
     () => createTheme(getDesignTokens(mode as PaletteMode)),
     [mode]
   );
+  const dispatch: AppDispatch = useDispatch();
+  const roleId = useSelector((state: RootState) => state.permission.roleId);
+  const content = useSelector((state: RootState) => state.permission.contents);
+  console.log(content)
+  const { data } = PermissionQueries.GetContentsByRoleIdQuery(roleId);
+
+  dispatch(PermissionActions.setRoleName(data?.roleName));
+  dispatch(PermissionActions.setContent(data?.contents));
+   
+  // if (
+  //   !data &&
+  //   localStorage.getItem("token") &&
+  //   localStorage.getItem("RoleId")
+  // ) {
+  //   return <Loading />;
+  // }
 
   return (
     <>

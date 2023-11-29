@@ -1,12 +1,15 @@
-import { Box, Collapse, Grid, Paper } from "@mui/material";
+import { Box, Collapse, Grid, Paper, Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { BiArrowBack } from "react-icons/bi";
 import { useNavigate, useParams } from "react-router";
 import { PermissionQueries } from "../../API/Permission/PermissionQueries";
 import TitleWithArrow from "../../Components/TitleWithArrwo";
-import CheckContnt from "./ChecKContnt";
+import CheckContnt from "./CheckContnt";
 import { IPermissionGet } from "../../API/Permission/type";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
+import { showError, showSuccess } from "../../libs/reactToastify";
+import SubmitButton from "../../Components/Form/SubmitButton";
 
 const EditRole = () => {
   const navigate = useNavigate();
@@ -16,7 +19,33 @@ const EditRole = () => {
     useForm<IPermissionGet>();
   const { data: roleDetails, isLoading } =
     PermissionQueries.GetContentsByRoleIdQuery(roleId!);
-  console.log(roleDetails);
+  // console.log(roleDetails);
+  const { mutate, isPending } = PermissionQueries.SetPermissionQuery();
+
+  const submitHandler = (_data: IPermissionGet) => {
+    setValue("roleId", roleDetails?.roleId!);
+    setValue("roleName", roleDetails?.roleName!);
+    console.log(getValues(), "getValues");
+
+    mutate(getValues(),
+      {
+        onSuccess: () => {
+          showSuccess(t('permission.added'))
+          navigate(-1)
+        },
+        onError: () => showError(t('permission.wrong'))
+      });
+  };
+
+
+  useEffect(() => {
+    if (roleDetails) {
+      setValue("roleId", roleDetails?.roleId);
+      setValue("roleName", roleDetails?.roleName);
+      setValue("contents", roleDetails?.contents);
+    }
+  }, [roleDetails, setValue]);
+
   return (
     <>
       <Box
@@ -27,19 +56,29 @@ const EditRole = () => {
       >
         <TitleWithArrow title={t("permission.edit")} />
         <Paper sx={{ py: 1, px: 4, mt: 5 }} elevation={5}>
-          <form>
+          <form onSubmit={handleSubmit(submitHandler)}>
             <Grid container sx={{ marginInlineStart: 3 }}>
-              {roleDetails?.contents.map((d , index) => (
+              {roleDetails?.contents.map((d, index) => (
                 <Grid item key={d.id} xs={12} md={6} lg={4} xl={3}>
-                  <CheckContnt 
-                  content={d} 
-                  control={control}
-                  setValue ={setValue}
-                  index = {index}
-                   />
+                  <CheckContnt
+                    register={register}
+                    content={d}
+                    control={control}
+                    setValue={setValue}
+                    index={index}
+                    watch={watch}
+                  />
                 </Grid>
               ))}
             </Grid>
+            <Stack
+              marginInline={`auto`}
+              justifyContent={`center`}
+              width={`fit-content`}
+              marginY={`15px`}
+            >
+              <SubmitButton isSubmitting={isPending} />
+            </Stack>
           </form>
         </Paper>
       </Box>
