@@ -14,6 +14,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import AddCity from './AddCity';
 import { CityApi } from '../../API/City/CityApi';
 import DeleteCustome from "../../Components/DeleteCustome";
+import { askForPermission } from '../../helper/askForPermission';
 
 function City() {
 
@@ -40,6 +41,7 @@ function City() {
         t("table.handel"),
     ];
     const matches = useMediaQuery("(max-width:700px)");
+    const permission = askForPermission ('City');
 
   return (
     <>
@@ -56,7 +58,7 @@ function City() {
             height: "initial",
           }}
         >
-          <AddCity />
+          {permission.canAdd && (<AddCity />)}
           <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
             <Title text={t('City.title')} />
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
@@ -77,14 +79,19 @@ function City() {
                         align="center"
                         sx={{ display: "flex", justifyContent: "center" }}
                       >
-                        <DeleteCustome
+                        {permission.canDelete && (
+                          <DeleteCustome
                           refetch={refetch}
                           MassegeSuccess={t("City.delete")}
                           onDelete={() => CityApi.DeleteCity(id)}
                           setId={() => setId(d?.id ?? "")}
                           userId={id ?? ""}
-                        />                 
-                        <AddCity id={d.id} setId={() => setId(d.id ?? "")} /> 
+                        />   
+                        )}
+                                      
+                        {permission.canEdit && (
+                        <AddCity id={d.id} setId={() => setId(d.id ?? "")} />
+                        )} 
                       </TableCell>
                     </TableRow>
                   ))}

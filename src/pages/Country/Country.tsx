@@ -14,6 +14,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import AddCountry from "./AddCountry";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { CountryApi } from "../../API/Country/CountryApi";
+import { askForPermission } from "../../helper/askForPermission";
 const Country = () => {
   const { t } = useTranslation();
   const [PageNumber, setPageNumber] = useState(0);
@@ -27,6 +28,8 @@ const Country = () => {
   ];
   const { allCountries, allCountriesIsLoading, refetch, isFetching } =
     useCountryHook(id, PageNumber , query);
+
+    const permission = askForPermission ('Country');
 
   // console.log({ allCountries });
   const matches = useMediaQuery("(max-width:700px)");
@@ -46,7 +49,7 @@ const Country = () => {
             height: "initial",
           }}
         >
-          <AddCountry />
+          {permission.canAdd && (<AddCountry />)}
           <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
             <Title text={t('Country.title')} />
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
@@ -70,14 +73,18 @@ const Country = () => {
                         align="center"
                         sx={{ display: "flex", justifyContent: "center" }}
                       >
-                        <DeleteCustome
+                        {permission.canDelete && (
+                          <DeleteCustome
                           refetch={refetch}
                           MassegeSuccess={t("Country.delete")}
                           onDelete={() => CountryApi.RemoveCountry(id)}
                           setId={() => setId(d?.id ?? "")}
                           userId={id ?? ""}
                         />
-                        <AddCountry id={d.id} setId={() => setId(d.id ?? "")} />
+                        )}
+                        {permission.canEdit && (
+                          <AddCountry id={d.id} setId={() => setId(d.id ?? "")} />
+                        )}
                       </TableCell>
                     </TableRow>
                   ))}

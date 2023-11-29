@@ -5,12 +5,13 @@ import { Link } from "react-router-dom"
 import Loading from "../../Components/Loading"
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteFQA from "./DeleteFQA"
+import { askForPermission } from "../../helper/askForPermission"
 
 
 const FQA = () => {
 
     const { t, FQAs, isFQALoading } = FQAHook()
-
+    const permission = askForPermission ('Fqa');
 
     if (isFQALoading) {
         return <Loading />
@@ -23,13 +24,16 @@ const FQA = () => {
                         <Title text={t('FQA.title')} />
                     </Grid>
                 </Grid>
-                <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
+                {permission.canAdd && (
+                    <Grid container alignContent={'center'} justifyContent={'center'} item xs={3}>
                     <Link to={'addFQA'}>
                         <Button variant='contained'>
                             {t('FQA.Add')}
                         </Button>
                     </Link>
                 </Grid>
+                )}
+                
             </Grid >
 
             <Grid container spacing={2} sx={{ p: 2 }}>
@@ -55,12 +59,15 @@ const FQA = () => {
 
                                 <CardActions>
                                     <Grid container justifyContent={'end'}>
-                                        <Link to={`editFQA/${fqa.id}`}>
+                                        {permission.canEdit && (
+                                            <Link to={`editFQA/${fqa.id}`}>
                                             <Button>
                                                 <EditIcon />
                                             </Button>
                                         </Link>
-                                        <DeleteFQA id={fqa.id} />
+                                        )}
+                                        
+                                        {permission.canDelete && (<DeleteFQA id={fqa.id} /> )}
                                     </Grid>
                                 </CardActions>
                             </Card>

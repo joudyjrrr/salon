@@ -9,6 +9,7 @@ import DeleteCoupon from './DeleteCoupon';
 import Pagination from '../../Components/Pagination';
 import { DEVELOPMENT_BASE_URL } from '../../API/domain';
 import EditIcon from '@mui/icons-material/Edit';
+import { askForPermission } from '../../helper/askForPermission';
 
 
 const Coupon = () => {
@@ -20,6 +21,8 @@ const Coupon = () => {
     t, navigate
   } = CouponHook(Search, PageNumber)
 
+  const permission = askForPermission ('Coupon');
+  
   return (
     <>
       <Grid container justifyContent={"space-between"} sx={{ mt: 2 }}>
@@ -29,7 +32,8 @@ const Coupon = () => {
           </Grid>
           <SearchField value={Search} onSearch={setSearch} />
         </Grid>
-        <Grid
+        {permission.canAdd && (
+          <Grid
           container
           alignContent={"center"}
           justifyContent={"center"}
@@ -40,6 +44,7 @@ const Coupon = () => {
             <Button variant="contained">{t("Coupon.add")}</Button>
           </Link>
         </Grid>
+        )}
       </Grid>
 
       {isCouponsLoading ? (
@@ -97,10 +102,14 @@ const Coupon = () => {
                       </CardContent>
                       <CardActions>
                         <Grid container justifyContent={"end"}>
-                          <Button onClick={() => navigate(`editCoupon/${coupon.id}`)}>
+                          {permission.canEdit && (
+                            <Button onClick={() => navigate(`editCoupon/${coupon.id}`)}>
                             <EditIcon />
-                          </Button>
-                          <DeleteCoupon id={coupon.id} />
+                            </Button>
+                          )}
+                          {permission.canDelete && (
+                            <DeleteCoupon id={coupon.id} />
+                          )}
                         </Grid>
                       </CardActions>
                     </Card>

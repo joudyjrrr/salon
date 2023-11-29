@@ -21,6 +21,7 @@ import DeleteCustome from "../../Components/DeleteCustome";
 import { VersionApi } from "../../API/Version/VersionApi";
 import { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
+import { askForPermission } from "../../helper/askForPermission";
 const Version = () => {
   const [id, setId] = useState<string>();
   const {
@@ -30,6 +31,8 @@ const Version = () => {
   } = VersionQueries.GetVersionAllQuery();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const permission = askForPermission('Version');
+  
   return (
     <>
       {isLoading ? (
@@ -44,7 +47,8 @@ const Version = () => {
             textAlign: "center",
           }}
         >
-          <Stack flexDirection="row" justifyContent="end" marginInline="50px">
+          {permission.canAdd && (
+            <Stack flexDirection="row" justifyContent="end" marginInline="50px">
             <Fab
               color="primary"
               aria-label="add"
@@ -53,6 +57,8 @@ const Version = () => {
               <AddIcon className="text-white-100" />
             </Fab>
           </Stack>
+          )}
+          
           <Stack direction={`row`} spacing={10}>
             <Title text="Version" />
           </Stack>
@@ -101,19 +107,24 @@ const Version = () => {
                     </Grid>
                   </CardContent>
                   <CardActions>
-                  <IconButton>
+                    {permission.canEdit && (
+                      <IconButton>
                       <EditIcon
                         onClick={() => navigate(`edit-version/${d.id}`)}
                         color="primary"
                       />
                     </IconButton>
-                    <DeleteCustome
+                    )}
+                    {permission.canDelete && (
+                      <DeleteCustome
                       refetch={refetch}
                       MassegeSuccess={t("Version.delete")}
                       onDelete={() => VersionApi.DeleteVersion(id!)}
                       setId={() => setId(d?.id!)}
                       userId={id ?? ""}
                     />
+                    )}
+                    
                   </CardActions>
                 </Card>
               </Grid>

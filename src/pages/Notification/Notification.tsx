@@ -15,6 +15,7 @@ import Loading from "../../Components/Loading";
 import DeleteNotification from "./DeleteNotification";
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
+import { askForPermission } from "../../helper/askForPermission.ts";
 
 const Notification = () => {
   const [Search, setSearch] = useState<string>("");
@@ -25,6 +26,8 @@ const Notification = () => {
     Search
   );
 
+  const permission = askForPermission('Notification');
+
   return (
     <>
       <Grid container justifyContent={"space-between"} sx={{ mt: 2 }}>
@@ -34,7 +37,8 @@ const Notification = () => {
           </Grid>
           <SearchField value={Search} onSearch={setSearch} />
         </Grid>
-        <Grid
+        {permission.canAdd && (
+          <Grid
           container
           alignContent={"center"}
           justifyContent={"center"}
@@ -45,6 +49,8 @@ const Notification = () => {
             <Button variant="contained">{t("Notification.Add")}</Button>
           </Link>
         </Grid>
+        )}
+        
       </Grid>
       {isFetching ? (
         <Loading />
@@ -80,12 +86,16 @@ const Notification = () => {
                       {t("Notification.createdAt")} : {notification.createdAt}
                     </Box>
                     <CardActions>
-                      <Link to={`editNotification/${notification.id}`}>
+                      {permission.canEdit && (
+                        <Link to={`editNotification/${notification.id}`}>
                         <Button>
                           <EditIcon />
                         </Button>
                       </Link>
-                      <DeleteNotification id={notification.id} />
+                      )}
+                      {permission.canDelete && (
+                        <DeleteNotification id={notification.id} />
+                      )}
                     </CardActions>
                   </Card>
                 </Grid>

@@ -25,6 +25,7 @@ import moment from "moment";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { BannerAPI } from "../../API/Banner/BannerApi";
 import EditIcon from "@mui/icons-material/Edit";
+import { askForPermission } from "../../helper/askForPermission";
 const Banner = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -40,6 +41,9 @@ const Banner = () => {
     PageNumber: page,
     Query: query,
   });
+
+  const permission = askForPermission('Banner');
+
   return (
     <>
       {isLoading ? (
@@ -55,15 +59,17 @@ const Banner = () => {
               textAlign: "center",
             }}
           >
+             {permission.canAdd && (
             <Stack flexDirection="row" justifyContent="end" marginInline="50px">
               <Fab
                 color="primary"
                 aria-label="add"
                 onClick={() => navigate("add-banner")}
               >
-                <AddIcon className="text-white-100" />
+                  <AddIcon className="text-white-100" />
               </Fab>
             </Stack>
+             )}
             <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
               <Title text={t("Banner.title")} />
               <SearchField
@@ -105,19 +111,25 @@ const Banner = () => {
                       </Grid>
                     </CardContent>
                     <CardActions>
-                      <DeleteCustome
+                      {permission.canDelete && (
+                        <DeleteCustome
                         refetch={refetch}
                         MassegeSuccess={t("salon.delete")}
                         onDelete={() => BannerAPI.DeleteBanner(id)}
                         setId={() => setId(d?.id ?? "")}
                         userId={id ?? ""}
                       />
-                        <IconButton>
-                        <EditIcon
-                          onClick={() => navigate(`edit-banner/${d.id}`)}
-                          color="primary"
-                        />
-                      </IconButton>
+                      )}
+                      
+                        {permission.canEdit && (
+                          <IconButton>
+                          <EditIcon
+                            onClick={() => navigate(`edit-banner/${d.id}`)}
+                            color="primary"
+                          />
+                        </IconButton>
+                        )}
+                        
                     </CardActions>
                   </Card>
                 </Grid>
