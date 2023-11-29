@@ -29,6 +29,7 @@ import DeleteCustome from "../../Components/DeleteCustome";
 import { SalonApi } from "../../API/Salon/SalonApi";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
+import PopOver from "../../Components/Salon/PopOver";
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -160,50 +161,18 @@ const Salon = () => {
                     >
                       <MiscellaneousServicesIcon />
                     </IconButton>
-                    <Popover
-                      id="mouse-over-popover"
-                      sx={{
-                        pointerEvents: "none",
-                      }}
-                      open={open}
-                      anchorEl={anchorEMployee}
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "left",
-                      }}
-                      onClose={() => setAnchorElmpyee(null)}
-                      disableRestoreFocus
-                    >
-                      <Typography sx={{ p: 1, fontWeight: "bold" }}>
-                        Employee
-                      </Typography>
-                    </Popover>
-                    <Popover
-                      id="mouse-over-popover"
-                      sx={{
-                        pointerEvents: "none",
-                      }}
-                      open={openService}
-                      anchorEl={anchorerService}
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "left",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "left",
-                      }}
-                      onClose={() => setAnchorService(null)}
-                      disableRestoreFocus
-                    >
-                      <Typography sx={{ p: 1, fontWeight: "bold" }}>
-                        Service
-                      </Typography>
-                    </Popover>
+                    <PopOver
+                    open = {open}
+                    anchor={anchorEMployee}
+                    setAnchor={setAnchorElmpyee}
+                    titel="Employee"
+                    />
+                    <PopOver
+                    open = {openService}
+                    anchor={anchorerService}
+                    setAnchor={setAnchorService}
+                    titel="Services"
+                    />
                   </CardActions>
                 </Card>
               </Grid>

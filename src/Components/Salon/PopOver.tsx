@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { Popover, Typography } from '@mui/material';
 
-const PopOver = () => {
+const PopOver:FC<{
+    anchor : HTMLElement | null;
+    open : boolean;
+    setAnchor: React.Dispatch<React.SetStateAction<HTMLElement | null>>;
+    titel : string
+}> = ({
+    anchor,open, setAnchor, titel
+}) => {
 
-    const [anchorEMployee, setAnchorElmpyee] =
-     React.useState<HTMLElement | null>(null);
-      const openEmployee = Boolean(anchorEMployee);
 
   return (
                     <Popover
@@ -13,8 +17,8 @@ const PopOver = () => {
                       sx={{
                         pointerEvents: "none",
                       }}
-                      open={openEmployee}
-                      anchorEl={anchorEMployee}
+                      open={open}
+                      anchorEl={anchor}
                       anchorOrigin={{
                         vertical: "bottom",
                         horizontal: "left",
@@ -23,11 +27,11 @@ const PopOver = () => {
                         vertical: "top",
                         horizontal: "left",
                       }}
-                      onClose={() => setAnchorElmpyee(null)}
+                      onClose={() => setAnchor(null)}
                       disableRestoreFocus
                     >
                       <Typography sx={{ p: 1, fontWeight: "bold" }}>
-                      Employee
+                      {titel}
                       </Typography>
                     </Popover>
   )
