@@ -10,6 +10,7 @@ import Pagination from '../../Components/Pagination';
 import { DEVELOPMENT_BASE_URL } from '../../API/domain';
 import EditIcon from '@mui/icons-material/Edit';
 import { askForPermission } from '../../helper/askForPermission';
+import NoData from '../../Components/NoData';
 
 
 const Coupon = () => {
@@ -51,6 +52,7 @@ const Coupon = () => {
         <Loading />
       ) : (
         <>
+        {Coupons?.data.length === 0 ? <NoData/> : (
           <Grid container spacing={2} sx={{ mt: 1, px: 2 }}>
             {Coupons?.data.map((coupon, idx) => {
 
@@ -117,13 +119,15 @@ const Coupon = () => {
                 </>
               );
             })}
-          </Grid>
-          <Pagination
+                      <Pagination
             isFetching={isCouponsLoading}
             totalPages={Coupons?.totalPages!}
             page={Coupons?.pageNumber!}
             onPageChange={setPageNumber}
           />
+          </Grid>
+          )}
+
         </>
       )}
     </>

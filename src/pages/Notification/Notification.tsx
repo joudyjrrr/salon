@@ -16,6 +16,7 @@ import DeleteNotification from "./DeleteNotification";
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import { askForPermission } from "../../helper/askForPermission.ts";
+import NoData from "../../Components/NoData.tsx";
 
 const Notification = () => {
   const [Search, setSearch] = useState<string>("");
@@ -54,8 +55,10 @@ const Notification = () => {
       </Grid>
       {isFetching ? (
         <Loading />
-      ) : (
+      )
+      : (
         <>
+         {Notifications?.data.length === 0 ? <NoData/> : (
           <Grid container spacing={2} sx={{ mt: 1, px: 2 }}>
             {Notifications?.data.map((notification, idx) => {
               return (
@@ -102,6 +105,7 @@ const Notification = () => {
               );
             })}
           </Grid>
+          )}
           <Pagination
             isFetching={isFetching}
             onPageChange={setPageNumber}

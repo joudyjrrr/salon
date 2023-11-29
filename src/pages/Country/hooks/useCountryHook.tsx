@@ -51,10 +51,12 @@ const useCountryHook = (id?: string, pageNumber?: number , query?: string) => {
       {
         onSuccess: () => {
           setOpen(false);
-          // reset({
-          //   password: "",
-          //   username: "",
-          // });
+          reset({
+            arName: "",
+            enName: "",
+            currency: "",
+            countryCode: "",
+          });
           queryClient.refetchQueries({ queryKey: ["get-all-country"] });
           showSuccess(t("Country.action"));
         },

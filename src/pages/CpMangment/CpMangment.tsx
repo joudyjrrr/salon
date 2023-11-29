@@ -16,6 +16,7 @@ import DeleteModal from "../../Components/DeleteModal";
 import { CpManagementApi } from "../../API/CpManagement/CpManagementApi";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { askForPermission } from "../../helper/askForPermission";
+import NoData from "../../Components/NoData";
 const CpMangment = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -57,6 +58,7 @@ const CpMangment = () => {
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
           <>
+          {CpManagementData?.data.length === 0 ? <NoData/> : (
             <Stack marginTop="40px">
               <TableHeader TableHeaderArray={TableHeaderArray}>
                 <TableBody>
@@ -96,6 +98,7 @@ const CpMangment = () => {
                 totalPages={CpManagementData?.totalPages!}
               />
             </Stack>
+          )}
           </>
         </Box>
       )}

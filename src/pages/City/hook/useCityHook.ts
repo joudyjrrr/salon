@@ -59,6 +59,11 @@ const useCityHook = (id?: string, pageNumber?: number, query?:string) => {
         {
           onSuccess: () => {
             setOpen(false);
+            reset({
+              arName: "",
+              enName: "",
+              // country: "",
+            });            
             queryClient.refetchQueries({ queryKey: ["get-city"] });
             showSuccess(t("City.action"));
           },
