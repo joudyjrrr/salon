@@ -18,17 +18,21 @@ import Title from "../../Components/Title";
 import { API_SERVER_URL_For_Img } from "../../API/domain";
 import img from "../../assets/1.jpg";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import React, { useState } from "react";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { EmployeeApi } from "../../API/Emplyee/EmployeeApi";
 import EditIcon from "@mui/icons-material/Edit";
-import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
+import PopOver from "../../Components/Salon/PopOver";
 const Employee = () => {
   const { t } = useTranslation();
   const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
   const { salonId } = useParams();
   const [id, setId] = useState<string>("");
+  const [anchorerService, setAnchorService] =
+    React.useState<HTMLElement | null>(null);
+  const openService = Boolean(anchorerService);
   const {
     data: EmployeeData,
     isLoading,
@@ -102,9 +106,25 @@ const Employee = () => {
                         setId={() => setId(d?.id ?? "")}
                         userId={id ?? ""}
                       />
-                        <IconButton onClick={() => navigate(`employeeService/${d.id}`)}>
-                      <MiscellaneousServicesIcon />
-                    </IconButton>
+                      <IconButton
+                        aria-owns={
+                          openService ? "mouse-over-popover" : undefined
+                        }
+                        aria-haspopup="true"
+                        onMouseEnter={(event) =>
+                          setAnchorService(event.currentTarget)
+                        }
+                        onMouseLeave={() => setAnchorService(null)}
+                        onClick={() => navigate(`employeeService/${d.id}`)}
+                      >
+                        <MiscellaneousServicesIcon />
+                      </IconButton>
+                      <PopOver
+                        open={openService}
+                        anchor={anchorerService}
+                        setAnchor={setAnchorService}
+                        titel="Services"
+                      />
                     </CardActions>
                   </Card>
                 </Grid>
