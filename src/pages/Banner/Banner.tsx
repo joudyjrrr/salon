@@ -26,6 +26,7 @@ import DeleteCustome from "../../Components/DeleteCustome";
 import { BannerAPI } from "../../API/Banner/BannerApi";
 import EditIcon from "@mui/icons-material/Edit";
 import { askForPermission } from "../../helper/askForPermission";
+import NoData from "../../Components/NoData";
 const Banner = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -77,6 +78,7 @@ const Banner = () => {
                 value={query}
               />
             </Stack>
+            {bannerData?.data.length === 0 ? <NoData/>  : (
             <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
               {bannerData?.data.map((d, index) => (
                 <Grid key={index} item xs={12} sm={6} lg={3}>
@@ -135,6 +137,7 @@ const Banner = () => {
                 </Grid>
               ))}
             </Grid>
+            )}
           </Box>
         </>
       )}

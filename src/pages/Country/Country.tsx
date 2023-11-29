@@ -15,6 +15,7 @@ import AddCountry from "./AddCountry";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { CountryApi } from "../../API/Country/CountryApi";
 import { askForPermission } from "../../helper/askForPermission";
+import NoData from "../../Components/NoData";
 const Country = () => {
   const { t } = useTranslation();
   const [PageNumber, setPageNumber] = useState(0);
@@ -40,7 +41,8 @@ const Country = () => {
         <Box marginTop="10px" height="100vh">
           <Loading />
         </Box>
-      ) : (
+      ) 
+      : (
         <Box
           sx={{
             paddingInline: "40px",
@@ -55,6 +57,7 @@ const Country = () => {
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
           <>
+          {allCountries?.data.length === 0 ?<NoData/> :
             <Stack marginTop="40px">
               <TableHeader TableHeaderArray={TableHeaderArray}>
                 <TableBody>
@@ -97,6 +100,7 @@ const Country = () => {
                 totalPages={allCountries?.totalPages!}
               />
             </Stack>
+}
           </>
         </Box>
       )}

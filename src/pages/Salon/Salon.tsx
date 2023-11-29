@@ -30,6 +30,7 @@ import { SalonApi } from "../../API/Salon/SalonApi";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
 import PopOver from "../../Components/Salon/PopOver";
+import NoData from "../../Components/NoData";
 const Salon = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -59,7 +60,8 @@ const Salon = () => {
         <Box marginTop="150px">
           <Loading />
         </Box>
-      ) : (
+      )
+      : (
         <Box
           sx={{
             paddingInline: "40px",
@@ -80,6 +82,7 @@ const Salon = () => {
             <Title text="Salon" />
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
+          {salonData?.data.length === 0 ? <NoData/> : ( 
           <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
             {salonData?.data.map((d, index) => (
               <Grid key={index} item xs={12} sm={6} lg={3}>
@@ -162,28 +165,30 @@ const Salon = () => {
                       <MiscellaneousServicesIcon />
                     </IconButton>
                     <PopOver
-                    open = {open}
-                    anchor={anchorEMployee}
-                    setAnchor={setAnchorElmpyee}
-                    titel="Employee"
+                      open={open}
+                      anchor={anchorEMployee}
+                      setAnchor={setAnchorElmpyee}
+                      titel="Employee"
                     />
                     <PopOver
-                    open = {openService}
-                    anchor={anchorerService}
-                    setAnchor={setAnchorService}
-                    titel="Services"
+                      open={openService}
+                      anchor={anchorerService}
+                      setAnchor={setAnchorService}
+                      titel="Services"
                     />
                   </CardActions>
                 </Card>
               </Grid>
             ))}
-          </Grid>
-          <Pagination
+            <Pagination
             page={page}
             isFetching={isFetching}
             onPageChange={setPage}
             totalPages={salonData?.totalPages!}
           />
+          </Grid>
+          )}
+
         </Box>
       )}
     </>

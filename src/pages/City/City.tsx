@@ -15,6 +15,7 @@ import AddCity from './AddCity';
 import { CityApi } from '../../API/City/CityApi';
 import DeleteCustome from "../../Components/DeleteCustome";
 import { askForPermission } from '../../helper/askForPermission';
+import NoData from '../../Components/NoData';
 
 function City() {
 
@@ -32,7 +33,6 @@ function City() {
       const country = countryOption?.find((country) => country.id === countryId);
       return country?.name;
     };
-
     // console.log({ allCities });
 
     const TableHeaderArray = [
@@ -49,7 +49,8 @@ function City() {
         <Box marginTop="10px" height="100vh">
           <Loading />
         </Box>
-      ) : (
+      ) 
+      : (
         <Box
           sx={{
             paddingInline: "40px",
@@ -64,45 +65,48 @@ function City() {
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
           <>
-            <Stack marginTop="40px">
-              <TableHeader TableHeaderArray={TableHeaderArray}>
-                <TableBody>
-                  {allCities?.data?.map((d) => (
-                    <TableRow key={d.id}>
-                      <TableCell align="center" sx={{ fontSize: "17px" }}>
-                        {d.name}
-                      </TableCell>
-                      <TableCell align="center" sx={{ fontSize: "17px" }}>
-                        {getCountryNameById(d.countryId)}
-                      </TableCell>
-                      <TableCell
-                        align="center"
-                        sx={{ display: "flex", justifyContent: "center" }}
-                      >
-                        {permission.canDelete && (
-                          <DeleteCustome
-                          refetch={refetch}
-                          MassegeSuccess={t("City.delete")}
-                          onDelete={() => CityApi.DeleteCity(id)}
-                          setId={() => setId(d?.id ?? "")}
-                          userId={id ?? ""}
-                        />   
-                        )}
-                                      
-                        {permission.canEdit && (
-                        <AddCity id={d.id} setId={() => setId(d.id ?? "")} />
-                        )} 
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </TableHeader>
-              <Pagination
-                page={PageNumber}
-                isFetching={isFetching}
-                onPageChange={setPageNumber}
-                totalPages={allCities?.totalPages!}              />
-            </Stack>
+          { allCities?.data.length === 0 ? <NoData/> 
+          : <Stack marginTop="40px">
+          <TableHeader TableHeaderArray={TableHeaderArray}>
+            <TableBody>
+              {allCities?.data?.map((d) => (
+                <TableRow key={d.id}>
+                  <TableCell align="center" sx={{ fontSize: "17px" }}>
+                    {d.name}
+                  </TableCell>
+                  <TableCell align="center" sx={{ fontSize: "17px" }}>
+                    {getCountryNameById(d.countryId)}
+                  </TableCell>
+                  <TableCell
+                    align="center"
+                    sx={{ display: "flex", justifyContent: "center" }}
+                  >
+                    {permission.canDelete && (
+                      <DeleteCustome
+                      refetch={refetch}
+                      MassegeSuccess={t("City.delete")}
+                      onDelete={() => CityApi.DeleteCity(id)}
+                      setId={() => setId(d?.id ?? "")}
+                      userId={id ?? ""}
+                    />   
+                    )}
+                                  
+                    {permission.canEdit && (
+                    <AddCity id={d.id} setId={() => setId(d.id ?? "")} />
+                    )} 
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </TableHeader>
+          <Pagination
+            page={PageNumber}
+            isFetching={isFetching}
+            onPageChange={setPageNumber}
+            totalPages={allCities?.totalPages!}              />
+        </Stack>
+          }
+            
           </>
         </Box>
       )}
