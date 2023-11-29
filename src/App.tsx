@@ -24,29 +24,23 @@ const App = () => {
   const dispatch: AppDispatch = useDispatch();
   const roleId = useSelector((state: RootState) => state.permission.roleId);
   const content = useSelector((state: RootState) => state.permission.contents);
-  console.log(content)
-  const { data } = PermissionQueries.GetContentsByRoleIdQuery(roleId);
+  console.log(content);
+  const { data, isLoading } = PermissionQueries.GetContentsByRoleIdQuery(
+    roleId!
+  );
 
   dispatch(PermissionActions.setRoleName(data?.roleName));
   dispatch(PermissionActions.setContent(data?.contents));
-   
-  // if (
-  //   !data &&
-  //   localStorage.getItem("token") &&
-  //   localStorage.getItem("RoleId")
-  // ) {
-  //   return <Loading />;
-  // }
-
+  console.log(data?.contents);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <ToastContainer position="bottom-right" />
-        {/* <Button onClick={toggleColorMode} color="primary" variant="outlined">
-          {t("hi.hi")}
-         
-        </Button> */}
+        {}
         {lang == "ar" ? (
           <RTL>
             <Routes />

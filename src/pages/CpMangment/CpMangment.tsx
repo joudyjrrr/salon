@@ -15,11 +15,13 @@ import AddUser from "./AddUser";
 import DeleteModal from "../../Components/DeleteModal";
 import { CpManagementApi } from "../../API/CpManagement/CpManagementApi";
 import DeleteCustome from "../../Components/DeleteCustome";
+import { askForPermission } from "../../helper/askForPermission";
 const CpMangment = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
   const [query, setQuery] = useState<string>("");
   const [id, setId] = useState<string>("");
+  const permission = askForPermission("CpManagement");
   const TableHeaderArray = [
     t("table.name"),
     t("table.role"),
@@ -49,7 +51,7 @@ const CpMangment = () => {
             textAlign: "center",
           }}
         >
-          <AddUser />
+          {permission.canAdd && <AddUser />}
           <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
             <Title text="Users" />
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
@@ -70,14 +72,18 @@ const CpMangment = () => {
                         align="center"
                         sx={{ display: "flex", justifyContent: "center" }}
                       >
-                        <DeleteCustome
-                          refetch={refetch}
-                          MassegeSuccess={t("cpMangment.delete")}
-                          onDelete={() => CpManagementApi.DeleteUser(id)}
-                          setId={() => setId(d?.id ?? "")}
-                          userId={id ?? ""}
-                        />
-                        <AddUser id={d.id} setId={() => setId(d.id ?? "")} />
+                        {permission.canDelete && (
+                          <DeleteCustome
+                            refetch={refetch}
+                            MassegeSuccess={t("cpMangment.delete")}
+                            onDelete={() => CpManagementApi.DeleteUser(id)}
+                            setId={() => setId(d?.id ?? "")}
+                            userId={id ?? ""}
+                          />
+                        )}
+                        {permission.canEdit && (
+                          <AddUser id={d.id} setId={() => setId(d.id ?? "")} />
+                        )}
                       </TableCell>
                     </TableRow>
                   ))}
