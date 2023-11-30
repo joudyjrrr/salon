@@ -123,7 +123,7 @@ const Employee = () => {
                         open={openService}
                         anchor={anchorerService}
                         setAnchor={setAnchorService}
-                        titel="Services"
+                        titel={t("serv.title")}
                       />
                     </CardActions>
                   </Card>

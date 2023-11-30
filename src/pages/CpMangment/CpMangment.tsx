@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Box, Stack, Grid } from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import TableHeader from "../../Components/TableHeader";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -12,7 +12,6 @@ import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import AddUser from "./AddUser";
-import DeleteModal from "../../Components/DeleteModal";
 import { CpManagementApi } from "../../API/CpManagement/CpManagementApi";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { askForPermission } from "../../helper/askForPermission";
@@ -54,51 +53,56 @@ const CpMangment = () => {
         >
           {permission.canAdd && <AddUser />}
           <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
-            <Title text="Users" />
+            <Title text={t("cpMangment.title")} />
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
           <>
-          {CpManagementData?.data.length === 0 ? <NoData/> : (
-            <Stack marginTop="40px">
-              <TableHeader TableHeaderArray={TableHeaderArray}>
-                <TableBody>
-                  {CpManagementData?.data.map((d) => (
-                    <TableRow key={d.id}>
-                      <TableCell align="center" sx={{ fontSize: "17px" }}>
-                        {d.username}
-                      </TableCell>
-                      <TableCell align="center" sx={{ fontSize: "17px" }}>
-                        {d.role}
-                      </TableCell>
-                      <TableCell
-                        align="center"
-                        sx={{ display: "flex", justifyContent: "center" }}
-                      >
-                        {permission.canDelete && (
-                          <DeleteCustome
-                            refetch={refetch}
-                            MassegeSuccess={t("cpMangment.delete")}
-                            onDelete={() => CpManagementApi.DeleteUser(id)}
-                            setId={() => setId(d?.id ?? "")}
-                            userId={id ?? ""}
-                          />
-                        )}
-                        {permission.canEdit && (
-                          <AddUser id={d.id} setId={() => setId(d.id ?? "")} />
-                        )}
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </TableHeader>
-              <Pagination
-                page={page}
-                isFetching={isFetching}
-                onPageChange={setPage}
-                totalPages={CpManagementData?.totalPages!}
-              />
-            </Stack>
-          )}
+            {CpManagementData?.data.length === 0 ? (
+              <NoData />
+            ) : (
+              <Stack marginTop="40px">
+                <TableHeader TableHeaderArray={TableHeaderArray}>
+                  <TableBody>
+                    {CpManagementData?.data.map((d) => (
+                      <TableRow key={d.id}>
+                        <TableCell align="center" sx={{ fontSize: "17px" }}>
+                          {d.username}
+                        </TableCell>
+                        <TableCell align="center" sx={{ fontSize: "17px" }}>
+                          {d.role}
+                        </TableCell>
+                        <TableCell
+                          align="center"
+                          sx={{ display: "flex", justifyContent: "center" }}
+                        >
+                          {permission.canDelete && (
+                            <DeleteCustome
+                              refetch={refetch}
+                              MassegeSuccess={t("cpMangment.delete")}
+                              onDelete={() => CpManagementApi.DeleteUser(id)}
+                              setId={() => setId(d?.id ?? "")}
+                              userId={id ?? ""}
+                            />
+                          )}
+                          {permission.canEdit && (
+                            <AddUser
+                              id={d.id}
+                              setId={() => setId(d.id ?? "")}
+                            />
+                          )}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </TableHeader>
+                <Pagination
+                  page={page}
+                  isFetching={isFetching}
+                  onPageChange={setPage}
+                  totalPages={CpManagementData?.totalPages!}
+                />
+              </Stack>
+            )}
           </>
         </Box>
       )}

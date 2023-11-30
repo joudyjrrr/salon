@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   Fab,
@@ -60,7 +59,7 @@ const Version = () => {
           )}
           
           <Stack direction={`row`} spacing={10}>
-            <Title text="Version" />
+            <Title text={t("Version.title")} />
           </Stack>
           <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
             {versionData?.map((d, index) => (

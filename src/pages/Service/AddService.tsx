@@ -7,7 +7,6 @@ import { Controller } from "react-hook-form";
 import UploadGenericImg from "../../Components/Img/UploadGenericImg";
 import ImgCard from "../../Components/Img/ImgCard";
 import { API_SERVER_URL_For_Img } from "../../API/domain";
-import { FileApi } from "../../API/File/FileApi";
 import ModalImgCrop from "../../Components/Img/ModalImgCrop";
 import SubmitButton from "../../Components/Form/SubmitButton";
 import Loading from "../../Components/Loading";
@@ -18,22 +17,24 @@ const AddService = () => {
     control,
     handleCropImg,
     handleManipulateImage,
+    deletedImages,
+    setDeletedImages,
     imgCoverAfterCrop,
     imgagesAfterCrop,
-    setImegesAfterCrop,
     setImgTitle,
     setImgCoverAfterCrop,
     handleDeleteImg,
     genericFile,
-    setGenericFile,
     isPendingImg,
     openCropModal,
     imgTitle,
+    setImegesAfterCrop,
     setOpenCropModal,
     handleSubmit,
     onSubmit,
     isPending,
     isLoading,
+    errors,
     servId,
   } = useService();
   return (
@@ -76,6 +77,7 @@ const AddService = () => {
                           onFileUpload={handleManipulateImage}
                           buttonText={t("form.uploadImgForCover")}
                           setImg={() => setImgTitle("cover")}
+                          errorMessage={errors.coverImage?.message}
                         />
                       )}
                     />
@@ -83,7 +85,10 @@ const AddService = () => {
                     <ImgCard
                       imgSrc={`${API_SERVER_URL_For_Img}/${imgCoverAfterCrop}`}
                       onDeleteImg={() => {
-                        FileApi.DeleteFile(imgCoverAfterCrop);
+                        setDeletedImages((prevImages) => [
+                          ...prevImages!,
+                          imgCoverAfterCrop,
+                        ]);
                         setImgCoverAfterCrop("");
                       }}
                       title={t("form.imgCover")}
@@ -103,7 +108,11 @@ const AddService = () => {
                       <ImgCard
                         imgSrc={`${API_SERVER_URL_For_Img}/${img}`}
                         onDeleteImg={() => {
-                          handleDeleteImg(index);
+                          const updatedImages = [...imgagesAfterCrop];
+                          updatedImages.splice(index, 1);
+                          // setDeletedImages(img);
+                          setImegesAfterCrop(updatedImages);
+                     
                         }}
                       />
                     </Grid>

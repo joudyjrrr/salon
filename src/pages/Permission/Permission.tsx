@@ -36,7 +36,7 @@ const Permission = () => {
           }}
         >
           <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
-            <Title text="Permission" />
+            <Title text={t("permission.title")} />
             {/* <SearchField onSearch={(value) => setQuery(value)} value={query} /> */}
           </Stack>
           {data?.length === 0 ? (

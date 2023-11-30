@@ -26,6 +26,8 @@
     "password": "Password",
     "submit": "Submit",
     "required": "Field is required",
+    "coverImgIsriquerd":"cover Ims is Required",
+     "logoImgreq":"logoImgIsRequired",
     "search": "Search...",
     "arName": "Arabic Name",
     "enName": "English Name",
@@ -105,7 +107,7 @@
     "countryCode": "countryCode"
   },
   "cpMangment": {
-    "title": "Manege User Acount",
+    "title": "Users",
     "action": "Users has been saved successfully",
     "add": "Add User",
     "edit": "Edit User",
@@ -254,7 +256,7 @@
     "link": "link"
   },
   "permission": {
-    "title": "Manege Permission",
+    "title": "Permission",
     "add": "Add Role",
     "edit": "Edit Role",
     "name": "Name",

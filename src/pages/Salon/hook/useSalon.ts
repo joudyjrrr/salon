@@ -9,9 +9,7 @@ import {
 } from "../../../interface/generic";
 import { FileQuery } from "../../../API/File/FileQueries";
 import {
-  DefaultFromDate,
   DefaultFromDateHours,
-  convertToInputTime,
   convertToInputTimeSalon,
   dayTimeConvert,
 } from "../../../helper/imgHelper";
@@ -25,12 +23,11 @@ const useSalon = () => {
   const {
     control,
     setValue,
-    register,
     handleSubmit,
     setError,
     watch,
-    formState: { isSubmitting, errors },
-    reset,
+    clearErrors,
+    formState: {errors },
   } = useForm<SalonInput>({
     defaultValues: {
       workSchedule: Array(7).fill({
@@ -126,8 +123,16 @@ const useSalon = () => {
       }
     );
   };
-
+useEffect(()=>{
+   if(imgCoverAfterCrop){
+    clearErrors("coverImage")
+   }
+},[imgCoverAfterCrop])
   const onSubmit = () => {
+    if (imgCoverAfterCrop === "") {
+      setError("coverImage", { message: t("form.coverImgIsriquerd") });
+      return;
+    }
     if (!watch("latitude") && !watch("longitude")) {
       setError("latitude", {
         type: "required",
@@ -186,6 +191,7 @@ const useSalon = () => {
     salonId,
     setValue,
     watch,
+   
     isPendingImg,
     isPending,
     openCropModal,

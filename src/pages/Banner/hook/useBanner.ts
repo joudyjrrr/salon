@@ -14,7 +14,7 @@ import { showError, showSuccess } from "../../../libs/reactToastify";
 import { useTranslation } from "react-i18next";
 
 const useBanner = () => {
-  const { control, setValue, handleSubmit, watch } =
+  const { control, setValue, handleSubmit, watch , setError  , clearErrors , formState :{errors} } =
     useForm<SetBannerTypeInput>({
       defaultValues: {
         fromDate: DefaultFromDate(),
@@ -29,8 +29,11 @@ const useBanner = () => {
   );
   // console.log(bannerDetails, bannerId);
   const { data: salonId } = ServiceQueries.GetSalonByServIdDetailsQuery(
-    bannerDetails?.serviceId ? bannerDetails?.serviceId! : ""
+    bannerDetails?.serviceId  ? bannerDetails?.serviceId! : ""
   );
+  const { data: serviceOption } =
+    ServiceQueries.GetServiceDetailsAutoCompleteQuery(watch("salon")?.id);
+    const { data: salonOption } = SalonQueries.GetSalonOption();
   useEffect(() => {
     if (bannerDetails) {
       setValue("fromDate", bannerDetails.fromDate.slice(0, 16));
@@ -57,14 +60,13 @@ const useBanner = () => {
         );
       }
     }
-  }, [bannerDetails , salonId]);
-  const { data: salonOption } = SalonQueries.GetSalonOption();
+  }, [bannerDetails , salonId , serviceOption]);
+
   // console.log(watch("salon"))
   const [openCropModal, setOpenCropModal] = useState<boolean>(false);
   const [imgAfterCrop, setImgAfterCrop] = useState<string>("");
   const [genericFile, setGenericFile] = useState<File | null>(null);
-  const { data: serviceOption } =
-    ServiceQueries.GetServiceDetailsAutoCompleteQuery(watch("salon")?.id);
+  
   const { data: cityOption } = CityQueries.GetCityAutoCompleteQuery();
   const [radioSelect, setRadioSelect] = useState<string>("link");
   const handleManipulateImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,8 +96,16 @@ const useBanner = () => {
       }
     );
   };
+  useEffect(()=>{
+   if(imgAfterCrop){
+    clearErrors("image")
+   }
+  },[imgAfterCrop])
   const onSubmit = () => {
-    console.log(watch("fromDate"), watch("toDate"));
+    if (imgAfterCrop === "") {
+      setError("image", { message: t("form.required") });
+      return;
+    }
     mutate(
       {
         id: watch("id") ? watch("id") : undefined,
@@ -130,6 +140,7 @@ const useBanner = () => {
     isLoading,
     bannerId,
     onSubmit,
+    errors,
     radioSelect,
     setRadioSelect,
     salonOption,
