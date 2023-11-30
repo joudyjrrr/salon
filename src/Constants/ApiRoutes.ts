@@ -73,7 +73,7 @@ const Notifications = {
   DELETE_NOTIFICATION_CP: `${controller.Notification}/NotificationDeleteCp`,
 };
 const Permission = {
-  GET_ROLES_CONTENTS: `${controller.Permission}/GetRolesContentsA`,
+  GET_ROLES_CONTENTS: `${controller.Permission}/GetRolesContents`,
   GET_CONTENTS_BY_ROLE_ID: `${controller.Permission}/GetContentsByRoleId`,
   SET_PERMISSION: `${controller.Permission}/SetPermission`,
 };
@@ -103,6 +103,7 @@ const Service = {
   SET_SERVICE_CP: `${controller.Service}/SetServiceCp`,
   DELETE_SERVICE : `${controller.Service}/DeleteServiceCp`,
   GET_BY_ID:`${controller.Service}/GetServiceDetailsCp`,
+  GET_SalonID_ByService : `${controller.Service}/GetSalonIdByServiceId`
 };
 // const EmpService = {
 //   SET_EmpSERVICE_CP: `${controller.Service}/SetServiceCp`,

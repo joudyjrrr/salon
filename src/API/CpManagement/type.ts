@@ -6,6 +6,7 @@ export interface GetLogInType {
   userId: string;
   token: string;
   refreshToken: string;
+  roleId : string
 }
 export interface GetRoles {
   id: string;

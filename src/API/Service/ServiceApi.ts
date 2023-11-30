@@ -41,9 +41,19 @@ const GetServiceDetails = async (serviceId: string) => {
   );
   return data;
 };
+const GetSalonIdByServiceIdDetails = async (serviceId: string) => {
+  const { data } = await DeliveryApiInstances.get<string>
+  (API_Routes.Service.GET_SalonID_ByService, {
+    params: {
+      serviceId,
+    },
+  });
+  return data;
+};
 export const ServiceApi = {
   SetService,
   GetServiceAll,
   DeleteService,
   GetServiceDetails,
+  GetSalonIdByServiceIdDetails
 };

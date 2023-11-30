@@ -17,8 +17,8 @@
     "FeedBack": "الاقتراحات",
     "offer": "العروض",
     "salon": "صالون التجميل",
-    "employee":"الموظفين",
-    "version":"الاصدارات",
+    "employee": "الموظفين",
+    "version": "الاصدارات",
     "booking": "الحجوزات"
   },
   "form": {
@@ -34,6 +34,8 @@
     "enDescription": "الوصف الانكليزي",
     "upLoadImg": "حمّل صورة",
     "crop": "قص الصورة",
+    "coverImgIsriquerd":"صورة الغلاف مطلوبة",
+     "logoImgreq":"صورة الشعار مطلوبة",
     "name": "الاسم",
     "fromDate": "من",
     "toDate": "إلى",
@@ -71,29 +73,29 @@
     "chooseSalonType": "اختر نوع الصالون",
     "chooseCountry": "اختر دولة",
     "chooseCity": "اختر مدينة",
-    "logoImg":"صورة الشعار",
+    "logoImg": "صورة الشعار",
     "countryCode": "كود البلد",
     "country": "اسم البلد",
     "selectCountry": "اختر اسم البلد",
-    "certificates":"الشهادات",
-    "experienceYears":"سنوات الخبرة",
-    "chooseGender":"اختر الجنس",
-    "img":"الصورة",
-    "period":"مدة الخدمة",
-    "chooseCategory":"اختر صنف",
-    "imgCover":"صورة الغلاف",
-    "chooseService":"اختر خدمة",
-    "chooseSalaon":"اختر صالون تجميل",
-    "title":"العنوان",
-    "body":"المحتوى",
-    "iosVersionNumber":"اسم اصدار الايفون",
-    "iosVersionName":"رقم اصدار الايفون",
-    "androidVersionNumber":"رقم اصدار الاندرويد",
-    "androidVersionName":"اسم اصدار الاندرويد",
-    "androidUrl":"رابط الاندرويد",
-    "iosUrl":"رابط الايفون",
-    "isRequired":"هل مطلوب",
-    "appType":"نوع التطبيق"
+    "certificates": "الشهادات",
+    "experienceYears": "سنوات الخبرة",
+    "chooseGender": "اختر الجنس",
+    "img": "الصورة",
+    "period": "مدة الخدمة",
+    "chooseCategory": "اختر صنف",
+    "imgCover": "صورة الغلاف",
+    "chooseService": "اختر خدمة",
+    "chooseSalaon": "اختر صالون تجميل",
+    "title": "العنوان",
+    "body": "المحتوى",
+    "iosVersionNumber": "اسم اصدار الايفون",
+    "iosVersionName": "رقم اصدار الايفون",
+    "androidVersionNumber": "رقم اصدار الاندرويد",
+    "androidVersionName": "اسم اصدار الاندرويد",
+    "androidUrl": "رابط الاندرويد",
+    "iosUrl": "رابط الايفون",
+    "isRequired": "هل مطلوب",
+    "appType": "نوع التطبيق"
   },
   "table": {
     "name": "اسم المستخدم",
@@ -104,12 +106,13 @@
     "countryCode": "كود البلد"
   },
   "cpMangment": {
-    "title": "إدارة المستخدمين",
+    "title": "المستخدمين",
     "action": "تم إضافة المستخدم بنجاح",
     "add": "إضافة مستخدم",
     "edit": "تعديل المسنخدم",
     "delete": "تم حذف المستخدم بنجاح"
   },
+  
   "btns": {
     "next": "التالي",
     "prev": "السابق"
@@ -156,7 +159,7 @@
     "wrong": "لقد حدث خطأ ما"
   },
   "salon": {
-    "title": "الصالونات",
+    "title": "صالونات التجميل",
     "add": "إضافة صالون",
     "edit": "تعديل الصالون",
     "action": "تم حفظ الصالون بنجاح",
@@ -172,22 +175,22 @@
     "title": "إدارة البلدان",
     "action": "تم إضافة البلدة بنجاح",
     "add": "إضافة بلد",
-    "edit":"تعديل بلد",
+    "edit": "تعديل بلد",
     "delete": "تم حذف البلدة بنجاح",
     "countryCode": "كود البلد",
     "currency": "العملة",
-    "name" : "اسم البلد"
+    "name": "اسم البلد"
   },
   "City": {
     "title": "إدارة المدن",
     "action": "تم إضافة المدينة بنجاح",
     "add": "إضافة مدينة",
-    "edit":"تعديل مدينة",
+    "edit": "تعديل مدينة",
     "delete": "تم حذف المدينة بنجاح",
-    "name" : "اسم المدينة"
+    "name": "اسم المدينة"
   },
   "serv": {
-    "titleWithEmp":"الخدمات حسب الموظفين",
+    "titleWithEmp": "الخدمات حسب الموظفين",
     "title": "الخدمات",
     "add": "إضافة خدمة",
     "edit": "تعديل الخدمة",
@@ -204,7 +207,7 @@
   },
   "FeedBack": {
     "title": "إدارة الاقتراحات",
-    "titleCard":"العنوان",
+    "titleCard": "العنوان",
     "userName": "اسم المستخدم",
     "description": "الوصف",
     "phoneNumber": "رقم الهاتف"
@@ -219,9 +222,45 @@
   },
   "Booking": {
     "title": "إدارة الحجوزات",
-    "code": "الكود", 
-    "customerName": "اسم المستهلك" ,
+    "code": "الكود",
+    "customerName": "اسم المستهلك",
     "customerNumber": "رقم المستهلك",
     "bookingStatus": "حالة الحجز"
-  }
+  },
+  "NoData": {
+    "noData": " لا يوجد بيانات لعرضها..."
+  },
+  "Login": {
+    "login": "تسجيل الدخول ",
+    "success": "تم تسجيل الدخول بنجاح",
+    "Massegelogout": "هل تريد بالفعل تسجيل الخروج",
+    "yes": "نعم",
+    "cancel": "إلغاء",
+    "logout": "تسجيل الخروج"
+  },
+  "permission": {
+    "title": "السماحيات",
+    "add": "إضافة دور",
+    "edit": "تعديل السماحية",
+    "name": "الاسم",
+    "show": "عرض السماحية",
+    "action": "تم حفظ السماحية بنجاح",
+    "delete": "تم السماحية الصلاحية",
+    "added": "تم تعديل السماحية بنجاح",
+    "Added": "تمت إضافة السماحية بنجاح",
+    "wrong": "حدث خطأ ما"
+},
+"emp": {
+  "title": "الموظفين",
+  "add": "إضافة موظف",
+  "edit": "تعديل الموظف",
+  "action": "تمت إضافة الموظف بنجاح",
+  "delete": "تم حذف الموظف بنجاح",
+  "empSchedule": "جدولة دوام الموظف",
+  "Day": "اليوم",
+  "Available": "الإتاحية",
+  "from": "من",
+  "to": "إالى"
+}
+
 }

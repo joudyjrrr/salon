@@ -38,4 +38,5 @@ export interface ServiceData extends Service {
   name : IValue[]
   description : IValue[];
   categoryId : string;
+  deletedImages ?: string[]
 }

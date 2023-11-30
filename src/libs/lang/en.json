@@ -26,6 +26,8 @@
     "password": "Password",
     "submit": "Submit",
     "required": "Field is required",
+    "coverImgIsriquerd":"cover Ims is Required",
+     "logoImgreq":"logoImgIsRequired",
     "search": "Search...",
     "arName": "Arabic Name",
     "enName": "English Name",
@@ -105,7 +107,7 @@
     "countryCode": "countryCode"
   },
   "cpMangment": {
-    "title": "Manege User Acount",
+    "title": "Users",
     "action": "Users has been saved successfully",
     "add": "Add User",
     "edit": "Edit User",
@@ -253,6 +255,18 @@
     "delete": "Banner has been Deleted",
     "link": "link"
   },
+  "permission": {
+    "title": "Permission",
+    "add": "Add Role",
+    "edit": "Edit Role",
+    "name": "Name",
+    "show": "Show Permission",
+    "action": "Permission has been saved successfully",
+    "delete": "Permission has been Deleted",
+    "added": "Permission Edited successfully",
+    "Added": "Permission Added successfully",
+    "wrong": "some thing went wrong"
+  },
   "Version": {
     "title": "Version",
     "add": "Add Version",
@@ -280,5 +294,16 @@
     "enAnswer": "English Answer",
     "arAnswer": "Arabic Answer",
     "wrong": "something went wrong"
+  },
+  "NoData":{
+  "noData" : "Data Not Found ..."
+  },
+  "Login": {
+    "login": "Login In",
+    "success": "Success Login",
+    "Massegelogout": "Are You Shure Log Out ... ?",
+    "yes": "Yes",
+    "cancel": "Cancel",
+    "logout": "Log Out"
   }
 }

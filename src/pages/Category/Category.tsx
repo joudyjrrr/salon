@@ -17,6 +17,8 @@ import SearchField from "../../Components/SearchField";
 import Title from "../../Components/Title";
 import { Link } from "react-router-dom";
 import EditIcon from '@mui/icons-material/Edit';
+import { askForPermission } from "../../helper/askForPermission";
+
 const Category = () => {
   const [PageNumber, setPageNumber] = useState(0);
   const [Search, setSearch] = useState<string>("");
@@ -27,6 +29,8 @@ const Category = () => {
     t,
     location, navigate
   } = useCategoryHook(PageNumber, Search)
+  
+  const permission = askForPermission("Category");
 
   return (
     <>
@@ -37,7 +41,8 @@ const Category = () => {
           </Grid>
           <SearchField value={Search} onSearch={setSearch} />
         </Grid>
-        <Grid
+        {permission.canAdd && (
+          <Grid
           container
           alignContent={"center"}
           justifyContent={"center"}
@@ -48,6 +53,8 @@ const Category = () => {
             <Button variant="contained">{t("Category.add")}</Button>
           </Link>
         </Grid>
+        )}
+        
       </Grid>
       {allCategoriesIsLoading ? (
         <Loading />
@@ -81,10 +88,14 @@ const Category = () => {
                       </Grid>
                     </CardContent>
                     <CardActions>
-                      <Button onClick={() => navigate(`editCategory/${category.id}`)}>
+                      {permission.canEdit && (
+                        <Button onClick={() => navigate(`editCategory/${category.id}`)}>
                         <EditIcon />
                       </Button>
-                      <DeleteCategory id={category.id} />
+                      )}
+                      {permission.canDelete && (
+                        <DeleteCategory id={category.id} />
+                      )}
                     </CardActions>
                   </Card>
                 </Grid>

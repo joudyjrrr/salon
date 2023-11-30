@@ -58,9 +58,21 @@ const GetServDetailsQuery = (id: string) => {
   });
   return queryResult;
 };
+const GetSalonByServIdDetailsQuery = (id: string) => {
+  const queryResult = useQuery({
+    queryKey: ["get-sealon-id-by-serv", id],
+    queryFn: async () => {
+      const data = await ServiceApi.GetSalonIdByServiceIdDetails(id);
+      return data;
+    },
+    enabled: !!id,
+  });
+  return queryResult;
+};
 export const ServiceQueries = {
   SetServiceQuery,
   GetServiceDetailsQuery,
   GetServDetailsQuery,
   GetServiceDetailsAutoCompleteQuery,
+  GetSalonByServIdDetailsQuery
 };

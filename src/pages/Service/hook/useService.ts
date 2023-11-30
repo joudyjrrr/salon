@@ -9,7 +9,6 @@ import {
 import { FileQuery } from "../../../API/File/FileQueries";
 import { ServiceQueries } from "../../../API/Service/ServiceQueries";
 import {
-  DefaultFromDate,
   DefaultFromDateHours,
   dayTimeConverService,
   makeActionArray,
@@ -20,17 +19,25 @@ import { useQueryClient } from "@tanstack/react-query";
 import { CategoryQuery } from "../../../API/Category/CategoryQueries";
 
 const useService = () => {
-  const { control, setValue, register, handleSubmit, setError, watch, reset } =
-    useForm<ServiveInput>({
-      defaultValues: {
-        period: DefaultFromDateHours(),
-      },
-    });
+  const {
+    control,
+    setValue,
+    handleSubmit,
+    setError,
+    watch,
+    clearErrors,
+    formState: { errors },
+  } = useForm<ServiveInput>({
+    defaultValues: {
+      period: DefaultFromDateHours(),
+    },
+  });
 
   const [openCropModal, setOpenCropModal] = useState<boolean>(false);
   const [imgTitle, setImgTitle] = useState<imgNameTypeProdct>();
   const [imgagesAfterCrop, setImegesAfterCrop] = useState<string[]>([]);
   const [imgCoverAfterCrop, setImgCoverAfterCrop] = useState<string>("");
+  const [deletedImages, setDeletedImages] = useState<string[] | null>([]);
   const [genericFile, setGenericFile] = useState<File | null>(null);
   const { salonId } = useParams();
   const { servId } = useParams();
@@ -45,7 +52,10 @@ const useService = () => {
   };
   const handleDeleteImg = (index: number) => {
     const updatedImages = imgagesAfterCrop?.filter((_, i) => i !== index);
+
     setImegesAfterCrop(updatedImages);
+    console.log(imgagesAfterCrop)
+    setDeletedImages(updatedImages);
   };
 
   const { mutate: mutationImg, isPending: isPendingImg } =
@@ -89,7 +99,7 @@ const useService = () => {
         "arDescription",
         servDetails.description.find((d) => d.key == "ar")?.value!
       );
-      setValue("period",servDetails.period.slice(11,16))
+      setValue("period", servDetails.period.slice(11, 16));
       setValue("price", servDetails.price);
       setValue("offerPrice", servDetails.offerPrice);
       setImgCoverAfterCrop(servDetails.coverImage);
@@ -98,13 +108,21 @@ const useService = () => {
         "category",
         categoryOP?.find((d) => d.id === servDetails.categoryId)!
       );
-      
     }
-
   }, [servDetails]);
+  useEffect(() => {
+    if (imgCoverAfterCrop) {
+      clearErrors("coverImage");
+    }
+  }, []);
   const { mutate, isPending } = ServiceQueries.SetServiceQuery();
-// console.log(  dayTimeConverService(watch("period")))
+  // console.log(  dayTimeConverService(watch("period")))
   const onSubmit: SubmitHandler<ServiveInput> = async (data) => {
+    console.log(deletedImages)
+    if (imgCoverAfterCrop === "") {
+      setError("coverImage", { message: t("form.coverImgIsriquerd") });
+      return;
+    }
     mutate(
       {
         id: watch("id") ? watch("id") : undefined,
@@ -117,6 +135,7 @@ const useService = () => {
         categoryId: watch("category").id,
         period: dayTimeConverService(watch("period")),
         salonId: salonId!,
+        deletedImages: watch("id") ? deletedImages! : undefined,
       },
       {
         onSuccess: () => {
@@ -132,7 +151,9 @@ const useService = () => {
   };
   return {
     control,
+    errors,
     onSubmit,
+    setImegesAfterCrop,
     servId,
     isLoading,
     setValue,
@@ -148,7 +169,9 @@ const useService = () => {
     imgagesAfterCrop,
     setImgTitle,
     setGenericFile,
-    setImegesAfterCrop,
+    deletedImages,
+    setDeletedImages,
+
     setImgCoverAfterCrop,
     isPendingImg,
     openCropModal,

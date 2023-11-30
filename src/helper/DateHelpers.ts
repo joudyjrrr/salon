@@ -21,3 +21,10 @@ export const FromISO = (date: string) => {
   const formattedDate = originalDate.toISOString().slice(0, 16);
   return formattedDate;
 };
+
+export function newAbortSignal(timeoutMs:number) {
+  const abortController = new AbortController();
+  setTimeout(() => abortController.abort(), timeoutMs || 0);
+
+  return abortController.signal;
+}

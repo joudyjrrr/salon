@@ -27,6 +27,7 @@ const AddBanner = () => {
   const { t } = useTranslation();
   const {
     control,
+    errors,
     radioSelect,
     setRadioSelect,
     salonOption,
@@ -122,6 +123,7 @@ const AddBanner = () => {
                         <UploadGenericImg
                           onFileUpload={handleManipulateImage}
                           buttonText={t("form.upLoadImg")}
+                          errorMessage={errors.image?.message}
                         />
                       )}
                     />

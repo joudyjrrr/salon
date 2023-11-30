@@ -17,7 +17,6 @@ import { useNavigate } from "react-router";
 import { BannerQuery } from "../../API/Banner/BannerQueries";
 import Loading from "../../Components/Loading";
 import Title from "../../Components/Title";
-import SearchField from "../../Components/SearchField";
 import AddIcon from "@mui/icons-material/Add";
 import { API_SERVER_URL_For_Img } from "../../API/domain";
 import img from "../../assets/1.jpg";
@@ -25,10 +24,12 @@ import moment from "moment";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { BannerAPI } from "../../API/Banner/BannerApi";
 import EditIcon from "@mui/icons-material/Edit";
+import { askForPermission } from "../../helper/askForPermission";
+import NoData from "../../Components/NoData";
+import Pagination from "../../Components/Pagination";
 const Banner = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
-  const [query, setQuery] = useState<string>("");
   const [id, setId] = useState<string>("");
   const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
@@ -36,10 +37,13 @@ const Banner = () => {
     data: bannerData,
     isLoading,
     refetch,
+    isFetching,
   } = BannerQuery.GetAllBannerQuery({
     PageNumber: page,
-    Query: query,
   });
+
+  const permission = askForPermission('Banner');
+
   return (
     <>
       {isLoading ? (
@@ -55,22 +59,21 @@ const Banner = () => {
               textAlign: "center",
             }}
           >
+             {permission.canAdd && (
             <Stack flexDirection="row" justifyContent="end" marginInline="50px">
               <Fab
                 color="primary"
                 aria-label="add"
                 onClick={() => navigate("add-banner")}
               >
-                <AddIcon className="text-white-100" />
+                  <AddIcon className="text-white-100" />
               </Fab>
             </Stack>
+             )}
             <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
               <Title text={t("Banner.title")} />
-              <SearchField
-                onSearch={(value) => setQuery(value)}
-                value={query}
-              />
             </Stack>
+            {bannerData?.data.length === 0 ? <NoData/>  : (
             <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
               {bannerData?.data.map((d, index) => (
                 <Grid key={index} item xs={12} sm={6} lg={3}>
@@ -105,24 +108,37 @@ const Banner = () => {
                       </Grid>
                     </CardContent>
                     <CardActions>
-                      <DeleteCustome
+                      {permission.canDelete && (
+                        <DeleteCustome
                         refetch={refetch}
                         MassegeSuccess={t("salon.delete")}
                         onDelete={() => BannerAPI.DeleteBanner(id)}
                         setId={() => setId(d?.id ?? "")}
                         userId={id ?? ""}
                       />
-                        <IconButton>
-                        <EditIcon
-                          onClick={() => navigate(`edit-banner/${d.id}`)}
-                          color="primary"
-                        />
-                      </IconButton>
+                      )}
+                      
+                        {permission.canEdit && (
+                          <IconButton>
+                          <EditIcon
+                            onClick={() => navigate(`edit-banner/${d.id}`)}
+                            color="primary"
+                          />
+                        </IconButton>
+                        )}
+                        
                     </CardActions>
                   </Card>
                 </Grid>
               ))}
+              <Pagination
+                            isFetching={isFetching}
+                            onPageChange={setPage}
+                            page={page}
+                            totalPages={bannerData?.totalPages!}
+                        />
             </Grid>
+            )}
           </Box>
         </>
       )}

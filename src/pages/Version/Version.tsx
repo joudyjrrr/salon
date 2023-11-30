@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   Fab,
@@ -21,6 +20,8 @@ import DeleteCustome from "../../Components/DeleteCustome";
 import { VersionApi } from "../../API/Version/VersionApi";
 import { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
+import { askForPermission } from "../../helper/askForPermission";
+import NoData from "../../Components/NoData";
 const Version = () => {
   const [id, setId] = useState<string>();
   const {
@@ -30,6 +31,8 @@ const Version = () => {
   } = VersionQueries.GetVersionAllQuery();
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const permission = askForPermission('Version');
+  
   return (
     <>
       {isLoading ? (
@@ -44,7 +47,8 @@ const Version = () => {
             textAlign: "center",
           }}
         >
-          <Stack flexDirection="row" justifyContent="end" marginInline="50px">
+          {permission.canAdd && (
+            <Stack flexDirection="row" justifyContent="end" marginInline="50px">
             <Fab
               color="primary"
               aria-label="add"
@@ -53,10 +57,13 @@ const Version = () => {
               <AddIcon className="text-white-100" />
             </Fab>
           </Stack>
+          )}
+          
           <Stack direction={`row`} spacing={10}>
-            <Title text="Version" />
+            <Title text={t("Version.title")} />
           </Stack>
-          <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
+        {versionData?.length === 0 ? <NoData/> : (
+            <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
             {versionData?.map((d, index) => (
               <Grid key={index} item xs={12} sm={6} lg={4}>
                 <Card elevation={5}>
@@ -101,24 +108,31 @@ const Version = () => {
                     </Grid>
                   </CardContent>
                   <CardActions>
-                  <IconButton>
+                    {permission.canEdit && (
+                      <IconButton>
                       <EditIcon
                         onClick={() => navigate(`edit-version/${d.id}`)}
                         color="primary"
                       />
                     </IconButton>
-                    <DeleteCustome
+                    )}
+                    {permission.canDelete && (
+                      <DeleteCustome
                       refetch={refetch}
                       MassegeSuccess={t("Version.delete")}
                       onDelete={() => VersionApi.DeleteVersion(id!)}
                       setId={() => setId(d?.id!)}
                       userId={id ?? ""}
                     />
+                    )}
+                    
                   </CardActions>
                 </Card>
               </Grid>
             ))}
           </Grid>
+          )}
+          
         </Box>
       )}
     </>

@@ -25,6 +25,7 @@ const AddEmployee = () => {
     handleSubmit,
     openCropModal,
     isPending,
+    errors,
     setOpenCropModal,
     genericFile,
     isPendingImg,
@@ -40,7 +41,7 @@ const AddEmployee = () => {
           marginTop: "30px",
         }}
       >
-        <TitleWithArrow title={empId ?t("emp.edit") :t("emp.add")} />
+        <TitleWithArrow title={empId ? t("emp.edit") : t("emp.add")} />
         {isLoading && empId ? (
           <Box marginTop="150px">
             <Loading />
@@ -71,6 +72,7 @@ const AddEmployee = () => {
                         <UploadGenericImg
                           onFileUpload={handleManipulateImage}
                           buttonText={t("form.upLoadImg")}
+                          errorMessage={errors.image?.message}
                         />
                       )}
                     />

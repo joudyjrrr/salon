@@ -14,7 +14,7 @@ import { showError, showSuccess } from "../../../libs/reactToastify";
 import { useTranslation } from "react-i18next";
 
 const useBanner = () => {
-  const { control, setValue, handleSubmit , watch } =
+  const { control, setValue, handleSubmit, watch , setError  , clearErrors , formState :{errors} } =
     useForm<SetBannerTypeInput>({
       defaultValues: {
         fromDate: DefaultFromDate(),
@@ -23,44 +23,50 @@ const useBanner = () => {
     });
   const navigate = useNavigate();
   const queryClient = useQueryClient();
-  const { bannerId } = useParams()
-  const { data: bannerDetails , isLoading} = BannerQuery.GetBannerByIdQuery(bannerId!)
-  console.log(bannerDetails, bannerId)
+  const { bannerId } = useParams();
+  const { data: bannerDetails, isLoading } = BannerQuery.GetBannerByIdQuery(
+    bannerId!
+  );
+  // console.log(bannerDetails, bannerId);
+  const { data: salonId } = ServiceQueries.GetSalonByServIdDetailsQuery(
+    bannerDetails?.serviceId  ? bannerDetails?.serviceId! : ""
+  );
+  const { data: serviceOption } =
+    ServiceQueries.GetServiceDetailsAutoCompleteQuery(watch("salon")?.id);
+    const { data: salonOption } = SalonQueries.GetSalonOption();
   useEffect(() => {
     if (bannerDetails) {
-      setValue(
-        "fromDate",
-        bannerDetails.fromDate.slice(0, 16)
-      );
+      setValue("fromDate", bannerDetails.fromDate.slice(0, 16));
       // console.log(bannerDetails.fromDate)
-      setValue(
-        "toDate",
-        bannerDetails.toDate.slice(0, 16)
-      );
-      setValue("city",cityOption?.find((d)=>d.id === bannerDetails.cityId)!)
-      setValue("id", bannerDetails.id)
-      setImgAfterCrop(bannerDetails.imageURl)
+      setValue("toDate", bannerDetails.toDate.slice(0, 16));
+      setValue("city", cityOption?.find((d) => d.id === bannerDetails.cityId)!);
+      setValue("id", bannerDetails.id);
+      setImgAfterCrop(bannerDetails.imageURl);
       if (bannerDetails.link) {
-        setRadioSelect("link")
-        setValue("link", bannerDetails.link)
+        setRadioSelect("link");
+        setValue("link", bannerDetails.link);
       } else if (bannerDetails.serviceId) {
-        setRadioSelect("service")
-        setValue("salon", salonOption?.find(d => d.id === bannerDetails.salonId)!)
-        setValue("service", serviceOption?.find(d => d.id === bannerDetails.serviceId)!)
-      }
-      else if (bannerDetails.salonId) {
-        setRadioSelect("salon")
-        setValue("salon", salonOption?.find(d => d.id === bannerDetails.salonId)!)
+        setRadioSelect("service");
+        setValue("salon", salonOption?.find((d) => d.id === salonId)!);
+        setValue(
+          "service",
+          serviceOption?.find((d) => d.id === bannerDetails.serviceId)!
+        );
+      } else if (bannerDetails.salonId) {
+        setRadioSelect("salon");
+        setValue(
+          "salon",
+          salonOption?.find((d) => d.id === bannerDetails.salonId)!
+        );
       }
     }
-  }, [bannerDetails])
-  const { data: salonOption } = SalonQueries.GetSalonOption();
+  }, [bannerDetails , salonId , serviceOption]);
+
   // console.log(watch("salon"))
   const [openCropModal, setOpenCropModal] = useState<boolean>(false);
   const [imgAfterCrop, setImgAfterCrop] = useState<string>("");
   const [genericFile, setGenericFile] = useState<File | null>(null);
-  const { data: serviceOption } =
-    ServiceQueries.GetServiceDetailsAutoCompleteQuery(watch("salon")?.id);
+  
   const { data: cityOption } = CityQueries.GetCityAutoCompleteQuery();
   const [radioSelect, setRadioSelect] = useState<string>("link");
   const handleManipulateImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,23 +91,35 @@ const useBanner = () => {
       {
         onSuccess(data) {
           setImgAfterCrop(data);
-          setOpenCropModal(false)
+          setOpenCropModal(false);
         },
       }
     );
   };
+  useEffect(()=>{
+   if(imgAfterCrop){
+    clearErrors("image")
+   }
+  },[imgAfterCrop])
   const onSubmit = () => {
-    console.log(watch("fromDate"), watch("toDate"))
-    mutate({
-      id: watch("id") ? watch("id") : undefined,
-      fromDate: watch("fromDate"),
-      toDate: watch("toDate"),
-      image: imgAfterCrop,
-      citytId: watch("city").id,
-      link: watch("link") ? watch("link") : undefined,
-      serviceId: watch("service") ? watch("service").id! : undefined,
-      salonId: radioSelect === "salon" && watch("salon") ? watch("salon").id : undefined
-    },
+    if (imgAfterCrop === "") {
+      setError("image", { message: t("form.required") });
+      return;
+    }
+    mutate(
+      {
+        id: watch("id") ? watch("id") : undefined,
+        fromDate: watch("fromDate"),
+        toDate: watch("toDate"),
+        image: imgAfterCrop,
+        citytId: watch("city").id,
+        link: watch("link") ? watch("link") : undefined,
+        serviceId: watch("service") ? watch("service").id! : undefined,
+        salonId:
+          radioSelect === "salon" && watch("salon")
+            ? watch("salon").id
+            : undefined,
+      },
 
       {
         onSuccess: () => {
@@ -113,17 +131,16 @@ const useBanner = () => {
           showError(errorMessage);
         },
       }
-    )
-
-
-  }
+    );
+  };
   return {
     control,
     isPending,
     setValue,
-    isLoading, 
+    isLoading,
     bannerId,
     onSubmit,
+    errors,
     radioSelect,
     setRadioSelect,
     salonOption,
@@ -138,7 +155,7 @@ const useBanner = () => {
     setImgAfterCrop,
     genericFile,
     isPendingImg,
-    setOpenCropModal
+    setOpenCropModal,
   };
 };
 export default useBanner;

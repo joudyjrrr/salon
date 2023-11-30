@@ -14,6 +14,8 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import AddCountry from "./AddCountry";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { CountryApi } from "../../API/Country/CountryApi";
+import { askForPermission } from "../../helper/askForPermission";
+import NoData from "../../Components/NoData";
 const Country = () => {
   const { t } = useTranslation();
   const [PageNumber, setPageNumber] = useState(0);
@@ -28,6 +30,8 @@ const Country = () => {
   const { allCountries, allCountriesIsLoading, refetch, isFetching } =
     useCountryHook(id, PageNumber , query);
 
+    const permission = askForPermission ('Country');
+
   // console.log({ allCountries });
   const matches = useMediaQuery("(max-width:700px)");
 
@@ -37,7 +41,8 @@ const Country = () => {
         <Box marginTop="10px" height="100vh">
           <Loading />
         </Box>
-      ) : (
+      ) 
+      : (
         <Box
           sx={{
             paddingInline: "40px",
@@ -46,12 +51,13 @@ const Country = () => {
             height: "initial",
           }}
         >
-          <AddCountry />
+          {permission.canAdd && (<AddCountry />)}
           <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
             <Title text={t('Country.title')} />
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
           <>
+          {allCountries?.data.length === 0 ?<NoData/> :
             <Stack marginTop="40px">
               <TableHeader TableHeaderArray={TableHeaderArray}>
                 <TableBody>
@@ -70,14 +76,18 @@ const Country = () => {
                         align="center"
                         sx={{ display: "flex", justifyContent: "center" }}
                       >
-                        <DeleteCustome
+                        {permission.canDelete && (
+                          <DeleteCustome
                           refetch={refetch}
                           MassegeSuccess={t("Country.delete")}
                           onDelete={() => CountryApi.RemoveCountry(id)}
                           setId={() => setId(d?.id ?? "")}
                           userId={id ?? ""}
                         />
-                        <AddCountry id={d.id} setId={() => setId(d.id ?? "")} />
+                        )}
+                        {permission.canEdit && (
+                          <AddCountry id={d.id} setId={() => setId(d.id ?? "")} />
+                        )}
                       </TableCell>
                     </TableRow>
                   ))}
@@ -90,6 +100,7 @@ const Country = () => {
                 totalPages={allCountries?.totalPages!}
               />
             </Stack>
+}
           </>
         </Box>
       )}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Box, IconButton } from "@mui/material";
-import { useTheme } from '@mui/material/styles';
+import { Box, IconButton, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import "react-pro-sidebar/dist/css/styles.css";
 import { tokens } from "../libs/them";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
@@ -18,10 +18,9 @@ const SideBarrr = () => {
       sx={{
         "& .pro-sidebar-inner": {
           background: `${colors.primary[400]} !important`,
-
         },
         "& .pro-menu": {
-          height: "100vh"
+          height: "100vh",
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
@@ -29,7 +28,7 @@ const SideBarrr = () => {
         "& .pro-inner-item": {
           padding: "5px 35px 5px 20px !important",
           display: "flex",
-          gap: "5px"
+          gap: "5px",
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
@@ -39,8 +38,7 @@ const SideBarrr = () => {
         },
       }}
     >
-      <ProSidebar collapsed={isCollapsed}
-      >
+      <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
           {/* LOGO AND MENU ICON */}
           <MenuItem
@@ -50,7 +48,7 @@ const SideBarrr = () => {
               margin: "10px 0 20px 0",
               color: colors.grey[100],
               display: "flex",
-              flexDirection: "column"
+              flexDirection: "column",
             }}
           >
             {!isCollapsed && (
@@ -66,18 +64,27 @@ const SideBarrr = () => {
               </Box>
             )}
           </MenuItem>
-          <Box paddingLeft={isCollapsed ? undefined : "10%"} display="flex" flexDirection="column" gap="10">
-            {dashBoardNavLinks.map((link) => (
-              <ItemLink
-                key={link.href}
-                to={link.href}
-                icon={link.icon}
-                title={link.title}
-                selected={selected}
-                setSelected={setSelected}
-                isCollapsed={isCollapsed}
-              />
-            ))}
+          <Box
+            paddingLeft={isCollapsed ? undefined : "10%"}
+            display="flex"
+            flexDirection="column"
+            gap="10"
+          >
+            {dashBoardNavLinks.map((link) => {
+              return link.enable ? (
+                <ItemLink
+                  key={link.href}
+                  to={link.href}
+                  icon={link.icon}
+                  title={link.title}
+                  selected={selected}
+                  setSelected={setSelected}
+                  isCollapsed={isCollapsed}
+                />
+              ) : (
+                <></>
+              );
+            })}
           </Box>
         </Menu>
       </ProSidebar>

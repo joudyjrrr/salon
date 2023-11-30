@@ -1,10 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {PaletteMode} from "@mui/material"
-// type InitalMode ={
-//     mode : PaletteMode
-// }
+
 const InitialValues  = {
-  mode: localStorage.getItem('mode') ?? 'light' as PaletteMode,
+  mode: localStorage.getItem('mode') ?? 'light'  as PaletteMode ,
 };
 
 const themSlice = createSlice({

@@ -2,36 +2,29 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { DayArray, SalonInput, SalonTypeArray } from "../../../API/Salon/type";
-import {
-  handleCropImgType,
-  imgNameTypeProdct,
-} from "../../../interface/generic";
+import { DayArray, SalonTypeArray } from "../../../API/Salon/type";
+import { handleCropImgType } from "../../../interface/generic";
 import { FileQuery } from "../../../API/File/FileQueries";
 import {
-  DefaultFromDate,
   DefaultFromDateHours,
-  convertToInputTime,
   convertToInputTimeSalon,
   dayTimeConvert,
 } from "../../../helper/imgHelper";
-import { SalonQueries } from "../../../API/Salon/SalonQueries";
 import { useQueryClient } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
 import { showError, showSuccess } from "../../../libs/reactToastify";
 import { EmpInput } from "../../../API/Emplyee/type";
 import EmployeeQureis from "../../../API/Emplyee/EmployeeQureis";
-import useSalon from "../../Salon/hook/useSalon";
 
 const useEmployee = () => {
   const {
     control,
     setValue,
-    register,
     handleSubmit,
     watch,
-    formState: { isSubmitting },
-    reset,
+    setError,
+    clearErrors,
+    formState: {  errors },
   } = useForm<EmpInput>({
     defaultValues: {
       workSchedule: Array(7).fill({
@@ -79,6 +72,11 @@ const useEmployee = () => {
       });
     }
   }, [employeeDetails]);
+  useEffect(() => {
+    if (imgagesAfterCrop) {
+      clearErrors("image");
+    }
+  }, [imgagesAfterCrop]);
   const handleManipulateImage = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files?.length) return;
     const file = e.target.files[0];
@@ -106,6 +104,10 @@ const useEmployee = () => {
   };
   const { mutate, isPending } = EmployeeQureis.SetEmpQuery();
   const onSubmit = () => {
+    if (imgagesAfterCrop === "") {
+      setError("image", { message: t("form.required") });
+      return;
+    }
     mutate(
       {
         id: empId ? empId : undefined,
@@ -141,6 +143,7 @@ const useEmployee = () => {
   return {
     control,
     isPending,
+    errors,
     watch,
     onSubmit,
     imgagesAfterCrop,

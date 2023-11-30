@@ -80,6 +80,7 @@ const AddSalon = () => {
                           onFileUpload={handleManipulateImage}
                           buttonText={t("form.uploadImgForLogo")}
                           setImg={() => setImgTitle("cover")}
+                          errorMessage={errors.coverImage?.message}
                         />
                       )}
                     />
