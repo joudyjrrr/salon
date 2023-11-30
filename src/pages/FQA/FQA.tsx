@@ -6,6 +6,7 @@ import Loading from "../../Components/Loading"
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteFQA from "./DeleteFQA"
 import { askForPermission } from "../../helper/askForPermission"
+import NoData from "../../Components/NoData"
 
 
 const FQA = () => {
@@ -35,10 +36,9 @@ const FQA = () => {
                 )}
                 
             </Grid >
-
-            <Grid container spacing={2} sx={{ p: 2 }}>
+            {FQAs?.length === 0 ? <NoData/> : (
+                <Grid container spacing={2} sx={{ p: 2 }}>
                 {FQAs?.map((fqa, idx) => {
-
                     return (
                         <Grid key={idx} item xs={12} sm={6} md={4} lg={3}>
                             <Card sx={{ p: 2 }}>
@@ -56,7 +56,6 @@ const FQA = () => {
                                         {t('FQA.arAnswer')} : {fqa?.answer[1].value}
                                     </Typography>
                                 </CardContent>
-
                                 <CardActions>
                                     <Grid container justifyContent={'end'}>
                                         {permission.canEdit && (
@@ -75,6 +74,8 @@ const FQA = () => {
                     )
                 })}
             </Grid>
+            )}
+            
         </>
     )
 }

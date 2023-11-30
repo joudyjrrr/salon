@@ -39,9 +39,6 @@ const matches = useMediaQuery("(max-width:700px)");
         <Loading />
       </Box>
     )
-    : BookingData?.data?.length === 0 ?  (
-      <NoData/>
-    )
     :(
       <Box
           sx={{
@@ -56,6 +53,7 @@ const matches = useMediaQuery("(max-width:700px)");
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
           <>
+          {BookingData?.data.length === 0 ? <NoData/> : (
             <Stack marginTop="40px">
               <TableHeader TableHeaderArray={TableHeaderArray}>
                 <TableBody>
@@ -90,6 +88,7 @@ const matches = useMediaQuery("(max-width:700px)");
                 totalPages={BookingData?.totalPages!}
               />
             </Stack>
+          )}
           </>
         </Box>
     )

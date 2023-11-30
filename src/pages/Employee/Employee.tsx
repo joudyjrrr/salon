@@ -11,7 +11,6 @@ import {
   Grid,
   IconButton,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import Title from "../../Components/Title";
@@ -22,11 +21,11 @@ import React, { useState } from "react";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { EmployeeApi } from "../../API/Emplyee/EmployeeApi";
 import EditIcon from "@mui/icons-material/Edit";
-import MiscellaneousServicesIcon from "@mui/icons-material/MiscellaneousServices";
+import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
+import NoData from "../../Components/NoData";
 import PopOver from "../../Components/Salon/PopOver";
 const Employee = () => {
   const { t } = useTranslation();
-  const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
   const { salonId } = useParams();
   const [id, setId] = useState<string>("");
@@ -65,6 +64,8 @@ const Employee = () => {
               </Fab>
             </Stack>
             <Title text={t("emp.title")} />
+            {EmployeeData?.length === 0 ? <NoData/> :
+            (
             <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
               {EmployeeData?.map((d, index) => (
                 <Grid key={index} item xs={12} sm={6} lg={3}>
@@ -130,6 +131,8 @@ const Employee = () => {
                 </Grid>
               ))}
             </Grid>
+            )}
+            
           </Box>
         </>
       )}

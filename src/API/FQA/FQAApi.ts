@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import DeliveryApiInstances from "../axios";
 import { API_Routes } from "../../Constants/ApiRoutes";
 import { getAllFQA, setFQA } from "./type";
