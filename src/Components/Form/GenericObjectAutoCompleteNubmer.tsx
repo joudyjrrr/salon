@@ -2,7 +2,6 @@
 import { Autocomplete, TextField } from "@mui/material";
 import { INameAndIdNumber } from "../../interface/generic"
 import { Dispatch, FC, SetStateAction} from "react";
-import { appType } from "../../API/Version/type";
 export type Props = {
     errorMessage?: string | undefined;
     disabled?: boolean;

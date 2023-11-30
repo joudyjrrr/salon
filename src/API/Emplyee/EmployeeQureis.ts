@@ -1,7 +1,4 @@
 import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
-import { IPayload } from "../../interface/generic";
-
-import { EmployeeAllPayload } from "./type";
 import { EmployeeApi } from "./EmployeeApi";
 
 const GetEmployeAllQuery = (salonId: string) => {
@@ -23,12 +20,13 @@ const GetEmployeAutoCompleteQuery = (salonId: string) => {
       const data = await EmployeeApi.GetEmpoleeAll(salonId);
       return data;
     },
-   select : (data)=>data.map((d)=>{
-    return {
-      id : d.id,
-      name : d.empName
-    }
-   })
+    select: (data) =>
+      data.map((d) => {
+        return {
+          id: d.id,
+          name: d.empName,
+        };
+      }),
   });
 
   return queryResult;
@@ -66,7 +64,7 @@ const GetEmpDetailsServQuery = (id: string) => {
       return data;
     },
     enabled: !!id,
-    select:(data)=>data.services
+    select: (data) => data.services,
   });
   return queryResult;
 };
@@ -84,6 +82,6 @@ const EmployeeQureis = {
   GetEmpDetailsQuery,
   GetEmpDetailsServQuery,
   SetEmpServiceQuery,
-  GetEmployeAutoCompleteQuery
+  GetEmployeAutoCompleteQuery,
 };
 export default EmployeeQureis;

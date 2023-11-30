@@ -12,7 +12,7 @@ const GenericCustomers: FC<{
     Customers?: GetCustomersNamesCpType[] | undefined,
     errors: FieldErrors<any>,
 
-}> = ({ control, name, setValue, errors, Customers }) => {
+}> = ({ control, name, setValue, errors }) => {
 
     const { t } = useTranslation()
     const { data: CustomersTest } =

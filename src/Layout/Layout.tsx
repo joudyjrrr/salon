@@ -1,4 +1,4 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import SideBarrr from "./SideBar";
 import Topbar from "./Topbar";
 import { Outlet } from "react-router";
@@ -12,7 +12,7 @@ const Layout: FC<Children> = () => {
         style={{
           display: "flex",
           width: "100%",
-          height:"100%"
+          height: "100%"
         }}
       >
         <SideBarrr />

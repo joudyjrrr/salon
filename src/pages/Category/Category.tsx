@@ -76,7 +76,7 @@ const Category = () => {
                           );
                         })}
                         <Typography variant="caption">
-                          {t("Category.type")} : {category.type}
+                          {t("Category.type")} : {category.type === 0 ? t('Category.male') : t('Category.female')}
                         </Typography>
                       </Grid>
                     </CardContent>

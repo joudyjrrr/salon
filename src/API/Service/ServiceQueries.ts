@@ -1,6 +1,5 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { ServiceApi } from "./ServiceApi";
-import { SalonApi } from "../Salon/SalonApi";
 import { ServicePayload } from "./type";
 
 const GetServiceDetailsQuery = (params: ServicePayload) => {

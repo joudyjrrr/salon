@@ -128,7 +128,9 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
       setError("value", { message: t("form.required") });
       return;
     }
-    if (CityUser === "ByUser" && data.customers?.length === 0) {
+    if (CityUser === "ByUser" && data.customers === undefined) {
+      console.log('azb');
+      
       setError("customers", { message: t("form.required") });
       return;
     }

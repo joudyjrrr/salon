@@ -1,4 +1,4 @@
-import { IAutoCompleteOption, INameAndId, IPayload } from "../../interface/generic";
+import { IAutoCompleteOption, IPayload } from "../../interface/generic";
 
 export interface GetAllSalonType {
   id: string;
@@ -18,7 +18,7 @@ export interface Salon {
   tempPhoneNumber: string;
   facebookUrl: string;
   instagramUrl: string;
- 
+
   imageUrls: string[];
 }
 export interface GetSalonDetailsType {
@@ -44,15 +44,14 @@ export interface GetSalonDetailsType {
     endTime: string;
     isFree: boolean;
   }[];
-  
 }
 export interface SalonInput extends Salon {
   coverImage: string;
   SalonType: salonType;
   latitude: number;
   longitude: number;
-  city : IAutoCompleteOption;
-  country : IAutoCompleteOption;
+  city: IAutoCompleteOption;
+  country: IAutoCompleteOption;
   workSchedule: {
     day: Day;
     startTime: string;
@@ -61,20 +60,20 @@ export interface SalonInput extends Salon {
   }[];
 }
 export interface SalonData extends Salon {
-  id?:string;
-  logo:string
+  id?: string;
+  logo: string;
   salonType: number;
   address: {
     latitude: number;
     longitude: number;
     cityId: string;
   };
-    workSchedule: {
-      day: number;
-      startTime: string;
-      endTime: string;
-      isFree: boolean;
-    }[];
+  workSchedule: {
+    day: number;
+    startTime: string;
+    endTime: string;
+    isFree: boolean;
+  }[];
 }
 export interface salonType {
   id: number;

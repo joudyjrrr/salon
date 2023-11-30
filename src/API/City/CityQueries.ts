@@ -1,12 +1,7 @@
-import {
-  keepPreviousData,
-  useInfiniteQuery,
-  useMutation,
-  useQuery,
-} from "@tanstack/react-query";
-import { INameAndId, IPagination, IPayload } from "../../interface/generic";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { INameAndId, IPayload } from "../../interface/generic";
 import { CityApi } from "./CityApi";
-import { getCityByCountryType, setCityType } from "./type";
+import { getCityByCountryType } from "./type";
 
 const GetAllCitiesQuery = (payload: IPayload) => {
   const queryResult = useQuery({

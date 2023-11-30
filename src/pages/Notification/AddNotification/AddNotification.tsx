@@ -95,7 +95,6 @@ const AddNotification = () => {
     //         }
     //     })
     // }
-    console.log(ThisNotification?.customers, 'aisdiuaweiueuhafiuhfeuh');
 
     const publicUserCity = watch('publicUserCity');
     useEffect(() => {

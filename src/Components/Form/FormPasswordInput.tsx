@@ -1,6 +1,6 @@
 import React from "react";
-import { TextField, InputAdornment, IconButton } from "@mui/material";
-import { Controller, UseFormRegister } from "react-hook-form";
+import { InputAdornment, IconButton } from "@mui/material";
+import { UseFormRegister } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import Visibility from "@mui/icons-material/Visibility";
@@ -51,7 +51,7 @@ const FormPasswordInput = ({
               onClick={handleClickShowPassword}
               onMouseDown={handleMouseDownPassword}
               edge="end"
-            
+
             >
               {showPassword ? <VisibilityOff /> : <Visibility />}
             </IconButton>

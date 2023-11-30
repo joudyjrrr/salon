@@ -12,7 +12,7 @@ const Salon = lazy(() => import("./pages/Salon/Salon"));
 const AddSalon = lazy(() => import("./pages/Salon/AddSalon"));
 const Fallback = lazy(() => import("./Components/Fallback"));
 const Category = lazy(() => import("./pages/Category/Category"));
-const AddCategory = lazy(() => import("./pages/Category/AddCategory"));
+const AddCategory = lazy(() => import("./pages/Category/AddCategory/AddCategory"));
 const Country = lazy(() => import("./pages/Country/Country"));
 const City = lazy(() => import("./pages/City/City"));
 const Coupon = lazy(() => import("./pages/Coupon/Coupon"));

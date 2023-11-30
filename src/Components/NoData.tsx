@@ -1,5 +1,4 @@
 import { Grid, Typography } from "@mui/material";
-import NODataIMG from "../assets/noData.jpg";
 import BlockIcon from '@mui/icons-material/Block';
 
 //edited for the dark mode

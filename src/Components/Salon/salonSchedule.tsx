@@ -6,15 +6,15 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { Day, DayArray, SalonInput } from "../../API/Salon/type";
+import { Day, DayArray } from "../../API/Salon/type";
 import TableHeader from "../TableHeader";
-import { Control, Controller, UseFormWatch } from "react-hook-form";
+import { Controller, UseFormWatch } from "react-hook-form";
 import { FC } from "react";
 import FormTextField from "../Form/FormTextField";
 import { DefaultFromDate } from "../../helper/imgHelper";
 import { useTranslation } from "react-i18next";
 
-const salonSchedule: FC<{ control: any,  watch: UseFormWatch<any> , title : string}> = ({
+const salonSchedule: FC<{ control: any, watch: UseFormWatch<any>, title: string }> = ({
   control,
   title,
   watch
@@ -30,8 +30,8 @@ const salonSchedule: FC<{ control: any,  watch: UseFormWatch<any> , title : stri
     endTime: "",
     isFree: true,
   }));
-  const {t}= useTranslation()
-  const TableHeaderArray = [t("salon.Day"), t("salon.Available"), t("salon.from"),t("salon.to")];
+  const { t } = useTranslation()
+  const TableHeaderArray = [t("salon.Day"), t("salon.Available"), t("salon.from"), t("salon.to")];
   return (
     <>
       <Stack
@@ -47,7 +47,7 @@ const salonSchedule: FC<{ control: any,  watch: UseFormWatch<any> , title : stri
             marginY: "10px",
           }}
         >
-       {title}
+          {title}
         </Typography>
         <TableHeader TableHeaderArray={TableHeaderArray}>
           <TableBody>

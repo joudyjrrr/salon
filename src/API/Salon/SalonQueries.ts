@@ -1,7 +1,6 @@
 import { keepPreviousData, useMutation, useQuery } from "@tanstack/react-query";
 import { IPayload } from "../../interface/generic";
 import { SalonApi } from "./SalonApi";
-import { GetSalonDetailsParamsType } from "./type";
 
 const GetSalonAllQuery = (params: IPayload) => {
   const queryResult = useQuery({

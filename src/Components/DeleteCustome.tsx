@@ -16,7 +16,7 @@ const DeleteCustome: FC<{
   setId: (id: string) => void;
   className?: string;
   key?: string;
-}> = ({ onDelete, MassegeSuccess, userId, setId, className, refetch }) => {
+}> = ({ onDelete, MassegeSuccess, userId, setId, refetch }) => {
   const { t } = useTranslation();
   const [openModal, setOpenModal] = useState(false);
   const mutation = useMutation({

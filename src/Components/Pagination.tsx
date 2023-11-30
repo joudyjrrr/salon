@@ -1,4 +1,4 @@
-import { Box, IconButton, Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { RiArrowLeftDoubleLine, RiArrowRightDoubleFill } from "react-icons/ri";
 import { FC } from "react";
 import { Button } from "@mui/material";

@@ -3,7 +3,6 @@ import { IPagination, IPayload } from "../../interface/generic";
 import DeliveryApiInstances from "../axios";
 import {
   GetAllSalonType,
-  GetSalonDetailsParamsType,
   GetSalonDetailsType,
   SalonData,
 } from "./type";

@@ -26,7 +26,7 @@ const languages = [
 const Topbar = () => {
   const theme = useTheme();
   const lang = useSelector((state: RootState) => state.lang.lang);
-  const colors = tokens(theme.palette.mode);
+  // const colors = tokens(theme.palette.mode);
   const dispatch = useDispatch();
   const { t, i18n } = useTranslation();
   const currentLanguageCode = localStorage.getItem("lang") ?? "en";

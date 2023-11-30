@@ -18,8 +18,8 @@ const UploadGenericImg = ({
   disable,
   errorMessage,
   setImg,
-  sx,
-  className,
+  // sx,
+  // className,
 }: IUploadImg) => {
   const { t } = useTranslation();
   const inputRef = useRef<HTMLInputElement>(null!);

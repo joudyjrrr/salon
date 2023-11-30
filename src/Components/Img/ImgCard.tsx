@@ -32,7 +32,7 @@ const ImgCard = ({
   return (
     <Card >
       <CardHeader
-        sx={{ textAlign: "center", color: "#072541", fontWeight: "500", padding: "5px" }}
+        sx={{ textAlign: "center", color: "#072541", fontWeight: "500", padding: "5px" , ...sx }}
         action={
           onDeleteImg && (
             <IconButton color={"primary"} onClick={(e) => onDeleteImg(e)}>

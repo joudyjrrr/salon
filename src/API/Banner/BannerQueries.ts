@@ -1,8 +1,8 @@
-import { useInfiniteQuery, useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { IPayload } from "../../interface/generic";
 import { BannerAPI } from "./BannerApi";
 
-const GetAllBannerQuery =  (params: IPayload) => {
+const GetAllBannerQuery = (params: IPayload) => {
   const queryResult = useQuery({
     queryKey: ["get-all-banner", params.Query, params.PageNumber],
     queryFn: async () => {
@@ -17,19 +17,19 @@ const GetAllBannerQuery =  (params: IPayload) => {
   return queryResult;
 };
 
-const GetBannerByIdQuery =  (id: string) => {
+const GetBannerByIdQuery = (id: string) => {
   const queryResult = useQuery({
     queryKey: ["get-banner-by-id", id],
     queryFn: async () => {
       const data = await BannerAPI.GetBannerById(id);
       return data;
     },
-    enabled : !!id
-  })
+    enabled: !!id,
+  });
   return queryResult;
 };
 
-const SetBannerQuery =  () => {
+const SetBannerQuery = () => {
   const queryResult = useMutation({
     mutationKey: ["set-banner"],
     mutationFn: BannerAPI.SetBanner,

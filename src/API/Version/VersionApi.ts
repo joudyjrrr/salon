@@ -1,6 +1,6 @@
 import { API_Routes } from "../../Constants/ApiRoutes";
 import DeliveryApiInstances from "../axios";
-import { VersionData, VersionGet, VersionInput } from "./type";
+import { VersionData } from "./type";
 
 const getVersion = async () => {
   const { data } = await DeliveryApiInstances.get<VersionData[]>(

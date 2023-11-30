@@ -4,7 +4,6 @@ import GenericObjectAutoCompleteNubmer from "../Form/GenericObjectAutoCompleteNu
 import { Controller } from "react-hook-form";
 import { Grid } from "@mui/material";
 import { SalonTypeArray } from "../../API/Salon/type";
-import { CountryQueries } from "../../API/Country/CountryQueries";
 import GenericObjectAutoComplete from "../Form/GenericObjectAutoComplete";
 import { CityQueries } from "../../API/City/CityQueries";
 

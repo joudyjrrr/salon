@@ -1,7 +1,12 @@
 import { API_Routes } from "../../Constants/ApiRoutes";
-import { IPagination } from "../../interface/generic";
 import DeliveryApiInstances from "../axios";
-import { EmpServiceData, EmployeeAllPayload, EmployeeData, EmployeeService, GetEmplyeeAll, ServEmpId } from "./type";
+import {
+  EmpServiceData,
+  EmployeeData,
+  EmployeeService,
+  GetEmplyeeAll,
+  ServEmpId,
+} from "./type";
 
 const GetEmpoleeAll = async (SalonId: string) => {
   const { data } = await DeliveryApiInstances.get<GetEmplyeeAll[]>(
@@ -16,68 +21,70 @@ const GetEmpoleeAll = async (SalonId: string) => {
 };
 
 const SetEmployee = async (params: EmployeeData) => {
-    const { data } = await DeliveryApiInstances.post(
-      API_Routes.Employee.SET_Employee,
-      params
-    );
-    return data;
-  };
-  const SetEmployeeService = async (params: EmpServiceData) => {
-    const { data } = await DeliveryApiInstances.post(
-      API_Routes.Employee.SET_EMpSERVICE,
-      params
-    );
-    return data;
-  };
-  const GetEmpDetails = async (id: string) => {
-    const { data } = await DeliveryApiInstances.get<EmployeeData>
-    (API_Routes.Employee.GET_Employee_DETAILS_CP, {
+  const { data } = await DeliveryApiInstances.post(
+    API_Routes.Employee.SET_Employee,
+    params
+  );
+  return data;
+};
+const SetEmployeeService = async (params: EmpServiceData) => {
+  const { data } = await DeliveryApiInstances.post(
+    API_Routes.Employee.SET_EMpSERVICE,
+    params
+  );
+  return data;
+};
+const GetEmpDetails = async (id: string) => {
+  const { data } = await DeliveryApiInstances.get<EmployeeData>(
+    API_Routes.Employee.GET_Employee_DETAILS_CP,
+    {
       params: {
         id,
       },
-    });
-    return data;
-  };
-  const GetEmpDetailsService = async (id: string) => {
-    const { data } = await DeliveryApiInstances.get<EmployeeService>
-    (API_Routes.Employee.GET_Employee_DETAILS_CP, {
+    }
+  );
+  return data;
+};
+const GetEmpDetailsService = async (id: string) => {
+  const { data } = await DeliveryApiInstances.get<EmployeeService>(
+    API_Routes.Employee.GET_Employee_DETAILS_CP,
+    {
       params: {
         id,
       },
-    });
-    return data;
-  };
-  const DeleteEmployee = async (employeeId: string) => {
-    const { data } = await DeliveryApiInstances.delete(
-      API_Routes.Employee.DELETE_Employee,
-      {
-        params: {
-            employeeId,
-        },
-      }
-    );
-    return data;
-  };
-  const DeleteEmployeeServ = async (param : ServEmpId) => {
-    const { data } = await DeliveryApiInstances.delete(
-      API_Routes.Employee.Delet_ServEmp,
-      {
-        params: {
-          EmployeeId : param.EmployeeId,
-          ServiceId : param.ServiceId
-        },
-      }
-    );
-    return data;
-  };
+    }
+  );
+  return data;
+};
+const DeleteEmployee = async (employeeId: string) => {
+  const { data } = await DeliveryApiInstances.delete(
+    API_Routes.Employee.DELETE_Employee,
+    {
+      params: {
+        employeeId,
+      },
+    }
+  );
+  return data;
+};
+const DeleteEmployeeServ = async (param: ServEmpId) => {
+  const { data } = await DeliveryApiInstances.delete(
+    API_Routes.Employee.Delet_ServEmp,
+    {
+      params: {
+        EmployeeId: param.EmployeeId,
+        ServiceId: param.ServiceId,
+      },
+    }
+  );
+  return data;
+};
 export const EmployeeApi = {
-    GetEmpoleeAll,
-    SetEmployee,
-    DeleteEmployee,
-    GetEmpDetailsService,
-    GetEmpDetails,
-    SetEmployeeService,
-    DeleteEmployeeServ
-
-  };
-  
+  GetEmpoleeAll,
+  SetEmployee,
+  DeleteEmployee,
+  GetEmpDetailsService,
+  GetEmpDetails,
+  SetEmployeeService,
+  DeleteEmployeeServ,
+};

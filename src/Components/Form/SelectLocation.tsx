@@ -1,7 +1,5 @@
 import {
   Button,
-  Dialog,
-  DialogContent,
   Slide,
   Typography,
 } from "@mui/material";
