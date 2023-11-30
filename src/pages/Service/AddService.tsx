@@ -110,9 +110,8 @@ const AddService = () => {
                         onDeleteImg={() => {
                           const updatedImages = [...imgagesAfterCrop];
                           updatedImages.splice(index, 1);
-                          // setDeletedImages(img);
-                          setImegesAfterCrop(updatedImages);
-                     
+                          setDeletedImages((prevImages) => [...prevImages!, img]);
+                          setImegesAfterCrop(updatedImages)
                         }}
                       />
                     </Grid>

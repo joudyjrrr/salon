@@ -139,8 +139,8 @@ const useService = () => {
       },
       {
         onSuccess: () => {
-          // navigate(-1);
-          // queryClient.refetchQueries({ queryKey: ["get-service"] });
+          navigate(-1);
+          queryClient.refetchQueries({ queryKey: ["get-service"] });
           showSuccess(t("serv.action"));
         },
         onError(error: any) {
