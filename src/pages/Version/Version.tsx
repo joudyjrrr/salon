@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   Fab,
@@ -22,6 +21,7 @@ import { VersionApi } from "../../API/Version/VersionApi";
 import { useState } from "react";
 import EditIcon from "@mui/icons-material/Edit";
 import { askForPermission } from "../../helper/askForPermission";
+import NoData from "../../Components/NoData";
 const Version = () => {
   const [id, setId] = useState<string>();
   const {
@@ -62,7 +62,8 @@ const Version = () => {
           <Stack direction={`row`} spacing={10}>
             <Title text="Version" />
           </Stack>
-          <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
+        {versionData?.length === 0 ? <NoData/> : (
+            <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
             {versionData?.map((d, index) => (
               <Grid key={index} item xs={12} sm={6} lg={4}>
                 <Card elevation={5}>
@@ -130,6 +131,8 @@ const Version = () => {
               </Grid>
             ))}
           </Grid>
+          )}
+          
         </Box>
       )}
     </>

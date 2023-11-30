@@ -27,6 +27,7 @@ import { BannerAPI } from "../../API/Banner/BannerApi";
 import EditIcon from "@mui/icons-material/Edit";
 import { askForPermission } from "../../helper/askForPermission";
 import NoData from "../../Components/NoData";
+import Pagination from "../../Components/Pagination";
 const Banner = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -38,6 +39,7 @@ const Banner = () => {
     data: bannerData,
     isLoading,
     refetch,
+    isFetching,
   } = BannerQuery.GetAllBannerQuery({
     PageNumber: page,
     Query: query,
@@ -136,6 +138,12 @@ const Banner = () => {
                   </Card>
                 </Grid>
               ))}
+              <Pagination
+                            isFetching={isFetching}
+                            onPageChange={setPage}
+                            page={page}
+                            totalPages={bannerData?.totalPages!}
+                        />
             </Grid>
             )}
           </Box>

@@ -4,7 +4,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Fab,
   Grid,
   Stack,
   Typography,
@@ -12,16 +11,15 @@ import {
 } from "@mui/material";
 import Title from "../../Components/Title";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 import EmployeeQureis from "../../API/Emplyee/EmployeeQureis";
 import { useParams } from "react-router";
 import { API_SERVER_URL_For_Img } from "../../API/domain";
 import img from "../../assets/1.jpg";
 import AddEmployeeService from "./AddEmployeeService";
 import DeleteEmpService from "./DeleteEmpService";
+import NoData from "../../Components/NoData";
 const EmployeeService = () => {
   const { t } = useTranslation();
-  const [id, setId] = useState<string>("");
   const matches = useMediaQuery("(max-width:700px)");
   const { empId } = useParams();
   const { data } = EmployeeQureis.GetEmpDetailsServQuery(empId!);
@@ -39,7 +37,9 @@ const EmployeeService = () => {
         <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
           <Title text={t("serv.titleWithEmp")} />
         </Stack>
-        <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
+        {data?.length === 0 ? <NoData/> :
+        (
+          <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
           {data?.map((d, index) => (
             <Grid key={index} item xs={12} sm={6} lg={3}>
               <Card>
@@ -87,6 +87,7 @@ const EmployeeService = () => {
             </Grid>
           ))}
         </Grid>
+        )}
       </Box>
     </>
   );

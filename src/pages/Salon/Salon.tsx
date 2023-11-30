@@ -7,7 +7,6 @@ import {
   Fab,
   Grid,
   IconButton,
-  Popover,
   Stack,
   Typography,
   useMediaQuery,
@@ -17,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import Title from "../../Components/Title";
 import SearchField from "../../Components/SearchField";
 import { SalonQueries } from "../../API/Salon/SalonQueries";
-import { API_BASE_URL, API_SERVER_URL_For_Img } from "../../API/domain";
+import {  API_SERVER_URL_For_Img } from "../../API/domain";
 import { SalonTypeArray } from "../../API/Salon/type";
 import img from "../../assets/1.jpg";
 import Loading from "../../Components/Loading";
@@ -188,7 +187,6 @@ const Salon = () => {
           />
           </Grid>
           )}
-
         </Box>
       )}
     </>

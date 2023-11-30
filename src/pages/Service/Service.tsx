@@ -1,7 +1,6 @@
 import {
   Box,
   Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
@@ -26,6 +25,7 @@ import Pagination from "../../Components/Pagination";
 import DeleteCustome from "../../Components/DeleteCustome";
 import { ServiceApi } from "../../API/Service/ServiceApi";
 import EditIcon from "@mui/icons-material/Edit";
+import NoData from "../../Components/NoData";
 const Service = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
@@ -72,7 +72,8 @@ const Service = () => {
             <Title text={t("serv.title")} />
             <SearchField onSearch={(value) => setQuery(value)} value={query} />
           </Stack>
-          <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
+          {serviceData?.data.length === 0 ? <NoData/> : (
+            <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>
             {serviceData?.data.map((d, index) => (
               <Grid key={index} item xs={12} sm={6} lg={3}>
                 <Card elevation={7}>
@@ -133,13 +134,14 @@ const Service = () => {
                 </Card>
               </Grid>
             ))}
-          </Grid>
-          <Pagination
+            <Pagination
             page={page}
             isFetching={isFetching!}
             onPageChange={setPage}
             totalPages={serviceData?.totalPages!}
           />
+          </Grid>
+          )}
         </Box>
       )}
     </>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { FeedbackQueries } from '../../API/Feddback/FeedbackQueries';
 import Title from '../../Components/Title';
@@ -6,6 +6,7 @@ import SearchField from '../../Components/SearchField';
 import Loading from "../../Components/Loading";
 import { Box, Card, Grid,CardContent, Stack, Typography, useMediaQuery } from '@mui/material';
 import Pagination from '../../Components/Pagination';
+import NoData from '../../Components/NoData';
 
 function FeedBack() {
 
@@ -40,7 +41,8 @@ const matches = useMediaQuery("(max-width:700px)");
         <Title text={t('FeedBack.title')} />
             <SearchField onSearch={setQuery} value={query} />
           </Stack>
-    <Grid container spacing={2} sx={{ mt: 3, px: 1 }}>
+          {feedBackData?.data.length === 0 ? <NoData/> : (
+            <Grid container spacing={2} sx={{ mt: 3, px: 1 }}>
             {
                 feedBackData?.data.map((feed, index) => {
                     return (
@@ -71,16 +73,18 @@ const matches = useMediaQuery("(max-width:700px)");
                             )
                                 })
                             }
-                        </Grid>
-                    </Box>
-                    )
-                    }
-                    <Pagination
+                        <Pagination
                             isFetching={isFetching}
                             onPageChange={setPage}
                             page={page}
                             totalPages={feedBackData?.totalPages!}
                         />
+                        </Grid>
+                        )}
+                    </Box>
+                    )
+                    }
+                    
     </>
   )
   }
