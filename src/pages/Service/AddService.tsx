@@ -10,20 +10,17 @@ import { API_SERVER_URL_For_Img } from "../../API/domain";
 import ModalImgCrop from "../../Components/Img/ModalImgCrop";
 import SubmitButton from "../../Components/Form/SubmitButton";
 import Loading from "../../Components/Loading";
-
 const AddService = () => {
   const { t } = useTranslation();
   const {
     control,
     handleCropImg,
     handleManipulateImage,
-    deletedImages,
     setDeletedImages,
     imgCoverAfterCrop,
     imgagesAfterCrop,
     setImgTitle,
     setImgCoverAfterCrop,
-    handleDeleteImg,
     genericFile,
     isPendingImg,
     openCropModal,
@@ -110,8 +107,11 @@ const AddService = () => {
                         onDeleteImg={() => {
                           const updatedImages = [...imgagesAfterCrop];
                           updatedImages.splice(index, 1);
-                          setDeletedImages((prevImages) => [...prevImages!, img]);
-                          setImegesAfterCrop(updatedImages)
+                          setDeletedImages((prevImages) => [
+                            ...prevImages!,
+                            img,
+                          ]);
+                          setImegesAfterCrop(updatedImages);
                         }}
                       />
                     </Grid>

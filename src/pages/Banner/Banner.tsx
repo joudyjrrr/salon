@@ -17,7 +17,6 @@ import { useNavigate } from "react-router";
 import { BannerQuery } from "../../API/Banner/BannerQueries";
 import Loading from "../../Components/Loading";
 import Title from "../../Components/Title";
-import SearchField from "../../Components/SearchField";
 import AddIcon from "@mui/icons-material/Add";
 import { API_SERVER_URL_For_Img } from "../../API/domain";
 import img from "../../assets/1.jpg";
@@ -31,7 +30,6 @@ import Pagination from "../../Components/Pagination";
 const Banner = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState<number>(0);
-  const [query, setQuery] = useState<string>("");
   const [id, setId] = useState<string>("");
   const matches = useMediaQuery("(max-width:700px)");
   const navigate = useNavigate();
@@ -42,7 +40,6 @@ const Banner = () => {
     isFetching,
   } = BannerQuery.GetAllBannerQuery({
     PageNumber: page,
-    Query: query,
   });
 
   const permission = askForPermission('Banner');
@@ -75,10 +72,6 @@ const Banner = () => {
              )}
             <Stack direction={`${matches ? "column" : "row"}`} spacing={10}>
               <Title text={t("Banner.title")} />
-              <SearchField
-                onSearch={(value) => setQuery(value)}
-                value={query}
-              />
             </Stack>
             {bannerData?.data.length === 0 ? <NoData/>  : (
             <Grid container spacing={4} sx={{ px: 2, mt: 3 }}>

@@ -24,7 +24,7 @@ const useEmployee = () => {
     watch,
     setError,
     clearErrors,
-    formState: { isSubmitting, errors },
+    formState: {  errors },
   } = useForm<EmpInput>({
     defaultValues: {
       workSchedule: Array(7).fill({
