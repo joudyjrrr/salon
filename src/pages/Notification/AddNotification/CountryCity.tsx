@@ -21,7 +21,6 @@ const CountryCity: FC<{
     cities: IPagination<getCityAllType> | undefined,
     control: Control<AddNotificationType, any>
 }> = ({
-    register,
     errors,
     setValue,
     watch,

@@ -1,5 +1,5 @@
 import { TransitionProps } from "@mui/material/transitions";
-import React, { FC } from "react";
+import React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
@@ -9,16 +9,11 @@ import Slide from "@mui/material/Slide";
 import Fab from "@mui/material/Fab";
 import AddIcon from "@mui/icons-material/Add";
 import { Stack } from "@mui/material";
-import FormTextField from "../../Components/Form/FormTextField";
-import GenericObjectAutoComplete from "../../Components/Form/GenericObjectAutoComplete";
-import FormPasswordInput from "../../Components/Form/FormPasswordInput";
 import SubmitButton from "../../Components/Form/SubmitButton";
 import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import { Controller } from "react-hook-form";
-import Loading from "../../Components/Loading";
 import useEmpService from "./hook/useEmpService";
-import { useParams } from "react-router";
 import GenericAutoCompleteMultipule from "../../Components/Form/GenericAutoCompleteMultipule";
 
 const Transition = React.forwardRef(function Transition(

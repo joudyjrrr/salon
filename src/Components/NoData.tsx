@@ -1,8 +1,6 @@
 import { Grid, Typography } from "@mui/material";
-import BlockIcon from '@mui/icons-material/Block';
 import SignalWifiBadIcon from '@mui/icons-material/SignalWifiBad';
 import { useTranslation } from "react-i18next";
-//edited for the dark mode
 
 function NoData() {
   const {t} = useTranslation();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { NotificationQueries } from "../../../API/Notification/NotificationQueries";
 import { useTranslation } from "react-i18next";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -41,24 +41,26 @@ const useNotificationsHook = (pageNumber?: number, Query?: string) => {
     defaultValues: {
       publicUserCity: "Public",
       customers: [],
-      title: [{
-          key: 'ar',
-          value: ''
-      },
-      {
-          key: 'en',
-          value: ''
-      }],
+      title: [
+        {
+          key: "ar",
+          value: "",
+        },
+        {
+          key: "en",
+          value: "",
+        },
+      ],
       body: [
-          {
-              key: 'ar',
-              value: ''
-          },
-          {
-              key: 'en',
-              value: ''
-          },
-      ]
+        {
+          key: "ar",
+          value: "",
+        },
+        {
+          key: "en",
+          value: "",
+        },
+      ],
     },
   });
   const publicUserCity = watch("publicUserCity");

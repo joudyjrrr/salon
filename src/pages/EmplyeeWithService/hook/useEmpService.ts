@@ -12,11 +12,8 @@ const useEmpService = () => {
   const [open, setOpen] = React.useState(false);
   const {
     control,
-    setValue,
-    register,
     handleSubmit,
     watch,
-    formState: { isSubmitting },
     reset,
   } = useForm<EmpServicINput>();
   const { salonId } = useParams();

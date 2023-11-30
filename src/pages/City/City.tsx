@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useCityHook from "./hook/useCityHook";
 import { useTranslation } from "react-i18next";
 import Pagination from "../../Components/Pagination";
 import TableHeader from "../../Components/TableHeader";

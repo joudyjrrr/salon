@@ -9,7 +9,7 @@ const NameAndCode: FC<{
     register: UseFormRegister<AddCouponType>,
     errors: FieldErrors<AddCouponType>,
     control: Control<AddCouponType, any>
-}> = ({ register, errors, control }) => {
+}> = ({ errors, control }) => {
 
     const { t } = CouponHook()
 

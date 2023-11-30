@@ -14,7 +14,6 @@ const useCountryHook = (id?: string, pageNumber?: number , query?: string) => {
     setValue,
     register,
     watch,
-    formState: { isSubmitting },
     reset,
   } = useForm<SetCountryTypeInput>();
 

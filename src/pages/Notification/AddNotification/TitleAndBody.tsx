@@ -1,6 +1,6 @@
-import { Grid, TextField, Typography } from "@mui/material"
+import { Grid, Typography } from "@mui/material"
 import { FC } from "react"
-import { Control, Controller, FieldErrors, UseFormRegister } from "react-hook-form"
+import { Control, FieldErrors, UseFormRegister } from "react-hook-form"
 import { AddNotificationType } from "../hooks/type"
 import { useTranslation } from "react-i18next"
 import FormTextField from "../../../Components/Form/FormTextField"
@@ -11,8 +11,6 @@ const TitleAndBody: FC<{
     control: Control<AddNotificationType, any>
 
 }> = ({
-    register,
-    errors,
     control
 }) => {
         const { t } = useTranslation()

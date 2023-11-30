@@ -13,7 +13,6 @@ const useCpMngment = (id: string) => {
     setValue,
     register,
     watch,
-    formState: { isSubmitting },
     clearErrors,
     reset,
   } = useForm<SetUserType>();

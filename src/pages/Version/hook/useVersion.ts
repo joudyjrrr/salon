@@ -1,9 +1,5 @@
 import { useForm } from "react-hook-form";
-import {
-  AppTypeArray,
-  VersionGet,
-  VersionInput,
-} from "../../../API/Version/type";
+import { AppTypeArray, VersionInput } from "../../../API/Version/type";
 import { VersionQueries } from "../../../API/Version/VersionQueries";
 import { useTranslation } from "react-i18next";
 import { useQueryClient } from "@tanstack/react-query";
@@ -42,7 +38,7 @@ const useVersion = () => {
   const onSubmit = () => {
     mutate(
       {
-        id : watch("id") ? watch("id") : undefined,
+        id: watch("id") ? watch("id") : undefined,
         androidUrl: watch("androidUrl"),
         androidVersionName: watch("androidVersionName"),
         androidVersionNumber: watch("androidVersionNumber"),

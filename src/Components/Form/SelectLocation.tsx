@@ -1,27 +1,26 @@
 import {
   Button,
-  Slide,
   Typography,
 } from "@mui/material";
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { UseFormSetValue } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { TransitionProps } from "@mui/material/transitions";
+// import { TransitionProps } from "@mui/material/transitions";
 import FadeModal from "./FadeModal";
 import AddLocationAltIcon from "@mui/icons-material/AddLocationAlt";
 const SelectLocation: FC<{
   setValue: UseFormSetValue<any>;
   error?: string;
 }> = ({ setValue, error }) => {
-  const Transition = React.forwardRef(function Transition(
-    props: TransitionProps & {
-      children: React.ReactElement<any, any>;
-    },
-    ref: React.Ref<unknown>
-  ) {
-    return <Slide direction="up" ref={ref} {...props} />;
-  });
+  // const Transition = React.forwardRef(function Transition(
+  //   props: TransitionProps & {
+  //     children: React.ReactElement<any, any>;
+  //   },
+  //   ref: React.Ref<unknown>
+  // ) {
+  //   return <Slide direction="up" ref={ref} {...props} />;
+  // });
 
   const [openActionModel, setOpenActionModel] = useState(false);
   const [position, setPosition] = useState<any>();

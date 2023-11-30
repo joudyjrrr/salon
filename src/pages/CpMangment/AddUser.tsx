@@ -96,7 +96,7 @@ const AddUser: React.FC<{
                 <Controller
                   name="roles"
                   control={control}
-                  render={({ field, fieldState }) => (
+                  render={({ field }) => (
                     <GenericObjectAutoComplete
                       value={field.value}
                       onChange={field.onChange}

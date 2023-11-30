@@ -17,7 +17,7 @@ const CouponImage: FC<{
     errors: FieldErrors<AddCouponType>
 }> = ({ img, setImg, setValue, errors }) => {
 
-    const { t, mutateImg, deleteImage, UploadingImg } = CouponHook()
+    const { t, mutateImg, UploadingImg } = CouponHook()
     const [Open, setOpen] = useState<boolean>(false)
     const [File, setFile] = useState<File | null>();
 

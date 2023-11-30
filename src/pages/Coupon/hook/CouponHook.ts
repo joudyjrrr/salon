@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { CouponQueries } from "../../../API/Coupon/CouponQueries";
 import { useTranslation } from "react-i18next";
@@ -129,8 +129,8 @@ const CouponHook = (Search?: string, PageNumber?: number) => {
       return;
     }
     if (CityUser === "ByUser" && data.customers === undefined) {
-      console.log('azb');
-      
+      console.log("azb");
+
       setError("customers", { message: t("form.required") });
       return;
     }

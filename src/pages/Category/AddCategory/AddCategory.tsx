@@ -1,7 +1,6 @@
-import { Button, Grid, Select, MenuItem, InputLabel, FormControl, Typography } from "@mui/material"
+import { Button, Grid, Typography } from "@mui/material"
 import useCategoryHook from "../hooks/useCategoryHook"
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Controller } from "react-hook-form";
 import Title from "../../../Components/Title";
 import UploadGenericImg from "../../../Components/Img/UploadGenericImg";
 import { ChangeEvent, useEffect, useState } from "react";

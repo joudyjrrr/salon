@@ -1,5 +1,5 @@
 import { useForm, SubmitHandler } from "react-hook-form";
-import { setCityType, setCityTypeInput } from "../../../API/City/type";
+import { setCityTypeInput } from "../../../API/City/type";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
 import { CityQueries } from "../../../API/City/CityQueries";
@@ -8,14 +8,13 @@ import { showError, showSuccess } from "../../../libs/reactToastify";
 import { makeActionArray } from "../../../helper/imgHelper";
 import { CountryQueries } from "../../../API/Country/CountryQueries";
 
-const useCityHook = (id?: string, pageNumber?: number, query?: string) => {
+const useCityHook = (id?: string, _pageNumber?: number, _query?: string) => {
   const {
     control,
     handleSubmit,
     setValue,
     register,
     watch,
-    formState: { isSubmitting },
     reset,
   } = useForm<setCityTypeInput>();
 
@@ -34,9 +33,9 @@ const useCityHook = (id?: string, pageNumber?: number, query?: string) => {
       // console.log(cityDetails);
       setValue("enName", cityDetails?.name.find((d) => d.key === "en")?.value!);
       setValue("arName", cityDetails?.name.find((d) => d.key === "ar")?.value!);
-      const countryValue = countryOption?.find(
-        (n: any) => n.id == cityDetails?.countryId
-      );
+      // const countryValue = countryOption?.find(
+      //   (n: any) => n.id == cityDetails?.countryId
+      // );
       // console.log(countryValue?.id)
       setValue(
         "country",

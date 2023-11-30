@@ -30,13 +30,10 @@ const addCity: React.FC<{
       control,
       handleSubmit,
       onSubmit,
-      register,
-      setValue,
       open,
       setOpen,
       isPending,
       isLoading,
-      cityDetails,
     } = useCityHook(id);
   
     const { t } = useTranslation();

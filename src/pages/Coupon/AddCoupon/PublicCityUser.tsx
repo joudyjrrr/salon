@@ -1,13 +1,10 @@
-import { Autocomplete, FormControl, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material";
-import Loading from "../../../Components/Loading";
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { Autocomplete, FormControl, FormControlLabel, Grid, Radio, RadioGroup, TextField } from "@mui/material";
 import CouponHook from "../hook/CouponHook";
 import { INameAndId, IPagination } from "../../../interface/generic";
 import { ChangeEvent, Dispatch, FC, SetStateAction } from "react";
 import { Control, Controller, FieldErrors, UseFormRegister, UseFormSetValue } from "react-hook-form";
 import { AddCouponType } from "../hook/type";
 import { getCityAllType } from "../../../API/City/type";
-import GenericObjectAutoComplete from "../../../Components/Form/GenericObjectAutoComplete";
 import GenericCustomers from "../../../Components/Coupon/GenericCustomers";
 
 
@@ -20,12 +17,10 @@ const PublicCityUser: FC<{
     errors: FieldErrors<AddCouponType>,
     countries: INameAndId[] | undefined,
     cities: IPagination<getCityAllType> | undefined
-}> = ({ CityUser, control, setCityUser, register, setValue, errors, countries, cities }) => {
+}> = ({ CityUser, control, setCityUser, setValue, errors, countries, cities }) => {
 
-    const { t, customerLoading, Customers, } = CouponHook()
-    console.log({ Customers });
-    console.log({control}, 'in coupon');
-    
+    const { t, } = CouponHook()
+
     return (
         <>
             <FormControl>
@@ -157,7 +152,7 @@ const PublicCityUser: FC<{
                                     return (
                                         <Autocomplete
                                             id='CitySelect'
-                                            
+
 
                                             {...field}
                                             fullWidth

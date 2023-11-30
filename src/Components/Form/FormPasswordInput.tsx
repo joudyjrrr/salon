@@ -21,10 +21,6 @@ interface IFormPsswordInputProps {
 const FormPasswordInput = ({
   register,
   req,
-  multiline = false,
-  disabled = false,
-  shrink,
-  ...props
 }: IFormPsswordInputProps) => {
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = React.useState(false);
